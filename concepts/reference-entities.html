@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Concepts &amp; resources | Fegmo APIs</title>
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-9">
+                    <h1>Concepts & resources</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="navbar" class="col-sm-3 hidden-xs sticky"><nav role="tablist" id="navbar-nav"><ul class="nav nav-stacked" style="counter-increment: step-counter;"><p class="pre-nav">Summary</p><li><a href="/concepts/products.html">Products</a></li><li><a href="/concepts/catalog-structure.html">Catalog structure</a></li><li><a href="/concepts/target-market-settings.html">Target market settings</a></li><li class="active"> <a href="#">Reference entities</a><p><ul class="nav">
+    <li><a href="#reference-entity">Reference entity</a></li>
+    <li><a href="#reference-entity-attribute">Reference entity attribute</a></li>
+    <li><a href="#reference-entity-attribute-option">Reference entity attribute option</a></li>
+    <li><a href="#reference-entity-record">Reference entity record</a></li>
+    <li><a href="#focus-on-the-reference-entity-record-values">Focus on the reference entity record values</a>
+    <ul>
+    <li><a href="#the-global-format">The global format</a></li>
+    <li><a href="#the-data-format">The <code>data</code> format</a></li>
+    <li><a href="#the-locale-and-channel-format">The <code>locale</code> and <code>channel</code> format</a></li>
+    </ul>
+    </li>
+    <li><a href="#reference-entity-media-file">Reference entity media file</a></li>
+    </ul>
+    </p>
+    </li><li><a href="/concepts/asset-manager.html">Asset Manager</a></li></ul></nav></div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-8"><a class="anchor" id="reference-entities"></a><h1 title-id="reference-entities"><a class="markdownIt-Anchor" href="#reference-entities">#</a>Reference entities</h1>
+    <p>You want to manage rich data information around your products? The Reference entities are here to help you with this task.</p>
+    <p>They are designed to store complex information related to products. So neat! 🚀</p>
+    <p>There are several resources available to interact with the Reference Entities feature via the REST API.<br />
+    Each section below contains an explanation of the concept behind these resources You will find out more about their usage in the PIM and their JSON format in order for them to interact with the REST API.</p>
+    <div class="alert alert-info"><p>The Reference Entities is an Entreprise only feature, meaning all the following resources are only available in the Entreprise Edition.</p>
+    </div>
+    <a class="anchor" id="reference-entity"></a><h2 title-id="reference-entity"><a class="markdownIt-Anchor" href="#reference-entity">#</a>Reference entity</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Reference entities are objects that are related to products but have their own attributes and lifecycle. A reference entity can be for example the brands, the ranges, the manufacturers, the colors, the materials or the care instructions... And so many other entities.</p>
+    <p>In the Fegmo UI, you can find the reference entities in the <code>Entities</code> menu. Below is an example of the <code>Brand</code> reference entity with its <a href="#reference-entity-record">records</a> in the UI.</p>
+    <p><img class="img-responsive in-article" alt="Reference entity" src="/img/concepts/reference_entity_ui.png"/></p>
+    <p>Below is the JSON format representing a reference entity.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"brand"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Brand"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Marque"</span>
+      },
+      <span class="hljs-attr">"image"</span>: <span class="hljs-string">"0/2/d/6/54d81dc888ba1501a8g765f3ab5797569f3bv756c_ref_img.png"</span>
+    }
+    </code></pre>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Referenceentity"><div class="panel-body"><div class="panel-btn-big">Want more details about the reference entity resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    <a class="anchor" id="reference-entity-attribute"></a><h2 title-id="reference-entity-attribute"><a class="markdownIt-Anchor" href="#reference-entity-attribute">#</a>Reference entity attribute</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Reference entities have attributes that allow to describe their <a href="#reference-entity-record">records</a>.</p>
+    <div class="alert alert-warning"><p>Note that the &quot;Reference entity attribute&quot; resource is not the same as the &quot;Attribute&quot; resource, even though they have a lot in common. The first one is used to describe reference entities records, the second one is use to describe products.</p>
+    </div>
+    <p>In the Fegmo UI, you can find the attributes that compose a given reference entity by following these simple steps. From the <code>Entities</code> menu, choose a reference entity and then, click on <code>Attributes</code>. Below is an example of the  <code>Designer</code> entity attributes in the UI.</p>
+    <p><img class="img-responsive in-article" alt="Reference entity attributes" src="/img/concepts/reference_entity_attribute_ui.png"/></p>
+    <p>The JSON format for a reference entity attribute can differ according to its type. Below are some examples for each attribute type.</p>
+    <p>Format for the <code>text</code> attribute type</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"description"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Description"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Description"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"text"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"max_characters"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"is_textarea"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"is_rich_text_editor"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"validation_rule"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"validation_regexp"</span>: <span class="hljs-literal">null</span>
+    }
+    </code></pre>
+    <p>Format for the <code>image</code> attribute type</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"photo"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Photo"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Photo"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"image"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"allowed_extensions"</span>: [<span class="hljs-string">"jpg"</span>],
+      <span class="hljs-attr">"max_file_size"</span>: <span class="hljs-string">"10"</span>
+    }
+    </code></pre>
+    <p>Format for the <code>number</code> attribute type (<em>since the 3.2 version</em>)</p>
+    <pre class="hljs"><code>{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-string">"creation_year"</span>,
+        <span class="hljs-attr">"labels"</span>: {
+            <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Creation year"</span>,
+            <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Année de création"</span>
+        },
+        <span class="hljs-attr">"type"</span>: <span class="hljs-string">"number"</span>,
+        <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"decimals_allowed"</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">"min_value"</span>: <span class="hljs-string">"1800"</span>,
+        <span class="hljs-attr">"max_value"</span>: <span class="hljs-string">"2100"</span>
+    }
+    </code></pre>
+    <p>Format for the <code>single option</code> and <code>multiple options</code> attribute types</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"nationality"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Nationality"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Nationalité"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"single_option"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">false</span>
+    }
+    </code></pre>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"sales_areas"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Sales areas"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Zones de vente"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"multiple_options"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">true</span>
+    }
+    </code></pre>
+    <p>Format for the <code>reference entity single link</code> and <code>reference entity multiple links</code> attribute types</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"country"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Country"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Pays"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"reference_entity_single_link"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"reference_entity_code"</span>: <span class="hljs-string">"country"</span>
+    }
+    </code></pre>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"designers"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Designers"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Designeurs"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"reference_entity_multiple_links"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"reference_entity_code"</span>: <span class="hljs-string">"designer"</span>
+    }
+    </code></pre>
+    <p>Format for the <code>asset collection</code> attribute type</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"brand"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Brand"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Marque"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"asset_collection"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"asset_family_identifier"</span>: <span class="hljs-string">"logos"</span>
+    }
+    </code></pre>
+    <div class="alert alert-warning"><p>You can have at max 100 attributes to describe the structure of one given reference entity.<br />
+    As a consequence, when you ask for the list of attributes of one given reference entity, you'll see that the response is not paginated. It won't cause any performance issue, since you can't have more than 100 attributes per reference entity.</p>
+    </div>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Referenceentityattribute"><div class="panel-body"><div class="panel-btn-big">Want more details about the reference entity attribute resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    <a class="anchor" id="reference-entity-attribute-option"></a><h2 title-id="reference-entity-attribute-option"><a class="markdownIt-Anchor" href="#reference-entity-attribute-option">#</a>Reference entity attribute option</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Some type of attributes of reference entities can offer a list of choices. These available choices are reference entity attribute options.</p>
+    <div class="alert alert-warning"><p>Note that the &quot;Reference entity attribute option&quot; resource is not the same as the &quot;Attribute option&quot; resource, even though they have a lot in common. The first one is an option of an attribute used to describe reference entities records, the second one is an option of an attribute used to describe products.</p>
+    </div>
+    <p>Only attribute of type <code>single option</code> or <code>multiple options</code> can have options.</p>
+    <p>In the Fegmo UI, here are the steps to manage the options of a reference entity attribute with single and multiple options:</p>
+    <ol>
+    <li>Select a reference entity in the <code>Entities</code> menu</li>
+    <li>Then, click on <code>Attributes</code></li>
+    <li>Click on <code>Edit</code> for a single or multiple options attribute. An edit pop-in opens.</li>
+    <li>Then, click on <code>Manage options</code>. Here you are! You can view and edit the options of your attribute.</li>
+    </ol>
+    <p>The screenshot below shows the screen where you can manage your options.</p>
+    <p><img class="img-responsive in-article" alt="Reference entity attribute options in the Fegmo UI" src="/img/concepts/reference_entity_attribute_options_ui.png"/></p>
+    <p>Below is the JSON format representing these reference entity attribute options.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"europe"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Europe"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Europe"</span>
+      }
+    }
+    </code></pre>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"asia"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Asia"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Asie"</span>
+      }
+    }
+    </code></pre>
+    <div class="alert alert-warning"><p>You can have at max 100 options per attribute. If you want to have more, it makes totally sense to create a new reference entity that you can then use as an attribute.<br />
+    As a consequence of this limit, when you ask for the list of attribute options of one given attribute, you'll see that the response is not paginated. It won't cause any performance issue, since you can't have more than 100 options per attribute.</p>
+    </div>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Referenceentityattributeoption"><div class="panel-body"><div class="panel-btn-big">Want more details about the reference entity attribute option resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    <a class="anchor" id="reference-entity-record"></a><h2 title-id="reference-entity-record"><a class="markdownIt-Anchor" href="#reference-entity-record">#</a>Reference entity record</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Reference entities have been introduced in the PIM in the 3.0 version.</p>
+    <p>A record holds all the information of a reference entity. A record can be related to one or more products.</p>
+    <p>Let's give an example to be clearer. For the &quot;Brand&quot; reference entity, a record could be all the information regarding the &quot;A&quot; brand.</p>
+    <p>In the Fegmo UI, you can find the reference entity records in the <code>Entities</code> menu by selecting one of the entity of your choice. Below is an example of the record of a reference entity in the UI.</p>
+    <p><img class="img-responsive in-article" alt="Reference entity record" src="/img/concepts/reference_entity_record_ui.png"/></p>
+    <p>Below is the JSON standard format representing a reference entity record.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"A"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"label"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"A"</span>
+          }
+        ],
+        <span class="hljs-attr">"image"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"0/c/b/0/0cb0c0e115dedba676f8d1ad8343ec207ab54c7b_image.jpg"</span>
+          }
+        ],
+        <span class="hljs-attr">"description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"A, the Italian furniture company that sells modern and remarkable pieces of furnitures."</span>
+          },
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"A, l'éditeur de meuble italien spécialisé dans la signature de belle pièces au design contemporain."</span>
+          }
+        ],
+        <span class="hljs-attr">"designer"</span>:[
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"starck"</span>
+          }
+        ],
+        <span class="hljs-attr">"country"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"italy"</span>
+          }
+        ],
+        <span class="hljs-attr">"creation_year"</span>:[
+        {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"1949"</span>
+          }
+        ],
+        <span class="hljs-attr">"photo"</span>:[
+        {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"5/1/d/8/51d81dc778ba1501a8f998f3ab5797569f3b9e25_img.png"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Referenceentityrecord"><div class="panel-body"><div class="panel-btn-big">Want more details about the reference entity record resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    <a class="anchor" id="focus-on-the-reference-entity-record-values"></a><h2 title-id="focus-on-the-reference-entity-record-values"><a class="markdownIt-Anchor" href="#focus-on-the-reference-entity-record-values">#</a>Focus on the reference entity record values</h2>
+    <p>Reference entity record values hold all the information of a reference entity record. In concrete terms, it is the values of the attributes you will find in the record of a reference entity.</p>
+    <p>In the REST API, the reference entity record values are in the property <code>values</code> of the reference entity record.</p>
+    <a class="anchor" id="the-global-format"></a><h3 title-id="the-global-format"><a class="markdownIt-Anchor" href="#the-global-format">#</a>The global format</h3>
+    <p>Reference entity record values follow the same format as <a href="/concepts/products.html#focus-on-the-product-values">product values</a>:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        ATTRIBUTE_CODE: [
+          {
+            <span class="hljs-attr">"locale"</span>: LOCALE_CODE,
+            <span class="hljs-attr">"channel"</span>: CHANNEL_CODE,
+            <span class="hljs-attr">"data"</span>: DATA_INFORMATION
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p>In this formula:</p>
+    <ul>
+    <li><code>ATTRIBUTE_CODE</code> is the code of an attribute of the reference entity record,</li>
+    <li><code>LOCALE_CODE</code> is the code of a locale when the attribute is localizable, should be equal to <code>null</code> otherwise. <a href="#the-locale-and-channel-format">Check some examples here.</a></li>
+    <li><code>CHANNEL_CODE</code> is the code of a channel when the attribute is scopable, should be equal to <code>null</code> otherwise. <a href="#the-locale-and-channel-format">Check some examples here.</a></li>
+    <li><code>DATA_INFORMATION</code> is the value stored for this attribute for this locale (if attribute is localizable) and this channel (if the attribute is scopable). Its type and format depend on the attribute type. <a href="#the-data-format">Check some examples here.</a></li>
+    </ul>
+    <a class="anchor" id="the-data-format"></a><h3 title-id="the-data-format"><a class="markdownIt-Anchor" href="#the-data-format">#</a>The <code>data</code> format</h3>
+    <p>The table below describes the format of the <code>data</code> property for each <a href="#reference-entity-attribute">reference entity attribute</a> type.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Attribute type / Format</th>
+    <th>Example</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><strong>Text</strong> <br> <em>string</em></td>
+    <td><code>&quot;A well-known manufacturer of high-end furniture&quot;</code></td>
+    </tr>
+    <tr>
+    <td><strong>Image</strong> <br> <em>string</em></td>
+    <td><code>&quot;5/1/d/8/51d81dc778ba1501a8f998f3ab5797569f3b9e25_img.png&quot;</code></td>
+    </tr>
+    <tr>
+    <td><strong>Number</strong> <br> <em>string</em></td>
+    <td><code>&quot;1949&quot;</code></td>
+    </tr>
+    <tr>
+    <td><strong>Simple select</strong> <br> <em>string</em></td>
+    <td><code>&quot;yellow&quot;</code></td>
+    </tr>
+    <tr>
+    <td><strong>Multi select</strong> <br> <em>Array[string]</em></td>
+    <td><code>[&quot;leather&quot;, &quot;cotton&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><strong>Reference entity simple select</strong> <br> <em>string</em></td>
+    <td><code>&quot;italy&quot;</code></td>
+    </tr>
+    <tr>
+    <td><strong>Reference entity multi select</strong> <br> <em>Array[string]</em></td>
+    <td><code>[&quot;starck&quot;, &quot;dixon&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><strong>Asset collection</strong> <br> <em>Array[string]</em></td>
+    <td><code>[&quot;packshot&quot;, &quot;badge&quot;]</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="the-locale-and-channel-format"></a><h3 title-id="the-locale-and-channel-format"><a class="markdownIt-Anchor" href="#the-locale-and-channel-format">#</a>The <code>locale</code> and <code>channel</code> format</h3>
+    <p>The reference entity record values can be localizable and/or scopable. Here are some examples to illustrate those different possibilities.</p>
+    <div class="alert alert-info"><p>Reference entity record values should be <strong>localizable</strong> whenever you want to enrich different values among your activated locales.<br />
+    Reference entity record values should be <strong>scopable</strong> whenever you want to enrich different values among your channels.</p>
+    </div>
+    <a class="anchor" id="reference-entity-record-values-of-a-localizable-attribute"></a><h4 title-id="reference-entity-record-values-of-a-localizable-attribute"><a class="markdownIt-Anchor" href="#reference-entity-record-values-of-a-localizable-attribute">#</a>Reference entity record values of a localizable attribute</h4>
+    <p>The <code>short_description</code> attribute is localizable but not scopable, so it can hold several data values, up to one for each locale.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"short_description"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"A well-known manufacturer of high-end furniture"</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Un fabricant renommé de meubles de qualité"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Note that the <code>channel</code> property is set to <code>null</code> in this case.</p>
+    </div>
+    <a class="anchor" id="reference-entity-record-values-of-a-scopable-attribute"></a><h4 title-id="reference-entity-record-values-of-a-scopable-attribute"><a class="markdownIt-Anchor" href="#reference-entity-record-values-of-a-scopable-attribute">#</a>Reference entity record values of a scopable attribute</h4>
+    <p>The <code>image</code> attribute is scopable but not localizable, so it can hold several data values, up to one for each channel.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"image"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"5/1/d/8/51d81dc778ba1501a8f998f3ab5797569f3b9e25_img_ecommerce.png"</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"c/4/d/8/51d81dc778ba1501a8f998f3ab57975610g7867i_img_mobile.png"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Note that the <code>locale</code> property is set to <code>null</code> in this case.</p>
+    </div>
+    <a class="anchor" id="reference-entity-record-values-of-a-localizable-and-scopable-attribute"></a><h4 title-id="reference-entity-record-values-of-a-localizable-and-scopable-attribute"><a class="markdownIt-Anchor" href="#reference-entity-record-values-of-a-localizable-and-scopable-attribute">#</a>Reference entity record values of a localizable and scopable attribute</h4>
+    <p>The <code>description</code> attribute is both scopable and localizable, so it can hold several data values, up to one for each couple of channels and locales.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-string">"description"</span>: [
+        {
+          <span class="hljs-string">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-string">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-string">"data"</span>: <span class="hljs-string">"He's a well-known manufacturer of high-end furniture that was founded in Italy."</span>
+        },
+        {
+          <span class="hljs-string">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-string">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-string">"data"</span>: <span class="hljs-string">"He's an Italian manufacturer of high-end furniture. It was founded Italy."</span>
+        },
+        {
+          <span class="hljs-string">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-string">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-string">"data"</span>: <span class="hljs-string">"Il est un fabricant de meubles renommé qui fut fondé en Italie."</span>
+        },
+        {
+          <span class="hljs-string">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-string">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-string">"data"</span>: <span class="hljs-string">"Il est un fabricant italien de meubles de luxe. L'entreprise a été fondé en Italie."</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="reference-entity-record-value-of-a-non-localizable-non-scopable-attribute"></a><h4 title-id="reference-entity-record-value-of-a-non-localizable-non-scopable-attribute"><a class="markdownIt-Anchor" href="#reference-entity-record-value-of-a-non-localizable-non-scopable-attribute">#</a>Reference entity record value of a non localizable, non scopable attribute</h4>
+    <p>The <code>creation_year</code> attribute is neither scopable nor localizable, so it can hold only one data value.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"creation_year"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"1949"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Note that the <code>locale</code> and <code>channel</code> properties are all set to <code>null</code> in this case.</p>
+    </div>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/documentation/update.html#update-reference-entity-record-values"><div class="panel-body"><div class="panel-btn-big">Want to update reference entity record values? </div><p class="text-center">Here you go!</p></div></a></div></div></div>
+    <a class="anchor" id="reference-entity-media-file"></a><h2 title-id="reference-entity-media-file"><a class="markdownIt-Anchor" href="#reference-entity-media-file">#</a>Reference entity media file</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Reference entity media files corresponds to the images that you can link to the records of your reference entities and also, to the images that you can direclty link to your reference entities.</p>
+    <p>In the Fegmo UI, you can find these media files in the detail of a record. In the screenshot below, there are two record media files:</p>
+    <ul>
+    <li>the first image with the logo of the brand,</li>
+    <li>the second image inside the <code>Photo</code> attribute.</li>
+    </ul>
+    <p><img class="img-responsive in-article" alt="Reference entity record" src="/img/concepts/reference_entity_record_ui.png"/></p>
+    <p>You can also find media files in the properties of a reference entity, as shown in the screenshot below.</p>
+    <p><img class="img-responsive in-article" alt="Reference entity record" src="/img/concepts/reference_entity_media_file_ui.png"/></p>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Referenceentitymediafile"><div class="panel-body"><div class="panel-btn-big">Want more details about the reference entity media file resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    </div>
+            </div>
+        </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

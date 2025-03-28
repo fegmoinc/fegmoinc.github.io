@@ -1,0 +1,2617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Concepts &amp; resources | Fegmo APIs</title>
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-9">
+                    <h1>Concepts & resources</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="navbar" class="col-sm-3 hidden-xs sticky"><nav role="tablist" id="navbar-nav"><ul class="nav nav-stacked" style="counter-increment: step-counter;"><p class="pre-nav">Summary</p><li><a href="/concepts/products.html">Products</a></li><li><a href="/concepts/catalog-structure.html">Catalog structure</a></li><li><a href="/concepts/target-market-settings.html">Target market settings</a></li><li><a href="/concepts/reference-entities.html">Reference entities</a></li><li class="active"> <a href="#">Asset Manager</a><p><ul class="nav">
+    <li><a href="#asset-family">Asset family</a></li>
+    <li><a href="#focus-on-the-naming-convention">Focus on the naming convention</a>
+    <ul>
+    <li><a href="#the-source-string">The source string</a></li>
+    <li><a href="#the-split-pattern">The split pattern</a></li>
+    <li><a href="#abortion-on-error">Abortion on error</a></li>
+    </ul>
+    </li>
+    <li><a href="#focus-on-the-product-link-rule">Focus on the product link rule</a>
+    <ul>
+    <li><a href="#product-selection">Product selection</a></li>
+    <li><a href="#product-value-assignment">Product value assignment</a></li>
+    <li><a href="#asset-values-extrapolation">Asset values extrapolation</a></li>
+    </ul>
+    </li>
+    <li><a href="#focus-on-the-transformations">Focus on the transformations</a>
+    <ul>
+    <li><a href="#label">Label</a></li>
+    <li><a href="#source-file">Source file</a></li>
+    <li><a href="#target-file">Target file</a></li>
+    <li><a href="#target-filename">Target filename</a></li>
+    <li><a href="#transformation-operations">Transformation operations</a></li>
+    <li><a href="#dealing-with-several-transformations">Dealing with several transformations</a></li>
+    </ul>
+    </li>
+    <li><a href="#asset-attribute">Asset attribute</a>
+    <ul>
+    <li><a href="#the-text-attribute">The <code>text</code> attribute</a></li>
+    <li><a href="#the-single-and-multiple-options-attributes">The <code>single and multiple options</code> attributes</a></li>
+    <li><a href="#the-number-attribute">The <code>number</code> attribute</a></li>
+    <li><a href="#the-media_file-attribute">The <code>media_file</code> attribute</a></li>
+    <li><a href="#the-media-link-attribute">The <code>media link</code> attribute</a></li>
+    <li><a href="#the-boolean-attribute">The <code>boolean</code> attribute</a></li>
+    <li><a href="#the-date-attribute">The <code>date</code> attribute</a></li>
+    <li><a href="#the-record-attribute">The <code>record</code> attribute</a></li>
+    </ul>
+    </li>
+    <li><a href="#asset">Asset</a></li>
+    <li><a href="#focus-on-the-asset-values">Focus on the asset values</a>
+    <ul>
+    <li><a href="#the-global-format">The global format</a></li>
+    <li><a href="#the-data-format">The <code>data</code> format</a></li>
+    <li><a href="#the-locale-and-channel-format">The <code>locale</code> and <code>channel</code> format</a></li>
+    <li><a href="#the-_links-format">The <code>_links</code> format</a></li>
+    <li><a href="#the-linked_data-format">The <code>linked_data</code> format</a></li>
+    </ul>
+    </li>
+    <li><a href="#asset-attribute-option">Asset attribute option</a></li>
+    <li><a href="#asset-media-file">Asset media file</a></li>
+    </ul>
+    </p>
+    </li></ul></nav></div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-8"><a class="anchor" id="asset-manager"></a><h1 title-id="asset-manager"><a class="markdownIt-Anchor" href="#asset-manager">#</a>Asset Manager</h1>
+    <div class="alert alert-info"><p>Since the Asset Manager feature was introduced with Fegmo PIM version 4.0: if you are using an older version of Fegmo PIM (version 3.2 or earlier), we recommend you consult our documentation on the <a href="/concepts/pam.html">PAM feature</a> instead.</p>
+    </div>
+    <p>The Asset Manager is the more efficient way to manage the assets linked to your products/product models inside the PIM. 🚀</p>
+    <p>The assets of the Asset Manager will be way more powerful than before. They will benefit from 4 major new features:</p>
+    <ul>
+    <li>the possibility to define a flexible structure, thanks to the <a href="#the-asset-family">asset families</a>,</li>
+    <li>the possibility to automatize the link with your products, thanks to the <a href="#focus-on-the-product-link-rule">product link rules</a> and the <a href="#focus-on-the-naming-convention">naming convention</a>,</li>
+    <li>the possibility to refer to both external and internal binaries, thanks to the <a href="#the-media-link-attribute">media link</a> and the <a href="#the-media-file-attribute">media file</a> attribute types,</li>
+    <li>the posibility to have flexible asset <a href="#focus-on-the-transformations">transformations</a>.</li>
+    </ul>
+    <p>Below, you'll find an illustration of this wonderful new feature.</p>
+    <p><img class="img-responsive in-article" alt="Asset manager schema" src="/img/concepts/asset-manager.svg"/></p>
+    <p>This part of the documentation introduces all the REST API resources our team created to interact with the Asset Manager.</p>
+    <div class="alert alert-info"><p>The Asset Manager is an Entreprise only feature, meaning all the following resources are only available in the Entreprise Edition.</p>
+    </div>
+    <a class="anchor" id="asset-family"></a><h2 title-id="asset-family"><a class="markdownIt-Anchor" href="#asset-family">#</a>Asset family</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>An asset family gathers a number of assets that share a common attribute structure. In other words, an asset family can be considered as a template for its assets.</p>
+    <p>An asset family is made of <a href="#the-asset-attribute">asset attributes</a>. Unlike the <a href="/concepts/catalog-structure.html#family">product families</a>, asset attributes are not shared between asset families.</p>
+    <p>Below are some examples of asset families, along with their asset attributes.</p>
+    <p><img class="img-responsive in-article" alt="Asset family scheme" src="/img/concepts/asset-family.svg"/></p>
+    <p>For each asset family you can:</p>
+    <ul>
+    <li>define which attribute will be used as the main media of this family. We call it :<code>attribute_as_main_media</code>.  In the data grids, product or asset, we will display the preview of the media stored/linked to this attribute (image, pdf, Youtube, Vimeo). By default, the attribute as main media is the first media link or media file attribute that was created in this family.</li>
+    <li>define what we call a <em>naming convention</em>. It enables you to easily extract important information from your asset code or main media filename, such as the SKU of the product related to this asset. See <a href="#focus-on-the-naming-convention">below</a> for more details on this feature.</li>
+    <li>define the way the PIM will automatically link the assets of this family to your products/product models. It is the <code>product link rule</code>. <a href="#focus-on-the-product-link-rule">Below</a>, you'll find the specific format of this rule.</li>
+    <li>define several transformations for your <a href="#the-media-file-attribute">media file attributes</a>. Don't hesitate to read the <a href="#focus-on-the-transformations">Transformations section</a> to learn more and also, discover their JSON format.</li>
+    </ul>
+    <p>Here is the JSON format representing an example of asset family.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"packshots"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Pachskots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Packshots"</span>
+      },
+      <span class="hljs-attr">"attribute_as_main_media"</span>: <span class="hljs-string">"main_image"</span>,
+      <span class="hljs-attr">"naming_convention"</span>: {
+        <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"property"</span>: <span class="hljs-string">"main_asset_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+        },
+        <span class="hljs-attr">"pattern"</span>: <span class="hljs-string">"/(?P&lt;product_ref&gt;.*)\\.jpg/"</span>,
+        <span class="hljs-attr">"abort_asset_creation_on_error"</span>: <span class="hljs-literal">true</span>
+      },
+      <span class="hljs-attr">"product_link_rules"</span>: [
+        {
+          <span class="hljs-attr">"product_selections"</span>: [
+            {
+              <span class="hljs-attr">"field"</span>: <span class="hljs-string">"sku"</span>,
+              <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"="</span>,
+              <span class="hljs-attr">"value"</span>: <span class="hljs-string">"{{product_ref}}"</span>
+            }
+          ],
+          <span class="hljs-attr">"assign_assets_to"</span>: [
+            {
+              <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"model_pictures"</span>,
+              <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"replace"</span>
+            }
+          ]
+        }
+      ],
+      <span class="hljs-attr">"transformations"</span>: [
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Thumbnail plus black and white transformation"</span>,
+          <span class="hljs-attr">"filename_suffix"</span>: <span class="hljs-string">"_thumbnailBW"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [
+            {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"resize"</span>,
+              <span class="hljs-attr">"parameters"</span>: {
+                <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+                <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+              }
+            },
+            {
+              <span class="hljs-attr">"type"</span>: <span class="hljs-string">"colorspace"</span>,
+              <span class="hljs-attr">"parameters"</span>: {
+                <span class="hljs-attr">"colorspace"</span>: <span class="hljs-string">"grey"</span>
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </code></pre>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Assetfamily"><div class="panel-body"><div class="panel-btn-big">Want more details about the asset family resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    <a class="anchor" id="focus-on-the-naming-convention"></a><h2 title-id="focus-on-the-naming-convention"><a class="markdownIt-Anchor" href="#focus-on-the-naming-convention">#</a>Focus on the naming convention</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>We noticed that you, our dear customers 🥰, usually name your asset files or asset codes using precious information:</p>
+    <ul>
+    <li>the SKU of the product corresponding to the asset,</li>
+    <li>the locale into which your user guides are translated,</li>
+    <li>the asset function: <em>Is it a frontview, backview,...?</em>,</li>
+    <li>...</li>
+    </ul>
+    <p>The idea of the naming convention feature is to be able to extract those pieces of information and use them to automatically enrich your assets with new attributes.</p>
+    <p>By defining a naming convention, for each <a href="#the-asset-family">asset family</a>, the PIM will be able to split the asset code or the main media filename, in order to extract the information you want and use it to populate asset attributes.
+    This operation is done automatically by the PIM upon each asset creation.</p>
+    <div class="alert alert-info"><p>This naming convention is defined at the <a href="#the-asset-family">asset family</a> level.</p>
+    </div>
+    </p><div class="alert alert-tips"><p>The naming convention is perfect to automatically populate the asset attributes that will then be used by the <a href="#focus-on-the-product-link-rule">product link rule</a>. 😉</p>
+    </div>
+    <p>The JSON format of the naming convention contains several parts:</p>
+    <ul>
+    <li>the <a href="#the-source-string"><code>source</code> part</a>,</li>
+    <li>the <a href="#the-split-pattern"><code>pattern</code> part</a>,</li>
+    <li>a <a href="#abortion-on-error">boolean stating whether to abort the asset creation in case there was an error during the application of the naming convention</a>.</li>
+    </ul>
+    <pre class="hljs"><code>{
+        <span class="hljs-attr">"source"</span>: {...},
+        <span class="hljs-attr">"pattern"</span>: A_REGEXP,
+        <span class="hljs-attr">"abort_asset_creation_on_error"</span>: A_BOOLEAN
+    }
+    </code></pre>
+    <a class="anchor" id="examples"></a><h4 title-id="examples"><a class="markdownIt-Anchor" href="#examples">#</a>Examples</h4>
+    <pre class="hljs"><code>{
+        <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"property"</span>: <span class="hljs-string">"main_asset_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+        },
+        <span class="hljs-attr">"pattern"</span>: <span class="hljs-string">"/(?P&lt;product_ref&gt;.*)-.*-(?P&lt;attribute_ref&gt;.*)\\.jpg/"</span>,
+        <span class="hljs-attr">"abort_asset_creation_on_error"</span>: <span class="hljs-literal">true</span>
+    }
+    </code></pre>
+    <p>Still not comfortable with the naming convention? Don't hesitate to go through the next sections where we detail each part of the naming convention format.</p>
+    <a class="anchor" id="the-source-string"></a><h3 title-id="the-source-string"><a class="markdownIt-Anchor" href="#the-source-string">#</a>The source string</h3>
+    <p>The <code>source</code> property allows you to define on which string the split will be applied. It can be either:</p>
+    <ul>
+    <li>the asset code,</li>
+    <li>the code of the main media attribute of your family.</li>
+    </ul>
+    <p>It follows this format:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"source"</span>: {
+        <span class="hljs-attr">"property"</span>: CODE_OR_ATTRIBUTE_CODE,
+        <span class="hljs-attr">"locale"</span>: SOURCE_LOCALE_CODE,
+        <span class="hljs-attr">"channel"</span>: SOURCE_CHANNEL_CODE
+      },...
+    }
+    </code></pre>
+    <p>In this formula:</p>
+    <ul>
+    <li><code>CODE_OR_ATTRIBUTE_CODE</code> can be either:
+    <ul>
+    <li>the <em>&quot;code&quot;</em> string: when you want the asset code to be used as the source string,</li>
+    <li>the code of the main media asset attribute of the family: when you want the filename of the main media to be used as the source string.</li>
+    </ul>
+    </li>
+    <li><code>SOURCE_LOCALE_CODE</code> is an existing locale code when <code>CODE_OR_ATTRIBUTE_CODE</code> is the code of the main media asset attribute of the family and this one is localizable.</li>
+    <li><code>SOURCE_CHANNEL_CODE</code> is an existing channel code when <code>CODE_OR_ATTRIBUTE_CODE</code> is the code of the main media asset attribute of the family and this one is scopable.</li>
+    </ul>
+    <div class="alert alert-warning"><p>The <code>property</code>, <code>locale</code> and <code>channel</code> properties are mandatory.</p>
+    <p>The <code>locale</code> property should be set to <code>null</code> if:</p>
+    <ul>
+    <li><code>CODE_OR_ATTRIBUTE_CODE</code> is equal to <em>&quot;code&quot;</em>,</li>
+    <li><code>CODE_OR_ATTRIBUTE_CODE</code> is equal to the code of the main media attribute and this one is not localizable.</li>
+    </ul>
+    <p>The <code>channel</code> property should be set to <code>null</code> if:</p>
+    <ul>
+    <li><code>CODE_OR_ATTRIBUTE_CODE</code> is equal to <em>&quot;code&quot;</em>,</li>
+    <li><code>CODE_OR_ATTRIBUTE_CODE</code> is equal to the code of the main media attribute and this one is not scopable.</li>
+    </ul>
+    </div>
+    <a class="anchor" id="the-split-pattern"></a><h3 title-id="the-split-pattern"><a class="markdownIt-Anchor" href="#the-split-pattern">#</a>The split pattern</h3>
+    <p>The <code>pattern</code> property allows you to define how the PIM should split the <a href="#the-source-string">source string</a>. Then, the result of the split will automatically populate the corresponding asset attributes.</p>
+    <p>The split pattern should be a string. It should be given as a regular expression.<br />
+    For the PIM to know into which asset attributes the result of the split should be sent, this regular expression should contain one or several named capture groups.<br />
+    Note that the names of these capture groups should be equal to the code of existing asset attributes of the family and these asset attributes can only be <a href="#the-text-attribute"><code>text</code> attributes</a>, <a href="#the-single-and-multiple-options-attributes"><code>single option attributes</code></a>, and <a href="#the-number-attribute"><code>number</code> attributes</a>.</p>
+    <div class="alert alert-warning"><p>These asset attributes cannot be localizable neither scopable.</p>
+    </div>
+    <div class="alert alert-tips"><p>Not comfortable with regular expressions? You can try yours <a href="https://regex101.com/">right here</a>!</p>
+    </div>
+    <p>Let's take an example to make this clearer!</p>
+    <pre class="hljs"><code>/^(?P<product_ref>.*)_(?P<attribute_ref>.*)\\.jpg$/
+    </code></pre>
+    <p>The regexp above will split the source string into three parts, thanks to two named capture groups:</p>
+    <ul>
+    <li><code>(?P&lt;product_ref&gt;.*)</code> is the first capture group. It is named <code>product_ref</code>. So, the result of this capture will be sent into the <code>product_ref</code> asset attribute. The <code>product_ref</code> attribute should exist in the asset family.</li>
+    <li><code>(?P&lt;attribute_ref&gt;.*)</code> is the second capture group. It is named <code>attribute_ref</code>. So, the result of this capture will be sent to the <code>attribute_ref</code> asset attribute. The <code>attribute_ref</code> attribute should exist in the asset family.
+    Let's say our source string is equal to <code>allie_jean-picture-packshot.png</code>. After the naming convention application, the <code>product_ref</code> asset attribute will contain the value &quot;allie_jean&quot; and the <code>attribute_ref</code> asset attribute will contain the value &quot;packshot&quot;.</li>
+    </ul>
+    <a class="anchor" id="abortion-on-error"></a><h3 title-id="abortion-on-error"><a class="markdownIt-Anchor" href="#abortion-on-error">#</a>Abortion on error</h3>
+    <p>Sometimes, the application of the naming convention will fail. For example, it is the case if the regular expression does not capture any group. In this case, you can choose if you still want the corresponding asset to be created. As a result, the asset won't be created, and you can submit it again with a better filename/code for example.</p>
+    <p>To allow this behavior, set the <code>abort_asset_creation_on_error</code> to <code>true</code>.</p>
+    <p>If you want the asset to be created even if the naming convention application failed, set the property to <code>false</code>.</p>
+    <a class="anchor" id="focus-on-the-product-link-rule"></a><h2 title-id="focus-on-the-product-link-rule"><a class="markdownIt-Anchor" href="#focus-on-the-product-link-rule">#</a>Focus on the product link rule</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>The product link rule enables you to automatically link assets to products/product models, based on asset names or attributes. This rule is defined at the <a href="#the-asset-family">asset family</a> level.</p>
+    <p>This rule is launched by the PIM after the asset creation.</p>
+    <div class="alert alert-warning"><p>To use the product link rules on product models, you should use the &quot;identifier&quot; of the model in the <code>field</code> of the product selections part.</p>
+    </div>
+    </p><div class="alert alert-info"><p>You can have up to <strong>two</strong> different product link rules for one given asset family.</p>
+    </div>
+    <p>The JSON format of the product link rules is an array of product link rules. A product link rule is divided into two parts:</p>
+    <ul>
+    <li>the <code>product_selections</code> part,</li>
+    <li>the <code>assign_assets_to</code> part.</li>
+    </ul>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_link_rules"</span>: [
+        {
+          <span class="hljs-attr">"product_selections"</span>: [...],
+          <span class="hljs-attr">"assign_assets_to"</span>: [...]
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="examples-2"></a><h4 title-id="examples-2"><a class="markdownIt-Anchor" href="#examples-2">#</a>Examples</h4>
+    <p><strong>With one product link rule</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_link_rules"</span>: [
+        {
+          <span class="hljs-attr">"product_selections"</span>: [
+            {
+              <span class="hljs-attr">"field"</span>: <span class="hljs-string">"sku"</span>,
+              <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"="</span>,
+              <span class="hljs-attr">"value"</span>: <span class="hljs-string">"{{product_ref}}"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+              <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+            }
+          ],
+          <span class="hljs-attr">"assign_assets_to"</span>: [
+            {
+              <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"replace"</span>,
+              <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"user_instructions"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"{{locale}}"</span>,
+              <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+            }
+          ]
+        }
+      ]
+    }
+    </code></pre>
+    <p><strong>With two product link rules</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_link_rules"</span>: [
+        {
+          <span class="hljs-attr">"product_selections"</span>: [
+            {
+              <span class="hljs-attr">"field"</span>: <span class="hljs-string">"categories"</span>,
+              <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"IN"</span>,
+              <span class="hljs-attr">"value"</span>: [<span class="hljs-string">"men_clothes"</span>]
+            }
+          ],
+          <span class="hljs-attr">"assign_assets_to"</span>: [
+            {
+              <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"add"</span>,
+              <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"ambient_image"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+              <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+            }
+          ]
+        },
+        {
+          <span class="hljs-attr">"product_selections"</span>: [
+            {
+              <span class="hljs-attr">"field"</span>: <span class="hljs-string">"categories"</span>,
+              <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"IN"</span>,
+              <span class="hljs-attr">"value"</span>: [<span class="hljs-string">"women_clothes"</span>]
+            }
+          ],
+          <span class="hljs-attr">"assign_assets_to"</span>: [
+            {
+              <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"add"</span>,
+              <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"ambient_image"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+              <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+            }
+          ]
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-warning"><p>A piece of advice: when defining two different rules on an asset family, make sure you define different product selections in each rule, as shown in the example above. Why? Because you could experience performance issues. If you want to assign your assets to two different product attributes on a given selection of products, use one single rule, with two assigments in the <code>assign_assets_to</code> field. See the <a href="#product-value-assignment">Product value assigment</a> section for an example.</p>
+    </div>
+    <p>Looks barbaric? Don't freak out! The following sections are here to help you understand this rule and how you can make the most of it. You'll see, it's super powerful! 😃</p>
+    <a class="anchor" id="product-selection"></a><h3 title-id="product-selection"><a class="markdownIt-Anchor" href="#product-selection">#</a>Product selection</h3>
+    <p>The first part of the rule is a property called <code>product_selections</code>. This property will allow you to define a selection of products for which you want to automatically link the assets of the asset family.</p>
+    <p>In one single product link rule, you can define one or several product selections.</p>
+    <p>The <code>product_selections</code> property follows this format:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_selections"</span>: [
+        {
+          <span class="hljs-attr">"field"</span>: FIELD_NAME,
+          <span class="hljs-attr">"operator"</span>: OPERATOR_NAME,
+          <span class="hljs-attr">"value"</span>: VALUE,
+          <span class="hljs-attr">"locale"</span>: SELECTION_LOCALE_CODE,
+          <span class="hljs-attr">"channel"</span>: SELECTION_CHANNEL_CODE
+        },...
+      ]
+    }
+    </code></pre>
+    <p>In this formula:</p>
+    <ul>
+    <li><code>FIELD_NAME</code> is the name of the field used to select your products. It can be a product attribute or a property of the product like categories for example.</li>
+    <li><code>OPERATOR_NAME</code> is the name of the operator that will allow you to make your selection of products. Several operators are available depending on the <code>FIELD_NAME</code> you provided before.</li>
+    <li><code>VALUE</code> is a value whose type corresponds to the <code>FIELD_NAME</code> you provided before.</li>
+    <li><code>SELECTION_LOCALE_CODE</code> is an existing locale code when <code>FIELD_NAME</code> is the code of a localizable product attribute.</li>
+    <li><code>SELECTION_CHANNEL_CODE</code> is an existing channel code when <code>FIELD_NAME</code> is the code of a scopable product attribute.</li>
+    </ul>
+    <div class="alert alert-warning"><p>The <code>field</code>, <code>operator</code> and <code>value</code> properties are mandatory.</p>
+    </div>
+    <div class="alert alert-warning"><p>The <code>locale</code> and <code>channel</code> properties should not appear in your product selection, whenever you are using the following <code>FIELD_NAME</code>: <code>categories</code>, <code>family</code> and <code>enable</code>.<br />
+    But they are mandatory when the <code>FIELD_NAME</code> is a product attribute code.
+    If the <code>FIELD_NAME</code> is the code of an attribute that is not localizable, the <code>locale</code> property should be set to <code>null</code>.<br />
+    If the <code>FIELD_NAME</code> is the code of an attribute that is not scopable, the <code>channel</code> property should be set to <code>null</code>.</p>
+    </div>
+    <a class="anchor" id="example"></a><h4 title-id="example"><a class="markdownIt-Anchor" href="#example">#</a>Example</h4>
+    <p>Here is a concrete example to make it clearer.
+    If you want to select the products which are both enabled and classified in the <code>men</code> category, you can use the following syntax.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_selections"</span>: [
+        {
+          <span class="hljs-attr">"field"</span>: <span class="hljs-string">"enabled"</span>,
+          <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"="</span>,
+          <span class="hljs-attr">"value"</span>: <span class="hljs-string">"true"</span>
+        },
+        {
+          <span class="hljs-attr">"field"</span>: <span class="hljs-string">"categories"</span>,
+          <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"IN"</span>,
+          <span class="hljs-attr">"value"</span>: [<span class="hljs-string">"men"</span>]
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>As you can see above, you can use multiple conditions to make your selection. Those conditions are cumulated. In the example, we select the products that are <strong>both</strong> enabled and in the <code>men</code> category.</p>
+    </div>
+    <p>Here is the defined list of the fields you can use to select your products (we can't guarantee other custom filters will work):</p>
+    <ul>
+    <li>among the product properties:
+    <ul>
+    <li>the <a href="#selection-via-product-family">product family</a>,</li>
+    <li>the <a href="#selection-via-product-categories">product categories</a>,</li>
+    <li>the <a href="#select-via-the-product-status">product status</a>,</li>
+    <li>the <a href="#select-via-the-product-parent">parent</a>,</li>
+    </ul>
+    </li>
+    <li>among the product attributes:
+    <ul>
+    <li>the <a href="#select-via-identifier-attribute">identifier attribute</a>,</li>
+    <li>the <a href="#select-via-text-attribute">text attributes</a>,</li>
+    <li>the <a href="#select-via-simplemulti-select-attribute">simple/multi select attributes</a>.</li>
+    </ul>
+    </li>
+    </ul>
+    <a class="anchor" id="selection-via-product-family"></a><h4 title-id="selection-via-product-family"><a class="markdownIt-Anchor" href="#selection-via-product-family">#</a>Selection via product family</h4>
+    <p>To associate your assets to a given set of products, you can use their family. In this case, use the keyword <code>family</code> as the <code>FIELD_NAME</code>.</p>
+    <p>The table below summarizes the operators available when you select products per family as well as the allowed value type you can have as a <code>VALUE</code>.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Selection description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td><em>Array of existing family codes</em></td>
+    <td>Selects products that are respectively in the given families</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN</code></td>
+    <td><em>Array of existing family codes</em></td>
+    <td>Selects products that are respectively not in the given families</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>Example</strong><br />
+    The following selection will select the products belonging to the <code>accessories</code> family.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_selections"</span>: [
+        {
+          <span class="hljs-attr">"field"</span>: <span class="hljs-string">"family"</span>,
+          <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"IN"</span>,
+          <span class="hljs-attr">"value"</span>: [<span class="hljs-string">"accessories"</span>]
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="selection-per-product-categories"></a><h4 title-id="selection-per-product-categories"><a class="markdownIt-Anchor" href="#selection-per-product-categories">#</a>Selection per product categories</h4>
+    <p>To associate your assets to a given set of products, you can use their categories. In this case, use the keyword <code>categories</code> as the <code>FIELD_NAME</code>.</p>
+    <p>The table below summarizes the operators available when you select per categories as well as the allowed value type you can have as a <code>VALUE</code>.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Selection description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td><em>Array of existing category codes</em></td>
+    <td>Selects the products that are in the given categories</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN</code></td>
+    <td><em>Array of existing category codes</em></td>
+    <td>Selects the products that are not in the given categories</td>
+    </tr>
+    <tr>
+    <td><code>IN OR UNCLASSIFIED</code></td>
+    <td><em>Array of existing category codes</em></td>
+    <td>Selects the products that are in the given categories or that are not classified in any categories</td>
+    </tr>
+    <tr>
+    <td><code>IN CHILDREN</code></td>
+    <td><em>Array of existing category codes</em></td>
+    <td>Selects the products that are in the children of the given categories</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN CHILDREN</code></td>
+    <td><em>Array of existing category codes</em></td>
+    <td>Selects the products that are not in the children of the given categories</td>
+    </tr>
+    <tr>
+    <td><code>UNCLASSIFIED</code></td>
+    <td><em>No value</em></td>
+    <td>Selects the products that are not classified into any category</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>Example</strong><br />
+    The following selection will select the products belonging to the <code>bohemian_style</code> category.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_selections"</span>: [
+        {
+          <span class="hljs-attr">"field"</span>: <span class="hljs-string">"categories"</span>,
+          <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"IN"</span>,
+          <span class="hljs-attr">"value"</span>: [<span class="hljs-string">"bohemian_style"</span>]
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="selection-per-product-status"></a><h4 title-id="selection-per-product-status"><a class="markdownIt-Anchor" href="#selection-per-product-status">#</a>Selection per product status</h4>
+    <p>To associate your assets to a given set of products, you can use their status. In this case, use the keyword <code>enabled</code> as the <code>FIELD_NAME</code>.</p>
+    <p>The table below summarizes the operator available when you select per status as well as the allowed value type you can have as a <code>VALUE</code>.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Selection description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>=</code></td>
+    <td><em>string: &quot;true&quot; or &quot;false&quot;</em></td>
+    <td>Selects products that are enabled (<code>&quot;true&quot;</code>) or disabled (<code>&quot;false&quot;</code>)</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>Example</strong><br />
+    The following selection will select the products that are enabled.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_selections"</span>: [
+        {
+          <span class="hljs-attr">"field"</span>: <span class="hljs-string">"enabled"</span>,
+          <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"="</span>,
+          <span class="hljs-attr">"value"</span>: <span class="hljs-string">"true"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="selection-via-product-parent"></a><h4 title-id="selection-via-product-parent"><a class="markdownIt-Anchor" href="#selection-via-product-parent">#</a>Selection via product parent</h4>
+    <p>To associate your assets with a given set of product variants, you can use their parents (product models). In this case, use the keyword <code>parent</code> as the <code>FIELD_NAME</code>.</p>
+    <p>The table below summarizes the operators available when you select per categories as well as the allowed value type you can have as a <code>VALUE</code>.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Selection description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td><em>Array of existing product model codes</em></td>
+    <td>Selects the product variants and product models that have a parent from the given list</td>
+    </tr>
+    <tr>
+    <td><code>EMPTY</code></td>
+    <td><em>No value needed to specify, empty array ([]) or empty string (&quot;&quot;) can be used</em></td>
+    <td>Selects the simple products, the product variants and product models that don’t have a parent</td>
+    </tr>
+    <tr>
+    <td><code>NOT EMPTY</code></td>
+    <td><em>No value needed to specify, empty array ([]) or empty string (&quot;&quot;) can be used</em></td>
+    <td>Selects the product variants and product models that have a parent</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>Example</strong><br />
+    The following selection will select the products in the <code>bohemian_style</code> category.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_selections"</span>: [
+        {
+          <span class="hljs-attr">"field"</span>: <span class="hljs-string">"parent"</span>,
+          <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"IN"</span>,
+          <span class="hljs-attr">"value"</span>: [<span class="hljs-string">"product_model_bicycle_REF012345"</span>]
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="selection-per-identifier-attribute"></a><h4 title-id="selection-per-identifier-attribute"><a class="markdownIt-Anchor" href="#selection-per-identifier-attribute">#</a>Selection per identifier attribute</h4>
+    <p>To associate your assets to a given set of products, you can use their identifiers. In this case, use the code of the identifier attribute you have in your product family as the <code>FIELD_NAME</code>. You can also use the generic keyword <code>identifier</code> to select the main identifier.</p>
+    <p>The table below summarizes the operators available when you select per identifier attribute as well as the allowed value type you can have as a <code>VALUE</code>.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Selection description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>STARTS WITH</code></td>
+    <td><em>String</em></td>
+    <td>Selects products and product models whose identifier begins with the given value</td>
+    </tr>
+    <tr>
+    <td><code>CONTAINS</code></td>
+    <td><em>String</em></td>
+    <td>Selects products whose identifier contains a specific value</td>
+    </tr>
+    <tr>
+    <td><code>DOES NOT CONTAIN</code></td>
+    <td><em>String</em></td>
+    <td>Selects products whose identifier does not contain a specific value</td>
+    </tr>
+    <tr>
+    <td><code>=</code></td>
+    <td><em>String</em></td>
+    <td>Selects simple products and product models which match exactly the given identifier</td>
+    </tr>
+    <tr>
+    <td><code>!=</code></td>
+    <td><em>String</em></td>
+    <td>Selects simple products and product models whose identifier is not the given one</td>
+    </tr>
+    <tr>
+    <td><code>IN</code></td>
+    <td><em>Array of existing simple product and product model identifiers</em></td>
+    <td>Selects simple products and product models whose identifier is in the given list</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN</code></td>
+    <td><em>Array of existing simple product and product model identifiers</em></td>
+    <td>Selects simple products and product models whose identifier is not in the given list</td>
+    </tr>
+    <tr>
+    <td><code>EMPTY</code></td>
+    <td>_No value needed to specify, empty string (&quot;&quot;) can be used _</td>
+    <td>Selects simple products and product models whose main identifier is empty</td>
+    </tr>
+    <tr>
+    <td><code>NOT EMPTY</code></td>
+    <td>_No value needed to specify, empty string (&quot;&quot;) can be used _</td>
+    <td>Selects simple products and product models whose main identifier is not empty (note that this could select all your product catalog)</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>Example</strong><br />
+    The following selection will select the product with the <code>sku_54628</code> SKU, knowing that <code>sku</code> is the code of the identifier attribute.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_selections"</span>: [
+        {
+          <span class="hljs-attr">"field"</span>: <span class="hljs-string">"sku"</span>,
+          <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"="</span>,
+          <span class="hljs-attr">"value"</span>: <span class="hljs-string">"sku_54628"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="selection-per-text-attribute"></a><h4 title-id="selection-per-text-attribute"><a class="markdownIt-Anchor" href="#selection-per-text-attribute">#</a>Selection per text attribute</h4>
+    <p>To associate your assets to a given set of products, you can use one of their text attributes. In this case, use the code of one of the text attributes from your product family as the <code>FIELD_NAME</code>.</p>
+    <p>The table below summarizes the operators available when you select per text attribute as well as the allowed value type you can have as a <code>VALUE</code>.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Selection description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>STARTS WITH</code></td>
+    <td><em>String</em></td>
+    <td>Selects products with a text attribute that begins with the given value</td>
+    </tr>
+    <tr>
+    <td><code>CONTAINS</code></td>
+    <td><em>String</em></td>
+    <td>Selects products with a text attribute that contains the given value</td>
+    </tr>
+    <tr>
+    <td><code>DOES NOT CONTAIN</code></td>
+    <td><em>String</em></td>
+    <td>Select products with a text attribute that does not contain the given value</td>
+    </tr>
+    <tr>
+    <td><code>=</code></td>
+    <td><em>String</em></td>
+    <td>Selects products with a text attribute value that is an exact match to the given value</td>
+    </tr>
+    <tr>
+    <td><code>!=</code></td>
+    <td><em>String</em></td>
+    <td>Select products with a text attribute value that differs from the given value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>Example</strong><br />
+    The following selection will select the products that have the words <code>bohème chic</code>, in their <code>description</code> attribute, on <code>fr_FR</code> locale and on the <code>ecommerce</code> channel.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_selections"</span>: [
+        {
+          <span class="hljs-attr">"field"</span>: <span class="hljs-string">"description"</span>,
+          <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"CONTAINS"</span>,
+          <span class="hljs-attr">"value"</span>: <span class="hljs-string">"bohème chic"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="selection-per-simplemulti-select-attribute"></a><h4 title-id="selection-per-simplemulti-select-attribute"><a class="markdownIt-Anchor" href="#selection-per-simplemulti-select-attribute">#</a>Selection per simple/multi select attribute</h4>
+    <p>To associate your assets to a given set of products, you can use one of their simple select attributes or multi select attributes. In this case, use the code of one of the simple/multi select attributes from your product family as the <code>FIELD_NAME</code>.</p>
+    <p>The table below summarizes the operators available when you select per simple/multi select attribute as well as the allowed value type you can have as a <code>VALUE</code>.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Selection description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td><em>Array of existing simple/multi select option codes</em></td>
+    <td>Select products having a specific option in the respective simple select attribute</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN</code></td>
+    <td><em>Array of existing simple/multi select option codes</em></td>
+    <td>Select products not having a specific option in the respective simple select attribute</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>Example</strong><br />
+    The following selection will select the products that have the <code>range_style</code> simple select set to <code>bohemian_chic</code>, <code>bohemian_chic</code> being an option of the simple select <code>range_style</code> attribute.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_selections"</span>: [
+        {
+          <span class="hljs-attr">"field"</span>: <span class="hljs-string">"range_style"</span>,
+          <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"IN"</span>,
+          <span class="hljs-attr">"value"</span>: [<span class="hljs-string">"bohemian_chic"</span>],
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="product-value-assignment"></a><h3 title-id="product-value-assignment"><a class="markdownIt-Anchor" href="#product-value-assignment">#</a>Product value assignment</h3>
+    <p>Once you have chosen and selected the products you want to apply the rule on, it is time to think about where, in the products, you want to assign those assets.</p>
+    <p>This is done in the second part of the product link rule, in the <code>assign_assets_to</code> property.
+    Thanks to this property, you will define to which product value you want to assign your assets. In other words, which attribute, locale and scope of the products you want to link your assets to. You can also decide whether you want to add new assets or replace the existing ones inside this product attribute.</p>
+    <p>The <code>assign_assets_to</code> property follows this format:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"assign_assets_to"</span>: [
+          {
+            <span class="hljs-attr">"mode"</span>: MODE_NAME,
+            <span class="hljs-attr">"attribute"</span>: ATTRIBUTE_CODE,
+            <span class="hljs-attr">"locale"</span>: LOCALE_CODE,
+            <span class="hljs-attr">"channel"</span>: CHANNEL_CODE
+          },...
+        ]
+    }
+    </code></pre>
+    <p>In this formula:</p>
+    <ul>
+    <li><code>MODE_NAME</code> allows you to choose if you want to add or replace the current values of the asset collection you want your assets to be assigned to.</li>
+    <li><code>ATTRIBUTE_CODE</code> is the code of the product attribute in which you want to link your asset. This attribute should be an asset collection attribute.</li>
+    <li><code>LOCALE_CODE</code> is an existing locale code when <code>ATTRIBUTE_CODE</code> is the code of a localizable attribute.</li>
+    <li><code>CHANNEL_CODE</code> is an existing channel code when <code>ATTRIBUTE_CODE</code> is the code of a scopable attribute.</li>
+    </ul>
+    <div class="alert alert-warning"><p>All the fields of this formula are mandatory.</p>
+    </div>
+    <div class="alert alert-warning"><p>If the <code>ATTRIBUTE_CODE</code> is the code of an attribute that is not localizable, the <code>locale</code> property should be set to <code>null</code>.<br />
+    If the <code>ATTRIBUTE_CODE</code> is the code of an attribute that is not scopable, the <code>channel</code> property should be set to <code>null</code>.</p>
+    </div>
+    <p>For the <code>mode</code>, you can decide between two values:</p>
+    <ul>
+    <li><code>add</code>: this mode allows you to add the new assets to the asset collection attribute. They will appear after all the assets already existing in the attribute.</li>
+    <li><code>replace</code>: this mode allows you to replace all the previously existing assets by the new ones, within the asset collection attribute.</li>
+    </ul>
+    <a class="anchor" id="example-2"></a><h4 title-id="example-2"><a class="markdownIt-Anchor" href="#example-2">#</a>Example</h4>
+    <p>Imagine, in the family of the products you <a href="#product-selection">selected</a> before, you have the <code>user_instructions</code> asset collection attribute. This attribute is localizable. If you want to add the assets to this attribute, on the <code>en_US</code> locale, without replacing the existing ones, you can use the following syntax.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"assign_assets_to"</span>: [
+        {
+          <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"add"</span>,
+          <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"user_instructions"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>You can provide multiple actions in one single rule. Let's take an example. Say you want to assign the asset to two different attributes of your product, the <code>main_image</code> one and the <code>images</code> one.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"assign_assets_to"</span>: [
+        {
+          <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"replace"</span>,
+          <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+        },
+        {
+          <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"add"</span>,
+          <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"images"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+        }
+      ]
+    }
+    </code></pre>
+    </div>
+    <a class="anchor" id="asset-values-extrapolation"></a><h3 title-id="asset-values-extrapolation"><a class="markdownIt-Anchor" href="#asset-values-extrapolation">#</a>Asset values extrapolation</h3>
+    <p>&quot;Asset values extrapolation&quot;? What the hell is that? It's the clever naming I just came up with to explain one last thing about the product link rule.</p>
+    <p>You now know how to <a href="#product-selection">select your products</a>, and then <a href="#product-value-assignment">assign your assets in the right product attribute</a>. That's a good start.</p>
+    <p>But in some cases, you might need the rule to be a bit more powerful so it answers your expectations.<br />
+    As an example is better than 10,000 words, let's imagine this situation.</p>
+    <a class="anchor" id="an-example"></a><h4 title-id="an-example"><a class="markdownIt-Anchor" href="#an-example">#</a>An example</h4>
+    <p>You put all your user guides in the same asset family, called <code>user_instructions</code>.<br />
+    On the one hand, you have an asset of this family, let's say the user guide for a particular TV, the <code>XMLD500</code> TV. This user guide asset has the following code: <code>XMLD500_fr_FR_user_guide</code>. It is the French version of the user guide for this TV.<br />
+    On the other hand, you have your TV with the following SKU: <code>XMLD500</code>. The product sheet of this TV has an asset attribute collection called <code>user_guides</code>. It is localizable.<br />
+    Now, what you want is to automatically link the <code>XMLD500_fr_FR_user_guide</code> to the <code>XMLD500</code> product, in the right attribute on the right locale, ie the French locale.</p>
+    <p>How do you do that? I'll tell you. You're gonna need &quot;asset value extrapolation&quot;.</p>
+    <p>&quot;Asset value extrapolation&quot; is a mechanism by which you can target specific asset values in various fields of the product link rule so that they can be interpreted depending on the asset it is currently linking.</p>
+    <p>Not sure you understood, so let's write the product link rule for my previous example.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_link_rules"</span>: [
+        {
+          <span class="hljs-attr">"product_selections"</span>: [
+            {
+              <span class="hljs-attr">"field"</span>: <span class="hljs-string">"sku"</span>,
+              <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"EQUALS"</span>,
+              <span class="hljs-attr">"value"</span>: <span class="hljs-string">"{{product_ref}}"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+              <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+            }
+          ],
+          <span class="hljs-attr">"assign_assets_to"</span>: [
+            {
+              <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"replace"</span>,
+              <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"user_guides"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"{{locale}}"</span>,
+              <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+            }
+          ]
+        }
+      ]
+    }
+    </code></pre>
+    <p>As a prerequisite for this rule to work, we would need two new attributes in the structure of our <code>user_instructions</code> asset family. One named <code>product_ref</code>, and the other <code>locale</code>.<br />
+    In our example, for our <code>XMLD500_fr_FR_user_guide</code> asset, we would store the string <code>XMLD500</code> into the <code>product ref</code> attribute and <code>fr_FR</code> in the <code>locale</code> attribute.</p>
+    <div class="alert alert-tips"><p>To populate the <code>product_ref</code> and <code>locale</code> attributes, you have three options:</p>
+    <ul>
+    <li>enrich that information manually in the PIM interface,</li>
+    <li>in the case you have a connector creating assets in the PIM, you can code this step directly in your connector,</li>
+    <li>or since the v4.0, you can use the naming convention feature if the information is already stored in your asset code or in the filename of your main media file. 😉 Eager to know more? Take a look at the <a href="#focus-on-the-naming-convention">naming convention focus section</a>.</li>
+    </ul>
+    </div>
+    <p>In fine, below is the JSON of our dear <code>XMLD500_fr_FR_user_guide</code> asset, once we added those new attributes.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"XMLD500_fr_FR_user_guide"</span>,
+      <span class="hljs-attr">"family"</span>: <span class="hljs-string">"user_instructions"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"media_preview"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"XMLD500_fr_FR_user_guide.pdf"</span>
+          }
+        ],
+        <span class="hljs-attr">"product_ref"</span>:[
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"XMLD500"</span>
+          }
+        ],
+        <span class="hljs-attr">"locale"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"fr_FR"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p>So, now that our asset is ready, whenever the rule is launched, the PIM will automatically extrapolate the rule. It will replace the curlies reference, <code>{{product_ref}}</code> and <code>{{locale}}</code> by their actual values in the asset it's currently trying to link to products.</p>
+    <p>The PIM, whenever it wants to link the <code>XMLD500_fr_FR_user_guide</code> asset to the right product, will interpret the rule as if it was written like this:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_link_rules"</span>: [
+        {
+          <span class="hljs-attr">"product_selections"</span>: [
+            {
+              <span class="hljs-attr">"field"</span>: <span class="hljs-string">"sku"</span>,
+              <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"EQUALS"</span>,
+              <span class="hljs-attr">"value"</span>: <span class="hljs-string">"XMLD500"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+              <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+            }
+          ],
+          <span class="hljs-attr">"assign_assets_to"</span>: [
+            {
+              <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"replace"</span>,
+              <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"user_instructions"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+              <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+            }
+          ]
+        }
+      ]
+    }
+    </code></pre>
+    <p>In other words, it's going to select the product with the following  SKU: <code>XMLD500</code> and assign the asset to the <code>user_instructions</code> product attribute on the <code>fr_FR</code> locale. Exactly what we wanted. 😉</p>
+    <a class="anchor" id="extrapolated-properties"></a><h4 title-id="extrapolated-properties"><a class="markdownIt-Anchor" href="#extrapolated-properties">#</a>Extrapolated properties</h4>
+    <p>As you saw in the previous example, to notify the PIM a property of the rule  should be extrapolated, you will need to use the following syntax: <code>&quot;{{code_of_an_asset_attribute}}&quot;</code>.</p>
+    <p>This way, the PIM will know that it needs to replace this string by the value stored inside the <code>code_of_an_asset_attribute</code> attribute of the given asset it currently wants to link.</p>
+    <p>You can use this super power - the extrapolation - in the following properties of the rule:</p>
+    <ul>
+    <li>in the product selection part:
+    <ul>
+    <li><code>field</code>,</li>
+    <li><code>value</code>,</li>
+    <li><code>locale</code>,</li>
+    <li><code>channel</code>,</li>
+    </ul>
+    </li>
+    <li>in the assignment part:
+    <ul>
+    <li><code>attribute</code>,</li>
+    <li><code>locale</code>,</li>
+    <li><code>channel</code>.</li>
+    </ul>
+    </li>
+    </ul>
+    <div class="alert alert-info"><p>The extrapolation mechanism can be used in combination with strings. For more details, see the examples below.</p>
+    </div>
+    <div class="alert alert-warning"><p>When using the extrapolation mechanism, you should only refer to non scopable and non localizable asset attributes.</p>
+    </div>
+    <a class="anchor" id="some-other-examples"></a><h4 title-id="some-other-examples"><a class="markdownIt-Anchor" href="#some-other-examples">#</a>Some other examples</h4>
+    <p><strong>Example 1</strong>
+    Let's consider the <code>amor_red_model_picture</code> and <code>amor_blue_model_picture</code> assets for this example. Those two assets are in the same asset family.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"amor_red_model_picture"</span>,
+      <span class="hljs-attr">"family"</span>: <span class="hljs-string">"model_pictures"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"media_preview"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"amor_red_model_picture.jpg"</span>
+          }
+        ],
+        <span class="hljs-attr">"product_ref"</span>:[
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"amor"</span>
+          }
+        ],
+        <span class="hljs-attr">"model_is_wearing_size"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"s"</span>
+          }
+        ],
+        <span class="hljs-attr">"main_color"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"red"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"amor_blue_model_picture"</span>,
+      <span class="hljs-attr">"family"</span>: <span class="hljs-string">"model_pictures"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"media_preview"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"amor_blue_model_picture.jpg"</span>
+          }
+        ],
+        <span class="hljs-attr">"product_ref"</span>:[
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"amor"</span>
+          }
+        ],
+        <span class="hljs-attr">"model_is_wearing_size"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"S"</span>
+          }
+        ],
+        <span class="hljs-attr">"main_color"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"blue"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p>We want these assets to be automatically linked to their respective products: <code>sku_amor_blue</code> and <code>sku_amor_red</code>.</p>
+    <p>To do this, you'll use the following product link rule.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_link_rules"</span>: [
+        {
+          <span class="hljs-attr">"product_selections"</span>: [
+            {
+              <span class="hljs-attr">"field"</span>: <span class="hljs-string">"sku"</span>,
+              <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"EQUALS"</span>,
+              <span class="hljs-attr">"value"</span>: <span class="hljs-string">"sku_{{product_ref}}_{{main_color}}"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+              <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+            }
+          ],
+          <span class="hljs-attr">"assign_assets_to"</span>: [
+            {
+              <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"replace"</span>,
+              <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"pictures"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+              <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+            }
+          ]
+        }
+      ]
+    }
+    </code></pre>
+    <p>You can use the extrapolation mechanism in combination with strings, see below, in the <code>value</code> field of the <code>product_selections</code> property.<br />
+    For the <code>amor_blue_model_picture</code>, the <code>value</code> field will be extrapolated to <code>sku_armor_blue</code>. For the <code>amor_red_model_picture</code>, the <code>value</code> field will be extrapolated to <code>sku_armor_red</code>.</p>
+    <p><strong>Example 2</strong>
+    Let's consider the <code>men_women_ambient_picture</code> and <code>children_ambient_picture</code> assets for this example. Those two assets are in the same asset family.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"men_women_ambient_picture"</span>,
+      <span class="hljs-attr">"family"</span>: <span class="hljs-string">"ambient_images"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"media_preview"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"men_women_ambient_picture.jpg"</span>
+          }
+        ],
+        <span class="hljs-attr">"product_categories"</span>:[
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [<span class="hljs-string">"men"</span>, <span class="hljs-string">"women"</span>]
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"children_ambient_picture"</span>,
+      <span class="hljs-attr">"family"</span>: <span class="hljs-string">"ambient_images"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"media_preview"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"children_ambient_picture.jpg"</span>
+          }
+        ],
+        <span class="hljs-attr">"product_categories"</span>:[
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [<span class="hljs-string">"children"</span>]
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p>We want these assets to be automatically linked to the products of the respective categories they refer to: the <code>men</code> and <code>women</code> categories for the <code>men_women_ambient_picture</code> and the <code>children</code> category for the <code>children_ambient_picture</code>.</p>
+    <p>To do this, you'll use the following product link rule.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"product_link_rules"</span>: [
+        {
+          <span class="hljs-attr">"product_selections"</span>: [
+            {
+              <span class="hljs-attr">"field"</span>: <span class="hljs-string">"categories"</span>,
+              <span class="hljs-attr">"operator"</span>: <span class="hljs-string">"IN"</span>,
+              <span class="hljs-attr">"value"</span>: <span class="hljs-string">"{{product_categories}}"</span>
+            }
+          ],
+          <span class="hljs-attr">"assign_assets_to"</span>: [
+            {
+              <span class="hljs-attr">"mode"</span>: <span class="hljs-string">"add"</span>,
+              <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"ambient_image"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+              <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>
+            }
+          ]
+        }
+      ]
+    }
+    </code></pre>
+    <p>As you can see above, you can use the extrapolation mechanism to refer to an array.<br />
+    For the <code>men_women_model_picture</code>, the <code>value</code> field will be extrapolated to <code>[&quot;men&quot;,&quot;women&quot;]</code>. For the <code>children_ambient_picture</code>, the <code>value</code> field will be extrapolated to <code>[&quot;children&quot;]</code>.</p>
+    <a class="anchor" id="focus-on-the-transformations"></a><h2 title-id="focus-on-the-transformations"><a class="markdownIt-Anchor" href="#focus-on-the-transformations">#</a>Focus on the transformations</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>For each <a href="#the-asset-family">asset family</a>, you can define transformations. They allow you to ask the PIM to automatically generate one or several new variations of a given media file for each asset belonging to your family.</p>
+    <p>Let's take an example to make it much clearer.</p>
+    <p>Say we have a <code>packshots</code> asset family. In its structure, it has 2 media file attributes:</p>
+    <ul>
+    <li>the <code>main_image</code> attribute in which the main image of your packshot is stored,</li>
+    <li>the <code>thumbnail</code> attribute in which you want a smaller version of the main image, stored in <code>main_image</code>.</li>
+    </ul>
+    <p><img class="img-responsive in-article" alt="Asset family transformation example" src="/img/concepts/asset-family-for-transformation.svg"/></p>
+    <p>The PIM can automatically generate the thumbnail version of your main image for you, and this is all thanks to the definition of a transformation!</p>
+    <p><img class="img-responsive in-article" alt="Asset transformation example" src="/img/concepts/asset-transformation.svg"/></p>
+    <p>For each transformation, we define:</p>
+    <ul>
+    <li>a media file attribute that will be used as the source for your transformation and wisely called <em>source</em> attribute: in our example, the <code>main_image</code> attribute,</li>
+    <li>a media file attribute in which the generated file will be stored, called the <em>target</em> attribute: in our example, the <code>thumbnail</code> attribute,</li>
+    <li>a set of ordered operations to perform on the source picture to generate the target one: in our example, a resizing.</li>
+    </ul>
+    <div class="alert alert-info"><p>You can have up to <strong>10</strong> different transformations for one given asset family and each transformation can perform several operations.</p>
+    </div>
+    </p><p>The JSON format of the transformations is an array of transformations. A transformation is composed of several parts:</p>
+    <ul>
+    <li>a <a href="#label">label</a>, to name your transformation,</li>
+    <li>a <a href="#target-filename">filename part</a>,</li>
+    <li>the <a href="#source-file"><code>source</code> part</a>,</li>
+    <li>the <a href="#target-file"><code>target</code> part</a>,</li>
+    <li>the <a href="#transformation-operations"><code>operations</code> part</a>.</li>
+    </ul>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"transformations"</span>: [
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Your transformation label"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"a_prefix"</span>,
+          <span class="hljs-attr">"filename_suffix"</span>: <span class="hljs-string">"a_suffix"</span>,
+          <span class="hljs-attr">"source"</span>: {...},
+          <span class="hljs-attr">"target"</span>: {...},
+          <span class="hljs-attr">"operations"</span>: [...]
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="examples-3"></a><h4 title-id="examples-3"><a class="markdownIt-Anchor" href="#examples-3">#</a>Examples</h4>
+    <p><strong>With one transformation</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"transformations"</span>: [
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Thumbnail generation"</span>,
+          <span class="hljs-attr">"filename_suffix"</span>: <span class="hljs-string">"_thumbnail"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        }
+      ]
+    }
+    </code></pre>
+    <p><strong>With two transformations</strong></p>
+    <pre class="hljs"><code>
+    {
+      <span class="hljs-attr">"transformations"</span>: [
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Resize ecommerce"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"ecom_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"variations"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"scale"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        },
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Resize print"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"print_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"variations"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"print"</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"scale"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">2500</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">2500</span>
+            }
+          }]
+        }
+      ]
+    }
+    </code></pre>
+    <p>Still not comfortable with transformations? Don't hesitate to go through the next sections where we detail each part of the transformation format.</p>
+    <a class="anchor" id="label"></a><h3 title-id="label"><a class="markdownIt-Anchor" href="#label">#</a>Label</h3>
+    <p>It's just a string and it's basically the name you want to give to your transformation.<br />
+    It will be used in error messages whenever your transformation failed to generate your variations.</p>
+    <a class="anchor" id="source-file"></a><h3 title-id="source-file"><a class="markdownIt-Anchor" href="#source-file">#</a>Source file</h3>
+    <p>The <code>source</code> property allows you to define in which attribute value the media file you want to use as the source file for your transformation is stored.</p>
+    <p>It follows this format:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"source"</span>: {
+        <span class="hljs-attr">"attribute"</span>: MEDIA_FILE_ATTRIBUTE_NAME,
+        <span class="hljs-attr">"locale"</span>: SOURCE_LOCALE_CODE,
+        <span class="hljs-attr">"channel"</span>: SOURCE_CHANNEL_CODE
+      },...
+    }
+    </code></pre>
+    <p>In this formula:</p>
+    <ul>
+    <li><code>MEDIA_FILE_ATTRIBUTE_NAME</code> is the code of the asset attribute that holds the source file. This asset attribute should be a <code>media_file</code> attribute, defined in the asset family.</li>
+    <li><code>SOURCE_LOCALE_CODE</code> is an existing locale code when <code>MEDIA_FILE_ATTRIBUTE_NAME</code> is the code of a localizable asset attribute.</li>
+    <li><code>SOURCE_CHANNEL_CODE</code> is an existing channel code when <code>MEDIA_FILE_ATTRIBUTE_NAME</code> is the code of a scopable asset attribute.</li>
+    </ul>
+    <div class="alert alert-warning"><p>The <code>attribute</code>, <code>locale</code> and <code>channel</code> properties are mandatory.
+    If the <code>MEDIA_FILE_ATTRIBUTE_NAME</code> is the code of an attribute that is not localizable, the <code>locale</code> property should be set to <code>null</code>.<br />
+    If the <code>MEDIA_FILE_ATTRIBUTE_NAME</code> is the code of an attribute that is not scopable, the <code>channel</code> property should be set to <code>null</code>.</p>
+    </div>
+    <div class="alert alert-info"><p>There are additional business rules regarding this <code>target</code> property whenever you have multiple transformations for the same asset family. See the <a href="#dealing-with-several-transformations">Dealing with several transformations</a> section for more details.</p>
+    </div>
+    <a class="anchor" id="target-file"></a><h3 title-id="target-file"><a class="markdownIt-Anchor" href="#target-file">#</a>Target file</h3>
+    <p>The <code>target</code> property allows you to define on which attribute value the PIM should generate the new variation.</p>
+    <p>It follows this format:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"target"</span>: {
+        <span class="hljs-attr">"attribute"</span>: MEDIA_FILE_ATTRIBUTE_NAME,
+        <span class="hljs-attr">"locale"</span>: TARGET_LOCALE_CODE,
+        <span class="hljs-attr">"channel"</span>: TARGET_CHANNEL_CODE
+      },...
+    }
+    </code></pre>
+    <p>In this formula:</p>
+    <ul>
+    <li><code>MEDIA_FILE_ATTRIBUTE_NAME</code> is the code of the asset attribute that holds the target file. This asset attribute should be a <code>media_file</code> attribute, defined in the asset family.</li>
+    <li><code>TARGET_LOCALE_CODE</code> is an existing locale code when <code>MEDIA_FILE_ATTRIBUTE_NAME</code> is the code of a localizable asset attribute.</li>
+    <li><code>TARGET_CHANNEL_CODE</code> is an existing channel code when <code>MEDIA_FILE_ATTRIBUTE_NAME</code> is the code of a scopable asset attribute.</li>
+    </ul>
+    <div class="alert alert-warning"><p>The <code>attribute</code>, <code>locale</code> and <code>channel</code> properties are mandatory.
+    If the <code>MEDIA_FILE_ATTRIBUTE_NAME</code> is the code of an attribute that is not localizable, the <code>locale</code> property should be set to <code>null</code>.<br />
+    If the <code>MEDIA_FILE_ATTRIBUTE_NAME</code> is the code of an attribute that is not scopable, the <code>channel</code> property should be set to <code>null</code>.</p>
+    </div>
+    <div class="alert alert-info"><p>There are additionnal business rules regarding this <code>target</code> property whenever you have multiple transformations for the same asset family. See the <a href="#dealing-with-several-transformations">Dealing with several transformations</a> section for more details.</p>
+    </div>
+    <a class="anchor" id="target-filename"></a><h3 title-id="target-filename"><a class="markdownIt-Anchor" href="#target-filename">#</a>Target filename</h3>
+    <p>You can give a name to the generated target file. By default, the naming is based on the filename of the source file. You can define a suffix and/or a prefix that will be concatenated to this filename and be used as the filename of the target file.</p>
+    <p>To do this, use:</p>
+    <ul>
+    <li>the <code>filename_prefix</code> property, the string that will be prepended to the source filename.</li>
+    <li>the <code>filename_suffix</code> property, the string that will be appended to the source filename.</li>
+    </ul>
+    <p>You can use both properties if you want to suffix and prefix the source filename.</p>
+    <div class="alert alert-warning"><p>You need to define at least either a suffix or a prefix, as the target filename can't be the same as the source filename.</p>
+    </div>
+    <div class="alert alert-info"><p>Suffix and prefix can only contain alphanumeric characters, the following characters: <code>_</code>, <code>-</code>, <code>.</code> and space.</p>
+    </div>
+    <p>Let's take an example to make this much clearer. Let's say you have a file named <code>amor_red_model_picture.jpg</code>. You want to generate a thumbnail version of this file and you want the new generated file to be named <code>amor_red_model_picture_160x160.jpg</code>. Then, use the following properties in your transformation for the generated file to be named properly.</p>
+    <pre class="hljs"><code>{
+      ...,
+      <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"filename_suffix"</span>: <span class="hljs-string">"_160x160"</span>,
+      ...
+    }
+    </code></pre>
+    <a class="anchor" id="transformation-operations"></a><h3 title-id="transformation-operations"><a class="markdownIt-Anchor" href="#transformation-operations">#</a>Transformation operations</h3>
+    <p>The <code>operations</code> property allows you to define which image transformations should be applied to your source file to generate the target file.</p>
+    <p>In one single transformation, you can define one or several operations.</p>
+    <p>If you have several operations for the same asset family, note that they will be performed in the same order as defined in the <code>operations</code> array. So be sure to choose the right order for what you wish to accomplish.</p>
+    <div class="alert alert-warning"><p>Defining the same operation type twice in the same transformation is forbidden as it would totally make no sense.</p>
+    </div>
+    <p>The <code>operations</code> property follows this format:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"operations"</span>: [{
+          <span class="hljs-attr">"type"</span>: OPERATION_NAME,
+          <span class="hljs-attr">"parameters"</span>: OPERATION_PARAMETERS,
+        },...
+      ]
+    }
+    </code></pre>
+    <p>In this formula:</p>
+    <ul>
+    <li><code>OPERATION_NAME</code> is the name of the operation that should be perfomed on the source file. The complete list of available operations is detailed below.</li>
+    <li><code>OPERATION_PARAMETERS</code> is the set of parameters for the operation. It depends on the <code>OPERATION_NAME</code> chosen before.</li>
+    </ul>
+    <div class="alert alert-warning"><p>The <code>type</code> and <code>parameters</code> properties are mandatory.</p>
+    </div>
+    <div class="alert alert-info"><p>To do operations on your media, we always convert them to .png first, to avoid compression related losses. As a result, this conversion can increase the size of your images. To reduce your file size, we provide an <code>optimize_jpeg</code> operation to convert them back to compressed jpeg files 😉.</p>
+    </div>
+    <p>Let's now detail the available operation names as well as their corresponding parameters.</p>
+    <a class="anchor" id="thumbnail"></a><h4 title-id="thumbnail"><a class="markdownIt-Anchor" href="#thumbnail">#</a>Thumbnail</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>With the <code>thumbnail</code> type, you can automatically generate a thumbnail. It keeps the image proportions and crops it if needed.</p>
+    <p>There are 2 available parameters for this operation.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator name &amp; format</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>width</code> <br> <em>integer &gt; 0</em></td>
+    <td>The width of the generated thumbnail in pixels</td>
+    </tr>
+    <tr>
+    <td><code>height</code> <br> <em>integer &gt; 0</em></td>
+    <td>The height of the generated thumbnail in pixels</td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="alert alert-info"><p>Both parameters are required.</p>
+    </div>
+    </p><a class="anchor" id="scale"></a><h4 title-id="scale"><a class="markdownIt-Anchor" href="#scale">#</a>Scale</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>With the <code>scale</code> type, you can resize images while keeping the width/height proportions.</p>
+    <p>There are 3 available parameters for this operation.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator name &amp; format</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>width</code> <br><em>integer &gt; 0</em></td>
+    <td>The new width of the image in pixels</td>
+    </tr>
+    <tr>
+    <td><code>height</code> <br><em>integer &gt; 0</em></td>
+    <td>The new height of the image in pixels</td>
+    </tr>
+    <tr>
+    <td><code>ratio</code> <br><em>integer &gt; 0</em></td>
+    <td>The ratio (in %) for the image resizing. If defined, this parameter will take priority over the 2 other parameters.</td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="alert alert-info"><p>There should be at least one of the 3 parameters defined.</p>
+    </div>
+    </p><a class="anchor" id="change-of-colorspace"></a><h4 title-id="change-of-colorspace"><a class="markdownIt-Anchor" href="#change-of-colorspace">#</a>Change of colorspace</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>With the <code>colorspace</code> type, you can change the image's colorspace. For example, you can turn it to black and white.</p>
+    <p>There is one available parameter for this operation: <code>colorspace</code>. It allows you to choose which colorspace you want your image to be turned into. It should be one of the following values:</p>
+    <ul>
+    <li><code>rgb</code>,</li>
+    <li><code>grey</code>.</li>
+    </ul>
+    <div class="alert alert-info"><p>The <code>colorspace</code> parameter is required.</p>
+    </div>
+    </p><a class="anchor" id="resolution"></a><h4 title-id="resolution"><a class="markdownIt-Anchor" href="#resolution">#</a>Resolution</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>With the <code>resolution</code> type, you can change the image resolution.</p>
+    <p>There are 3 available parameters for this operation.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator name &amp; format</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>resolution-x</code> <br><em>integer &gt; 0</em></td>
+    <td>The new horizontal resolution</td>
+    </tr>
+    <tr>
+    <td><code>resolution-y</code> <br><em>integer &gt; 0</em></td>
+    <td>The new vertical resolution</td>
+    </tr>
+    <tr>
+    <td><code>resolution-unit</code> <br><em>string, either &quot;ppi&quot; or &quot;ppc&quot;</em></td>
+    <td>The unit in which the <code>resolution-x</code> and <code>resolution-y</code> properties were given</td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="alert alert-info"><p>All parameters are required.</p>
+    </div>
+    </p><a class="anchor" id="resize"></a><h4 title-id="resize"><a class="markdownIt-Anchor" href="#resize">#</a>Resize</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>With the <code>resize</code> type, you can resize images without keeping the width/height proportions.</p>
+    <p>There are 2 available parameters for this operation.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator name &amp; format</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>width</code> <br><em>integer &gt; 0</em></td>
+    <td>The new width of the image in pixels</td>
+    </tr>
+    <tr>
+    <td><code>height</code> <br><em>integer &gt; 0</em></td>
+    <td>The new height of the image in pixels</td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="alert alert-info"><p>Both parameters are required.</p>
+    </div>
+    </p><a class="anchor" id="optimize-jpeg"></a><h4 title-id="optimize-jpeg"><a class="markdownIt-Anchor" href="#optimize-jpeg">#</a>Optimize jpeg</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><div class="alert alert-info"><p>Even if you upload a jpeg image in your asset manager, we automatically convert it into a png for each operation, in order to avoid quality loss. If you want to convert your images back to jpeg, you can put this operation last.</p>
+    </div>
+    </p><p>With the <code>optimize_jpeg</code> type, you can convert your images to jpeg and change their .jpeg quality.</p>
+    <p>There is 1 available parameter for this operation.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator name &amp; format</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>quality</code> <br><em>0 &lt; integer &lt; 100</em></td>
+    <td>The jpeg quality of the image</td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="alert alert-info"><p>This parameter is required.</p>
+    </div>
+    <a class="anchor" id="dealing-with-several-transformations"></a><h3 title-id="dealing-with-several-transformations"><a class="markdownIt-Anchor" href="#dealing-with-several-transformations">#</a>Dealing with several transformations</h3>
+    <p>As stated before, you can define up to 10 transformations per asset family. So if you need several transformations for one given family, you will need to observe some business rules.</p>
+    <a class="anchor" id="unicity-of-the-target-value"></a><h4 title-id="unicity-of-the-target-value"><a class="markdownIt-Anchor" href="#unicity-of-the-target-value">#</a>Unicity of the target value</h4>
+    <p>In the same asset family, you cannot have two transformations with the same target, i.e. exactly the same <code>attribute</code>, <code>channel</code> and <code>locale</code> in your <code>target</code> property.</p>
+    <p>Otherwise, your first generated target file may be erased by the next transformation.</p>
+    <p><strong>Example</strong><br />
+    This example will generate an error.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"transformations"</span>: [
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 1"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"t1_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        },
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 2"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"t2_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image_2"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="non-unicity-of-the-source-value"></a><h4 title-id="non-unicity-of-the-source-value"><a class="markdownIt-Anchor" href="#non-unicity-of-the-source-value">#</a>Non-unicity of the source value</h4>
+    <p>In the same asset family, you can have two transformations with the same source, i.e. exactly the same <code>attribute</code>, <code>channel</code> and <code>locale</code> in your <code>source</code> property.</p>
+    <p>Indeed, it allows you to generate different versions of your source file.</p>
+    <p><strong>Example</strong><br />
+    This example is completely valid - even if in this case we create the exact same image twice in two different attributes, A bit useless if you ask, but still, it works. 😉</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"transformations"</span>: [
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 1"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"t1_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        },
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 2"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"t2_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail_2"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="unicity-of-the-target-filename"></a><h4 title-id="unicity-of-the-target-filename"><a class="markdownIt-Anchor" href="#unicity-of-the-target-filename">#</a>Unicity of the target filename</h4>
+    <p>In the same asset family, you cannot have two transformations with the same target filename, i.e. exactly the same <code>source</code>, <code>filename_prefix</code> and <code>filename_suffix</code>.</p>
+    <p>Otherwise, the PIM would create two files called exactly the same way, which can cause you trouble if you want to retrieve them.</p>
+    <p><strong>Example</strong><br />
+    This example will generate an error.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"transformations"</span>: [
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 1"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"thumbnail_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        },
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 2"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"thumbnail_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail_2"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="a-source-value-cannot-be-a-target-value"></a><h4 title-id="a-source-value-cannot-be-a-target-value"><a class="markdownIt-Anchor" href="#a-source-value-cannot-be-a-target-value">#</a>A source value cannot be a target value</h4>
+    <p>In the same asset family, you cannot have two transformations with the first one defining a source value as the target value of the second one. And vice versa.</p>
+    <p><strong>Examples</strong>
+    This example will generate an error.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"transformations"</span>: [
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 1"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"t1_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        },
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 2"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"t2_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail_2"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        }
+      ]
+    }
+    </code></pre>
+    <p>This other example will also generate an error.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"transformations"</span>: [
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 1"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"t1_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        },
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 2"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"t2_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image_2"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        }
+      ]
+    }
+    </code></pre>
+    <p>But <em>NOT</em> this one. Because the source attribute value of the first transformation is different from the target attribute value of the second transformation, as they are referencing different channels.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"transformations"</span>: [
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 1"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"t1_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        },
+        {
+          <span class="hljs-attr">"label"</span>: <span class="hljs-string">"Transformation 2"</span>,
+          <span class="hljs-attr">"filename_prefix"</span>: <span class="hljs-string">"t2_"</span>,
+          <span class="hljs-attr">"source"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image_2"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"target"</span>: {
+            <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_image"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"print"</span>,
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>
+          },
+          <span class="hljs-attr">"operations"</span>: [{
+            <span class="hljs-attr">"type"</span>: <span class="hljs-string">"thumbnail"</span>,
+            <span class="hljs-attr">"parameters"</span>: {
+              <span class="hljs-attr">"width"</span>: <span class="hljs-number">150</span>,
+              <span class="hljs-attr">"height"</span>: <span class="hljs-number">150</span>
+            }
+          }]
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="asset-attribute"></a><h2 title-id="asset-attribute"><a class="markdownIt-Anchor" href="#asset-attribute">#</a>Asset attribute</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>In an asset family, an asset attribute is a characteristic of an asset for this given family. It helps to describe and qualify an asset.
+    An asset attribute can have a value per channel and/or per locale.</p>
+    <div class="alert alert-warning"><p>Note that the &quot;Asset attribute&quot; resource is not the same as the &quot;Attribute&quot; resource, even though they have a lot in common. The first one is used to describe assets, the second one is used to describe products.</p>
+    </div>
+    <p>There are several types of asset attributes, that will allow you to handle different types of data:</p>
+    <ul>
+    <li>the <a href="#the-text-attribute"><code>text</code> attribute</a>,</li>
+    <li>the <a href="#the-single-and-multiple-options-attributes"><code>single and multiple options</code> attributes</a>,</li>
+    <li>the <a href="#the-number-attribute"><code>number</code> attribute</a>,</li>
+    <li>the <a href="#the-media_file-attribute"><code>media file</code> attribute</a>,</li>
+    <li>the <a href="#the-media-link-attribute"><code>media link</code> attribute</a>.</li>
+    <li>the <a href="#the-boolean-attribute"><code>boolean</code> attribute</a>.</li>
+    <li>the <a href="#the-date-attribute"><code>date</code> attribute</a>.</li>
+    <li>the <a href="#the-record-attribute"><code>record</code> attribute</a>.</li>
+    </ul>
+    <div class="alert alert-warning"><p>You can have a maximum of 100 attributes to describe the structure for one given asset family.<br />
+    As a consequence, when you ask for the list of attributes for one given asset family, you'll see the response is not paginated. It won't cause any performance issue, since you can't have more than 100 attributes per asset family.</p>
+    </div>
+    <a class="anchor" id="the-text-attribute"></a><h3 title-id="the-text-attribute"><a class="markdownIt-Anchor" href="#the-text-attribute">#</a>The <code>text</code> attribute</h3>
+    <p>The text attribute is useful to hold textual information such as a description, a warning mention or whatever other information you can think of and which is basically made of a bunch of characters.</p>
+    <p>Here is an example of a <code>text</code> attribute.
+    <img class="img-responsive in-article" alt="An example of a text asset attribute" src="/img/concepts/text-asset-attribute.svg"/></p>
+    <p>And here is the JSON format of the <code>text</code> attribute type.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"warning_mention"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Warning mention"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Avertissement"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"text"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_read_only"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"max_characters"</span>: <span class="hljs-number">50</span>,
+      <span class="hljs-attr">"is_textarea"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_rich_text_editor"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"validation_rule"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"validation_regexp"</span>: <span class="hljs-literal">null</span>
+    }
+    </code></pre>
+    <a class="anchor" id="the-single-and-multiple-options-attributes"></a><h3 title-id="the-single-and-multiple-options-attributes"><a class="markdownIt-Anchor" href="#the-single-and-multiple-options-attributes">#</a>The <code>single and multiple options</code> attributes</h3>
+    <p>The single and multiple options attributes are useful to hold data that can be selected among a list of choices. The single option attribute allows the selection of one single value, whereas the multiple options can hold one or several values.</p>
+    <p>Here are some examples of a <code>single option</code> and <code>multiple options</code> attributes.
+    <img class="img-responsive in-article" alt="Examples of a single and a multiple options asset attributes" src="/img/concepts/single-and-multiple-options-asset-attributes.svg"/></p>
+    <p>And here is the JSON format of the <code>single option</code> attribute type.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"model_is_wearing_size"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Model is wearing size"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Le mannequin porte la taille"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"single_option"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"is_read_only"</span>: <span class="hljs-literal">false</span>
+    }
+    </code></pre>
+    <p>And here is the JSON format of the <code>multiple options</code> attribute type.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"main_colors"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Main colors"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Couleurs principales"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"multiple_options"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"is_read_only"</span>: <span class="hljs-literal">false</span>
+    }
+    </code></pre>
+    <a class="anchor" id="the-number-attribute"></a><h3 title-id="the-number-attribute"><a class="markdownIt-Anchor" href="#the-number-attribute">#</a>The <code>number</code> attribute</h3>
+    <p>The number attribute is useful to hold numeral information, such as a number of pages or a video duration.</p>
+    <p>Here is an example of a <code>number</code> attribute.
+    <img class="img-responsive in-article" alt="An example of a number asset attribute" src="/img/concepts/number-asset-attribute.svg"/></p>
+    <p>And here is the JSON format of the <code>number</code> attribute type.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"number_of_pages"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Number of pages"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Nombre de pages"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"number"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"is_read_only"</span>: <span class="hljs-literal">false</span>
+    }
+    </code></pre>
+    <a class="anchor" id="the-media_file-attribute"></a><h3 title-id="the-media_file-attribute"><a class="markdownIt-Anchor" href="#the-media_file-attribute">#</a>The <code>media_file</code> attribute</h3>
+    <p>The media file attribute is useful to hold the binaries of a file, a file being a picture, a pdf, a video...</p>
+    <p>Here is an example of a <code>media_file</code> attribute.
+    <img class="img-responsive in-article" alt="An example of a media file asset attribute" src="/img/concepts/media-file-asset-attribute.svg"/></p>
+    <p>And here is the JSON format of the <code>media_file</code> attribute type, for an image.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"picture"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Picture"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Photo"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"media_file"</span>,
+      <span class="hljs-attr">"media_type"</span>: <span class="hljs-string">"image"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"is_read_only"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"allowed_extensions"</span>: [<span class="hljs-string">"jpg"</span>],
+      <span class="hljs-attr">"max_file_size"</span>: <span class="hljs-string">"10"</span>
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>The media type defines the type of the asset.<br />
+    It allows the preview display of the media.
+    The available media types that you can put in the <code>media_type</code> field are:</p>
+    <ul>
+    <li><em>&quot;image&quot;</em>,</li>
+    <li><em>&quot;pdf&quot;</em> (starting from the v4),</li>
+    <li><em>&quot;other&quot;</em>.</li>
+    </ul>
+    </div>
+    <a class="anchor" id="the-media-link-attribute"></a><h3 title-id="the-media-link-attribute"><a class="markdownIt-Anchor" href="#the-media-link-attribute">#</a>The <code>media link</code> attribute</h3>
+    <p>The media link attribute type comes in pretty handy whenever you want your asset to refer to an external file, not hosted inside the PIM. For example, it can be very useful if you already have all your assets stored in a CDN or a DAM. The illustration below gives you an idea of how this attribute type can be used in such a case.
+    <img class="img-responsive in-article" alt="Assets stored in a DAM" src="/img/concepts/asset-dam-link.svg"/></p>
+    <p>Here are examples of several media link asset attributes.
+    <img class="img-responsive in-article" alt="Examples of media link asset attributes" src="/img/concepts/media-link-asset-attributes.svg"/></p>
+    <p>Below is the JSON format of the <code>media_link</code> attribute type.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"media_link"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Media link"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Lien vers le média"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"media_link"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_read_only"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"prefix"</span>: <span class="hljs-string">"dam.com/my_assets/"</span>,
+      <span class="hljs-attr">"suffix"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"media_type"</span>: <span class="hljs-string">"image"</span>
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>The media type defines the type of the asset whose URL is stored in the media link attribute.<br />
+    It allows the preview display of the media link.
+    The available media types that you can put in the <code>media_type</code> field are:</p>
+    <ul>
+    <li><em>&quot;image&quot;</em>,</li>
+    <li><em>&quot;pdf&quot;</em> (starting from the v4),</li>
+    <li><em>&quot;youtube&quot;</em> (starting from the v4),</li>
+    <li><em>&quot;vimeo&quot;</em> (starting from the v4),</li>
+    <li><em>&quot;other&quot;</em>.</li>
+    </ul>
+    </div>
+    <a class="anchor" id="the-boolean-attribute"></a><h3 title-id="the-boolean-attribute"><a class="markdownIt-Anchor" href="#the-boolean-attribute">#</a>The <code>boolean</code> attribute</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>The boolean, or Yes/No, attribute is useful to hold binary information, such as whether the image should be used or not.</p>
+    <p>Here is an example of a <code>boolean</code> attribute.
+    <img class="img-responsive in-article" alt="An example of a boolean asset attribute" src="/img/concepts/boolean-asset-attribute.svg"/></p>
+    <p>And here is the JSON format of the <code>boolean</code> attribute type.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"enabled"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Enabled"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Actif"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"boolean"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"is_read_only"</span>: <span class="hljs-literal">false</span>
+    }
+    </code></pre>
+    <a class="anchor" id="the-date-attribute"></a><h3 title-id="the-date-attribute"><a class="markdownIt-Anchor" href="#the-date-attribute">#</a>The <code>date</code> attribute</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>The date attribute is useful to hold date based information, such as when the asset is planned to be published.</p>
+    <p>Here is an example of a <code>date</code> attribute.
+    <img class="img-responsive in-article" alt="An example of a date asset attribute" src="/img/concepts/date-asset-attribute.svg"/></p>
+    <p>And here is the JSON format of the <code>date</code> attribute type.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"publish_date"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Publish date"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Date de publication"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"date"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"is_read_only"</span>: <span class="hljs-literal">false</span>
+    }
+    </code></pre>
+    <a class="anchor" id="the-record-attribute"></a><h3 title-id="the-record-attribute"><a class="markdownIt-Anchor" href="#the-record-attribute">#</a>The <code>record</code> attribute</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>The record attribute is used to link the asset to a <a href="/concepts/reference-entities.html#reference-entity-record">Reference entity record</a>.</p>
+    <p>Here is an example of a <code>record</code> attribute.
+    <img class="img-responsive in-article" alt="An example of a date asset attribute" src="/img/concepts/record-asset-attribute.svg"/></p>
+    <p>And here is the JSON format of the <code>record</code> attribute type.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"brand"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Brand"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Marque"</span>
+      },
+      <span class="hljs-attr">"type"</span>: <span class="hljs-string">"record"</span>,
+      <span class="hljs-attr">"value_per_locale"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"value_per_channel"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"is_required_for_completeness"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"is_read_only"</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">"reference_entity"</span>: <span class="hljs-string">"brand"</span>
+    }
+    </code></pre>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Assetattribute"><div class="panel-body"><div class="panel-btn-big">Want more details about the asset attribute resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    <a class="anchor" id="asset"></a><h2 title-id="asset"><a class="markdownIt-Anchor" href="#asset">#</a>Asset</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>An asset is a flexible object that makes it possible to enrich products with images, videos, documents…</p>
+    <p>An asset must be part of an asset family. That way, it will have its own attributes and lifecycle.</p>
+    <p>Below are some examples of assets.</p>
+    <p><img class="img-responsive in-article" alt="Asset examples" src="/img/concepts/asset.svg"/></p>
+    <p>Below is the JSON format representing an example of an asset of the Asset Manager.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"sku_54628_picture1"</span>,
+      <span class="hljs-attr">"family"</span>: <span class="hljs-string">"frontview"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"media_preview"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"sku_54628_picture1.jpg"</span>
+          }
+        ],
+        <span class="hljs-attr">"alt_tag"</span>:[
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Amor jacket, blue"</span>
+          },
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Veste Amor, bleu"</span>
+          }
+        ],
+        <span class="hljs-attr">"model_is_wearing_size"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"s"</span>
+          }
+        ],
+        <span class="hljs-attr">"photographer"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"ben_levy"</span>
+          }
+        ],
+        <span class="hljs-attr">"main_colors"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [<span class="hljs-string">"red"</span>,<span class="hljs-string">"purple"</span>]
+          }
+        ],
+        <span class="hljs-attr">"model_height"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"1.65m"</span>
+          }
+        ]
+      },
+      <span class="hljs-attr">"created"</span>: <span class="hljs-string">"2021-05-31T09:23:34+00:00"</span>,
+      <span class="hljs-attr">"updated"</span>: <span class="hljs-string">"2021-05-31T09:23:34+00:00"</span>
+    }
+    </code></pre>
+    <p>Assets can be linked to products and product models, in order to enrich them.<br />
+    Here are the steps to follow to link assets to your products:</p>
+    <ol>
+    <li>Create a <a href="/concepts/catalog-structure.html#attribute"><code>pim_catalog_asset_collection</code> product attribute</a>,</li>
+    <li>Put this attribute within the <a href="/concepts/catalog-structure.html#familiy">families</a> of the products you want to link your assets to.</li>
+    <li>Assign your assets to these products either:</li>
+    </ol>
+    <ul>
+    <li>manually, in the <code>Assets</code> tab of the product form in the PIM UI,</li>
+    <li>by API using the <a href="/api-reference.html#patch_products_uuid">product</a> POST and PATCH endpoints by adding the asset codes in the asset collection data,</li>
+    <li>automatically thanks to the <a href="#focus-on-the-product-link-rule">product link rule</a>, detailed in the paragraph below.</li>
+    </ul>
+    <div class="alert alert-info"><p>Assets can also be assigned to <strong>product models</strong>. You can alternateively use the <a href="/api-reference.html#patch_product_models">product model</a> POST and PATCH endpoints, by adding the asset codes in the asset collection data. Or, in the <code>Assets</code> tab of the product model form in the PIM UI.</p>
+    </div>
+    <p>An asset can hold one or several files. This comes in pretty handy if, for instance, you want to have one user instruction pdf file per language, aka per locale.</p>
+    <a class="anchor" id="example-3"></a><h4 title-id="example-3"><a class="markdownIt-Anchor" href="#example-3">#</a>Example</h4>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"user_instructions_TV_2948430"</span>,
+      <span class="hljs-attr">"family"</span>: <span class="hljs-string">"user_guides"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"pdf_preview"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"user_instructions_TV_2948430_en.pdf"</span>
+          },
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"user_instructions_TV_2948430_fr.pdf"</span>
+          }
+        ]
+      },
+      <span class="hljs-attr">"created"</span>: <span class="hljs-string">"2021-05-31T09:23:34+00:00"</span>,
+      <span class="hljs-attr">"updated"</span>: <span class="hljs-string">"2021-05-31T09:23:34+00:00"</span>
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>When you are searching for the information of an asset on a product, if you do not know the asset family code, you can retrieve it by calling this endpoint <code>/api/rest/v1/attributes/AssetCollectionAttributeCode</code>, <code>AssetCollectionAttributeCode</code> being the code of the asset collection attribute containing the asset you are interested in.<br />
+    In the answer, you'll find in the <code>reference_data_name</code> property, the code of the family linked to your asset collection attribute, and therefore linked to your current asset.</p>
+    </div>
+    <div class="alert alert-warning"><p><code>created</code> and <code>updated</code> properties are only available since 6.0 versions.</p>
+    </div>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Asset"><div class="panel-body"><div class="panel-btn-big">Want more details about the asset resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    <a class="anchor" id="focus-on-the-asset-values"></a><h2 title-id="focus-on-the-asset-values"><a class="markdownIt-Anchor" href="#focus-on-the-asset-values">#</a>Focus on the asset values</h2>
+    <p>Asset values hold all the information of an asset. More specifically, they are the values of the attributes you will find in a given asset.</p>
+    <p>In the REST API, the asset values are in the <code>values</code> property of the asset.</p>
+    <a class="anchor" id="the-global-format"></a><h3 title-id="the-global-format"><a class="markdownIt-Anchor" href="#the-global-format">#</a>The global format</h3>
+    <p>Asset values follow the same format as <a href="/concepts/products.html#focus-on-the-product-values">product values</a> or <a href="/concepts/reference-entities.html#reference-entity-record-values">reference entity record values</a>:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        ATTRIBUTE_CODE: [
+          {
+            <span class="hljs-attr">"locale"</span>: LOCALE_CODE,
+            <span class="hljs-attr">"channel"</span>: CHANNEL_CODE,
+            <span class="hljs-attr">"data"</span>: DATA_INFORMATION
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p>In this formula:</p>
+    <ul>
+    <li><code>ATTRIBUTE_CODE</code> is the code of an asset attribute,</li>
+    <li><code>LOCALE_CODE</code> is the code of a locale when the attribute is localizable. When it's not, it should be <code>null</code>. <a href="#the-locale-and-channel-format">Check some examples here.</a></li>
+    <li><code>CHANNEL_CODE</code> is the code of a channel when the attribute is scopable. When it's not, it should be <code>null</code>. <a href="#the-locale-and-channel-format">Check some examples here.</a></li>
+    <li><code>DATA_INFORMATION</code> is the value stored for this attribute, this locale (if the attribute is localizable) and this channel (if the attribute is scopable). Its type and format depend on the attribute type. <a href="#the-data-format">Check some examples here.</a></li>
+    </ul>
+    <a class="anchor" id="the-data-format"></a><h3 title-id="the-data-format"><a class="markdownIt-Anchor" href="#the-data-format">#</a>The <code>data</code> format</h3>
+    <p>The table below describes the format of the <code>data</code> property for each <a href="#asset-attribute">asset attribute</a> type.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Attribute type / format</th>
+    <th>Example</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><strong>Text</strong> <br> <em>string</em></td>
+    <td><code>&quot;Scott, 2-seat sofa, grey&quot;</code></td>
+    </tr>
+    <tr>
+    <td><strong>Media file</strong> <br> <em>string</em></td>
+    <td><code>&quot;5/1/d/8/51d81dc778ba1501a8f998f3ab5797569f3b9e25_img.png&quot;</code></td>
+    </tr>
+    <tr>
+    <td><strong>Single option</strong> <br> <em>string</em></td>
+    <td><code>&quot;s&quot;</code></td>
+    </tr>
+    <tr>
+    <td><strong>Multiple options</strong> <br> <em>Array[string]</em></td>
+    <td><code>[&quot;leather&quot;, &quot;cotton&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><strong>Number</strong> <br> <em>string</em></td>
+    <td><code>&quot;1&quot;</code></td>
+    </tr>
+    <tr>
+    <td><strong>Media link</strong> <br> <em>string</em></td>
+    <td><code>&quot;sku_54628_picture1.jpg&quot;</code></td>
+    </tr>
+    <tr>
+    <td><strong>Boolean</strong> <br> <em>bool</em></td>
+    <td><code>true</code></td>
+    </tr>
+    <tr>
+    <td><strong>Date</strong> <br> <em>string</em></td>
+    <td><code>2023-03-01T00:00:00+00:00</code></td>
+    </tr>
+    <tr>
+    <td><strong>Record</strong> <br> <em>string</em></td>
+    <td><code>&quot;brand&quot;</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="record-attributes"></a><h4 title-id="record-attributes"><a class="markdownIt-Anchor" href="#record-attributes">#</a>Record attributes</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is <code>record</code>, the <code>data</code> field references a <a href="/concepts/reference-entities.html#reference-entity-record">Reference entity record</a> code.</p>
+    <p><strong>Example</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"brand"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"kartell"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="the-locale-and-channel-format"></a><h3 title-id="the-locale-and-channel-format"><a class="markdownIt-Anchor" href="#the-locale-and-channel-format">#</a>The <code>locale</code> and <code>channel</code> format</h3>
+    <p>The asset values can be localizable and/or scopable. Here are some examples to illustrate those different possibilities.</p>
+    <div class="alert alert-info"><p>Asset values should be <strong>localizable</strong> whenever you want to enrich different values among your activated locales.<br />
+    Asset values should be <strong>scopable</strong> whenever you want to enrich different values among your channels.</p>
+    </div>
+    <a class="anchor" id="asset-values-of-a-localizable-attribute"></a><h4 title-id="asset-values-of-a-localizable-attribute"><a class="markdownIt-Anchor" href="#asset-values-of-a-localizable-attribute">#</a>Asset values of a localizable attribute</h4>
+    <p>The <code>alt_tag</code> attribute is localizable but not scopable, so it can hold several data values, up to one per locale.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"alt_tag"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Amor jacket, blue"</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Veste Amor, bleu"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Note that the <code>channel</code> property is set to <code>null</code> in this case.</p>
+    </div>
+    <a class="anchor" id="asset-values-of-a-scopable-attribute"></a><h4 title-id="asset-values-of-a-scopable-attribute"><a class="markdownIt-Anchor" href="#asset-values-of-a-scopable-attribute">#</a>Asset values of a scopable attribute</h4>
+    <p>The <code>model_height</code> attribute is scopable but not localizable, so it can hold several data values, up to one per channel.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"model_height"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"1.65m"</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"print"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"165cm"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Note that the <code>locale</code> property is set to <code>null</code> in this case.</p>
+    </div>
+    <a class="anchor" id="asset-values-of-a-localizable-and-scopable-attribute"></a><h4 title-id="asset-values-of-a-localizable-and-scopable-attribute"><a class="markdownIt-Anchor" href="#asset-values-of-a-localizable-and-scopable-attribute">#</a>Asset values of a localizable and scopable attribute</h4>
+    <p>The <code>warning_message</code> attribute is both scopable and localizable, so it can hold several data values, up to one for each couple of channels and locales.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"warning_message"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Retouched photo."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Retouched photograph, not contractual."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouchée."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photographie retouchée, non contractuelle."</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="asset-value-of-a-non-localizable-non-scopable-attribute"></a><h4 title-id="asset-value-of-a-non-localizable-non-scopable-attribute"><a class="markdownIt-Anchor" href="#asset-value-of-a-non-localizable-non-scopable-attribute">#</a>Asset value of a non localizable, non scopable attribute</h4>
+    <p>The <code>photographer</code> attribute is neither scopable nor localizable, so it can hold only one data value.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"photographer"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Ben Levy"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Note that the <code>locale</code> and <code>channel</code> properties are both set to <code>null</code> in this case.</p>
+    </div>
+    <a class="anchor" id="the-_links-format"></a><h3 title-id="the-_links-format"><a class="markdownIt-Anchor" href="#the-_links-format">#</a>The <code>_links</code> format</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><div class="alert alert-info"><p>Note that this property is in read-only. You won't be able to patch or post it.</p>
+    </div>
+    </p><p>The sections below describe the format of the <code>_links</code> property for <code>media_file</code> Asset attribute type.</p>
+    <a class="anchor" id="media-file-attribute"></a><h4 title-id="media-file-attribute"><a class="markdownIt-Anchor" href="#media-file-attribute">#</a>Media file attribute</h4>
+    <p>Whenever the attribute type is <code>media_file</code>, the <code>_links</code> field will contain an object.</p>
+    <p>The <code>share_link</code> is present only when asset sharing is enabled.</p>
+    <p><strong>Example</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"a_media_file_attribute"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"0/0/9/d/009d38fe8c97e16f6b48bbf8f6cf8a9564401cc9_amy_socks_model_picture.png"</span>,
+          <span class="hljs-attr">"_links"</span>: {
+            <span class="hljs-attr">"download"</span>: {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https://example.fegmo.com/api/rest/v1/asset-media-files/0/0/9/d/009d38fe8c97e16f6b48bbf8f6cf8a9564401cc9_amy_socks_model_picture.png"</span>
+            },
+            <span class="hljs-attr">"share_link"</span>: {
+              <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https://example.asset.fegmo.com/model_pictures/a_media_file_attribute/amy_socks_model_picture.jpg"</span>
+            }
+          }
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="the-linked_data-format"></a><h3 title-id="the-linked_data-format"><a class="markdownIt-Anchor" href="#the-linked_data-format">#</a>The <code>linked_data</code> format</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><div class="alert alert-info"><p>Note that this property is in read-only. You won't be able to patch or post it.</p>
+    </div>
+    <p>The sections below describe the format of the <code>linked_data</code> property for <code>media_link</code> Asset attribute type.</p>
+    <a class="anchor" id="media-link-attribute"></a><h4 title-id="media-link-attribute"><a class="markdownIt-Anchor" href="#media-link-attribute">#</a>Media link attribute</h4>
+    <p>Whenever the attribute type is <code>media_link</code>, the <code>linked_data</code> field will contain an object.</p>
+    <p><strong>Example</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"a_media_link_attribute"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"amy_socks_model_picture.png"</span>,
+          <span class="hljs-attr">"linked_data"</span>: {
+            <span class="hljs-attr">"full_url"</span>: <span class="hljs-string">"https://example.com/amy_socks_model_picture.png"</span>,
+            <span class="hljs-attr">"prefix"</span>: <span class="hljs-string">"https://example.com/"</span>,
+            <span class="hljs-attr">"suffix"</span>: <span class="hljs-literal">null</span>
+          }
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="asset-attribute-option"></a><h2 title-id="asset-attribute-option"><a class="markdownIt-Anchor" href="#asset-attribute-option">#</a>Asset attribute option</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Some types of asset attributes can offer a list of choices. These available choices are asset attribute options.</p>
+    <div class="alert alert-warning"><p>Note that the &quot;Assets attribute option&quot; resource is not the same as the &quot;Attribute option&quot; resource, even though they have a lot in common. The first one is an option of an attribute used to describe assets, the second one is an option of an attribute used to describe products.</p>
+    </div>
+    <p>Only <code>single option</code> or <code>multiple options</code> attributes can have options.</p>
+    <p>Below is an example of an attribute option, used inside an asset.
+    <img class="img-responsive in-article" alt="Asset attribute option example" src="/img/concepts/asset-attribute-option.svg"/></p>
+    <p>Below is the JSON format representing this asset attribute option and some other.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"size_27"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Size 27"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Taille 36"</span>
+      }
+    }
+    </code></pre>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"small"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"S"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"S"</span>
+      }
+    }
+    </code></pre>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"medium"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"M"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"M"</span>
+      }
+    }
+    </code></pre>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"large"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"L"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"L"</span>
+      }
+    }
+    </code></pre>
+    <div class="alert alert-warning"><p>You can have a maximum of 100 options per attribute.
+    As a consequence, when you ask for the list of attribute options for one given attribute, you'll see that the response is not paginated. It won't cause any performance issue, since you can't have more than 100 options per attribute.</p>
+    </div>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Assetattributeoption"><div class="panel-body"><div class="panel-btn-big">Want more details about the asset attributes option resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    <a class="anchor" id="asset-media-file"></a><h2 title-id="asset-media-file"><a class="markdownIt-Anchor" href="#asset-media-file">#</a>Asset media file</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Asset media files correspond to the binaries of the images that you can link to your assets.</p>
+    <p>Below we illustrate an example of an asset media file linked to an asset.</p>
+    <p><img class="img-responsive in-article" alt="Asset media file" src="/img/concepts/asset-media-file.svg"/></p>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Assetmediafile"><div class="panel-body"><div class="panel-btn-big">Want more details about the asset media file resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    </div>
+            </div>
+        </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

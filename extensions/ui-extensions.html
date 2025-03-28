@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extensions | Fegmo APIs</title>
+    <meta name="description" content="Extensions">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-9">
+                    <h1>
+                        Extensions
+                    </h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="navbar" class="col-sm-3 hidden-xs sticky"><nav role="tablist" id="navbar-nav"><ul class="nav nav-stacked" style="counter-increment: step-counter;"><p class="pre-nav">Summary</p><li><a href="/extensions/overview.html">Overview</a></li><li class="active"> <a href="#">UI Extensions</a><p><ul class="nav">
+    <li><a href="#getting-started">Getting Started</a>
+    <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#authentication-and-authorization">Authentication and authorization</a></li>
+    <li><a href="#using-postman">Using Postman</a></li>
+    <li><a href="#using-curl">Using Curl</a></li>
+    </ul>
+    </li>
+    <li><a href="#concepts">Concepts</a>
+    <ul>
+    <li><a href="#type">Type</a></li>
+    <li><a href="#position">Position</a></li>
+    <li><a href="#secret">Secret</a></li>
+    <li><a href="#url">Url</a></li>
+    </ul>
+    </li>
+    <li><a href="#available-types-by-position">Available types by position</a></li>
+    <li><a href="#administration-of-ui-extensions">Administration of UI extensions</a>
+    <ul>
+    <li><a href="#prerequisites-2">Prerequisites</a></li>
+    <li><a href="#list-all-ui-extensions">List all UI extensions</a></li>
+    <li><a href="#enable-disable-a-ui-extension">Enable / disable a UI extension</a></li>
+    </ul>
+    </li>
+    <li><a href="#api-reference">API reference</a></li>
+    <li><a href="#faq">FAQ</a>
+    <ul>
+    <li><a href="#who-is-responsible-for-ui-extensions">Who is responsible for UI extensions?</a></li>
+    <li><a href="#how-can-i-add-a-new-ui-extension-to-my-pim">How can I add a new UI extension to my PIM?</a></li>
+    <li><a href="#the-ui-extensions-entry-isnt-showing-up-in-my-pim-could-you-help-me-understand-why">The UI extensions entry isn't showing up in my PIM. Could you help me understand why?</a></li>
+    <li><a href="#id-like-to-see-my-extension-in-a-position-that-isnt-currently-available-what-can-i-do">I'd like to see my extension in a position that isn't currently available. What can I do?</a></li>
+    </ul>
+    </li>
+    </ul>
+    </p>
+    </li></ul></nav></div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-8"><a class="anchor" id="ui-extensions"></a><h1 title-id="ui-extensions"><a class="markdownIt-Anchor" href="#ui-extensions">#</a>UI extensions</h1>
+    <p>The UI extension feature enables you to extend your PIM by integrating custom views and actions from external systems. This framework provides the flexibility to modify and adapt your PIM experience to meet specific business requirements.
+    By leveraging this functionality, you can integrate custom solutions while maintaining the reliability and ease the use of our SaaS platform, offering a balance between flexibility and stability.</p>
+    <p>The extension framework is designed to help you customize the standard behavior of your PIM system by integrating with externally hosted solutions. This documentation provides an overview of the framework's capabilities and the various customization options available, enabling you to extend and tailor your PIM to meet your specific business needs.</p>
+    <a class="anchor" id="getting-started"></a><h2 title-id="getting-started"><a class="markdownIt-Anchor" href="#getting-started">#</a>Getting Started</h2>
+    <p>This guide provides a step-by-step walkthrough for setting up and managing UI extensions.</p>
+    <a class="anchor" id="prerequisites"></a><h3 title-id="prerequisites"><a class="markdownIt-Anchor" href="#prerequisites">#</a>Prerequisites</h3>
+    <p>Before proceeding, ensure that you have an active <a href="https://api.fegmo.com/apps/overview.html#whats-an-fegmo-app" target="_blank">App</a> (it can be a <a href="https://api.fegmo.com/apps/create-custom-app.html" target="_blank">Custom App</a> or an active <a href="https://api.fegmo.com/getting-started/connect-the-pim-4x/step-1.html#you-said-connection" target="_blank">connection</a>) to an Fegmo PIM.</p>
+    <p>To learn how to create a Connection, see the <a href="https://api-dev.fegmo.com/documentation/authentication.html#client-idsecret-generation" target="_blank">Authentication Guide</a>. If you're setting up a Custom App, follow the steps in <a href="https://api-dev.fegmo.com/tutorials/how-to-get-your-app-token.html" target="_blank">this tutorial</a> to obtain an App token.</p>
+    <a class="anchor" id="authentication-and-authorization"></a><h3 title-id="authentication-and-authorization"><a class="markdownIt-Anchor" href="#authentication-and-authorization">#</a>Authentication and authorization</h3>
+    <a class="anchor" id="authentication"></a><h4 title-id="authentication"><a class="markdownIt-Anchor" href="#authentication">#</a>Authentication</h4>
+    <p>Having a valid Fegmo PIM API token provided by either a Connection or an App to be authenticated to use the UI extension API endpoints.</p>
+    <a class="anchor" id="authorization"></a><h4 title-id="authorization"><a class="markdownIt-Anchor" href="#authorization">#</a>Authorization</h4>
+    <p>To manage your extension, ensure that your Connection or App has the necessary permissions.</p>
+    <ol>
+    <li>For Connections: The user associated with the Connection must have the permission <strong>UI extensions &gt; Manage your extensions using the API</strong> enabled.</li>
+    <li>For Apps: You need to request the scope <strong>manage_extensions</strong>.</li>
+    </ol>
+    <div class="alert alert-info"><p>A UI extension is owned by a user, meaning that a Connection can only manage UI extensions created by itself or by Connections associated with the same user. Similarly, an App can only manage its own UI extensions.</p>
+    </div>
+    <p>Granting these permissions before setup helps prevent unnecessary errors.</p>
+    <a class="anchor" id="using-postman"></a><h3 title-id="using-postman"><a class="markdownIt-Anchor" href="#using-postman">#</a>Using Postman</h3>
+    <p>The quickest way to get started with UI extensions is by using our Postman collection.</p>
+    <a class="anchor" id="1-import-the-postman-collection"></a><h4 title-id="1-import-the-postman-collection"><a class="markdownIt-Anchor" href="#1-import-the-postman-collection">#</a>1. Import the Postman Collection</h4>
+    <ol>
+    <li>Download our <a href="https://api.fegmo.com/files/Fegmo%20PIM%20API.postman_collection.json" target="_blank">Postman collection</a></li>
+    <li>Download our <a href="https://api.fegmo.com/files/fegmo-PIM-API-environment-4x.postman_environment.json" target="_blank">Postman environment variable template</a></li>
+    <li>Import those files into Postman (follow <a href="https://learning.postman.com/docs/getting-started/importing-and-exporting/importing-data/" target="_blank">this guide</a> if you're not familiar with how Postman collections work)</li>
+    </ol>
+    <a class="anchor" id="2-fill-the-environment-variables"></a><h4 title-id="2-fill-the-environment-variables"><a class="markdownIt-Anchor" href="#2-fill-the-environment-variables">#</a>2. Fill the environment variables</h4>
+    <p>The collection includes a pre-script for handling PIM Connection authentication.</p>
+    <p>Before making API requests, ensure your environment variables are filled with your Fegmo PIM Connection credentials: a valid <code>pim_access_token</code> will be generated automatically on your first request. If you don't receive a token, or you don't see it within the environment variable list, double-check your credentials.</p>
+    <p><a href="../img/extensions/ui-extensions/postman-fill-env.png"><img class="img-responsive in-article" alt="postman-fill-env.png" src="../img/extensions/ui-extensions/postman-fill-env.png"/></a></p>
+    <a class="anchor" id="3-create-a-ui-extension"></a><h4 title-id="3-create-a-ui-extension"><a class="markdownIt-Anchor" href="#3-create-a-ui-extension">#</a>3. Create a UI extension</h4>
+    <ol>
+    <li>Select the Postman environment you've just created</li>
+    <li>Click on the <code>Add an extension</code> POST request</li>
+    <li>Customize the data to send as you want before click on <code>Send</code></li>
+    <li>Copy the newly created extension UUID. It will be asked to modify or delete the UI extension.</li>
+    </ol>
+    <p><a href="../img/extensions/ui-extensions/postman-add-extension.png"><img class="img-responsive in-article" alt="postman-add-extension.png" src="../img/extensions/ui-extensions/postman-add-extension.png"/></a></p>
+    <a class="anchor" id="4-update-a-ui-extension"></a><h4 title-id="4-update-a-ui-extension"><a class="markdownIt-Anchor" href="#4-update-a-ui-extension">#</a>4. Update a UI extension</h4>
+    <ol>
+    <li>Make sure that the right environment is selected</li>
+    <li>Click on the <code>Update an extension</code> POST request</li>
+    <li>Fill the <code>ui_extension_uuid</code> parameter with the UUID of the concerned UI extension</li>
+    <li>Customize the data according to your needs before clicking on <code>Send</code></li>
+    </ol>
+    <p><a href="../img/extensions/ui-extensions/postman-update-extension-1.png"><img class="img-responsive in-article" alt="postman-update-extension-1.png" src="../img/extensions/ui-extensions/postman-update-extension-1.png"/></a>
+    <a href="../img/extensions/ui-extensions/postman-update-extension-2.png"><img class="img-responsive in-article" alt="postman-update-extension-2.png" src="../img/extensions/ui-extensions/postman-update-extension-2.png"/></a></p>
+    <a class="anchor" id="5-delete-a-ui-extension"></a><h4 title-id="5-delete-a-ui-extension"><a class="markdownIt-Anchor" href="#5-delete-a-ui-extension">#</a>5. Delete a UI extension</h4>
+    <ol>
+    <li>Make sure that the right environment is selected</li>
+    <li>Click on the <code>Delete an extension</code> POST request</li>
+    <li>Fill the <code>ui_extension_uuid</code> parameter with the UUID of the concerned UI extension</li>
+    <li>Click on <code>Send</code></li>
+    </ol>
+    <p><a href="../img/extensions/ui-extensions/postman-delete-extension.png"><img class="img-responsive in-article" alt="postman-delete-extension.png" src="../img/extensions/ui-extensions/postman-delete-extension.png"/></a></p>
+    <a class="anchor" id="using-curl"></a><h3 title-id="using-curl"><a class="markdownIt-Anchor" href="#using-curl">#</a>Using Curl</h3>
+    <a class="anchor" id="1-retrieve-your-credentials-from-your-targeted-pim"></a><h4 title-id="1-retrieve-your-credentials-from-your-targeted-pim"><a class="markdownIt-Anchor" href="#1-retrieve-your-credentials-from-your-targeted-pim">#</a>1. Retrieve your credentials from your targeted PIM</h4>
+    <div class="alert alert-info"><p>🛠 For every call to the API, you need <code>X-PIM-TOKEN</code> &amp; <code>X-PIM-CLIENT-ID</code>.</p>
+    <p>In this example, we will create a new <code>connection</code> in the PIM and use it to generate an <code>API token</code>.</p>
+    </div>
+    <p><strong>1. Create a Connection in Fegmo PIM:</strong></p>
+    <ul>
+    <li>Navigate to <strong>Connect</strong> &gt; <strong>Connection settings</strong> &gt; <strong>Create</strong>.</li>
+    <li>Fill out the form to create the Connection.</li>
+    <li>Note the generated <code>client ID</code>, <code>secret</code>, <code>username</code>, and <code>password</code>.</li>
+    </ul>
+    <p><strong>2. Set your environment variables:</strong></p>
+    <ul>
+    <li>
+    <p>Define the client ID, secret, username, password, and Fegmo host URL as environment variables:</p>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-235" checked><label for="group-235-tab-0" onclick="this.previousElementSibling.click()">Shell</label></li>
+    </ul>
+    <input type="radio" id="group-235-tab-0" name="group-235" checked>
+    <pre><code class="language-bash">     <span class="token builtin class-name">export</span> <span class="token assign-left variable">CLIENT_ID</span><span class="token operator">=</span><span class="token string">"your-client-id"</span>
+     <span class="token builtin class-name">export</span> <span class="token assign-left variable">CLIENT_SECRET</span><span class="token operator">=</span><span class="token string">"your-client-secret"</span>
+     <span class="token builtin class-name">export</span> <span class="token assign-left variable">API_USERNAME</span><span class="token operator">=</span><span class="token string">"your-API-username"</span>
+     <span class="token builtin class-name">export</span> <span class="token assign-left variable">API_PASSWORD</span><span class="token operator">=</span><span class="token string">"your-API-password"</span>
+     <span class="token builtin class-name">export</span> <span class="token assign-left variable">TARGET_PIM_URL</span><span class="token operator">=</span><span class="token string">"https://your-pim.cloud.fegmo.com"</span>
+    </code></pre>
+    </div></li>
+    </ul>
+    <p>Replace the placeholders with your actual credentials and host URL.</p>
+    <p><strong>3. Encode your credentials:</strong></p>
+    <ul>
+    <li>Encode the client ID and secret in base64 format, separated by a colon <code>:</code>:<div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-249" checked><label for="group-249-tab-0" onclick="this.previousElementSibling.click()">Shell</label></li>
+    </ul>
+    <input type="radio" id="group-249-tab-0" name="group-249" checked>
+    <pre><code class="language-bash">     <span class="token builtin class-name">export</span> <span class="token assign-left variable">BASE64_ENCODED_CLIENTID_AND_SECRET</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable">$CLIENT_ID</span>:<span class="token variable">$CLIENT_SECRET</span>"</span> <span class="token operator">|</span> base64 <span class="token parameter variable">-w</span> <span class="token number">0</span><span class="token variable">)</span></span>
+    // For Mac OS user remove the <span class="token parameter variable">-w</span> <span class="token number">0</span> option
+    </code></pre>
+    </div></li>
+    </ul>
+    <p><strong>4.  Your API token:</strong></p>
+    <ul>
+    <li>Make the API call to retrieve your <code>API token</code> using the environment variables:<div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-260" checked><label for="group-260-tab-0" onclick="this.previousElementSibling.click()">Shell</label></li>
+    </ul>
+    <input type="radio" id="group-260-tab-0" name="group-260" checked>
+    <pre><code class="language-bash">     <span class="token function">curl</span> <span class="token parameter variable">--request</span> POST <span class="token string">"<span class="token variable">$TARGET_PIM_URL</span>/api/oauth/v1/token"</span> <span class="token punctuation">\</span>
+     <span class="token parameter variable">--header</span> <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
+     <span class="token parameter variable">--header</span> <span class="token string">"Authorization: Basic <span class="token variable">$BASE64_ENCODED_CLIENTID_AND_SECRET</span>"</span> <span class="token punctuation">\</span>
+     --data-raw <span class="token string">'{
+     "grant_type": "password",
+     "username": "'</span>"<span class="token variable">$API_USERNAME</span><span class="token string">"'"</span>,
+     <span class="token string">"password"</span><span class="token builtin class-name">:</span> <span class="token string">"'"</span><span class="token variable">$API_PASSWORD</span><span class="token string">"'"</span>
+     <span class="token punctuation">}</span>'
+    </code></pre>
+    </div></li>
+    </ul>
+    <p>After retrieving the API token, store the <code>access_token</code> from the response in an environment variable:</p>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-266" checked><label for="group-266-tab-0" onclick="this.previousElementSibling.click()">Shell</label></li>
+    </ul>
+    <input type="radio" id="group-266-tab-0" name="group-266" checked>
+    <pre><code class="language-bash">     <span class="token builtin class-name">export</span> <span class="token assign-left variable">PIM_API_TOKEN</span><span class="token operator">=</span><span class="token string">"..."</span>
+     // Replace with the actual token from the response
+    </code></pre>
+    </div><div class="alert alert-info"><p>Note that the token has a lifespan of one hour.</p>
+    </div>
+    <div class="alert alert-info"><p>🛠 Custom Apps are also supported. To use one, add a variable <code>app_access_token</code> with your API token.</p>
+    </div>
+    <a class="anchor" id="2-create-a-ui-extension"></a><h4 title-id="2-create-a-ui-extension"><a class="markdownIt-Anchor" href="#2-create-a-ui-extension">#</a>2. Create a UI extension</h4>
+    <p>You can create a UI extension once you have a valid PIM API token.</p>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-283" checked><label for="group-283-tab-0" onclick="this.previousElementSibling.click()">Shell</label></li>
+    </ul>
+    <input type="radio" id="group-283-tab-0" name="group-283" checked>
+    <pre><code class="language-bash">    <span class="token function">curl</span> <span class="token parameter variable">--request</span> POST <span class="token string">"<span class="token variable">$TARGET_PIM_URL</span>/api/rest/v1/ui-extensions"</span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--header</span> <span class="token string">"Authorization: Bearer <span class="token variable">$PIM_API_TOKEN</span>"</span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--header</span> <span class="token string">'Content-Type: application/json'</span> <span class="token punctuation">\</span>
+    --data-raw <span class="token string">'{
+        "name": "my_awesome_extension",
+        "version": "V1.02",
+        "type": "link",
+        "position": "pim.product.header",
+        "configuration": {
+            "url": "https://myapp.com/product",
+            "default_label": "My awesome extension",
+            "labels": {
+              "en_US": "My awesome extension"
+            }
+        }
+    }'</span>
+    </code></pre>
+    </div><a class="anchor" id="3-update-a-ui-extension"></a><h4 title-id="3-update-a-ui-extension"><a class="markdownIt-Anchor" href="#3-update-a-ui-extension">#</a>3. Update a UI extension</h4>
+    <p>To update a UI extension, you must have a valid PIM API token and the UUID of the extension you want to update.</p>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-290" checked><label for="group-290-tab-0" onclick="this.previousElementSibling.click()">Shell</label></li>
+    </ul>
+    <input type="radio" id="group-290-tab-0" name="group-290" checked>
+    <pre><code class="language-bash">    <span class="token function">curl</span> <span class="token parameter variable">--request</span> PATCH <span class="token string">"<span class="token variable">$TARGET_PIM_URL</span>/api/rest/v1/ui-extensions/<span class="token variable">$EXTENSION_UUID</span>"</span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--header</span> <span class="token string">"Authorization: Bearer <span class="token variable">$PIM_API_TOKEN</span>"</span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--header</span> <span class="token string">'Content-Type: application/json'</span> <span class="token punctuation">\</span>
+    --data-raw <span class="token string">'{
+        "version": "V1.03",
+        "type": "iframe",
+        "position": "pim.product.tab"
+    }'</span>
+    </code></pre>
+    </div><a class="anchor" id="4-delete-a-ui-extension"></a><h4 title-id="4-delete-a-ui-extension"><a class="markdownIt-Anchor" href="#4-delete-a-ui-extension">#</a>4. Delete a UI extension</h4>
+    <p>To delete a UI extension, you must have a valid PIM API token and the UUID of the extension you want to delete.</p>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-297" checked><label for="group-297-tab-0" onclick="this.previousElementSibling.click()">Shell</label></li>
+    </ul>
+    <input type="radio" id="group-297-tab-0" name="group-297" checked>
+    <pre><code class="language-bash">    <span class="token function">curl</span> <span class="token parameter variable">--request</span> DELETE <span class="token string">"<span class="token variable">$TARGET_PIM_URL</span>/api/rest/v1/ui-extensions/<span class="token variable">$EXTENSION_UUID</span>"</span> <span class="token punctuation">\</span>
+    <span class="token parameter variable">--header</span> <span class="token string">"Authorization: Bearer <span class="token variable">$PIM_API_TOKEN</span>"</span>
+    </code></pre>
+    </div><a class="anchor" id="concepts"></a><h2 title-id="concepts"><a class="markdownIt-Anchor" href="#concepts">#</a>Concepts</h2>
+    <a class="anchor" id="type"></a><h3 title-id="type"><a class="markdownIt-Anchor" href="#type">#</a>Type</h3>
+    <p>UI extensions are categorized by type, which determines their capabilities. Select the type that best suits your requirements:</p>
+    <ul>
+    <li>action</li>
+    <li>iframe</li>
+    <li>link</li>
+    </ul>
+    <a class="anchor" id="link"></a><h4 title-id="link"><a class="markdownIt-Anchor" href="#link">#</a>Link</h4>
+    <p>A <strong>link</strong> UI extension is crafted to open your external content in a new tab.</p>
+    <a class="anchor" id="iframe"></a><h4 title-id="iframe"><a class="markdownIt-Anchor" href="#iframe">#</a>Iframe</h4>
+    <p>An <strong>iframe</strong> UI extension allows to open your external content inside the PIM thanks to an iframe.</p>
+    <p>An iframe (inline frame) is an HTML element that allows you to embed another HTML document within the current document. It is commonly used to display content from another source, such as a webpage, video, or interactive content, without leaving the current page.</p>
+    <p>For more detailed information, you can refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe">Mozilla Developer Network (MDN) documentation on iframes</a>.</p>
+    <p>To ensure the secure embedding of iframes, it is essential to properly configure <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">Content Security Policy (CSP)</a> headers to control the sources from which content can be loaded.</p>
+    <div class="alert alert-warning"><p>Please note that if these headers are misconfigured, iframe functionality may not work as intended.</p>
+    </div>
+    <p>To configure an <code>iframe</code> UI extension, mandatory fields are <code>name</code>, <code>position</code>, <code>type</code>, and <code>configuration</code>. Inside <code>configuration</code>, mandatory options are <code>default_label</code> and <code>url</code>.</p>
+    <p><strong>PostMessage</strong></p>
+    <p>To be able to communicate the products or product models selection (from position <code>pim.product-grid.action-bar</code>) to the iframe, we use the <a href="https://developer.mozilla.org/docs/Web/API/Window/postMessage">PostMessage</a> protocol.</p>
+    <p>After the iframe is loaded, the PIM send an <em>event</em> which is a normalized message <a href="https://developer.mozilla.org/docs/Web/API/MessageEvent">MessageEvent</a> with a field <code>data</code> containing our information.</p>
+    <p>This field contains :</p>
+    <ul>
+    <li>A <code>data</code> object with :
+    <ul>
+    <li>A <code>productUuids</code> field which is an array of string representing the UUIDs of selected products</li>
+    <li>A <code>productModelCodes</code> field which is an array of string representing the codes of selected product models and sub models</li>
+    </ul>
+    </li>
+    <li>A <code>context</code> object containing the configured <code>locale</code> and <code>channel</code>.</li>
+    <li>A <code>user</code> object containing the <code>uuid</code>, <code>username</code> and <code>groups</code> of the connected user.</li>
+    </ul>
+    <p>Example :</p>
+    <pre><code class="language-json"><span class="token punctuation">{</span>
+      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"productUuids"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token string">"63139bf3-a7f7-4eaa-ba5e-6ffc8a2f14e9"</span><span class="token punctuation">,</span>
+          <span class="token string">"6fa3bd36-6b5a-4e80-afcd-c224fdf6f3ea"</span><span class="token punctuation">,</span>
+          <span class="token string">"78f38e4a-8d25-41e1-8e09-42a9c246689a"</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">"productModelCodes"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"context"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+        <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token string">"ecommerce"</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"user"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"4ebad9a4-7728-4d90-9db0-9e5a5c6a4d45"</span><span class="token punctuation">,</span>
+        <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"admin"</span><span class="token punctuation">,</span>
+        <span class="token property">"groups"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token string">"IT support"</span><span class="token punctuation">,</span>
+          <span class="token string">"All"</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    <p>For a <em>classical</em> project with HTML and JavaScript code, you can include this kind of code to catch those events :</p>
+    <pre><code class="language-html">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+            window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+                console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span>            
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    </code></pre>
+    <p>For more <em>modern</em> technologies like ReactJS, the iframe could be loaded before components. To solve this problem we added the possibility to ask for the data. To do this, just send a PostMessage with an object containing the property <code>type: 'request_context'</code>.</p>
+    <p>Example :</p>
+    <pre><code class="language-js">    window<span class="token punctuation">.</span>parent<span class="token punctuation">.</span><span class="token function">postMessage</span><span class="token punctuation">(</span>
+          <span class="token punctuation">{</span>
+            <span class="token literal-property property">type</span><span class="token operator">:</span> <span class="token string">'request_context'</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token string">"*"</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    </code></pre>
+    <p>After receiving this <em>event</em>, the PIM will send a PostMessage <em>event</em>, similar to the one sent after the iframe loading.</p>
+    <a class="anchor" id="action"></a><h4 title-id="action"><a class="markdownIt-Anchor" href="#action">#</a>Action</h4>
+    <p>An <strong>action</strong> UI extension is designed to perform external tasks in the background. Please note the following key points regarding its functionality:</p>
+    <ul>
+    <li><strong>Single execution</strong>: An action cannot be executed multiple times simultaneously. This ensures that tasks are processed in a controlled manner.</li>
+    <li><strong>Menu deactivation</strong>: During the execution of an action, the associated menu will be deactivated to prevent further interactions until the task is complete.</li>
+    <li><strong>Notification on completion</strong>: A notification will appear once the external server responds to the request, keeping users informed of the task's status.</li>
+    <li><strong>Timeout</strong>: The PIM HTTP client that communicates with the destination is configured with a timeout of 5 seconds.</li>
+    <li><strong>POST HTTP method</strong>: The request being sent to the destination is a POST request.</li>
+    <li><strong>Signature</strong>: It's possible to configure a <a href="#secret">secret</a> to sign each request sent to the destination.</li>
+    </ul>
+    <p>Here is a diagram illustrating the workflow:
+    <a href="../img/extensions/ui-extensions/action-extension-schema.png"><img class="img-responsive in-article" alt="action-extension-schema.png" src="../img/extensions/ui-extensions/action-extension-schema.png"/></a></p>
+    <p>Data sent within the POST body, formatted in JSON, contains :</p>
+    <ul>
+    <li>A <code>data</code> object with different fields depending on the <a href="#position">position</a>.</li>
+    <li>A <code>context</code> object containing the configured <code>locale</code> and <code>channel</code>.</li>
+    <li>A <code>user</code> object containing the <code>uuid</code>, <code>username</code> and <code>groups</code> of the connected user.</li>
+    <li>A <code>timestamp</code> that can be used with a <a href="#secret">secret</a> to help you to protect your server against <a href="https://en.wikipedia.org/wiki/Replay_attack">replay attacks</a>.</li>
+    </ul>
+    <p>From a position <code>pim.product.header</code>, the <code>data</code> object contains :</p>
+    <ul>
+    <li>A <code>productUuid</code> string field</li>
+    </ul>
+    <p>From a position <code>pim.product-model.header</code>, the <code>data</code> object contains :</p>
+    <ul>
+    <li>A <code>productModelCode</code> string field representing the root model code.</li>
+    </ul>
+    <p>From a position <code>pim.sub-product-model.header</code>, the <code>data</code> object contains :</p>
+    <ul>
+    <li>A <code>productModelCode</code> string field representing the sub model code.</li>
+    </ul>
+    <p>From a position <code>pim.product-grid.action-bar</code>, the <code>data</code> object contains :</p>
+    <ul>
+    <li>A <code>productUuids</code> field which is an array of string representing the UUIDs of selected products</li>
+    <li>A <code>productModelCodes</code> field which is an array of string representing the codes of selected product models and sub models</li>
+    </ul>
+    <p>Examples :</p>
+    <pre><code class="language-json"><span class="token punctuation">{</span>
+      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"productUuid"</span><span class="token operator">:</span> <span class="token string">"ecfddba2-59bf-4d35-bd07-8ceeefde51fd"</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"context"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+        <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token string">"ecommerce"</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"user"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"e05cc457-b8ac-43b1-baa7-c4c112091ad8"</span><span class="token punctuation">,</span>
+        <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"julia"</span><span class="token punctuation">,</span>
+        <span class="token property">"groups"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token string">"Manager"</span><span class="token punctuation">,</span>
+          <span class="token string">"All"</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token number">1739948408</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    <pre><code class="language-json"><span class="token punctuation">{</span>
+      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"productUuids"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">"productModelCodes"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"armor"</span><span class="token punctuation">,</span> <span class="token string">"apollon"</span><span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"context"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+        <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token string">"ecommerce"</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"user"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"e05cc457-b8ac-43b1-baa7-c4c112091ad8"</span><span class="token punctuation">,</span>
+        <span class="token property">"username"</span><span class="token operator">:</span> <span class="token string">"julia"</span><span class="token punctuation">,</span>
+        <span class="token property">"groups"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+          <span class="token string">"Manager"</span><span class="token punctuation">,</span>
+          <span class="token string">"All"</span>
+        <span class="token punctuation">]</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token number">1739948408</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    <a class="anchor" id="position"></a><h3 title-id="position"><a class="markdownIt-Anchor" href="#position">#</a>Position</h3>
+    <p>The available <code>position</code> values determine where your UI extension will appear in the Fegmo PIM</p>
+    <a class="anchor" id="pimproductheader"></a><h4 title-id="pimproductheader"><a class="markdownIt-Anchor" href="#pimproductheader">#</a>pim.product.header</h4>
+    <p>This position refers to the header of a simple product or a variant edit page.</p>
+    <a class="anchor" id="pimproduct-modelheader"></a><h4 title-id="pimproduct-modelheader"><a class="markdownIt-Anchor" href="#pimproduct-modelheader">#</a>pim.product-model.header</h4>
+    <p>This position refers to the header of a root model edit page.</p>
+    <a class="anchor" id="pimsub-product-modelheader"></a><h4 title-id="pimsub-product-modelheader"><a class="markdownIt-Anchor" href="#pimsub-product-modelheader">#</a>pim.sub-product-model.header</h4>
+    <p>This position refers to the header of a sub model edit page.</p>
+    <a class="anchor" id="pimproducttab"></a><h4 title-id="pimproducttab"><a class="markdownIt-Anchor" href="#pimproducttab">#</a>pim.product.tab</h4>
+    <p>This position refers to the left panel of a simple product or a variant edit page.</p>
+    <a class="anchor" id="pimproduct-modeltab"></a><h4 title-id="pimproduct-modeltab"><a class="markdownIt-Anchor" href="#pimproduct-modeltab">#</a>pim.product-model.tab</h4>
+    <p>This position refers to the left panel of a root model edit page.</p>
+    <a class="anchor" id="pimsub-product-modeltab"></a><h4 title-id="pimsub-product-modeltab"><a class="markdownIt-Anchor" href="#pimsub-product-modeltab">#</a>pim.sub-product-model.tab</h4>
+    <p>This position refers to the left panel of a sub model edit page.</p>
+    <a class="anchor" id="pimcategorytab"></a><h4 title-id="pimcategorytab"><a class="markdownIt-Anchor" href="#pimcategorytab">#</a>pim.category.tab</h4>
+    <p>This position refers to the horizontal list of tabs on a category edit page.</p>
+    <a class="anchor" id="pimproduct-gridaction-bar"></a><h4 title-id="pimproduct-gridaction-bar"><a class="markdownIt-Anchor" href="#pimproduct-gridaction-bar">#</a>pim.product-grid.action-bar</h4>
+    <p>This position refers to the list of commands availables after selecting some products on the product grid.</p>
+    <div class="alert alert-warning"><p>For the moment, you can't use UI extensions with more than <strong>500</strong> selected products &amp; product models.</p>
+    </div>
+    <a class="anchor" id="secret"></a><h3 title-id="secret"><a class="markdownIt-Anchor" href="#secret">#</a>Secret</h3>
+    <p>A secret can be used for UI extensions of type <code>action</code>. If it is, this secret is used to sign (with <a href='https://wikipedia.org/wiki/SHA-2'>SHA-512</a> protocol) the body of the POST request sent to the destination.</p>
+    <a class="anchor" id="url"></a><h3 title-id="url"><a class="markdownIt-Anchor" href="#url">#</a>Url</h3>
+    <p>All types of UI extensions must have a configured URL. However, the parameters that are sent—or can be sent—vary depending on the specific type of extension.</p>
+    <a class="anchor" id="query-parameters-placeholders"></a><h4 title-id="query-parameters-placeholders"><a class="markdownIt-Anchor" href="#query-parameters-placeholders">#</a>Query parameters placeholders</h4>
+    <p>For <a href="#link">link</a> UI extension, you can ask for specific values to construct the urls thanks to a specific placeholder pattern.</p>
+    <p>For example, you can configure a UI extension with the following url <code>https://www.google.com/search?q=%name%&amp;tbm=shop&amp;gl=us</code>, then we will dynamically put the value of the attribute code <code>name</code> when the user will click on the button.</p>
+    <p>Valid placeholders attributes are:</p>
+    <ul>
+    <li><code>uuid</code> and other attribute of type: <code>identifier</code></li>
+    <li>all non scopable and non localizable text attributes</li>
+    </ul>
+    <p>You can add a placeholder anywhere in your url as soon as they're surrounded by <code>%</code> symbol.</p>
+    <p>Examples:</p>
+    <ul>
+    <li><code>https://www.google.com/search?q=%name%</code></li>
+    <li><code>https://yourwebsite.com/%sku%</code></li>
+    </ul>
+    <a class="anchor" id="fixed-query-parameters"></a><h4 title-id="fixed-query-parameters"><a class="markdownIt-Anchor" href="#fixed-query-parameters">#</a>Fixed query parameters</h4>
+    <p>For an <a href="#iframe">iframe</a> UI extension, with <code>pim.product.tab</code>, <code>pim.sub-product-model.tab</code>, <code>pim.product-model.tab</code> as <a href="#position">position</a>, several parameters are sent by default as SearchParameters in a GET query, so the server knows who is the connected user (insecure) and in which context the iframe is opened.</p>
+    <p>For example, when <code>url</code> is <code>https://customerwebsite.com/iframe/</code>, the called URL is <code>https://customerwebite.com/iframe/?paramA=valueA&amp;paramB=valueB</code></p>
+    <p>For all positions except <code>pim.product-grid.action-bar</code>, parameters relative to the connected user are sent:</p>
+    <ul>
+    <li><code>user[catalog_locale]</code></li>
+    <li><code>user[catalog_scope]</code></li>
+    <li><code>user[ui_locale]</code></li>
+    <li><code>user[username]</code></li>
+    <li><code>user[email]</code></li>
+    </ul>
+    <div class="alert alert-warning"><p><strong>Important security notice</strong></p>
+    <p>When using iframes, please be aware of the following:</p>
+    <ul>
+    <li>
+    <p><strong>Data confidentiality</strong>: We do not implement any security measures to verify the identity of the caller accessing the URL.</p>
+    </li>
+    <li>
+    <p><strong>Access control</strong>: Anyone with access to this link can view the content of the webpage, regardless of the parameters included.</p>
+    </li>
+    </ul>
+    <p>For sensitive data, we recommend implementing additional security measures to protect your information.</p>
+    </div>
+    <p>For <code>pim.product.tab</code> position, these parameters are sent:</p>
+    <ul>
+    <li><code>product[uuid]</code></li>
+    <li><code>product[identifier]</code></li>
+    </ul>
+    <p>For <code>pim.category.tab</code> position, this parameter is sent:</p>
+    <ul>
+    <li><code>category[code]</code></li>
+    </ul>
+    <a class="anchor" id="available-types-by-position"></a><h2 title-id="available-types-by-position"><a class="markdownIt-Anchor" href="#available-types-by-position">#</a>Available types by position</h2>
+    <p>Each position supports a specific subset of available types. The table below outlines the compatible types for all positions.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Positions</th>
+    <th>Action</th>
+    <th>Iframe</th>
+    <th>Link</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>pim.product.header</td>
+    <td>✔️</td>
+    <td>❌</td>
+    <td>✔️</td>
+    </tr>
+    <tr>
+    <td>pim.product-model.header</td>
+    <td>✔️</td>
+    <td>❌</td>
+    <td>✔️</td>
+    </tr>
+    <tr>
+    <td>pim.sub-product-model.header</td>
+    <td>✔️</td>
+    <td>❌</td>
+    <td>✔️</td>
+    </tr>
+    <tr>
+    <td>pim.product.tab</td>
+    <td>❌</td>
+    <td>✔️</td>
+    <td>❌</td>
+    </tr>
+    <tr>
+    <td>pim.product-model.tab</td>
+    <td>❌</td>
+    <td>✔️</td>
+    <td>❌</td>
+    </tr>
+    <tr>
+    <td>pim.sub-product-model.tab</td>
+    <td>❌</td>
+    <td>✔️</td>
+    <td>❌</td>
+    </tr>
+    <tr>
+    <td>pim.category.tab</td>
+    <td>❌</td>
+    <td>✔️</td>
+    <td>❌</td>
+    </tr>
+    <tr>
+    <td>pim.product-grid.action-bar</td>
+    <td>✔️</td>
+    <td>✔️</td>
+    <td>❌</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="administration-of-ui-extensions"></a><h2 title-id="administration-of-ui-extensions"><a class="markdownIt-Anchor" href="#administration-of-ui-extensions">#</a>Administration of UI extensions</h2>
+    <p>For a functional overview of the administration panel and permissions, see our <a href="https://help.fegmo.com/extensions/ui-extentions">Help Center</a>.</p>
+    <a class="anchor" id="prerequisites-2"></a><h3 title-id="prerequisites-2"><a class="markdownIt-Anchor" href="#prerequisites-2">#</a>Prerequisites</h3>
+    <p>To be able to list all registered extensions, you must have a role with <strong>UI extensions &gt; View all UI extensions via Administration panel</strong> permission.</p>
+    <p>To be able to enable or disable extensions, you must have a role with <strong>UI extensions &gt; Manage all UI extensions via Administration panel</strong> permission.</p>
+    <a class="anchor" id="list-all-ui-extensions"></a><h3 title-id="list-all-ui-extensions"><a class="markdownIt-Anchor" href="#list-all-ui-extensions">#</a>List all UI extensions</h3>
+    <p>You can open the administration panel with the menu <strong>System &gt; System Customization &gt; UI extensions</strong>.</p>
+    <p>On the new page, you can see all extensions registered in your PIM.</p>
+    <a class="anchor" id="enable-disable-a-ui-extension"></a><h3 title-id="enable-disable-a-ui-extension"><a class="markdownIt-Anchor" href="#enable-disable-a-ui-extension">#</a>Enable / disable a UI extension</h3>
+    <p>To manage one or more UI extensions from the list, you just have to select them thanks to the checkboxes present on the left of each line, and then use one of the two commands available at the bottom of the screen.</p>
+    <a class="anchor" id="api-reference"></a><h2 title-id="api-reference"><a class="markdownIt-Anchor" href="#api-reference">#</a>API reference</h2>
+    <p>Several choices are offered to deep dive into our API, to discover all the endpoints, and their request/response schema:</p>
+    <ul>
+    <li>You can <a href="https://api.fegmo.com/api-reference-index.html#UIExtensions" target="_blank">consult this static documentation</a></li>
+    <li>Discover it thanks to <a href="https://api.fegmo.com/files/Fegmo%20PIM%20API.postman_collection.json" target="_blank">the postman collection</a> (see the <a href="https://api.fegmo.com/extensions/ui-extensions.html#using-postman">Postman section</a>)</li>
+    </ul>
+    <a class="anchor" id="faq"></a><h2 title-id="faq"><a class="markdownIt-Anchor" href="#faq">#</a>FAQ</h2>
+    <a class="anchor" id="who-is-responsible-for-ui-extensions"></a><h3 title-id="who-is-responsible-for-ui-extensions"><a class="markdownIt-Anchor" href="#who-is-responsible-for-ui-extensions">#</a>Who is responsible for UI extensions?</h3>
+    <p>Fegmo is responsible for the UI extensions framework itself, including the APIs and administrative interface. We provide support for these components. Your organization or your integrator is responsible for any custom code, iframes, or other custom development built within the UI extensions. Support for this custom code falls to your organization or integrator, not Fegmo.</p>
+    <a class="anchor" id="how-can-i-add-a-new-ui-extension-to-my-pim"></a><h3 title-id="how-can-i-add-a-new-ui-extension-to-my-pim"><a class="markdownIt-Anchor" href="#how-can-i-add-a-new-ui-extension-to-my-pim">#</a>How can I add a new UI extension to my PIM?</h3>
+    <p>Adding a new extension to your organization is easy! Just follow the steps in <a href="https://api.fegmo.com/extensions/ui-extensions.html#getting-started">this guide</a>.</p>
+    <a class="anchor" id="the-ui-extensions-entry-isnt-showing-up-in-my-pim-could-you-help-me-understand-why"></a><h3 title-id="the-ui-extensions-entry-isnt-showing-up-in-my-pim-could-you-help-me-understand-why"><a class="markdownIt-Anchor" href="#the-ui-extensions-entry-isnt-showing-up-in-my-pim-could-you-help-me-understand-why">#</a>The UI extensions entry isn't showing up in my PIM. Could you help me understand why?</h3>
+    <p>If you don't see the UI extensions entry in your PIM, it's likely due to permission settings. <a href="https://api.fegmo.com/extensions/ui-extensions.html#authorization">This guide</a> will help you check and activate the necessary permissions.</p>
+    <a class="anchor" id="id-like-to-see-my-extension-in-a-position-that-isnt-currently-available-what-can-i-do"></a><h3 title-id="id-like-to-see-my-extension-in-a-position-that-isnt-currently-available-what-can-i-do"><a class="markdownIt-Anchor" href="#id-like-to-see-my-extension-in-a-position-that-isnt-currently-available-what-can-i-do">#</a>I'd like to see my extension in a position that isn't currently available. What can I do?</h3>
+    <p>Currently, UI extension placements are limited to those defined by Fegmo. However, we highly value your feedback! Please contact your Customer Success Manager or our Support team to share your specific placement needs. This will help us understand your use case and consider it for future development.</p>
+    </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                $('.code-tabs li:first-child').addClass('active');
+            });
+            function copySnippetContent(event){
+                const copyToClipboard = $(this);
+                copyToClipboard.text("Copied!");
+                copyToClipboard.addClass("copied");
+                setTimeout(function() {
+                    copyToClipboard.removeClass('copied');
+                    copyToClipboard.text("Copy");
+                }, 3000);
+    
+                const parentTextContent = event.target.parentElement.firstChild.innerText;
+                navigator.clipboard.writeText(parentTextContent);
+            }
+            $( "pre" ).append( `<span class="copy-to-clipboard-button">Copy</span>`);
+            $('.copy-to-clipboard-button').click(copySnippetContent);
+            $('.code-tabs li').click(function(){
+                $(this).parent().children().removeClass('active');
+                $(this).addClass('active');
+            });
+        </script>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

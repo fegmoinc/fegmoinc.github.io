@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The REST API basics | Fegmo APIs</title>
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-9">
+                    <h1>The REST API basics</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="navbar" class="col-sm-3 hidden-xs sticky"><nav role="tablist" id="navbar-nav"><ul class="nav nav-stacked" style="counter-increment: step-counter;"><p class="pre-nav">Summary</p><li><a href="/documentation/why-the-api.html">Why the REST API?</a></li><li><a href="/documentation/overview.html">Overview</a></li><li><a href="/documentation/authentication.html">Authentication</a></li><li><a href="/documentation/permissions.html">Permissions</a></li><li><a href="/documentation/responses.html">Response codes</a></li><li><a href="/documentation/pagination.html">Pagination</a></li><li class="active"> <a href="#">Update behavior</a><p><ul class="nav">
+    <li><a href="#patch-rules">Patch rules</a>
+    <ul>
+    <li><a href="#rule-1-object-update">Rule 1: Object update</a></li>
+    <li><a href="#rule-2-non-object-update">Rule 2: Non object update</a></li>
+    <li><a href="#rule-3-validation-on-data-types">Rule 3: Validation on data types</a></li>
+    <li><a href="#rule-4-non-specified-properties">Rule 4: Non specified properties</a></li>
+    </ul>
+    </li>
+    <li><a href="#concrete-use-cases">Concrete use cases</a>
+    <ul>
+    <li><a href="#move-a-category">Move a category</a></li>
+    <li><a href="#modify-a-category-label">Modify a category label</a></li>
+    <li><a href="#place-a-product-in-a-new-category">Place a product in a new category</a></li>
+    <li><a href="#remove-a-product-from-a-category">Remove a product from a category</a></li>
+    </ul>
+    </li>
+    <li><a href="#update-product-values">Update product values</a>
+    <ul>
+    <li><a href="#add-a-product-value">Add a product value</a></li>
+    <li><a href="#modify-a-product-value">Modify a product value</a></li>
+    <li><a href="#erase-a-product-value">Erase a product value</a></li>
+    </ul>
+    </li>
+    <li><a href="#update-reference-entity-record-values">Update reference entity record values</a>
+    <ul>
+    <li><a href="#add-a-reference-entity-record-value">Add a reference entity record value</a></li>
+    <li><a href="#modify-a-reference-entity-record-value">Modify a reference entity record value</a></li>
+    <li><a href="#erase-a-reference-entity-record-value">Erase a reference entity record value</a></li>
+    </ul>
+    </li>
+    <li><a href="#update-asset-values">Update asset values</a>
+    <ul>
+    <li><a href="#add-an-asset-value">Add an asset value</a></li>
+    <li><a href="#modify-an-asset-value">Modify an asset value</a></li>
+    <li><a href="#erase-an-asset-value">Erase an asset value</a></li>
+    </ul>
+    </li>
+    </ul>
+    </p>
+    </li><li><a href="/documentation/filter.html">Filters</a></li><li><a href="/documentation/troubleshooting.html">Troubleshooting guide</a></li></ul></nav></div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-8"><a class="anchor" id="update-behavior"></a><h1 title-id="update-behavior"><a class="markdownIt-Anchor" href="#update-behavior">#</a>Update behavior</h1>
+    <a class="anchor" id="patch-rules"></a><h2 title-id="patch-rules"><a class="markdownIt-Anchor" href="#patch-rules">#</a>Patch rules</h2>
+    <div class="alert alert-info"><p>In accordance with <a href="http://www.json.org"><code>JSON definition</code></a>, what is called object in this documentation is a data structure indexed by alphanumeric keys, arrays don't have any key.</p>
+    </div>
+    <p>A PATCH request updates only the specified keys according to the following rules:</p>
+    <ul>
+    <li>Rule 1: If the value is an object, it will be merged with the old value.</li>
+    <li>Rule 2: If the value is not an object, it will replace the old value.</li>
+    <li>Rule 3: For non-scalar values (objects and arrays) data types must match.</li>
+    <li>Rule 4: Any data in non specified properties will be left untouched.</li>
+    </ul>
+    <a class="anchor" id="rule-1-object-update"></a><h3 title-id="rule-1-object-update"><a class="markdownIt-Anchor" href="#rule-1-object-update">#</a>Rule 1: Object update</h3>
+    <p>If the value is an object, it will be merged with the old value.</p>
+    <a class="anchor" id="example"></a><h4 title-id="example"><a class="markdownIt-Anchor" href="#example">#</a>Example</h4>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"master"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottes"</span>
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"de_DE"</span>: <span class="hljs-string">"Stiefel"</span>
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"master"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottes"</span>,
+        <span class="hljs-attr">"de_DE"</span>: <span class="hljs-string">"Stiefel"</span>
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="rule-2-non-object-update"></a><h3 title-id="rule-2-non-object-update"><a class="markdownIt-Anchor" href="#rule-2-non-object-update">#</a>Rule 2: Non object update</h3>
+    <p>If the value is not an object, it will replace the old value.</p>
+    <a class="anchor" id="first-example"></a><h4 title-id="first-example"><a class="markdownIt-Anchor" href="#first-example">#</a>First example</h4>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"master"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottes"</span>
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"clothes"</span>
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"clothes"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottes"</span>
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="second-example"></a><h4 title-id="second-example"><a class="markdownIt-Anchor" href="#second-example">#</a>Second example</h4>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"categories"</span>: [<span class="hljs-string">"shoes"</span>, <span class="hljs-string">"boots"</span>]
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"categories"</span>: [<span class="hljs-string">"boots"</span>]
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"categories"</span>: [<span class="hljs-string">"boots"</span>]
+    }
+    </code></pre>
+    <a class="anchor" id="rule-3-validation-on-data-types"></a><h3 title-id="rule-3-validation-on-data-types"><a class="markdownIt-Anchor" href="#rule-3-validation-on-data-types">#</a>Rule 3: Validation on data types</h3>
+    <p>For non-scalar values (objects and arrays) data types must match.</p>
+    <a class="anchor" id="example-2"></a><h4 title-id="example-2"><a class="markdownIt-Anchor" href="#example-2">#</a>Example</h4>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"master"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottes"</span>
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"labels"</span>: <span class="hljs-literal">null</span>
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"master"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottes"</span>
+      }
+    }
+    </code></pre>
+    <p>Nothing has changed and a 422 error is returned.</p>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">422</span> Unprocessable entity
+    
+    <span class="autohotkey">{
+      <span class="hljs-string">"code"</span>: <span class="hljs-number">422</span>,
+      <span class="hljs-string">"message"</span>: <span class="hljs-string">"Property `labels` expects an array as data, `NULL` given. Check the standard format documentation."</span>
+    }
+    </span></code></pre>
+    <a class="anchor" id="rule-4-non-specified-properties"></a><h3 title-id="rule-4-non-specified-properties"><a class="markdownIt-Anchor" href="#rule-4-non-specified-properties">#</a>Rule 4: Non specified properties</h3>
+    <p>Any data in non specified properties will be left untouched.</p>
+    <a class="anchor" id="example-3"></a><h4 title-id="example-3"><a class="markdownIt-Anchor" href="#example-3">#</a>Example</h4>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"master"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottes"</span>
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"master"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottes"</span>
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="concrete-use-cases"></a><h2 title-id="concrete-use-cases"><a class="markdownIt-Anchor" href="#concrete-use-cases">#</a>Concrete use cases</h2>
+    <a class="anchor" id="move-a-category"></a><h3 title-id="move-a-category"><a class="markdownIt-Anchor" href="#move-a-category">#</a>Move a category</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You want to move the <code>boot</code> category from the category <code>master</code> to the category <code>shoes</code>. Here is how you can achieve it.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"master"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottes"</span>
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"shoes"</span>
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"shoes"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottes"</span>
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="modify-a-category-label"></a><h3 title-id="modify-a-category-label"><a class="markdownIt-Anchor" href="#modify-a-category-label">#</a>Modify a category label</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>For the locale <code>fr_FR</code>, you want to change the label of the category <code>boots</code> from <code>Bottes</code> to <code>Bottines</code>. Here is how you can achieve it.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"master"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottes"</span>
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottines"</span>
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"boots"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"master"</span>,
+      <span class="hljs-attr">"labels"</span>: {
+        <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Boots"</span>,
+        <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Bottines"</span>
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="place-a-product-in-a-new-category"></a><h3 title-id="place-a-product-in-a-new-category"><a class="markdownIt-Anchor" href="#place-a-product-in-a-new-category">#</a>Place a product in a new category</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You want to place the product <code>boots-4846</code> in the new category <code>winter_collection</code>. Here is how you can achieve it.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"categories"</span>: [<span class="hljs-string">"shoes"</span>, <span class="hljs-string">"boots"</span>]
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"categories"</span>: [<span class="hljs-string">"shoes"</span>, <span class="hljs-string">"boots"</span>, <span class="hljs-string">"winter_collection"</span>]
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"categories"</span>: [<span class="hljs-string">"shoes"</span>, <span class="hljs-string">"boots"</span>, <span class="hljs-string">"winter_collection"</span>]
+    }
+    </code></pre>
+    <a class="anchor" id="remove-a-product-from-a-category"></a><h3 title-id="remove-a-product-from-a-category"><a class="markdownIt-Anchor" href="#remove-a-product-from-a-category">#</a>Remove a product from a category</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You want to remove the product <code>boots-4846</code> from the category <code>boots</code>. Here is how you can achieve it.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"categories"</span>: [<span class="hljs-string">"shoes"</span>, <span class="hljs-string">"boots"</span>]
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"categories"</span>: [<span class="hljs-string">"shoes"</span>]
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"categories"</span>: [<span class="hljs-string">"shoes"</span>]
+    }
+    </code></pre>
+    <a class="anchor" id="update-product-values"></a><h2 title-id="update-product-values"><a class="markdownIt-Anchor" href="#update-product-values">#</a>Update product values</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>The PATCH behavior described above is quite intuitive. However, applying a PATCH containing <a href="/concepts/products.html#focus-on-the-product-values">product values</a> on a product is a bit different.</p>
+    <div class="alert alert-info"><p>In the examples below only products values are represented, but usually products also include other information as specified in the standard format.</p>
+    </div>
+    </p></p></p></p></p><div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/concepts/products.html#focus-on-the-product-values"><div class="panel-body"><div class="panel-btn-big">Don't know what a product value is? </div><p class="text-center">Check the product value section</p></div></a></div></div></div>
+    <a class="anchor" id="add-a-product-value"></a><h3 title-id="add-a-product-value"><a class="markdownIt-Anchor" href="#add-a-product-value">#</a>Add a product value</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You want to add the <code>description</code> of the product <code>boots-4846</code> for the <code>en_US</code> locale.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Mug"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"This mug is a must-have!"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Mug"</span>
+          }
+        ],
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"This mug is a must-have!"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Wondering how to format the <code>data</code> property in these product values? In fact, it depends on the attribute type. <a href="/concepts/products.html#focus-on-the-product-values">More details right here!</a></p>
+    </div>
+    </p><a class="anchor" id="modify-a-product-value"></a><h3 title-id="modify-a-product-value"><a class="markdownIt-Anchor" href="#modify-a-product-value">#</a>Modify a product value</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><a class="anchor" id="first-example-2"></a><h4 title-id="first-example-2"><a class="markdownIt-Anchor" href="#first-example-2">#</a>First example</h4>
+    <p>You want to modify the <code>name</code> of the product <code>boots-4846</code> for the <code>en_US</code> locale.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Mug"</span>
+          }
+        ],
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"This mug is a must-have!"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Incredible mug"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Incredible mug"</span>
+          }
+        ],
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"This mug is a must-have!"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="second-example-2"></a><h4 title-id="second-example-2"><a class="markdownIt-Anchor" href="#second-example-2">#</a>Second example</h4>
+    <p>You want to modify the <code>name</code> of the product <code>boots-4846</code> for the <code>fr_FR</code> locale but the <code>name</code> on the <code>en_US</code> locale is already set.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Incredible mug"</span>
+          },
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Tasse"</span>
+          }
+        ],
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"This mug is a must-have!"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Tasse extraordinaire"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Incredible mug"</span>
+          },
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Tasse extraordinaire"</span>
+          }
+        ],
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"This mug is a must-have!"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Wondering how to format the <code>data</code> property in these product values? In fact, it depends on the attribute type. <a href="/concepts/products.html#focus-on-the-product-values">More details right here!</a></p>
+    </div>
+    </p><a class="anchor" id="erase-a-product-value"></a><h3 title-id="erase-a-product-value"><a class="markdownIt-Anchor" href="#erase-a-product-value">#</a>Erase a product value</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You want to erase the <code>name</code> of the product <code>boots-4846</code> for the <code>en_US</code> locale.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Incredible mug"</span>
+          }
+        ],
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"This mug is a must-have!"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-literal">null</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"boots-4846"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-literal">null</span>
+          }
+        ],
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"This mug is a must-have!"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Wondering how to format the <code>data</code> property in these product values? In fact, it depends on the attribute type. <a href="/concepts/products.html#focus-on-the-product-values">More details right here!</a></p>
+    </div>
+    </p><a class="anchor" id="update-reference-entity-record-values"></a><h2 title-id="update-reference-entity-record-values"><a class="markdownIt-Anchor" href="#update-reference-entity-record-values">#</a>Update reference entity record values</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Applying a PATCH on a reference entity record containing values is also a bit different. Below we present three use cases to update these reference entity record values.</p>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/concepts/reference-entities.html#focus-on-the-reference-entity-record-values"><div class="panel-body"><div class="panel-btn-big">Don't know what a reference entity record value is? </div><p class="text-center">Check the reference entity record value section</p></div></a></div></div></div>
+    <a class="anchor" id="add-a-reference-entity-record-value"></a><h3 title-id="add-a-reference-entity-record-value"><a class="markdownIt-Anchor" href="#add-a-reference-entity-record-value">#</a>Add a reference entity record value</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>You want to add the <code>short_description</code> of the reference entity record <code>kartell</code> for the <code>en_US</code> locale.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"kartell"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Kartell was founded in 1949 in Italy. Today, it's a well-known brand that sells high-end furniture."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"The famous Italian brand"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"kartell"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"The famous Italian brand"</span>
+          }
+        ],
+        <span class="hljs-attr">"description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Kartell was founded in 1949 in Italy. Today, it's a well-known brand that sells high-end furniture."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Wondering how to format the <code>data</code> property in these reference entity record values? In fact, it depends on the attribute type. <a href="/concepts/reference-entities.html#focus-on-the-reference-entity-record-values">More details right here!</a></p>
+    </div>
+    <a class="anchor" id="modify-a-reference-entity-record-value"></a><h3 title-id="modify-a-reference-entity-record-value"><a class="markdownIt-Anchor" href="#modify-a-reference-entity-record-value">#</a>Modify a reference entity record value</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><a class="anchor" id="first-example-3"></a><h4 title-id="first-example-3"><a class="markdownIt-Anchor" href="#first-example-3">#</a>First example</h4>
+    <p>You want to modify the <code>short_description</code> of the <code>kartell</code> reference entity record for the <code>en_US</code> locale.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"kartell"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"The famous Italian brand"</span>
+          }
+        ],
+        <span class="hljs-attr">"description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Kartell was founded in 1949 in Italy. Today, it's a well-known brand that sells high-end furniture."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"A well-known manufacturer of high-end furniture"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"kartell"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"A well-known manufacturer of high-end furniture"</span>
+          }
+        ],
+        <span class="hljs-attr">"description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Kartell was founded in 1949 in Italy. Today, it's a well-known brand that sells high-end furniture."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="second-example-3"></a><h4 title-id="second-example-3"><a class="markdownIt-Anchor" href="#second-example-3">#</a>Second example</h4>
+    <p>You want to modify the <code>short_description</code> of the <code>kartell</code> reference entity record for the <code>fr_FR</code> locale but the <code>short_description</code> on the <code>en_US</code> locale is already set.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"kartell"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"A well-known manufacturer of high-end furniture"</span>
+          },
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Kartell, éditeur de meubles"</span>
+          }
+        ],
+        <span class="hljs-attr">"description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Kartell was founded in 1949 in Italy. Today, it's a well-known brand that sells high-end furniture."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"L'éditeur italien de meubles de haute qualité"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"kartell"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"A well-known manufacturer of high-end furniture"</span>
+          },
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"L'éditeur italien de meubles de haute qualité"</span>
+          }
+        ],
+        <span class="hljs-attr">"description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Kartell was founded in 1949 in Italy. Today, it's a well-known brand that sells high-end furniture."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Wondering how to format the <code>data</code> property in these reference entity record values? In fact, it depends on the attribute type. <a href="/concepts/reference-entities.html#focus-on-the-reference-entity-record-values">More details right here!</a></p>
+    </div>
+    <a class="anchor" id="erase-a-reference-entity-record-value"></a><h3 title-id="erase-a-reference-entity-record-value"><a class="markdownIt-Anchor" href="#erase-a-reference-entity-record-value">#</a>Erase a reference entity record value</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>You want to erase the <code>short_description</code> of the <code>kartell</code> reference entity record for the <code>en_US</code> locale.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"kartell"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"A well-known manufacturer of high-end furniture"</span>
+          }
+        ],
+        <span class="hljs-attr">"description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Kartell was founded in 1949 in Italy. Today, it's a well-known brand that sells high-end furniture."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-literal">null</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"kartell"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"short_description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-literal">null</span>
+          }
+        ],
+        <span class="hljs-attr">"description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Kartell was founded in 1949 in Italy. Today, it's a well-known brand that sells high-end furniture."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Wondering how to format the <code>data</code> property in these reference entity record values? In fact, it depends on the attribute type. <a href="/concepts/reference-entities.html#focus-on-the-reference-entity-record-values">More details right here!</a></p>
+    </div>
+    <a class="anchor" id="update-asset-values"></a><h2 title-id="update-asset-values"><a class="markdownIt-Anchor" href="#update-asset-values">#</a>Update asset values</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Applying a PATCH on an asset containing values is also a bit different. Below we present three use cases to update these asset values.</p>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/concepts/asset-manager.html#focus-on-the-asset-values"><div class="panel-body"><div class="panel-btn-big">Don't know what an asset value is? </div><p class="text-center">Check the asset value section</p></div></a></div></div></div>
+    <a class="anchor" id="add-an-asset-value"></a><h3 title-id="add-an-asset-value"><a class="markdownIt-Anchor" href="#add-an-asset-value">#</a>Add an asset value</h3>
+    <p>You want to add the <code>warning_message</code> of the <code>allie_jean_picture</code> asset for the <code>en_US</code> locale and <code>mobile</code> channel.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"allie_jean_picture"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"alt_tag"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Allie jean, blue"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"warning_message"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Retouched photo."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"allie_jean_picture"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"alt_tag"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Allie jean, blue"</span>
+          }
+        ],
+        <span class="hljs-attr">"warning_message"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Retouched photo."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="modify-an-asset-value"></a><h3 title-id="modify-an-asset-value"><a class="markdownIt-Anchor" href="#modify-an-asset-value">#</a>Modify an asset value</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><a class="anchor" id="first-example-4"></a><h4 title-id="first-example-4"><a class="markdownIt-Anchor" href="#first-example-4">#</a>First example</h4>
+    <p>You want to modify the <code>warning_message</code> of the <code>allie_jean_picture</code> asset for the <code>en_US</code> locale and the <code>mobile</code> channel.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"allie_jean_picture"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"alt_tag"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Allie jean, blue"</span>
+          }
+        ],
+        <span class="hljs-attr">"warning_message"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Retouched photo."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"warning_message"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Not retouched photo."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"allie_jean_picture"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"alt_tag"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Allie jean, blue"</span>
+          }
+        ],
+        <span class="hljs-attr">"warning_message"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Not retouched photo."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="second-example-4"></a><h4 title-id="second-example-4"><a class="markdownIt-Anchor" href="#second-example-4">#</a>Second example</h4>
+    <p>You want to modify the <code>alt_tag</code> of the <code>allie_jean_picture</code> asset for the <code>fr_FR</code> locale but the <code>alt_tag</code> on the <code>en_US</code> locale is already set.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"allie_jean_picture"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"alt_tag"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Allie jean, blue"</span>
+          },
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Veste Amor, bleu"</span>
+          }
+        ],
+        <span class="hljs-attr">"warning_message"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Not retouched photo."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"alt_tag"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Jean Allie, bleu"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"allie_jean_picture"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"alt_tag"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Amor jacket, blue"</span>
+          },
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Jean Allie, bleu"</span>
+          }
+        ],
+        <span class="hljs-attr">"warning_message"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Not retouched photo."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="erase-an-asset-value"></a><h3 title-id="erase-an-asset-value"><a class="markdownIt-Anchor" href="#erase-an-asset-value">#</a>Erase an asset value</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>You want to erase the <code>alt_tag</code> of the <code>allie_jean_picture</code> asset for the <code>en_US</code> locale.</p>
+    <p><strong>Original resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"allie_jean_picture"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"alt_tag"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Amor jacket, blue"</span>
+          },
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Jean Allie, bleu"</span>
+          }
+        ],
+        <span class="hljs-attr">"warning_message"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Not retouched photo."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>PATCH request body</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"alt_tag"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-literal">null</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p><strong>Resulting resource</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"allie_jean_picture"</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"alt_tag"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-literal">null</span>
+          },
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Jean Allie, bleu"</span>
+          }
+        ],
+        <span class="hljs-attr">"warning_message"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Not retouched photo."</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Wondering how to format the <code>data</code> property in these asset values? In fact, it depends on the attribute type. <a href="/concepts/asset-manager.html#focus-on-the-asset-values">More details right here!</a></p>
+    </div>
+    </div>
+            </div>
+        </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

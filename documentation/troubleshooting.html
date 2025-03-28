@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The REST API basics | Fegmo APIs</title>
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-9">
+                    <h1>The REST API basics</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="navbar" class="col-sm-3 hidden-xs sticky"><nav role="tablist" id="navbar-nav"><ul class="nav nav-stacked" style="counter-increment: step-counter;"><p class="pre-nav">Summary</p><li><a href="/documentation/why-the-api.html">Why the REST API?</a></li><li><a href="/documentation/overview.html">Overview</a></li><li><a href="/documentation/authentication.html">Authentication</a></li><li><a href="/documentation/permissions.html">Permissions</a></li><li><a href="/documentation/responses.html">Response codes</a></li><li><a href="/documentation/pagination.html">Pagination</a></li><li><a href="/documentation/update.html">Update behavior</a></li><li><a href="/documentation/filter.html">Filters</a></li><li class="active"> <a href="#">Troubleshooting guide</a><p><ul class="nav">
+    <li><a href="#missing-client-id">Missing client id</a>
+    <ul>
+    <li><a href="#base-64-not-correctly-encoded">Base 64 not correctly encoded</a></li>
+    <li><a href="#apache-strip-the-authentication-header">Apache strip the authentication header</a></li>
+    </ul>
+    </li>
+    <li><a href="#redirection-on-connection-page">Redirection on connection page</a></li>
+    <li><a href="#read-after-write-eventual-consistency">Read after write eventual consistency</a>
+    <ul>
+    <li><a href="#understanding-the-data-flow">Understanding the Data Flow</a></li>
+    <li><a href="#consequences-of-distributed-architecture">Consequences of Distributed Architecture</a></li>
+    <li><a href="#workaround">Workaround</a></li>
+    <li><a href="#example-scenario">Example Scenario</a></li>
+    </ul>
+    </li>
+    </ul>
+    </p>
+    </li></ul></nav></div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-8"><a class="anchor" id="troubleshooting-guide"></a><h1 title-id="troubleshooting-guide"><a class="markdownIt-Anchor" href="#troubleshooting-guide">#</a>Troubleshooting guide</h1>
+    <p>This guide describes the most common errors you can experience when using the REST API and the solutions to fix them.</p>
+    <a class="anchor" id="missing-client-id"></a><h2 title-id="missing-client-id"><a class="markdownIt-Anchor" href="#missing-client-id">#</a>Missing client id</h2>
+    <p>Two problems can be the cause of the following response when authenticating to the REST API:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-number">422</span>,
+      <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Parameter "</span>client_id<span class="hljs-string">" is missing or does not match any client, or secret is invalid"</span>
+    }
+    </code></pre>
+    <a class="anchor" id="base-64-not-correctly-encoded"></a><h3 title-id="base-64-not-correctly-encoded"><a class="markdownIt-Anchor" href="#base-64-not-correctly-encoded">#</a>Base 64 not correctly encoded</h3>
+    <p>You are not correctly encoding client and secret in base 64.
+    We encourage you to use the Postman collection that you will find in this <a href="/getting-started/your-first-tutorial-4x/welcome.html">tutorial</a> or the <a href="/php-client/introduction.html">PHP client</a>, that handle it automatically for you.</p>
+    <p>If you use the command line to generate the base 64, please ensure that you do it this way:</p>
+    <pre class="hljs"><code><span class="hljs-built_in">echo</span> -n <span class="hljs-string">"client_id:secret"</span> | base64
+    </code></pre>
+    <p>Do note the option <code>-n</code> to avoid to print the trailing newline character and encode it.</p>
+    <p>If you still experience the same error, please follow the second solution.</p>
+    <a class="anchor" id="apache-strip-the-authentication-header"></a><h3 title-id="apache-strip-the-authentication-header"><a class="markdownIt-Anchor" href="#apache-strip-the-authentication-header">#</a>Apache strip the authentication header</h3>
+    <p>If you are sure to provide the correct base 64 of the client and secret, it probably means that Apache is not correctly set up.<br />
+    Various Apache modules can strip the authorization header “Authorization: Basic base64client_id:secret”.</p>
+    <p>Add the following line in your virtual host file:</p>
+    <pre class="hljs"><code>SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+    </code></pre>
+    <a class="anchor" id="redirection-on-connection-page"></a><h2 title-id="redirection-on-connection-page"><a class="markdownIt-Anchor" href="#redirection-on-connection-page">#</a>Redirection on connection page</h2>
+    <p>When requesting the REST API, you are redirected to the REST API, with any endpoints.</p>
+    <p>This problem occurs when the project has been updated from version 1.6.<br />
+    It is coming from the security file <code>app/config/security.yml</code> in the PIM project.</p>
+    <p>The declaration order of the keys is important in this file.<br />
+    If the key <code>security.firewalls.main</code> is before the keys <code>security.firewalls.token</code>, <code>security.firewalls.api_index</code> and <code>security.firewalls.api</code>, you will be redirected on requesting page when using the REST API.</p>
+    <p>Please check that the keys under <code>security.firewalls</code> are in this following order:</p>
+    <pre class="hljs"><code>oauth_token:
+      pattern:                        ^/api/oauth/v1/token
+      security:                       false
+    
+    api_index:
+      pattern:                        ^/api/rest/v1$
+      security:                       false
+    
+    api:
+      pattern:                        ^/api
+      fos_oauth:                      true
+      stateless:                      true
+      access_denied_handler:          pim_api.security.access_denied_handler
+    
+    main:
+        pattern:                        ^/
+        provider:                       chain_provider
+        form_login:
+            csrf_token_generator:       security.csrf.token_manager
+            check_path:                 oro_user_security_check
+            login_path:                 oro_user_security_login
+        logout:
+            path:                       oro_user_security_logout
+        remember_me:
+            secret:                     "%secret%"
+            name:                       BAPRM
+            lifetime:                   1209600   # stay logged for two weeks
+        anonymous:                      false
+    </code></pre>
+    <a class="anchor" id="read-after-write-eventual-consistency"></a><h2 title-id="read-after-write-eventual-consistency"><a class="markdownIt-Anchor" href="#read-after-write-eventual-consistency">#</a>Read after write eventual consistency</h2>
+    <p>When making a POST request to a specific endpoint, it's important to understand that a subsequent GET request with search parameters may not immediately return the data that was just posted. This behavior is a consequence of the underlying architecture, which involves distributed and scalable databases, also known as read-after-write eventual consistency.</p>
+    <a class="anchor" id="understanding-the-data-flow"></a><h3 title-id="understanding-the-data-flow"><a class="markdownIt-Anchor" href="#understanding-the-data-flow">#</a>Understanding the Data Flow</h3>
+    <ol>
+    <li><strong>POST Request</strong>: When you make a POST request to the endpoint, the data is initially stored in the primary database. This operation is typically quick and ensures that the data is persisted.</li>
+    <li><strong>Indexing</strong>: The data then needs to be indexed in a search engine to make it searchable. This indexing process may not be instantaneous and can introduce a delay.</li>
+    <li><strong>GET Request</strong>: When you make a GET request with search parameters, the system queries the search index to retrieve the data. If the indexing process is not yet complete, the newly posted data may not be available in the search results immediately.</li>
+    </ol>
+    <a class="anchor" id="consequences-of-distributed-architecture"></a><h3 title-id="consequences-of-distributed-architecture"><a class="markdownIt-Anchor" href="#consequences-of-distributed-architecture">#</a>Consequences of Distributed Architecture</h3>
+    <ul>
+    <li><strong>Eventual Consistency</strong>: In a distributed system, achieving immediate consistency across all components is challenging. The system is designed to eventually become consistent, meaning that there may be a brief period during which the search index is not fully up-to-date with the primary database.</li>
+    <li><strong>Scalability</strong>: The architecture is designed to handle large volumes of data and high traffic, which necessitates the use of distributed databases and search indexes. This scalability comes at the cost of immediate data availability in search results.</li>
+    <li><strong>Indexing Latency</strong>: The time taken to index the data can vary based on the system load, the complexity of the data, and other factors. This latency is a natural consequence of using a search engine to enhance query performance.</li>
+    </ul>
+    <a class="anchor" id="workaround"></a><h3 title-id="workaround"><a class="markdownIt-Anchor" href="#workaround">#</a>Workaround</h3>
+    <p>If immediate retrieval of the posted data is critical, consider to query the entity endpoint by its ID instead of performing a search query.</p>
+    <a class="anchor" id="example-scenario"></a><h3 title-id="example-scenario"><a class="markdownIt-Anchor" href="#example-scenario">#</a>Example Scenario</h3>
+    <ol>
+    <li><strong>POST Request</strong>: You send a POST request to create a new product.</li>
+    <li><strong>Data Storage</strong>: The product data is stored in the primary database.</li>
+    <li><strong>Indexing</strong>: The system begins the process of indexing the product data in the search engine.</li>
+    <li><strong>GET Request</strong>: You immediately send a GET request to search for several products with filters on family a specific family.</li>
+    <li><strong>Search Results</strong>: The new product may not appear in the search results because the indexing process is still in progress.</li>
+    </ol>
+    </div>
+            </div>
+        </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

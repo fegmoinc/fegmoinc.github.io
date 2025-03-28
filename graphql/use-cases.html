@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The GraphQL API | Fegmo APIs</title>
+    <meta name="description" content="The Akeneo GraphQL API">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-9">
+                    <h1><img src="../../img/graphql/logo.png"/>The GraphQL API</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="navbar" class="col-sm-3 hidden-xs sticky"><nav role="tablist" id="navbar-nav"><ul class="nav nav-stacked" style="counter-increment: step-counter;"><p class="pre-nav">Summary</p><li><a href="/graphql/getting-started.html">Getting started</a></li><li><a href="/graphql/browse-graphql-capabilities.html">Browse capabilities</a></li><li><a href="/graphql/common-notions.html">Common notions</a></li><li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li><li class="active"> <a href="#">Use cases examples</a><p><ul class="nav">
+    <li><a href="#product-model-and-their-variation-axis-family-information">Product model and their variation axis + family information</a></li>
+    <li><a href="#variations-of-a-product-model-with-variation-values-attribute-values">Variations of a product model with variation values &amp; attribute values</a></li>
+    <li><a href="#product-with-attributes-family-group-categories">Product with attributes, family, group &amp; categories ...</a></li>
+    <li><a href="#product-with-assets-and-reference-entity-attributes">Product with assets and reference entity attributes</a></li>
+    <li><a href="#families-and-their-belonging-attributes-informations">Families and their belonging attributes informations</a></li>
+    <li><a href="#enabled-locales">Enabled locales</a></li>
+    <li><a href="#enabled-currencies">Enabled currencies</a></li>
+    </ul>
+    </p>
+    </li><li><a href="/graphql/integration.html">Integrate GraphQL into your project</a></li><li><a href="/graphql/best-practices.html">Best practices</a></li><li><a href="/graphql/compatibility.html">Pim compatibility</a></li><li><a href="/graphql/recommendations.html">Usage recommendations</a></li><li><a href="/graphql/limitations.html">Limitations</a></li><li><a href="/graphql/error-codes.html">Status and error codes</a></li><li><a href="/graphql/advanced.html">Advanced</a></li></ul></nav></div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-8"><a class="anchor" id="use-cases-examples"></a><h1 title-id="use-cases-examples"><a class="markdownIt-Anchor" href="#use-cases-examples">#</a>Use cases examples</h1>
+    <div class="alert alert-info"><p>Most <code>responses</code> below have been truncated to make them more readable</p>
+    </div>
+    <div class="alert alert-info"><p>We highly recommend using <code>variables</code> to make your query dynamic.</p>
+    <p><a href="/graphql/best-practices.html#variables-usages">More details</a></p>
+    </div>
+    <div class="alert alert-warning"><p>All the examples below are demo data, and you must adapt the queries regarding your <code>attributes codes</code>, <code>locales</code>, <code>product model code</code> ...</p>
+    </div>
+    <a class="anchor" id="product-model-and-their-variation-axis-family-information"></a><h2 title-id="product-model-and-their-variation-axis-family-information"><a class="markdownIt-Anchor" href="#product-model-and-their-variation-axis-family-information">#</a>Product model and their variation axis + family information</h2>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-56" checked><label for="group-56-tab-0" onclick="this.previousElementSibling.click()"> Query</label></li>
+    <li><input type="radio" name="label-group-56"><label for="group-56-tab-1" onclick="this.previousElementSibling.click()"> Response</label></li>
+    </ul>
+    <input type="radio" id="group-56-tab-0" name="group-56" checked>
+    <pre><code class="language-graphql">
+    <span class="token punctuation">{</span>
+      <span class="token property-query">productModels</span><span class="token punctuation">(</span><span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token object">links</span> <span class="token punctuation">{</span>
+          <span class="token property">next</span>
+        <span class="token punctuation">}</span>
+        <span class="token object">items</span> <span class="token punctuation">{</span>
+          <span class="token property">variationAxes</span>
+          <span class="token property">code</span>
+          <span class="token object">family</span> <span class="token punctuation">{</span>
+            <span class="token property">code</span>
+            <span class="token property">labels</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    <input type="radio" id="group-56-tab-1" name="group-56">
+    <pre><code class="language-json">
+    <span class="token punctuation">{</span>
+      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"productModels"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"links"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"next"</span><span class="token operator">:</span> <span class="token string">"Acme Classic Mens Black PVC Work Boots"</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token property">"items"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"Acme Classic Mens Black PVC Work Boots"</span><span class="token punctuation">,</span>
+              <span class="token property">"variationAxes"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token string">"shoe_size"</span>
+              <span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token property">"family"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"rubber_boots"</span><span class="token punctuation">,</span>
+                <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                  <span class="token punctuation">{</span>
+                    <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                    <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Rubber Boots"</span>
+                  <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+              <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    </div><a class="anchor" id="variations-of-a-product-model-with-variation-values-attribute-values"></a><h2 title-id="variations-of-a-product-model-with-variation-values-attribute-values"><a class="markdownIt-Anchor" href="#variations-of-a-product-model-with-variation-values-attribute-values">#</a>Variations of a product model with variation values &amp; attribute values</h2>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-61" checked><label for="group-61-tab-0" onclick="this.previousElementSibling.click()"> Query</label></li>
+    <li><input type="radio" name="label-group-61"><label for="group-61-tab-1" onclick="this.previousElementSibling.click()"> Response</label></li>
+    </ul>
+    <input type="radio" id="group-61-tab-0" name="group-61" checked>
+    <pre><code class="language-graphql">
+    <span class="token punctuation">{</span>
+      <span class="token property-query">products</span><span class="token punctuation">(</span>
+        <span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token attr-name">locales</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"en_US"</span><span class="token punctuation">]</span>
+        <span class="token comment"># You must use the code of the model</span>
+        <span class="token attr-name">parent</span><span class="token punctuation">:</span> <span class="token string">"Acme Classic Mens Black PVC Work Boots"</span>
+      <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token object">links</span> <span class="token punctuation">{</span>
+          <span class="token property">next</span>
+        <span class="token punctuation">}</span>
+        <span class="token object">items</span> <span class="token punctuation">{</span>
+          <span class="token property">uuid</span>
+          <span class="token property">enabled</span>
+          <span class="token property">variationValues</span>
+          <span class="token object">attributes</span> <span class="token punctuation">{</span>
+            <span class="token property">code</span>
+            <span class="token keyword">type</span>
+            <span class="token property">values</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    <input type="radio" id="group-61-tab-1" name="group-61">
+    <pre><code class="language-json">
+    <span class="token punctuation">{</span>
+      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"products"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"links"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"next"</span><span class="token operator">:</span> <span class="token string">"0aa5198a-7442-4722-a4be-d874640d792a"</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token property">"items"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"0aa5198a-7442-4722-a4be-d874640d792a"</span><span class="token punctuation">,</span>
+              <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token string">"true"</span><span class="token punctuation">,</span>
+              <span class="token property">"variationValues"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"attributeType"</span><span class="token operator">:</span> <span class="token string">"pim_catalog_simpleselect"</span><span class="token punctuation">,</span>
+                  <span class="token property">"attributeCode"</span><span class="token operator">:</span> <span class="token string">"shoe_size"</span><span class="token punctuation">,</span>
+                  <span class="token property">"value"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                    <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"10"</span><span class="token punctuation">,</span>
+                    <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+                  <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+              <span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token property">"attributes"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"brand"</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"fegmo_reference_entity"</span><span class="token punctuation">,</span>
+                  <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"acme"</span><span class="token punctuation">,</span>
+                      <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"color"</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"fegmo_reference_entity"</span><span class="token punctuation">,</span>
+                  <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"black"</span><span class="token punctuation">,</span>
+                      <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"packshot"</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"pim_catalog_asset_collection"</span><span class="token punctuation">,</span>
+                  <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                        <span class="token string">"images_image_1_acme_classic_mens_black_pvc_work_boots_1_jpg_products"</span>
+                      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                      <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"sku"</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"pim_catalog_identifier"</span><span class="token punctuation">,</span>
+                  <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"1273192978"</span><span class="token punctuation">,</span>
+                      <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"name"</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"pim_catalog_text"</span><span class="token punctuation">,</span>
+                  <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"Acme Classic Mens Size 10 Black PVC Work Boots"</span><span class="token punctuation">,</span>
+                      <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+              <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    </div><a class="anchor" id="product-with-attributes-family-group-categories"></a><h2 title-id="product-with-attributes-family-group-categories"><a class="markdownIt-Anchor" href="#product-with-attributes-family-group-categories">#</a>Product with attributes, family, group &amp; categories ...</h2>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-66" checked><label for="group-66-tab-0" onclick="this.previousElementSibling.click()"> Query</label></li>
+    <li><input type="radio" name="label-group-66"><label for="group-66-tab-1" onclick="this.previousElementSibling.click()"> Response</label></li>
+    </ul>
+    <input type="radio" id="group-66-tab-0" name="group-66" checked>
+    <pre><code class="language-graphql">
+    <span class="token punctuation">{</span>
+      <span class="token property-query">products</span><span class="token punctuation">(</span>
+        <span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token attr-name">locales</span><span class="token punctuation">:</span> <span class="token string">"en_US"</span>
+      <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token object">items</span> <span class="token punctuation">{</span>
+          <span class="token property">uuid</span>
+          <span class="token property">variationValues</span>
+          <span class="token object">parent</span> <span class="token punctuation">{</span>
+            <span class="token property">code</span>
+          <span class="token punctuation">}</span>
+          <span class="token object">family</span> <span class="token punctuation">{</span>
+            <span class="token property">code</span>
+            <span class="token property">labels</span>
+          <span class="token punctuation">}</span>
+          <span class="token object">categories</span> <span class="token punctuation">{</span>
+            <span class="token property">code</span>
+            <span class="token property">labels</span>
+          <span class="token punctuation">}</span>
+          <span class="token object">attributes</span> <span class="token punctuation">{</span>
+            <span class="token property">code</span>
+            <span class="token property">labels</span>
+            <span class="token property">sortOrder</span>
+            <span class="token keyword">type</span>
+            <span class="token object">group</span> <span class="token punctuation">{</span>
+              <span class="token property">code</span>
+              <span class="token property">labels</span>
+              <span class="token property">sortOrder</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    <input type="radio" id="group-66-tab-1" name="group-66">
+    <pre><code class="language-json">
+    <span class="token punctuation">{</span>
+      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"products"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"items"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"002844f9-a470-42e2-8268-ddfd8f646593"</span><span class="token punctuation">,</span>
+              <span class="token property">"variationValues"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+              <span class="token property">"parent"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+              <span class="token property">"attributes"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"condition"</span><span class="token punctuation">,</span>
+                  <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                      <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Condition"</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">93</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"pim_catalog_simpleselect"</span><span class="token punctuation">,</span>
+                  <span class="token property">"group"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"specifications"</span><span class="token punctuation">,</span>
+                    <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                      <span class="token punctuation">{</span>
+                        <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                        <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Specifications"</span>
+                      <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">10</span>
+                  <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"returnable"</span><span class="token punctuation">,</span>
+                  <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                      <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Returnable"</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">29</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"pim_catalog_simpleselect"</span><span class="token punctuation">,</span>
+                  <span class="token property">"group"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"warranty"</span><span class="token punctuation">,</span>
+                    <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                      <span class="token punctuation">{</span>
+                        <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                        <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Warranty"</span>
+                      <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">12</span>
+                  <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"description"</span><span class="token punctuation">,</span>
+                  <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                      <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Description"</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"pim_catalog_textarea"</span><span class="token punctuation">,</span>
+                  <span class="token property">"group"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"marketing"</span><span class="token punctuation">,</span>
+                    <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                      <span class="token punctuation">{</span>
+                        <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                        <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Marketing"</span>
+                      <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">2</span>
+                  <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+              <span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token property">"categories"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"erp_roofing_nailers"</span><span class="token punctuation">,</span>
+                  <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                      <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Roofing Nailers"</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"master_tools_air_compressors_tools_accessories_nail_guns_roofing_nailers"</span><span class="token punctuation">,</span>
+                  <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                      <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Roofing Nailers"</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"print_roofing_nailers"</span><span class="token punctuation">,</span>
+                  <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                      <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Roofing Nailers"</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"ridgid"</span><span class="token punctuation">,</span>
+                  <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                      <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"RIDGID"</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+              <span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token property">"family"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"roofing_nailers"</span><span class="token punctuation">,</span>
+                <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                  <span class="token punctuation">{</span>
+                    <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                    <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Roofing Nailers"</span>
+                  <span class="token punctuation">}</span>
+                <span class="token punctuation">]</span>
+              <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    </div><a class="anchor" id="product-with-assets-and-reference-entity-attributes"></a><h2 title-id="product-with-assets-and-reference-entity-attributes"><a class="markdownIt-Anchor" href="#product-with-assets-and-reference-entity-attributes">#</a>Product with assets and reference entity attributes</h2>
+    <p>When fetching product, you can automatically load:</p>
+    <ul>
+    <li>The linked <code>reference entity</code> or <code>asset family</code> linked to a product by requesting the object <code>relatedObject</code></li>
+    <li>The linked <code>reference entity records</code> or <code>asset</code> linked to a product by adding the parameter <code>withRelatedObjectValues: true</code> when requesting the <code>values</code></li>
+    </ul>
+    <div class="alert alert-info"><p>To make the response more readable, we load only two attributes <code>packshot</code> and <code>badge</code></p>
+    </div>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-91" checked><label for="group-91-tab-0" onclick="this.previousElementSibling.click()"> Query</label></li>
+    <li><input type="radio" name="label-group-91"><label for="group-91-tab-1" onclick="this.previousElementSibling.click()"> Response</label></li>
+    </ul>
+    <input type="radio" id="group-91-tab-0" name="group-91" checked>
+    <pre><code class="language-graphql">
+    <span class="token punctuation">{</span>
+      <span class="token property-query">products</span><span class="token punctuation">(</span>
+        <span class="token attr-name">attributesToLoad</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"packshot"</span><span class="token punctuation">,</span> <span class="token string">"badge"</span><span class="token punctuation">]</span>
+        <span class="token attr-name">locales</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"en_US"</span><span class="token punctuation">]</span>
+        <span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token number">1</span>
+      <span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token object">items</span> <span class="token punctuation">{</span>
+          <span class="token property">uuid</span>
+          <span class="token property">updated</span>
+          <span class="token object">attributes</span> <span class="token punctuation">{</span>
+            <span class="token property">code</span>
+            <span class="token keyword">type</span>
+            <span class="token object">relatedObject</span> <span class="token punctuation">{</span>
+              <span class="token property">code</span>
+              <span class="token property">labels</span>
+            <span class="token punctuation">}</span>
+            <span class="token property-query">values</span><span class="token punctuation">(</span><span class="token attr-name">withRelatedObjectValues</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    <input type="radio" id="group-91-tab-1" name="group-91">
+    <pre><code class="language-json"><span class="token punctuation">{</span>
+      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"products"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"items"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"uuid"</span><span class="token operator">:</span> <span class="token string">"002844f9-a470-42e2-8268-ddfd8f646593"</span><span class="token punctuation">,</span>
+              <span class="token property">"updated"</span><span class="token operator">:</span> <span class="token string">"2024-04-11T14:30:04+00:00"</span><span class="token punctuation">,</span>
+              <span class="token property">"attributes"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"badge"</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"fegmo_reference_entity_collection"</span><span class="token punctuation">,</span>
+                  <span class="token property">"relatedObject"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"badges"</span><span class="token punctuation">,</span>
+                    <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                      <span class="token punctuation">{</span>
+                        <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                        <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Badges"</span>
+                      <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                  <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                        <span class="token punctuation">{</span>
+                          <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"best_seller"</span><span class="token punctuation">,</span>
+                          <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                            <span class="token property">"label"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"Best Seller"</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            <span class="token property">"image"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"8/2/1/7/82178657041bde23d152365b37028f8246aed25d_bestseller.png"</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span>
+                          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                          <span class="token property">"created"</span><span class="token operator">:</span> <span class="token string">"2023-10-10T06:41:49+00:00"</span><span class="token punctuation">,</span>
+                          <span class="token property">"updated"</span><span class="token operator">:</span> <span class="token string">"2024-03-08T15:42:24+00:00"</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token punctuation">{</span>
+                          <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"sale"</span><span class="token punctuation">,</span>
+                          <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                            <span class="token property">"label"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"Sale"</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            <span class="token property">"image"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"5/c/4/3/5c431f4422c94ecd2e4bc63923c0843cf4c7519a_sale.png"</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span>
+                          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                          <span class="token property">"created"</span><span class="token operator">:</span> <span class="token string">"2023-10-10T06:41:50+00:00"</span><span class="token punctuation">,</span>
+                          <span class="token property">"updated"</span><span class="token operator">:</span> <span class="token string">"2023-10-10T06:41:50+00:00"</span>
+                        <span class="token punctuation">}</span>
+                      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                      <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"packshot"</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"pim_catalog_asset_collection"</span><span class="token punctuation">,</span>
+                  <span class="token property">"relatedObject"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"products"</span><span class="token punctuation">,</span>
+                    <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                      <span class="token punctuation">{</span>
+                        <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                        <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Product Media"</span>
+                      <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span>
+                  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                  <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                        <span class="token punctuation">{</span>
+                          <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"images_image_2_1583540357_1370_2_jpg_products"</span><span class="token punctuation">,</span>
+                          <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                            <span class="token property">"label"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"RIDGID 15-Degree 1-3/4 in. Coil Roofing Nailer"</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            <span class="token property">"media"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"a/f/0/0/af0078e036905c5f16f35ceb36000d5f2b6d7e8c_1583540357_1370__2.jpg"</span><span class="token punctuation">,</span>
+                                <span class="token property">"links"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                                  <span class="token property">"shareLink"</span><span class="token operator">:</span> <span class="token string">"https://pim-url/products/images_image_2_1583540357_1370_2_jpg_products.jpg"</span>
+                                <span class="token punctuation">}</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            <span class="token property">"thumbnail"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"7/d/6/c/7d6ccf8e2e972bc7c43ad6e4a3cd336324aace8f_1583540357_1370__2_thumbnail.png"</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            <span class="token property">"ecommerce"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"b/0/c/5/b0c5fca0b3430ce6edabce5b94f769bda623a762_1583540357_1370__2_ecomm.png"</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            <span class="token property">"high_res"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"b/7/f/2/b7f25b32cd00bca45b2f4f01e5baa7faca723f86_1583540357_1370__2_highres.png"</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            <span class="token property">"b2b_thumbnail"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"5/5/f/1/55f1f31633bd23cf24108065cd861242e1fe04fb_1583540357_1370__2_b2b.png"</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            <span class="token property">"test_media_file"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"4/1/7/1/4171ed2c8551e4b6a0c7e15a41542e04de1204f6_Domain_Driven_Aggregate_Design___Training.pdf"</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span>
+                          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                          <span class="token property">"created"</span><span class="token operator">:</span> <span class="token string">"2023-10-10T07:04:12+00:00"</span><span class="token punctuation">,</span>
+                          <span class="token property">"updated"</span><span class="token operator">:</span> <span class="token string">"2024-04-17T13:26:51+00:00"</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                        <span class="token punctuation">{</span>
+                          <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"images_image_3_1583536696_1007_3_jpg_products"</span><span class="token punctuation">,</span>
+                          <span class="token property">"values"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                            <span class="token property">"label"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"Dickies Nylon Work Suspenders"</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                            <span class="token property">"media"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                              <span class="token punctuation">{</span>
+                                <span class="token property">"locale"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span><span class="token punctuation">,</span>
+                                <span class="token property">"data"</span><span class="token operator">:</span> <span class="token string">"4/2/c/0/42c0a1a53e3aae31716fcc41b769b6ba62ada25f_1583536696_1007__3.jpg"</span><span class="token punctuation">,</span>
+                                <span class="token property">"links"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                                  <span class="token property">"shareLink"</span><span class="token operator">:</span> <span class="token string">"https://pim-url/products/images_image_3_1583536696_1007_3_jpg_products.jpg"</span>
+                                <span class="token punctuation">}</span>
+                              <span class="token punctuation">}</span>
+                            <span class="token punctuation">]</span>
+                          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                          <span class="token property">"created"</span><span class="token operator">:</span> <span class="token string">"2023-10-10T07:04:36+00:00"</span><span class="token punctuation">,</span>
+                          <span class="token property">"updated"</span><span class="token operator">:</span> <span class="token string">"2023-10-10T07:04:36+00:00"</span>
+                        <span class="token punctuation">}</span>
+                      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                      <span class="token property">"channel"</span><span class="token operator">:</span> <span class="token null keyword">null</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span>
+                <span class="token punctuation">}</span>
+              <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    </div><a class="anchor" id="families-and-their-belonging-attributes-informations"></a><h2 title-id="families-and-their-belonging-attributes-informations"><a class="markdownIt-Anchor" href="#families-and-their-belonging-attributes-informations">#</a>Families and their belonging attributes informations</h2>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-96" checked><label for="group-96-tab-0" onclick="this.previousElementSibling.click()"> Query</label></li>
+    <li><input type="radio" name="label-group-96"><label for="group-96-tab-1" onclick="this.previousElementSibling.click()"> Response</label></li>
+    </ul>
+    <input type="radio" id="group-96-tab-0" name="group-96" checked>
+    <pre><code class="language-graphql"><span class="token punctuation">{</span>
+      <span class="token property-query">families</span><span class="token punctuation">(</span>
+        <span class="token attr-name">locales</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"en_US"</span><span class="token punctuation">]</span>
+        <span class="token attr-name">limit</span><span class="token punctuation">:</span> <span class="token number">1</span>
+      <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token object">links</span> <span class="token punctuation">{</span>
+          <span class="token property">next</span>
+        <span class="token punctuation">}</span>
+        <span class="token object">items</span> <span class="token punctuation">{</span>
+          <span class="token property">code</span>
+          <span class="token property">labels</span>
+          <span class="token property">attributeAsLabel</span>
+          <span class="token property">attributeAsImage</span>
+          <span class="token object">attributes</span> <span class="token punctuation">{</span>
+            <span class="token property">code</span>
+            <span class="token property">labels</span>
+            <span class="token keyword">type</span>
+            <span class="token property">sortOrder</span>
+            <span class="token object">group</span> <span class="token punctuation">{</span>
+              <span class="token property">code</span>
+              <span class="token property">labels</span>
+              <span class="token property">sortOrder</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    <input type="radio" id="group-96-tab-1" name="group-96">
+    <pre><code class="language-json">
+    <span class="token punctuation">{</span>
+      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"families"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"links"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">"next"</span><span class="token operator">:</span> <span class="token string">"2"</span>
+          <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          <span class="token property">"items"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"air_purifiers"</span><span class="token punctuation">,</span>
+              <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                  <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Air Purifiers"</span>
+                <span class="token punctuation">}</span>
+              <span class="token punctuation">]</span><span class="token punctuation">,</span>
+              <span class="token property">"attributeAsLabel"</span><span class="token operator">:</span> <span class="token string">"name"</span><span class="token punctuation">,</span>
+              <span class="token property">"attributeAsImage"</span><span class="token operator">:</span> <span class="token string">"packshot"</span><span class="token punctuation">,</span>
+              <span class="token property">"attributes"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"badge"</span><span class="token punctuation">,</span>
+                  <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                      <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Badge(s)"</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"fegmo_reference_entity_collection"</span><span class="token punctuation">,</span>
+                  <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">9</span><span class="token punctuation">,</span>
+                  <span class="token property">"group"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"ecommerce"</span><span class="token punctuation">,</span>
+                    <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                      <span class="token punctuation">{</span>
+                        <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                        <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Ecommerce"</span>
+                      <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">5</span>
+                  <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"best_seller"</span><span class="token punctuation">,</span>
+                  <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                      <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Best Seller"</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"pim_catalog_boolean"</span><span class="token punctuation">,</span>
+                  <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+                  <span class="token property">"group"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"ecommerce"</span><span class="token punctuation">,</span>
+                    <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                      <span class="token punctuation">{</span>
+                        <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                        <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Ecommerce"</span>
+                      <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">5</span>
+                  <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                  <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"brand"</span><span class="token punctuation">,</span>
+                  <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                    <span class="token punctuation">{</span>
+                      <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                      <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"Brand"</span>
+                    <span class="token punctuation">}</span>
+                  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"fegmo_reference_entity"</span><span class="token punctuation">,</span>
+                  <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+                  <span class="token property">"group"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+                    <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"erp"</span><span class="token punctuation">,</span>
+                    <span class="token property">"labels"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+                      <span class="token punctuation">{</span>
+                        <span class="token property">"localeCode"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+                        <span class="token property">"localeValue"</span><span class="token operator">:</span> <span class="token string">"ERP"</span>
+                      <span class="token punctuation">}</span>
+                    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token property">"sortOrder"</span><span class="token operator">:</span> <span class="token number">1</span>
+                  <span class="token punctuation">}</span>
+                <span class="token punctuation">}</span>
+              <span class="token punctuation">]</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    </div><a class="anchor" id="enabled-locales"></a><h2 title-id="enabled-locales"><a class="markdownIt-Anchor" href="#enabled-locales">#</a>Enabled locales</h2>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-101" checked><label for="group-101-tab-0" onclick="this.previousElementSibling.click()"> Query</label></li>
+    <li><input type="radio" name="label-group-101"><label for="group-101-tab-1" onclick="this.previousElementSibling.click()"> Response</label></li>
+    </ul>
+    <input type="radio" id="group-101-tab-0" name="group-101" checked>
+    <pre><code class="language-graphql">
+    <span class="token punctuation">{</span>
+      <span class="token property-query">locales</span><span class="token punctuation">(</span><span class="token attr-name">enabled</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token object">items</span> <span class="token punctuation">{</span>
+          <span class="token property">code</span>
+          <span class="token property">enabled</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    <input type="radio" id="group-101-tab-1" name="group-101">
+    <pre><code class="language-json">
+    <span class="token punctuation">{</span>
+      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"locales"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"items"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"de_DE"</span><span class="token punctuation">,</span>
+              <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"en_GB"</span><span class="token punctuation">,</span>
+              <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"en_US"</span><span class="token punctuation">,</span>
+              <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"fr_FR"</span><span class="token punctuation">,</span>
+              <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"ja_JP"</span><span class="token punctuation">,</span>
+              <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    </div><a class="anchor" id="enabled-currencies"></a><h2 title-id="enabled-currencies"><a class="markdownIt-Anchor" href="#enabled-currencies">#</a>Enabled currencies</h2>
+    <div class="code-tabs">
+    <ul>
+    <li><input type="radio" name="label-group-106" checked><label for="group-106-tab-0" onclick="this.previousElementSibling.click()"> Query</label></li>
+    <li><input type="radio" name="label-group-106"><label for="group-106-tab-1" onclick="this.previousElementSibling.click()"> Response</label></li>
+    </ul>
+    <input type="radio" id="group-106-tab-0" name="group-106" checked>
+    <pre><code class="language-graphql">
+    <span class="token punctuation">{</span>
+      <span class="token property-query">currencies</span><span class="token punctuation">(</span><span class="token attr-name">enabled</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token object">items</span> <span class="token punctuation">{</span>
+          <span class="token property">code</span>
+          <span class="token property">enabled</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    <input type="radio" id="group-106-tab-1" name="group-106">
+    <pre><code class="language-json">
+    <span class="token punctuation">{</span>
+      <span class="token property">"data"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"currencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"items"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"EUR"</span><span class="token punctuation">,</span>
+              <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"GBP"</span><span class="token punctuation">,</span>
+              <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+              <span class="token property">"code"</span><span class="token operator">:</span> <span class="token string">"USD"</span><span class="token punctuation">,</span>
+              <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    </code></pre>
+    </div><div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/graphql/integration.html"><div class="panel-body"><div class="panel-btn-big">And now, let's discover how to integrate GraphQL into your project GraphQL </div><p class="text-center">Next</p></div></a></div></div></div>
+    </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                $('.code-tabs li:first-child').addClass('active');
+            });
+            function copySnippetContent(event){
+                const copyToClipboard = $(this);
+                copyToClipboard.text("Copied!");
+                copyToClipboard.addClass("copied");
+                setTimeout(function() {
+                    copyToClipboard.removeClass('copied');
+                    copyToClipboard.text("Copy");
+                }, 3000);
+    
+                const parentTextContent = event.target.parentElement.firstChild.innerText;
+                navigator.clipboard.writeText(parentTextContent);
+            }
+            $( "pre" ).append( `<span class="copy-to-clipboard-button">Copy</span>`);
+            $('.copy-to-clipboard-button').click(copySnippetContent);
+            $('.code-tabs li').click(function(){
+                $(this).parent().children().removeClass('active');
+                $(this).addClass('active');
+            });
+        </script>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

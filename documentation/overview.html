@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The REST API basics | Fegmo APIs</title>
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-9">
+                    <h1>The REST API basics</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="navbar" class="col-sm-3 hidden-xs sticky"><nav role="tablist" id="navbar-nav"><ul class="nav nav-stacked" style="counter-increment: step-counter;"><p class="pre-nav">Summary</p><li><a href="/documentation/why-the-api.html">Why the REST API?</a></li><li class="active"> <a href="#">Overview</a><p><ul class="nav">
+    <li><a href="#root-of-the-rest-api">Root of the REST API</a></li>
+    <li><a href="#available-http-verbs">Available HTTP Verbs</a></li>
+    <li><a href="#data-format">Data format</a>
+    <ul>
+    <li><a href="#format-headers">Format headers</a></li>
+    </ul>
+    </li>
+    <li><a href="#scope-of-the-rest-api">Scope of the REST API</a></li>
+    <li><a href="#list-of-available-endpoints">List of available endpoints</a></li>
+    <li><a href="#fair-usage-protection">Fair-usage protection</a>
+    <ul>
+    <li><a href="#maximum-concurrent-api-calls">Maximum Concurrent API Calls</a></li>
+    <li><a href="#rate-limits-within-a-specific-amount-of-time">Rate Limits Within a Specific Amount of Time</a></li>
+    <li><a href="#handling-over-usage">Handling Over-Usage</a></li>
+    </ul>
+    </li>
+    <li><a href="#introducing-the-rest-api-reference">Introducing the REST API reference</a></li>
+    </ul>
+    </p>
+    </li><li><a href="/documentation/authentication.html">Authentication</a></li><li><a href="/documentation/permissions.html">Permissions</a></li><li><a href="/documentation/responses.html">Response codes</a></li><li><a href="/documentation/pagination.html">Pagination</a></li><li><a href="/documentation/update.html">Update behavior</a></li><li><a href="/documentation/filter.html">Filters</a></li><li><a href="/documentation/troubleshooting.html">Troubleshooting guide</a></li></ul></nav></div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-8"><a class="anchor" id="overview"></a><h1 title-id="overview"><a class="markdownIt-Anchor" href="#overview">#</a>Overview</h1>
+    <p><em>All the essential things you need to know.</em></p>
+    <a class="anchor" id="root-of-the-rest-api"></a><h2 title-id="root-of-the-rest-api"><a class="markdownIt-Anchor" href="#root-of-the-rest-api">#</a>Root of the REST API</h2>
+    <p>The REST API offers a set of endpoints that can be reached via the following root URI.</p>
+    <pre class="hljs"><code><span class="hljs-attribute">https://mysandbox.demo.cloud.fegmo.com/api/rest/v1
+    </span></code></pre>
+    <p><code>https://mysandbox.demo.cloud.fegmo.com</code> is the host of the PIM you are trying to request via the REST API.</p>
+    <p><code>v1</code> means that you want to use the first (and only) version of the REST API. All URIs have to explicitly request this version. If you try to request another version of the REST API, you will receive a beautiful 404 error since there is only one version of the REST API for now.</p>
+    <a class="anchor" id="available-http-verbs"></a><h2 title-id="available-http-verbs"><a class="markdownIt-Anchor" href="#available-http-verbs">#</a>Available HTTP Verbs</h2>
+    <p>In the first version of the REST API, we use 4 HTTP verbs. They are the following.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Verb</th>
+    <th>Use</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>GET</td>
+    <td>Fetch a resource or a collection of resources</td>
+    </tr>
+    <tr>
+    <td>POST</td>
+    <td>Add a new resource</td>
+    </tr>
+    <tr>
+    <td>PATCH</td>
+    <td>Partially update an existing resource or a collection of resources. If a resource does not exist, it is created</td>
+    </tr>
+    <tr>
+    <td>DELETE</td>
+    <td>Delete an existing resource</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="data-format"></a><h2 title-id="data-format"><a class="markdownIt-Anchor" href="#data-format">#</a>Data format</h2>
+    <p><a href="http://www.json.org/">JSON</a> is the only format supported by the REST API for now.</p>
+    <p>This means that data extracted thanks to the REST API will be in JSON format. And if you need to create or update data using the REST API, you will also need to use the JSON format.</p>
+    <p>For each entity, we have defined a standard format that is completely detailed in the <a href="/concepts/introduction.html">Concepts &amp; resources</a> section.</p>
+    <a class="anchor" id="format-headers"></a><h3 title-id="format-headers"><a class="markdownIt-Anchor" href="#format-headers">#</a>Format headers</h3>
+    <p>When creating and updating data via the REST API, you will need to explicitly tell the REST API that you are providing JSON content by using a <code>Content-type</code> header set to <code>application/json</code>.</p>
+    <a class="anchor" id="example"></a><h4 title-id="example"><a class="markdownIt-Anchor" href="#example">#</a>Example</h4>
+    <pre class="hljs"><code>curl -X PATCH /api/rest/v1/categories/mycategory \
+      -H <span class="hljs-string">"Content-type: application/json"</span> \
+      <span class="hljs-_">-d</span> <span class="hljs-string">'{
+            "labels": {
+              "en_US": "My amazing category"
+            }
+        }'</span>
+    </code></pre>
+    <div class="alert alert-warning"><p>This header is mandatory. If you forget it, you will get a 415 error with this message.</p>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">415</span> Unsupported media type
+    
+    <span class="json">{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-number">415</span>,
+      <span class="hljs-attr">"message"</span>:<span class="hljs-string">"The ‘Content-type’ header is missing. ‘application/json’ has to specified as value."</span>
+    }
+    </span></code></pre>
+    <p>If it is set to any other value, you will also get a 415 error with this message.</p>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">415</span> Unsupported Media Type
+    
+    <span class="json">{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-number">415</span>,
+      <span class="hljs-attr">"message"</span>: <span class="hljs-string">"‘xxx’ in ‘Content-type’ header is not valid.  Only ‘application/json’ is allowed."</span>
+    }
+    </span></code></pre>
+    </div>
+    <p>When getting data from the PIM through the REST API, you can use an <code>Accept</code> header set to <code>application/json</code> to specify that you expect the REST API to return data in JSON format.</p>
+    <a class="anchor" id="example-2"></a><h4 title-id="example-2"><a class="markdownIt-Anchor" href="#example-2">#</a>Example</h4>
+    <pre class="hljs"><code>curl /api/rest/v1
+      -H <span class="hljs-string">"Accept: application/json"</span>
+    </code></pre>
+    <div class="alert alert-info"><p>This header is not mandatory. If you forget it, you will still get a 200 response. However, if it is set to any other value, you will receive a 406 with this error message.</p>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">406</span> Not Acceptable
+    
+    <span class="json">{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-number">406</span>,
+      <span class="hljs-attr">"message"</span>: <span class="hljs-string">"‘xxx’ in ‘Accept‘ header is not valid. Only ‘application/json‘ is allowed."</span>
+    }
+    </span></code></pre>
+    </div>
+    <a class="anchor" id="scope-of-the-rest-api"></a><h2 title-id="scope-of-the-rest-api"><a class="markdownIt-Anchor" href="#scope-of-the-rest-api">#</a>Scope of the REST API</h2>
+    <p>For each new PIM versions, we add more and more resources to our REST API scope.<br />
+    For a detailed presentation as well as the format of each of these resources, take a look to the <a href="/concepts/introduction.html">Concepts &amp; resources</a> documentation.</p>
+    <p>Also, you will find the complete reference of the endpoints available for each of these resources in the <a href="/api-reference-index.html">REST API Reference</a>. You can also get the list of these endpoints by request, see <a href="/documentation/overview.html#list-of-available-endpoints">List of available endpoints</a>.</p>
+    <a class="anchor" id="list-of-available-endpoints"></a><h2 title-id="list-of-available-endpoints"><a class="markdownIt-Anchor" href="#list-of-available-endpoints">#</a>List of available endpoints</h2>
+    <p>By requesting the root URI of the REST API, you get the list of all available endpoints.</p>
+    <a class="anchor" id="example-3"></a><h4 title-id="example-3"><a class="markdownIt-Anchor" href="#example-3">#</a>Example</h4>
+    <p><strong>Request</strong></p>
+    <pre class="hljs"><code>curl /api/rest/v1
+      -H <span class="hljs-string">"Accept: application/json"</span>
+    </code></pre>
+    <p><strong>Response</strong></p>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">200</span> OK
+    
+    <span class="json">{
+      <span class="hljs-attr">"host"</span>: <span class="hljs-string">"https://mysandbox.demo.cloud.fegmo.com"</span>,
+      <span class="hljs-attr">"authentication"</span>: {
+        <span class="hljs-attr">"fos_oauth_server_token"</span>: {
+          <span class="hljs-attr">"route"</span>: <span class="hljs-string">"/api/oauth/v1/token"</span>,
+          <span class="hljs-attr">"methods"</span>: [<span class="hljs-string">"POST"</span>]
+        }
+      },
+      <span class="hljs-attr">"routes"</span>: {
+        <span class="hljs-attr">"pim_api_family_list"</span>: {
+          <span class="hljs-attr">"route"</span>: <span class="hljs-string">"/api/rest/v1/families"</span>,
+          <span class="hljs-attr">"methods"</span>: [<span class="hljs-string">"GET"</span>]
+        },
+        <span class="hljs-attr">"pim_api_family_get"</span>: {
+          <span class="hljs-attr">"route"</span>: <span class="hljs-string">"/api/rest/v1/families/{code}"</span>,
+          <span class="hljs-attr">"methods"</span>: [<span class="hljs-string">"GET"</span>]
+        },
+        <span class="hljs-attr">"pim_api_family_create"</span>: {
+          <span class="hljs-attr">"route"</span>: <span class="hljs-string">"/api/rest/v1/families"</span>,
+          <span class="hljs-attr">"methods"</span>: [<span class="hljs-string">"POST"</span>]
+        },
+        <span class="hljs-attr">"pim_api_family_partial_update"</span>: {
+          <span class="hljs-attr">"route"</span>: <span class="hljs-string">"/api/rest/v1/families/{code}"</span>,
+          <span class="hljs-attr">"methods"</span>: [<span class="hljs-string">"PATCH"</span>]
+        }, 
+        <span class="hljs-attr">"pim_api_product_delete"</span>: {
+          <span class="hljs-attr">"route"</span>: <span class="hljs-string">"/api/rest/v1/products-uuid/{uuid}"</span>,
+          <span class="hljs-attr">"methods"</span>: [<span class="hljs-string">"DELETE"</span>]
+        }
+      }
+    }
+    </span></code></pre>
+    <div class="alert alert-info"><p>You do not need to be authenticated to access this route.</p>
+    </div>
+    <a class="anchor" id="fair-usage-protection"></a><h2 title-id="fair-usage-protection"><a class="markdownIt-Anchor" href="#fair-usage-protection">#</a>Fair-usage protection</h2>
+    <p>Our API facilitates the integration of Fegmo PIM with external systems. To maintain optimal user experience and platform stability, our platform employs various protection mechanisms to prevent over-usage.
+    Please adhere to the following usage guidelines:</p>
+    <a class="anchor" id="maximum-concurrent-api-calls"></a><h3 title-id="maximum-concurrent-api-calls"><a class="markdownIt-Anchor" href="#maximum-concurrent-api-calls">#</a>Maximum Concurrent API Calls</h3>
+    <ul>
+    <li>Per PIM Connection: Up to 4 concurrent API calls are allowed for each individual PIM connection.</li>
+    <li>Per PIM Instance: Up to 10 concurrent API calls are allowed across the entire PIM instance.</li>
+    </ul>
+    <a class="anchor" id="rate-limits-within-a-specific-amount-of-time"></a><h3 title-id="rate-limits-within-a-specific-amount-of-time"><a class="markdownIt-Anchor" href="#rate-limits-within-a-specific-amount-of-time">#</a>Rate Limits Within a Specific Amount of Time</h3>
+    <ul>
+    <li>General API Requests: up to 100 API requests per second per PIM instance.</li>
+    <li><a href="https://api.fegmo.com/api-reference.html#patch_attributes__attribute_code__options">updating &amp; creating attribute options</a>:  up to 3 API requests per second per PIM instance.</li>
+    </ul>
+    <a class="anchor" id="handling-over-usage"></a><h3 title-id="handling-over-usage"><a class="markdownIt-Anchor" href="#handling-over-usage">#</a>Handling Over-Usage</h3>
+    <p>If your API usage exceeds these limits, the platform’s protection mechanisms may be triggered, resulting in blocked requests and  HTTP status code 429 responses.
+    As a REST API consumer, you have to keep in mind that your integration with Fegmo PIM should anticipate this throttling and should be able to handle failures.</p>
+    <p>Bursts are allowed, but continuous over-usage will trigger the protection sooner.</p>
+    <p>To effectively manage and mitigate over-usage, we recommend implementing the following strategies:</p>
+    <p><strong>Check for &quot;Retry-After&quot;</strong></p>
+    <p>If the HTTP 429 response includes a &quot;Retry-After&quot; header, wait the specified number of seconds before retrying.</p>
+    <p><strong>Implement Exponential Backoff</strong></p>
+    <p>Use increasing delays between retry attempts (e.g., 10s, 30s, 60s) to reduce the load on the API.</p>
+    <p><strong>Use Batch Endpoints</strong></p>
+    <p>Combine multiple requests into a single API call using batch endpoints to minimize the number of calls.</p>
+    <p><strong>Implement a Cache Layer</strong></p>
+    <p>Cache frequently accessed data on the client side to reduce repetitive API requests and improve response times.</p>
+    <a class="anchor" id="introducing-the-rest-api-reference"></a><h2 title-id="introducing-the-rest-api-reference"><a class="markdownIt-Anchor" href="#introducing-the-rest-api-reference">#</a>Introducing the REST API reference</h2>
+    <p><em>You want to dig deeper and know every inch of the REST API?</em></p>
+    <p>We have crafted a complete reference of our REST API. So feel free to browse it.</p>
+    <p>There, you will find for each available endpoint, a description of what it does, what are the expected parameters in the request and what are the different responses you will be able to get, being successes or errors.</p>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html"><div class="panel-body"><div class="panel-btn-big">I wanna take a look at the REST API reference! </div><p class="text-center">Let's go!</p></div></a></div></div></div>
+    </div>
+            </div>
+        </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

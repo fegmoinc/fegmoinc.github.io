@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>REST API reference | Fegmo APIs</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1 class="rest">REST API reference cheat sheet</h1>
+                </div>
+                <div class="col-xs-12 col-sm-9">
+                    <p><em>All our available endpoints. Just for you.</em></p>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="dropdown pull-right">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            Your PIM version: <strong>1.7</strong>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li class="dropdown-title">Choose your PIM version</li>
+                            <li><a href="/api-reference-index-17.html">1.7</a></li>
+                            <li><a href="/api-reference-index-20.html">2.0</a></li>
+                            <li><a href="/api-reference-index-21.html">2.1</a></li>
+                            <li><a href="/api-reference-index-22.html">2.2</a></li>
+                            <li><a href="/api-reference-index-23.html">2.3</a></li>
+                            <li><a href="/api-reference-index-30.html">3.0</a></li>
+                            <li><a href="/api-reference-index-31.html">3.1</a></li>
+                            <li><a href="/api-reference-index-32.html">3.2</a></li>
+                            <li><a href="/api-reference-index-40.html">4.0</a></li>
+                            <li><a href="/api-reference-index-50.html">5.0</a></li>
+                            <li><a href="/api-reference-index-60.html">6.0</a></li>
+                            <li><a href="/api-reference-index-70.html">7.0</a></li>
+                            <li><a href="/api-reference-index.html">SaaS</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row rest">
+                <div id="navbar" class="col-sm-3 hidden-xs">
+                    <nav role="tablist" data-spy="affix" data-offset-top="80">
+                        <ul class="nav nav-stacked">
+                            <p class="pre-nav rest"> <img class="pull-left" style="margin-right: 5px; height: 27px;" src="/img/icons/icon--rest.svg"> REST API endpoints</p>
+                                <li class="main-nav">
+                                    <a href="#Products">Products</a>
+                                    <ul class="nav">
+                                            <li class="sub-nav">
+                                                <a href="#Productidentifier">Product [identifier]</a>
+                                            </li>
+                                            <li class="sub-nav">
+                                                <a href="#Productmediafile">Product media file</a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li class="main-nav">
+                                    <a href="#Catalogstructure">Catalog structure</a>
+                                    <ul class="nav">
+                                            <li class="sub-nav">
+                                                <a href="#Family">Family</a>
+                                            </li>
+                                            <li class="sub-nav">
+                                                <a href="#Attribute">Attribute</a>
+                                            </li>
+                                            <li class="sub-nav">
+                                                <a href="#Attributeoption">Attribute option</a>
+                                            </li>
+                                            <li class="sub-nav">
+                                                <a href="#Category">Category</a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li class="main-nav">
+                                    <a href="#Targetmarketsettings">Target market settings</a>
+                                    <ul class="nav">
+                                            <li class="sub-nav">
+                                                <a href="#Channel">Channel</a>
+                                            </li>
+                                            <li class="sub-nav">
+                                                <a href="#Locale">Locale</a>
+                                            </li>
+                                    </ul>
+                                </li>
+                                <li class="main-nav">
+                                    <a href="#Utilities">Utilities</a>
+                                    <ul class="nav">
+                                            <li class="sub-nav">
+                                                <a href="#Overview">Overview</a>
+                                            </li>
+                                            <li class="sub-nav">
+                                                <a href="#Authentication">Authentication</a>
+                                            </li>
+                                    </ul>
+                                </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-sm-9">
+                        <a class="anchor" id="Products"></a>
+                        <h2>Products</h2>
+                            <a class="anchor" id="Productidentifier"></a>
+                            <h3 class="picto">
+                                <img src="img/illustrations/illus--Productidentifier.svg"/>
+                                Product [identifier]
+                            </h3>
+                                <a class="anchor" id="Products"></a>
+                                <div class="alert alert-warning">
+                                    <p>This API provides two endpoints for interacting with products:</p>
+                                    <ul>
+                                        <li><b><a href="/api-reference-index.html#Productuuid">Product (UUID):</a></b> We strongly recommend using this endpoint for its reliability and flexibility. UUIDs, or Universally Unique Identifiers, are guaranteed to be unique and never change, even if other product identifiers like SKUs are modified. This ensures consistent product identification regardless of future changes. Additionally, UUIDs allow interaction with products that lack a traditional identifier.</li>
+                                        <li><b><a href="/api-reference-index.html#Productidentifier">Product (Identifier):</a></b> This endpoint is useful when you already have a product identifier within your systems. This identifier, which could be a SKU or internal code, can be used to directly interact with the corresponding product in our API. This simplifies integration for workflows that rely on existing product identification methods.</li>
+                                    </ul>
+                                </div>
+                            <div class="list-group">
+                                    <a class="list-group-item" href="api-reference-17.html#get_products">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get list of products</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/products</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#post_products">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Create a new product</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-post">post</span>
+                                                    <span class="text-api-url">/api/rest/v1/products</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#patch_products">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Update/create several products</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-patch">patch</span>
+                                                    <span class="text-api-url">/api/rest/v1/products</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#get_products__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get a product</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/products/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#patch_products__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Update/create a product</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-patch">patch</span>
+                                                    <span class="text-api-url">/api/rest/v1/products/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#delete_products__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Delete a product</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-delete">delete</span>
+                                                    <span class="text-api-url">/api/rest/v1/products/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                            </div>
+                            <a class="anchor" id="Productmediafile"></a>
+                            <h3 class="picto">
+                                <img src="img/illustrations/illus--Productmediafile.svg"/>
+                                Product media file
+                            </h3>
+                            <div class="list-group">
+                                    <a class="list-group-item" href="api-reference-17.html#get_media_files">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get a list of product media files</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/media-files</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#post_media_files">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Create a new product media file</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-post">post</span>
+                                                    <span class="text-api-url">/api/rest/v1/media-files</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#get_media_files__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get a product media file</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/media-files/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#get_media_files__code__download">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Download a product media file</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/media-files/{code}/download</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                            </div>
+                        <a class="anchor" id="Catalogstructure"></a>
+                        <h2>Catalog structure</h2>
+                            <a class="anchor" id="Family"></a>
+                            <h3 class="picto">
+                                <img src="img/illustrations/illus--Family.svg"/>
+                                Family
+                            </h3>
+                            <div class="list-group">
+                                    <a class="list-group-item" href="api-reference-17.html#get_families">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get list of families</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/families</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#post_families">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Create a new family</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-post">post</span>
+                                                    <span class="text-api-url">/api/rest/v1/families</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#patch_families">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Update/create several families</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-patch">patch</span>
+                                                    <span class="text-api-url">/api/rest/v1/families</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#get_families__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get a family</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/families/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#patch_families__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Update/create a family</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-patch">patch</span>
+                                                    <span class="text-api-url">/api/rest/v1/families/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                            </div>
+                            <a class="anchor" id="Attribute"></a>
+                            <h3 class="picto">
+                                <img src="img/illustrations/illus--Attribute.svg"/>
+                                Attribute
+                            </h3>
+                            <div class="list-group">
+                                    <a class="list-group-item" href="api-reference-17.html#get_attributes">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get list of attributes</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/attributes</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#post_attributes">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Create a new attribute</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-post">post</span>
+                                                    <span class="text-api-url">/api/rest/v1/attributes</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#patch_attributes">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Update/create several attributes</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-patch">patch</span>
+                                                    <span class="text-api-url">/api/rest/v1/attributes</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#get_attributes__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get an attribute</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/attributes/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#patch_attributes__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Update/create an attribute</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-patch">patch</span>
+                                                    <span class="text-api-url">/api/rest/v1/attributes/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                            </div>
+                            <a class="anchor" id="Attributeoption"></a>
+                            <h3 class="picto">
+                                <img src="img/illustrations/illus--Attributeoption.svg"/>
+                                Attribute option
+                            </h3>
+                            <div class="list-group">
+                                    <a class="list-group-item" href="api-reference-17.html#get_attributes__attribute_code__options">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get list of attribute options</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/attributes/{attribute_code}/options</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#post_attributes__attribute_code__options">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Create a new attribute option</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-post">post</span>
+                                                    <span class="text-api-url">/api/rest/v1/attributes/{attribute_code}/options</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#get_attributes__attribute_code__options__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get an attribute option</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/attributes/{attribute_code}/options/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#patch_attributes__attribute_code__options__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Update/create an attribute option</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-patch">patch</span>
+                                                    <span class="text-api-url">/api/rest/v1/attributes/{attribute_code}/options/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                            </div>
+                            <a class="anchor" id="Category"></a>
+                            <h3 class="picto">
+                                <img src="img/illustrations/illus--Category.svg"/>
+                                Category
+                            </h3>
+                            <div class="list-group">
+                                    <a class="list-group-item" href="api-reference-17.html#get_categories">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get list of categories</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/categories</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#post_categories">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Create a new category</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-post">post</span>
+                                                    <span class="text-api-url">/api/rest/v1/categories</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#patch_categories">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Update/create several categories</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-patch">patch</span>
+                                                    <span class="text-api-url">/api/rest/v1/categories</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#get_categories__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get a category</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/categories/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#patch_categories__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Update/create a category</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-patch">patch</span>
+                                                    <span class="text-api-url">/api/rest/v1/categories/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                            </div>
+                        <a class="anchor" id="Targetmarketsettings"></a>
+                        <h2>Target market settings</h2>
+                            <a class="anchor" id="Channel"></a>
+                            <h3 class="picto">
+                                <img src="img/illustrations/illus--Channel.svg"/>
+                                Channel
+                            </h3>
+                            <div class="list-group">
+                                    <a class="list-group-item" href="api-reference-17.html#get_channels">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get a list of channels</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/channels</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#get_channels__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get a channel</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/channels/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                            </div>
+                            <a class="anchor" id="Locale"></a>
+                            <h3 class="picto">
+                                <img src="img/illustrations/illus--Locale.svg"/>
+                                Locale
+                            </h3>
+                            <div class="list-group">
+                                    <a class="list-group-item" href="api-reference-17.html#get_locales">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get a list of locales</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/locales</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a class="list-group-item" href="api-reference-17.html#get_locales__code_">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get a locale</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1/locales/{code}</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                            </div>
+                        <a class="anchor" id="Utilities"></a>
+                        <h2>Utilities</h2>
+                            <a class="anchor" id="Overview"></a>
+                            <h3 class="picto">
+                                <img src="img/illustrations/illus--Overview.svg"/>
+                                Overview
+                            </h3>
+                            <div class="list-group">
+                                    <a class="list-group-item" href="api-reference-17.html#get_endpoints">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get list of all endpoints</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-get">get</span>
+                                                    <span class="text-api-url">/api/rest/v1</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                            </div>
+                            <a class="anchor" id="Authentication"></a>
+                            <h3 class="picto">
+                                <img src="img/illustrations/illus--Authentication.svg"/>
+                                Authentication
+                            </h3>
+                            <div class="list-group">
+                                    <a class="list-group-item" href="api-reference-17.html#post_token">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-heading">Get authentication token</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text">
+                                                    <span class="label label-verb label-post">post</span>
+                                                    <span class="text-api-url">/api/oauth/v1/token</span>
+                                                </p>
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <p class="list-group-item-text pull-right">
+                                                    <em class="small">PIM versions:</em>
+                                                        <span class="label label-version">1.7</span>
+                                                        <span class="label label-version">2.x</span>
+                                                        <span class="label label-version">3.x</span>
+                                                        <span class="label label-version">4.0</span>
+                                                        <span class="label label-version">5.0</span>
+                                                        <span class="label label-version">6.0</span>
+                                                        <span class="label label-version">7.0</span>
+                                                        <span class="label label-version">SaaS</span>
+                                                    <em class="small"> | PIM editions:</em>
+                                                        <span class="label label-ee">CE</span>
+                                                    <span class="label label-ee">EE</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                            </div>
+                </div>
+            </div>
+            <button id="nav_up" class="btn btn-bottom-fixed btn-navup">&and;</button>
+            <script type="text/javascript">
+                $(function() {
+                    window.onscroll = function() { scrollFunction() };
+            
+                    function scrollFunction() {
+                        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                            document.getElementById("nav_up").style.display = "block";
+                        } else {
+                            document.getElementById("nav_up").style.display = "none";
+                        }
+                    }
+                    $('#nav_up').click(function (e) {
+                        $('html, body').animate({scrollTop: '0px'}, 800);
+                    });
+                });
+            </script>
+        </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The REST API basics | Fegmo APIs</title>
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-9">
+                    <h1>The REST API basics</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="navbar" class="col-sm-3 hidden-xs sticky"><nav role="tablist" id="navbar-nav"><ul class="nav nav-stacked" style="counter-increment: step-counter;"><p class="pre-nav">Summary</p><li><a href="/documentation/why-the-api.html">Why the REST API?</a></li><li><a href="/documentation/overview.html">Overview</a></li><li><a href="/documentation/authentication.html">Authentication</a></li><li><a href="/documentation/permissions.html">Permissions</a></li><li class="active"> <a href="#">Response codes</a><p><ul class="nav">
+    <li><a href="#client-errors">Client errors</a>
+    <ul>
+    <li><a href="#400-error">400 error</a></li>
+    <li><a href="#401-error">401 error</a></li>
+    <li><a href="#403-error">403 error</a></li>
+    <li><a href="#404-error">404 error</a></li>
+    <li><a href="#405-error">405 error</a></li>
+    <li><a href="#406-error">406 error</a></li>
+    <li><a href="#409-error">409 error</a></li>
+    <li><a href="#415-error">415 error</a></li>
+    <li><a href="#422-error">422 error</a></li>
+    <li><a href="#429-error">429 error</a></li>
+    </ul>
+    </li>
+    <li><a href="#success">Success</a>
+    <ul>
+    <li><a href="#200-success">200 success</a></li>
+    <li><a href="#201-success">201 success</a></li>
+    <li><a href="#204-success">204 success</a></li>
+    </ul>
+    </li>
+    </ul>
+    </p>
+    </li><li><a href="/documentation/pagination.html">Pagination</a></li><li><a href="/documentation/update.html">Update behavior</a></li><li><a href="/documentation/filter.html">Filters</a></li><li><a href="/documentation/troubleshooting.html">Troubleshooting guide</a></li></ul></nav></div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-8"><a class="anchor" id="response-codes"></a><h1 title-id="response-codes"><a class="markdownIt-Anchor" href="#response-codes">#</a>Response codes</h1>
+    <p><em>All the responses you can get when requesting via the REST API</em></p>
+    <a class="anchor" id="client-errors"></a><h2 title-id="client-errors"><a class="markdownIt-Anchor" href="#client-errors">#</a>Client errors</h2>
+    <p>There are several types of errors when requesting via the REST API.</p>
+    <a class="anchor" id="400-error"></a><h3 title-id="400-error"><a class="markdownIt-Anchor" href="#400-error">#</a>400 error</h3>
+    <p>Sending malformed data results in a <code>400 Bad Request</code> response.</p>
+    <a class="anchor" id="example"></a><h4 title-id="example"><a class="markdownIt-Anchor" href="#example">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">400</span> Bad Request
+    
+    <span class="json">{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-number">400</span>,
+        <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Invalid json message received"</span>
+    }
+    </span></code></pre>
+    <p>As JSON format is expected in all POST and PATCH requests, you will get this error response when your JSON body is malformed.
+    For example, these are malformed JSON.</p>
+    <p>A comma is missing.</p>
+    <pre class="hljs"><code>{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-string">"myproduct"</span>
+        <span class="hljs-string">"family"</span>: <span class="hljs-string">"myfamily"</span>
+    }
+    </code></pre>
+    <p>There are missing quotes for the <code>code</code> property.</p>
+    <pre class="hljs"><code>{
+        code: <span class="hljs-string">"myproduct"</span>,
+        <span class="hljs-attr">"family"</span>: <span class="hljs-string">"myfamily"</span>
+    }
+    </code></pre>
+    <p>Below is the good format. Just perfect. Don't move a single comma. 😉</p>
+    <pre class="hljs"><code>{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-string">"myproduct"</span>,
+        <span class="hljs-attr">"family"</span>: <span class="hljs-string">"myfamily"</span>
+    }
+    </code></pre>
+    <a class="anchor" id="401-error"></a><h3 title-id="401-error"><a class="markdownIt-Anchor" href="#401-error">#</a>401 error</h3>
+    <p>Trying to access to the REST API without authentication results in a <code>401 Unauthorized</code> response.</p>
+    <a class="anchor" id="example-2"></a><h4 title-id="example-2"><a class="markdownIt-Anchor" href="#example-2">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">401</span> Unauthorized
+    
+    <span class="json">{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-number">401</span>,
+        <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Authentication is required"</span>
+    }
+    </span></code></pre>
+    <a class="anchor" id="classical-mistakes"></a><h4 title-id="classical-mistakes"><a class="markdownIt-Anchor" href="#classical-mistakes">#</a>Classical mistakes</h4>
+    <p>The authorization header with the authentication token is missing.</p>
+    <pre class="hljs"><code>curl https://demo.fegmo.com/api/rest/v1/categories
+    </code></pre>
+    <p>Try <code>Bearer</code> instead of <code>Basic</code> as a keyword before your authentication token.</p>
+    <pre class="hljs"><code>curl https://demo.fegmo.com/api/rest/v1/categories \
+        -H <span class="hljs-string">"Authorization: Basic NzFiYTM4ZTEwMjcwZTcyZWIzZTA0NmY3NjE3MTIyMjM1Y2NlMmNlNWEyMTAzY2UzYmY0YWIxYmUzNTkyMDcyNQ"</span>
+    </code></pre>
+    <div class="alert alert-info"><p>You are experiencing this kind of error and the examples given here did not help you?<br />
+    Take a look at the <a href="/documentation/authentication.html">authentication</a> documentation. This might save your day!</p>
+    </div>
+    <a class="anchor" id="403-error"></a><h3 title-id="403-error"><a class="markdownIt-Anchor" href="#403-error">#</a>403 error</h3>
+    <p>Trying to perform an action without having the corresponding ACL results in a <code>403 Forbidden</code> response.</p>
+    <a class="anchor" id="example-3"></a><h4 title-id="example-3"><a class="markdownIt-Anchor" href="#example-3">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">403</span> Forbidden
+    
+    <span class="json">{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-number">403</span>,
+        <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Access forbidden. You are not allowed to administrate categories."</span>
+    }
+    </span></code></pre>
+    <div class="alert alert-info"><p>You are experiencing this kind of error and you do not know how to solve it?<br />
+    Take a look at the <a href="/documentation/permissions.html">permissions</a> documentation. This might save your day!</p>
+    </div>
+    <a class="anchor" id="404-error"></a><h3 title-id="404-error"><a class="markdownIt-Anchor" href="#404-error">#</a>404 error</h3>
+    <p>Trying to access to a non-existing resource results in a <code>404 Not Found</code> response.</p>
+    <a class="anchor" id="example-4"></a><h4 title-id="example-4"><a class="markdownIt-Anchor" href="#example-4">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">404</span> Not Found
+    
+    <span class="json">{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-number">404</span>, 
+        <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Category 'master' does not exist."</span>
+    }
+    </span></code></pre>
+    <a class="anchor" id="405-error"></a><h3 title-id="405-error"><a class="markdownIt-Anchor" href="#405-error">#</a>405 error</h3>
+    <p>Trying to use a method on a route for which it is not implemented results in a <code>405 Method Not Allowed</code> response.</p>
+    <a class="anchor" id="example-5"></a><h4 title-id="example-5"><a class="markdownIt-Anchor" href="#example-5">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">405</span> Method Not Allowed
+    
+    <span class="json">{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-number">405</span>, 
+        <span class="hljs-attr">"message"</span>: <span class="hljs-string">"No route found for 'POST /api/rest/v1/products-uuid/f62190e8-8314-4360-8ff8-7dbdb4af6312': Method Not Allowed (Allow: GET, PATCH, DELETE)"</span>
+    }
+    </span></code></pre>
+    <a class="anchor" id="406-error"></a><h3 title-id="406-error"><a class="markdownIt-Anchor" href="#406-error">#</a>406 error</h3>
+    <p>Trying to give the <code>Accept</code> header a value different from <code>application/json</code> when getting data, results in a <code>406 Not Acceptable</code> response.</p>
+    <a class="anchor" id="example-6"></a><h4 title-id="example-6"><a class="markdownIt-Anchor" href="#example-6">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">406</span> Not Acceptable
+    
+    <span class="json">{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-number">406</span>, 
+        <span class="hljs-attr">"message"</span>: <span class="hljs-string">"‘xxx’ in ‘Accept‘ header is not valid. Only ‘application/json‘ is allowed."</span>
+    }
+    </span></code></pre>
+    <a class="anchor" id="409-error"></a><h3 title-id="409-error"><a class="markdownIt-Anchor" href="#409-error">#</a>409 error</h3>
+    <p>When a request could not be processed because of conflict, it results in a <code>409 Conflict</code> error.</p>
+    <a class="anchor" id="example-7"></a><h4 title-id="example-7"><a class="markdownIt-Anchor" href="#example-7">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">409</span> Conflict
+    </code></pre>
+    <a class="anchor" id="415-error"></a><h3 title-id="415-error"><a class="markdownIt-Anchor" href="#415-error">#</a>415 error</h3>
+    <p>Trying to give the <code>Content-type</code> header a value different from <code>application/json</code> when posting or patching data, results in a <code>415 Unsupported Media Type</code> response.</p>
+    <a class="anchor" id="example-8"></a><h4 title-id="example-8"><a class="markdownIt-Anchor" href="#example-8">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">415</span> Unsupported Media Type
+    
+    <span class="json">{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-number">415</span>,
+      <span class="hljs-attr">"message"</span>: <span class="hljs-string">"‘xxx’ in ‘Content-type’ header is not valid.  Only ‘application/json’ is allowed."</span>
+    }
+    </span></code></pre>
+    <p>Forgetting to give the <code>Content-type</code> header when posting or patching data, also results in a <code>415 Unsupported Media Type</code> response.</p>
+    <a class="anchor" id="example-9"></a><h4 title-id="example-9"><a class="markdownIt-Anchor" href="#example-9">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">415</span> Unsupported Media Type
+    
+    <span class="json">{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-number">415</span>,
+      <span class="hljs-attr">"message"</span>:<span class="hljs-string">"The ‘Content-type’ header is missing. ‘application/json’ has to specified as value."</span>
+    }
+    </span></code></pre>
+    <a class="anchor" id="422-error"></a><h3 title-id="422-error"><a class="markdownIt-Anchor" href="#422-error">#</a>422 error</h3>
+    <p>Sending invalid data results in a <code>422 Unprocessable Entity</code> response.</p>
+    <a class="anchor" id="example-10"></a><h4 title-id="example-10"><a class="markdownIt-Anchor" href="#example-10">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">422</span> Unprocessable Entity
+    
+    <span class="json">{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-number">422</span>,
+        <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Validation failed."</span>,
+        <span class="hljs-attr">"errors"</span>: [
+            {
+                <span class="hljs-attr">"property"</span>: <span class="hljs-string">"values"</span>,
+                <span class="hljs-attr">"message"</span>: <span class="hljs-string">"The tommh value is not in the brand attribute option list."</span>,
+                <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"brand"</span>,
+                <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+                <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>
+            }
+        ]
+    }
+    </span></code></pre>
+    <p>Sending unrecognized properties as well.</p>
+    <a class="anchor" id="example-11"></a><h4 title-id="example-11"><a class="markdownIt-Anchor" href="#example-11">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">422</span> Unprocessable Entity
+    
+    <span class="json">{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-number">422</span>,
+        <span class="hljs-attr">"message"</span>: <span class="hljs-string">"Property 'extra_property' does not exist. Check the standard format documentation."</span>,
+        <span class="hljs-attr">"_links"</span>: {
+            <span class="hljs-attr">"documentation"</span>: {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https://docs.fegmo.com/master/reference/standard_format/other_entities.html#category"</span>
+            }
+        }
+    }
+    </span></code></pre>
+    <p>Or, sending unknown data.</p>
+    <a class="anchor" id="example-12"></a><h4 title-id="example-12"><a class="markdownIt-Anchor" href="#example-12">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">422</span> Unprocessable Entity
+    
+    <span class="json">{
+        <span class="hljs-attr">"code"</span>: <span class="hljs-number">422</span>,
+        <span class="hljs-attr">"message"</span>: <span class="hljs-string">"The sunglasses category does not exist in your PIM. Check the expected format on the API documentation."</span>,
+        <span class="hljs-attr">"_links"</span>: {
+            <span class="hljs-attr">"documentation"</span>: {
+                <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http://api.fegmo.com/api-reference.html#post_products_uuid"</span>
+            }
+        }
+    }
+    </span></code></pre>
+    <a class="anchor" id="429-error"></a><h3 title-id="429-error"><a class="markdownIt-Anchor" href="#429-error">#</a>429 error</h3>
+    <p>Abusing the API will result in <code>429 Too Many Requests</code> response.
+    A Retry-After header is added to the response indicating the time to wait in seconds before retrying.</p>
+    <a class="anchor" id="example-13"></a><h4 title-id="example-13"><a class="markdownIt-Anchor" href="#example-13">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">429</span> Too Many Requests
+    <span class="hljs-attribute">Retry-After</span>: 15
+    </code></pre>
+    <div class="alert alert-tips"><p>When the REST API answers that something <code>does not exist</code>, it could also mean that the related user hasn't the permission to access it.</p>
+    </div>
+    <a class="anchor" id="success"></a><h2 title-id="success"><a class="markdownIt-Anchor" href="#success">#</a>Success</h2>
+    <p>There are 3 types of client success when requesting via the REST API.</p>
+    <a class="anchor" id="200-success"></a><h3 title-id="200-success"><a class="markdownIt-Anchor" href="#200-success">#</a>200 success</h3>
+    <p>Getting a resource or a collection resources results in a <code>200 OK</code> response.</p>
+    <a class="anchor" id="example-14"></a><h4 title-id="example-14"><a class="markdownIt-Anchor" href="#example-14">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">200</span> OK
+    </code></pre>
+    <a class="anchor" id="201-success"></a><h3 title-id="201-success"><a class="markdownIt-Anchor" href="#201-success">#</a>201 success</h3>
+    <p>Creating a resource results in a <code>201 Created</code> response. In the <code>Location</code> header, you will find the route to access the newly created resource.</p>
+    <a class="anchor" id="example-15"></a><h4 title-id="example-15"><a class="markdownIt-Anchor" href="#example-15">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">201</span> Created
+    <span class="hljs-attribute">Location</span>: https://demo.fegmo.com/api/rest/v1/categories/winter
+    </code></pre>
+    <a class="anchor" id="204-success"></a><h3 title-id="204-success"><a class="markdownIt-Anchor" href="#204-success">#</a>204 success</h3>
+    <p>Updating or deleting a resource results in a <code>204 No Content</code> response. In the <code>Location</code> header, you will find the route to access the updated resource.</p>
+    <a class="anchor" id="example-16"></a><h4 title-id="example-16"><a class="markdownIt-Anchor" href="#example-16">#</a>Example</h4>
+    <pre class="hljs"><code>HTTP/1.1 <span class="hljs-number">204</span> No Content
+    <span class="hljs-attribute">Location</span>: https://demo.fegmo.com/api/rest/v1/categories/summer
+    </code></pre>
+    </div>
+            </div>
+        </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

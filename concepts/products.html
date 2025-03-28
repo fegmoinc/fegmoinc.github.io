@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Concepts &amp; resources | Fegmo APIs</title>
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-9">
+                    <h1>Concepts & resources</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="navbar" class="col-sm-3 hidden-xs sticky"><nav role="tablist" id="navbar-nav"><ul class="nav nav-stacked" style="counter-increment: step-counter;"><p class="pre-nav">Summary</p><li class="active"> <a href="#">Products</a><p><ul class="nav">
+    <li><a href="#product">Product</a>
+    <ul>
+    <li><a href="#convert-a-variant-product-to-a-simple-product">Convert a variant product to a simple product</a></li>
+    </ul>
+    </li>
+    <li><a href="#focus-on-the-product-values">Focus on the product values</a>
+    <ul>
+    <li><a href="#the-global-format">The global format</a></li>
+    <li><a href="#the-data-format">The <code>data</code> format</a></li>
+    <li><a href="#the-locale-and-scope-format">The <code>locale</code> and <code>scope</code> format</a></li>
+    <li><a href="#the-linked_data-format">The <code>linked_data</code> format</a></li>
+    </ul>
+    </li>
+    <li><a href="#product-model">Product model</a></li>
+    <li><a href="#published-product-deprecated">Published product <em>- Deprecated</em></a></li>
+    <li><a href="#product-media-file">Product media file</a></li>
+    </ul>
+    </p>
+    </li><li><a href="/concepts/catalog-structure.html">Catalog structure</a></li><li><a href="/concepts/target-market-settings.html">Target market settings</a></li><li><a href="/concepts/reference-entities.html">Reference entities</a></li><li><a href="/concepts/asset-manager.html">Asset Manager</a></li></ul></nav></div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-8"><a class="anchor" id="products"></a><h1 title-id="products"><a class="markdownIt-Anchor" href="#products">#</a>Products</h1>
+    <p>The <strong>Product</strong> is the central resource of our PIM and, when you think about it, it makes perfect sense since what we are doing is Product Management. 😉</p>
+    <p>In the sections below, you will find all the different flavors of products you can find in the PIM.<br />
+    Each section below contains an explanation of the concept behind these resources. You will find out more about their usage in the PIM and their JSON format in order for them to interact with the REST API.</p>
+    <a class="anchor" id="product"></a><h2 title-id="product"><a class="markdownIt-Anchor" href="#product">#</a>Product</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>The product is the central entity of the PIM. This is the entity that holds all the information concerning products.</p>
+    <p>It can be classified in several categories. It can belong to a group and inherit its attributes from a family. It can hold associations with other products or group of products.</p>
+    <p>In other words, this really is the heart entity of the PIM.</p>
+    <p>In the Fegmo UI, in the 1.7 version, you can find the products in the <code>Enrich</code>/<code>Products</code> menu. Since the 2.0, it's below the <code>Products</code> menu.</p>
+    <p>Below is an example of a product in the UI.</p>
+    <div><ul class="nav nav-tabs nav-tabs-versions" role="tablist"><li role="presentation" class="active"><a href="#v2_products" aria-controls="v2_products" role="tab" data-toggle="tab">Since v2</a></li><li role="presentation"><a href="#v17_products" aria-controls="v17_products" role="tab" data-toggle="tab">v1.7</a></li></ul><div class="panel panel-default"><div class="panel-body"><div class="row tab-content"><div role="tabpanel" class="col-xs-12 tab-pane active" id="v2_products"><p><img class="img-responsive in-article" alt="Products in the Fegmo UI" src="/img/concepts/products_ui.png"/></p>
+    </div><div role="tabpanel" class="col-xs-12 tab-pane" id="v17_products"><p><img class="img-responsive in-article" alt="Products in the Fegmo UI" src="/img/concepts/v1.7/products_ui.png"/></p>
+    </div></div>
+    </div>
+    </div>
+    </div>
+    <p>Below is the JSON standard format representing a product.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"uuid"</span>: <span class="hljs-string">"fc24e6c3-933c-4a93-8a81-e5c703d134d5"</span>,
+      <span class="hljs-attr">"family"</span>: <span class="hljs-string">"clothing"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-string">"jack_brown"</span>,
+      <span class="hljs-attr">"categories"</span>: [
+        <span class="hljs-string">"tshirts"</span>
+      ],
+      <span class="hljs-attr">"enabled"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"sku"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"1111111195"</span>
+          }
+        ],
+        <span class="hljs-attr">"ean"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"1234567890207"</span>
+          }
+        ],
+        <span class="hljs-attr">"size"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"s"</span>
+          }
+        ],
+        <span class="hljs-attr">"weight"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: {
+              <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"800.0000"</span>,
+              <span class="hljs-attr">"unit"</span>: <span class="hljs-string">"GRAM"</span>
+            }
+          }
+        ],
+        <span class="hljs-attr">"color"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"brown"</span>
+          }
+        ],
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"jack"</span>
+          }
+        ],
+        <span class="hljs-attr">"erp_name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Jack"</span>
+          }
+        ],
+        <span class="hljs-attr">"collection"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [
+              <span class="hljs-string">"summer_2017"</span>
+            ]
+          }
+        ]
+      },
+      <span class="hljs-attr">"created"</span>: <span class="hljs-string">"2017-10-05T11:25:48+02:00"</span>,
+      <span class="hljs-attr">"updated"</span>: <span class="hljs-string">"2017-10-05T11:25:48+02:00"</span>,
+      <span class="hljs-attr">"associations"</span>: {},
+      <span class="hljs-attr">"quantified_associations"</span>: {},
+      <span class="hljs-attr">"metadata"</span>: {
+        <span class="hljs-attr">"workflow_status"</span>: <span class="hljs-string">"working_copy"</span>
+      },
+      <span class="hljs-attr">"quality_scores"</span>: [
+          {
+              <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"ecommerce"</span>,
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+              <span class="hljs-attr">"data"</span>: <span class="hljs-string">"A"</span>
+          }
+      ],
+      <span class="hljs-attr">"completenesses"</span>: [
+        {
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-number">45</span>
+        },
+        {
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-number">90</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-warning"><p>Note that the <code>parent</code> field is only available starting from the v2, as this is a brand new feature introduced in the v2.0.</p>
+    </div>
+    <div class="alert alert-warning"><p>Note that the <code>metadata</code> field is only available starting from the v2 and as it is an Enterprise Edition feature, you won't have this field on a Community Edition PIM.</p>
+    </div>
+    <div class="alert alert-warning"><p>The <code>quantified_associations</code> field is only available since the 5.0.</p>
+    </div>
+    <div class="alert alert-warning"><p>Note that the <code>quality_scores</code> field is only available since the 5.0 and when the <code>with_quality_scores</code> query parameter is set to <code>true</code>.</p>
+    </div>
+    <div class="alert alert-warning"><p>Note that the <code>completenesses</code> field is only available since the 6.0, and when the <code>with_completenesses</code> query parameter is set to <code>true</code>.</p>
+    </div>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Productuuid"><div class="panel-body"><div class="panel-btn-big">Want more details about the product resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    <a class="anchor" id="convert-a-variant-product-to-a-simple-product"></a><h3 title-id="convert-a-variant-product-to-a-simple-product"><a class="markdownIt-Anchor" href="#convert-a-variant-product-to-a-simple-product">#</a>Convert a variant product to a simple product</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>A variant product, which has a product model as parent, can be converted to a simple product by removing its parent. To perform this action through the API, you just have to update the <code>parent</code> field to <code>null</code>.
+    By default all the former values, categories and associations (included those defined at the parent level) will be kept if they are not specified in the PATCH request.</p>
+    <a class="anchor" id="focus-on-the-product-values"></a><h2 title-id="focus-on-the-product-values"><a class="markdownIt-Anchor" href="#focus-on-the-product-values">#</a>Focus on the product values</h2>
+    <p>Product values hold all the information of the product. They are part of the <a href="#product">Product resource</a>. In concrete terms, it is the values of the product attributes.</p>
+    <p>In the REST API, the product values are in the property <code>values</code> of the product entity.</p>
+    <a class="anchor" id="the-global-format"></a><h3 title-id="the-global-format"><a class="markdownIt-Anchor" href="#the-global-format">#</a>The global format</h3>
+    <p>A product value follows this format:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        ATTRIBUTE_CODE: [
+          {
+            <span class="hljs-attr">"locale"</span>: LOCALE_CODE,
+            <span class="hljs-attr">"scope"</span>: CHANNEL_CODE,
+            <span class="hljs-attr">"data"</span>: DATA_INFORMATION,
+            <span class="hljs-attr">"linked_data"</span>: LINKED_DATA,
+            <span class="hljs-attr">"attribute_type"</span>: ATTRIBUTE_TYPE,
+            <span class="hljs-attr">"reference_data_name"</span>: REFERENCE_DATA_NAME
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p>In this formula:</p>
+    <ul>
+    <li><code>ATTRIBUTE_CODE</code> is the code of an attribute of the product,</li>
+    <li><code>LOCALE_CODE</code> is the code of a locale when the attribute is localizable, should be equal to <code>null</code> otherwise. <a href="#the-locale-and-scope-format">Check some examples here.</a></li>
+    <li><code>CHANNEL_CODE</code> is the code of a channel when the attribute is scopable, should be equal to <code>null</code> otherwise. <a href="#the-locale-and-scope-format">Check some examples here.</a></li>
+    <li><code>DATA_INFORMATION</code> is the value stored for this attribute for this locale (if attribute is localizable) and this channel (if the attribute is scopable). Its type and format depend on the attribute type. <a href="#the-data-format">Check some examples here.</a></li>
+    <li><code>LINKED_DATA</code> containing the attribute option labels if the attribute is a simple or multi select. <a href="#the-linked_data-format">Check some examples here.</a> This property is only available since the 5.0.</li>
+    <li><code>ATTRIBUTE_TYPE</code> is the type of the value's attribute. (Only available in the SaaS version)</li>
+    <li><code>REFERENCE_DATA_NAME</code> is the reference entity code when the attribute type is <code>fegmo_reference_entity</code> or <code>fegmo_reference_entity_collection</code> OR Asset family code when the attribute type is <code>pim_catalog_asset_collection</code>. (Only available in the SaaS version)</li>
+    </ul>
+    <div class="alert alert-info"><p>Note that <code>attribute_type</code> and <code>reference_data_name</code> properties are read-only. You won't be able to patch or post it.</p>
+    </div>
+    <a class="anchor" id="the-data-format"></a><h3 title-id="the-data-format"><a class="markdownIt-Anchor" href="#the-data-format">#</a>The <code>data</code> format</h3>
+    <p>The sections below describe the format of the <code>data</code> property for each <a href="/concepts/catalog-structure.html#attribute">product attribute</a> type.</p>
+    <a class="anchor" id="text-and-text-area-attributes"></a><h4 title-id="text-and-text-area-attributes"><a class="markdownIt-Anchor" href="#text-and-text-area-attributes">#</a>Text and text area attributes</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is either <code>pim_catalog_text</code> or <code>pim_catalog_textarea</code>, the <code>data</code> field should contain a string.</p>
+    <p><strong>Example</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"description"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Tshirt long sleeves\nWinter special, 100% whool"</span>,
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_text"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="media-file-attributes"></a><h4 title-id="media-file-attributes"><a class="markdownIt-Anchor" href="#media-file-attributes">#</a>Media file attributes</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is either <code>pim_catalog_file</code> or <code>pim_catalog_image</code>, the <code>data</code> field should contain a string, that should be the code of a <a href="#product-media-file">product media file</a>.</p>
+    <p><strong>Example</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"packshot"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"f/2/e/6/f2e6674e0766acdc70f814_myFile.pdf"</span>,
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_file"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="date-attribute"></a><h4 title-id="date-attribute"><a class="markdownIt-Anchor" href="#date-attribute">#</a>Date attribute</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is <code>pim_catalog_date</code>, the <code>data</code> field should contain a string, in ISO-8601 format.</p>
+    <p><strong>Example</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"packshot"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"2021-04-29T08:58:00.101Z"</span>,
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_date"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="simple-and-multi-select-attribute"></a><h4 title-id="simple-and-multi-select-attribute"><a class="markdownIt-Anchor" href="#simple-and-multi-select-attribute">#</a>Simple and multi select attribute</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is <code>pim_catalog_simpleselect</code>, the <code>data</code> field should contain a string, that should be the code of an <a href="/concepts/catalog-structure.html#attribute-option">attribute option</a>.</p>
+    <a class="anchor" id="example"></a><h5 title-id="example"><a class="markdownIt-Anchor" href="#example">#</a>Example</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"main_color"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"blue"</span>,
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_simpleselect"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p>Whenever the attribute's type is <code>pim_catalog_multiselect</code>, the <code>data</code> field should contain an array of strings, each string being the code of an <a href="/concepts/catalog-structure.html#attribute-option">attribute option</a>.</p>
+    <a class="anchor" id="example-2"></a><h5 title-id="example-2"><a class="markdownIt-Anchor" href="#example-2">#</a>Example</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"materials"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [<span class="hljs-string">"leather"</span>, <span class="hljs-string">"cotton"</span>],
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_multiselect"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="reference-data-simple-and-multi-select-attribute"></a><h4 title-id="reference-data-simple-and-multi-select-attribute"><a class="markdownIt-Anchor" href="#reference-data-simple-and-multi-select-attribute">#</a>Reference data simple and multi select attribute</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><div class="alert alert-warning"><p>Reference Data is the ancestor of Reference Entities.<br />
+    On SaaS platforms, <strong>users can't create Reference Data attributes anymore</strong>.<br />
+    More information about Reference Data and Reference Entities in the following Help Center article: <a href="https://help.fegmo.com/pim/serenity/articles/what-is-an-attribute.html#reference-entities-or-reference-data">Reference entities or reference data?</a></p>
+    </div>
+    <p>Whenever the attribute's type is <code>pim_catalog_reference_data_simpleselect</code>, the <code>data</code> field should contain a string, that should be the code of a reference data attribute option.</p>
+    <a class="anchor" id="example-3"></a><h5 title-id="example-3"><a class="markdownIt-Anchor" href="#example-3">#</a>Example</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"designer"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"bouroullec"</span>,
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_reference_data_simpleselect"</span>,
+            <span class="hljs-attr">"reference_data_name"</span>: <span class="hljs-string">"designer_ref"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p>Whenever the attribute's type is <code>pim_catalog_reference_data_multiselect</code>, the <code>data</code> field should contain an array of strings, each string being the code of a reference data attribute option.</p>
+    <a class="anchor" id="example-4"></a><h5 title-id="example-4"><a class="markdownIt-Anchor" href="#example-4">#</a>Example</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"collections"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [<span class="hljs-string">"winter_2019"</span>, <span class="hljs-string">"spring_2020"</span>],
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_reference_data_multiselect"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="number-attribute"></a><h4 title-id="number-attribute"><a class="markdownIt-Anchor" href="#number-attribute">#</a>Number attribute</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is <code>pim_catalog_number</code>, the <code>data</code> field should contain:</p>
+    <ul>
+    <li>an integer, whenever the <code>decimals_allowed</code> property of the attribute is set to <code>false</code>.</li>
+    <li>a string representing a number, whenever the <code>decimals_allowed</code> property of the attribute is set to <code>true</code>.</li>
+    </ul>
+    <a class="anchor" id="examples"></a><h5 title-id="examples"><a class="markdownIt-Anchor" href="#examples">#</a>Examples</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"age"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-number">40</span>,
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_number"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"typing_speed"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"89.897"</span>,
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_number"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="metric-attribute"></a><h4 title-id="metric-attribute"><a class="markdownIt-Anchor" href="#metric-attribute">#</a>Metric attribute</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is <code>pim_catalog_metric</code>, the <code>data</code> field should contain an object with following fields:</p>
+    <ul>
+    <li><code>amount</code>: a string representing a number if the <code>decimals_allowed</code> property of the attribute is set to <code>true</code>, otherwise an integer, containing amount value</li>
+    <li><code>unit</code>: a string representing the metric unit for the specified amount</li>
+    </ul>
+    <a class="anchor" id="examples-2"></a><h5 title-id="examples-2"><a class="markdownIt-Anchor" href="#examples-2">#</a>Examples</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"power"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: {
+              <span class="hljs-attr">"amount"</span>:<span class="hljs-number">10</span>,
+              <span class="hljs-attr">"unit"</span>: <span class="hljs-string">"KILOWATT"</span>
+            },
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_metric"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"height"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: {
+              <span class="hljs-attr">"amount"</span>:<span class="hljs-string">"25.45"</span>,
+              <span class="hljs-attr">"unit"</span>: <span class="hljs-string">"CENTIMETER"</span>
+            },
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_metric"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="price-attribute"></a><h4 title-id="price-attribute"><a class="markdownIt-Anchor" href="#price-attribute">#</a>Price attribute</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is <code>pim_catalog_price</code>, the <code>data</code> field should contain an array of price objects, each containing:</p>
+    <ul>
+    <li><code>amount</code>: a string representing a number if the <code>decimals_allowed</code> property of the attribute is set to <code>true</code>, otherwise an integer, containing amount value</li>
+    <li><code>currency</code>: a string representing the price currency for the specified amount</li>
+    </ul>
+    <a class="anchor" id="examples-3"></a><h5 title-id="examples-3"><a class="markdownIt-Anchor" href="#examples-3">#</a>Examples</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"recommended_price"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [
+              {
+                <span class="hljs-attr">"amount"</span>:<span class="hljs-number">200</span>,
+                <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"USD"</span>
+              }
+            ],
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_price"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"price"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [
+              {
+                <span class="hljs-attr">"amount"</span>:<span class="hljs-string">"25.50"</span>,
+                <span class="hljs-attr">"currency"</span>: <span class="hljs-string">"EUR"</span>
+              }
+            ],
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_price"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="boolean-attribute"></a><h4 title-id="boolean-attribute"><a class="markdownIt-Anchor" href="#boolean-attribute">#</a>Boolean attribute</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is <code>pim_catalog_boolean</code>, the <code>data</code> field should contain either <code>true</code> or <code>false</code>.</p>
+    <a class="anchor" id="example-5"></a><h5 title-id="example-5"><a class="markdownIt-Anchor" href="#example-5">#</a>Example</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"is_smart"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-literal">true</span>,
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_boolean"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="reference-entity-single-and-multiple-links-attribute"></a><h4 title-id="reference-entity-single-and-multiple-links-attribute"><a class="markdownIt-Anchor" href="#reference-entity-single-and-multiple-links-attribute">#</a>Reference entity single and multiple links attribute</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is <code>fegmo_reference_entity</code>, the <code>data</code> field should contain a string, that should be the code of a <a href="/concepts/reference-entities.html#reference-entity-record">reference entity record</a>.</p>
+    <a class="anchor" id="example-6"></a><h5 title-id="example-6"><a class="markdownIt-Anchor" href="#example-6">#</a>Example</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"designer"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"bouroullec"</span>,
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"fegmo_reference_entity"</span>,
+            <span class="hljs-attr">"reference_data_name"</span>: <span class="hljs-string">"designer_ref"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <p>Whenever the attribute's type is <code>fegmo_reference_entity_collection</code>, the <code>data</code> field should contain an array of strings, each string being the code of a <a href="/concepts/reference-entities.html#reference-entity-record">reference entity record</a>.</p>
+    <a class="anchor" id="example-7"></a><h5 title-id="example-7"><a class="markdownIt-Anchor" href="#example-7">#</a>Example</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"collections"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [<span class="hljs-string">"winter_2019"</span>, <span class="hljs-string">"spring_2020"</span>],
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"fegmo_reference_entity_collection"</span>,
+            <span class="hljs-attr">"reference_data_name"</span>: <span class="hljs-string">"designer_ref"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="asset-manager-asset-collection-attribute"></a><h4 title-id="asset-manager-asset-collection-attribute"><a class="markdownIt-Anchor" href="#asset-manager-asset-collection-attribute">#</a>Asset Manager asset collection attribute</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is <code>pim_catalog_asset_collection</code>, the <code>data</code> field should contain an array of strings, each string being the code of an <a href="/concepts/asset-manager.html#asset">Asset Manager asset</a>.</p>
+    <a class="anchor" id="example-8"></a><h5 title-id="example-8"><a class="markdownIt-Anchor" href="#example-8">#</a>Example</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"model_pictures"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [<span class="hljs-string">"allie_jean_frontview"</span>, <span class="hljs-string">"allie_jean_backview"</span>],
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_assets_collection"</span>,
+            <span class="hljs-attr">"reference_data_name"</span>: <span class="hljs-string">"packshots"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="pam-asset-collection-attribute-deprecated"></a><h4 title-id="pam-asset-collection-attribute-deprecated"><a class="markdownIt-Anchor" href="#pam-asset-collection-attribute-deprecated">#</a>PAM asset collection attribute <em>- Deprecated</em></h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">2.1</span> <span class="label label-version">2.2</span> <span class="label label-version">2.3</span> <span class="label label-version">3.x</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><p>Whenever the attribute's type is <code>pim_assets_collection</code>, the <code>data</code> field should contain an array of strings, each string being the code of a <a href="/concepts/pam.html#asset">PAM asset</a>.</p>
+    <a class="anchor" id="example-9"></a><h5 title-id="example-9"><a class="markdownIt-Anchor" href="#example-9">#</a>Example</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"userguides"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [<span class="hljs-string">"guarantee_notice"</span>, <span class="hljs-string">"how_to_guide"</span>],
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_assets_collection"</span>,
+            <span class="hljs-attr">"reference_data_name"</span>: <span class="hljs-string">"guides_images"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="table-attribute"></a><h4 title-id="table-attribute"><a class="markdownIt-Anchor" href="#table-attribute">#</a>Table attribute</h4>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span> <span class="label label-info">GE</span></p><p>Whenever the attribute type is <code>pim_catalog_table</code>, the <code>data</code> field should contain an array of rows, where each row is a key-value object, the key being the <code>column</code> code, and the value being the cell value.</p>
+    <a class="anchor" id="example-10"></a><h5 title-id="example-10"><a class="markdownIt-Anchor" href="#example-10">#</a>Example</h5>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"Food_composition"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [
+              {
+                  <span class="hljs-attr">"percentage"</span>: <span class="hljs-string">"28.5"</span>,
+                  <span class="hljs-attr">"composition"</span>: <span class="hljs-string">"Cooked_wheat_semolin"</span>
+              },
+              {
+                  <span class="hljs-attr">"Origin"</span>: <span class="hljs-string">"France"</span>,
+                  <span class="hljs-attr">"allergen"</span>: <span class="hljs-literal">false</span>,
+                  <span class="hljs-attr">"percentage"</span>: <span class="hljs-string">"28.5"</span>,
+                  <span class="hljs-attr">"composition"</span>: <span class="hljs-string">"Vegetables"</span>
+              },
+              {
+                  <span class="hljs-attr">"allergen"</span>: <span class="hljs-literal">true</span>,
+                  <span class="hljs-attr">"percentage"</span>: <span class="hljs-string">"28"</span>,
+                  <span class="hljs-attr">"composition"</span>: <span class="hljs-string">"Sauce"</span>
+              },
+              {
+                  <span class="hljs-attr">"Origin"</span>: <span class="hljs-string">"France"</span>,
+                  <span class="hljs-attr">"allergen"</span>: <span class="hljs-literal">false</span>,
+                  <span class="hljs-attr">"percentage"</span>: <span class="hljs-string">"10"</span>,
+                  <span class="hljs-attr">"composition"</span>: <span class="hljs-string">"Cooked_cured_chicken_fillet"</span>
+              },
+              {
+                  <span class="hljs-attr">"Origin"</span>: <span class="hljs-string">"Spain"</span>,
+                  <span class="hljs-attr">"allergen"</span>: <span class="hljs-literal">false</span>,
+                  <span class="hljs-attr">"percentage"</span>: <span class="hljs-string">"5"</span>,
+                  <span class="hljs-attr">"composition"</span>: <span class="hljs-string">"Pre_cooked_merguez"</span>
+              },
+              {
+                  <span class="hljs-attr">"composition"</span>: <span class="hljs-string">"Frozen"</span>
+              }
+            ],
+            <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_table"</span>
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <div class="alert alert-warning"><p>Please note that we have defined some limits in order to guarantee the PIM stability.</p>
+    <ul>
+    <li>The maximum number of rows in a table is set to <strong>100</strong>.</li>
+    <li>The maximum number of table attributes within the PIM is set to <strong>50</strong>.</li>
+    <li>The maximum number of filled cells per product is set to 8000, for all the table attributes on a given product page.</li>
+    </ul>
+    </div>
+    <a class="anchor" id="the-locale-and-scope-format"></a><h3 title-id="the-locale-and-scope-format"><a class="markdownIt-Anchor" href="#the-locale-and-scope-format">#</a>The <code>locale</code> and <code>scope</code> format</h3>
+    <p>The product values can be localizable and/or scopable. Here are some examples to illustrate those different possibilities.</p>
+    <div class="alert alert-info"><p>Product values should be <strong>localizable</strong> whenever you want to enrich different values among your activated locales.<br />
+    Product values should be <strong>scopable</strong> whenever you want to enrich different values among your channels.</p>
+    </div>
+    <a class="anchor" id="product-values-of-a-localizable-attribute"></a><h4 title-id="product-values-of-a-localizable-attribute"><a class="markdownIt-Anchor" href="#product-values-of-a-localizable-attribute">#</a>Product values of a localizable attribute</h4>
+    <p>The <code>short_description</code> attribute is localizable but not scopable, so it can hold several data values, up to one for each locale.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"short_description"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Tshirt long sleeves"</span>,
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_textarea"</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Tshirt manches longues"</span>,
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_textarea"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Note that the <code>scope</code> property is set to <code>null</code> in this case.</p>
+    </div>
+    <a class="anchor" id="product-values-of-a-scopable-attribute"></a><h4 title-id="product-values-of-a-scopable-attribute"><a class="markdownIt-Anchor" href="#product-values-of-a-scopable-attribute">#</a>Product values of a scopable attribute</h4>
+    <p>The <code>release_date</code> attribute is scopable but not localizable, so it can hold several data values, up to one for each channel.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"release_date"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"2012-03-13T00:00:00+01:00"</span>,
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_date"</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"2012-04-23T00:00:00+01:00"</span>,
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_date"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Note that the <code>locale</code> property is set to <code>null</code> in this case.</p>
+    </div>
+    <a class="anchor" id="product-values-of-a-localizable-and-scopable-attribute"></a><h4 title-id="product-values-of-a-localizable-and-scopable-attribute"><a class="markdownIt-Anchor" href="#product-values-of-a-localizable-and-scopable-attribute">#</a>Product values of a localizable and scopable attribute</h4>
+    <p>The <code>description</code> attribute is both scopable and localizable, so it can hold several data values, up to one for each couple of channels and locales.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"description"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"de_DE"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Fegmo Mug"</span>,
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_textarea"</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"de_DE"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"print"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Fegmo Mug"</span>,
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_textarea"</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Fegmo Mug"</span>,
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_textarea"</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"print"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Fegmo Mug"</span>,
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_textarea"</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Mug Fegmo"</span>,
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_textarea"</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"print"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Mug Fegmo"</span>,
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_textarea"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="product-value-of-a-non-localizable-non-scopable-attribute"></a><h4 title-id="product-value-of-a-non-localizable-non-scopable-attribute"><a class="markdownIt-Anchor" href="#product-value-of-a-non-localizable-non-scopable-attribute">#</a>Product value of a non localizable, non scopable attribute</h4>
+    <p>The <code>main_color</code> attribute is neither scopable nor localizable, so it can hold only one data value.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"main_color"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"black"</span>,
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_simpleselect"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-info"><p>Note that the <code>locale</code> and <code>scope</code> properties are all set to <code>null</code> in this case.</p>
+    </div>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/documentation/update.html#update-product-values"><div class="panel-body"><div class="panel-btn-big">Want to update product values? </div><p class="text-center">Here you go!</p></div></a></div></div></div>
+    <a class="anchor" id="the-linked_data-format"></a><h3 title-id="the-linked_data-format"><a class="markdownIt-Anchor" href="#the-linked_data-format">#</a>The <code>linked_data</code> format</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><div class="alert alert-info"><p>Note that this property is in read-only. You won't be able to patch or post it.</p>
+    </div>
+    </p><p>The sections below describe the format of the <code>linked_data</code> property for <code>pim_catalog_simpleselect</code> and <code>pim_catalog_multiselect</code> types.</p>
+    <a class="anchor" id="simple-select-attribute"></a><h4 title-id="simple-select-attribute"><a class="markdownIt-Anchor" href="#simple-select-attribute">#</a>Simple select attribute</h4>
+    <p>Whenever the attribute type is <code>pim_catalog_simpleselect</code>, the <code>linked_data</code> field will contain an object.</p>
+    <p><strong>Example</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"main_color"</span>: [
+          {
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"black"</span>,
+            <span class="hljs-attr">"linked_data"</span>: {
+              <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"main_color"</span>,
+              <span class="hljs-attr">"code"</span>: <span class="hljs-string">"black"</span>,
+              <span class="hljs-attr">"labels"</span>: {
+                <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Black"</span>,
+                <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Noir"</span>
+              }
+            }
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="multi-select-attribute"></a><h4 title-id="multi-select-attribute"><a class="markdownIt-Anchor" href="#multi-select-attribute">#</a>Multi select attribute</h4>
+    <p>Whenever the attribute type is <code>pim_catalog_multiselect</code>, the <code>linked_data</code> field will contain an object.</p>
+    <p><strong>Example</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"collection"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [
+              <span class="hljs-string">"winter_2016"</span>
+            ],
+            <span class="hljs-attr">"linked_data"</span>: {
+              <span class="hljs-attr">"winter_2016"</span>: {
+                <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"collection"</span>,
+                <span class="hljs-attr">"code"</span>: <span class="hljs-string">"winter_2016"</span>,
+                <span class="hljs-attr">"labels"</span>: {
+                  <span class="hljs-attr">"en_US"</span>: <span class="hljs-string">"Winter 2016"</span>,
+                  <span class="hljs-attr">"fr_FR"</span>: <span class="hljs-string">"Hiver 2016"</span>
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+    </code></pre>
+    <a class="anchor" id="asset-collection-attribute"></a><h4 title-id="asset-collection-attribute"><a class="markdownIt-Anchor" href="#asset-collection-attribute">#</a>Asset collection attribute</h4>
+    <p>Whenever the attribute type is <code>pim_catalog_asset_collection</code>, the <code>linked_data</code> field will contain an object.</p>
+    <p><strong>Example</strong></p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"asset_collection"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: [
+            <span class="hljs-string">"left_side"</span>,
+            <span class="hljs-string">"right_side"</span>
+          ],
+          <span class="hljs-attr">"linked_data"</span>: {
+            <span class="hljs-attr">"left_side"</span>: {
+              <span class="hljs-attr">"share_links"</span>: [
+                {
+                  <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"media"</span>,
+                  <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+                  <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+                  <span class="hljs-attr">"_links"</span>: {
+                    <span class="hljs-attr">"self"</span>: {
+                      <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https://asset-delivery.fegmo.com/asset_family/media/left_side.png"</span>
+                    }
+                  }
+                },
+                {
+                  <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"secondary_media"</span>,
+                  <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+                  <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+                  <span class="hljs-attr">"_links"</span>: {
+                    <span class="hljs-attr">"self"</span>: {
+                      <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https://asset-delivery.fegmo.com/asset_family/secondary_media/left_side.png"</span>
+                    }
+                  }
+                }
+              ]
+            },
+            <span class="hljs-attr">"right_side"</span>: {
+              <span class="hljs-attr">"share_links"</span>: [
+                {
+                  <span class="hljs-attr">"attribute"</span>: <span class="hljs-string">"media"</span>,
+                  <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+                  <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+                  <span class="hljs-attr">"_links"</span>: {
+                    <span class="hljs-attr">"self"</span>: {
+                      <span class="hljs-attr">"href"</span>: <span class="hljs-string">"https://asset-delivery.fegmo.com/asset_family/media/right_side.png"</span>
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          <span class="hljs-attr">"attribute_type"</span>: <span class="hljs-string">"pim_catalog_asset_collection"</span>,
+          <span class="hljs-attr">"reference_data_name"</span>: <span class="hljs-string">"asset_family"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="product-model"></a><h2 title-id="product-model"><a class="markdownIt-Anchor" href="#product-model">#</a>Product model</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>The product model gathers similar products that differ in some aspects, and allows the enrichment of their common properties.</p>
+    <p>It's like a product, but it's not a product! It can be categorized and it's composed of product values. For more information about what are the &quot;product values&quot;, take a look to this dedicated piece of <a href="/concepts/products.html#focus-on-the-product-values">documentation</a>.</p>
+    <p>In the Fegmo UI, product models are displayed in the grid, exactly like classical products. To distinguish them from products, notice the small pile of pictures: it symbolizes the fact that a product model gathers several products with different variants.</p>
+    <p><img class="img-responsive in-article" alt="Product models in the grid" src="/img/concepts/product_models_in_the_grid_ui.png"/></p>
+    <p>It's also possible to enrich a product model. Below, you can find a screenshot of what the UI looks like.</p>
+    <p><img class="img-responsive in-article" alt="Product models in the PEF" src="/img/concepts/product_models_in_the_pef_ui.png"/></p>
+    <p>To finish, below is the JSON standard format representing a product model. Notice how similar it is to the product standard format!</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"jack"</span>,
+      <span class="hljs-attr">"family"</span>: <span class="hljs-string">"clothing"</span>,
+      <span class="hljs-attr">"family_variant"</span>: <span class="hljs-string">"clothing_color_size"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"categories"</span>: [],
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+              <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+              <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+              <span class="hljs-attr">"data"</span>: <span class="hljs-string">"jack"</span>
+          }
+        ],
+        <span class="hljs-attr">"erp_name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Jack"</span>
+          }
+        ],
+        <span class="hljs-attr">"collection"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: [
+              <span class="hljs-string">"summer_2017"</span>
+            ]
+          }
+        ]
+      },
+      <span class="hljs-attr">"created"</span>: <span class="hljs-string">"2017-10-05T11:24:46+02:00"</span>,
+      <span class="hljs-attr">"updated"</span>: <span class="hljs-string">"2017-10-05T11:24:46+02:00"</span>,
+      <span class="hljs-attr">"associations"</span>: {},
+      <span class="hljs-attr">"quantified_associations"</span>: {},
+      <span class="hljs-attr">"quality_scores"</span>: [
+        {
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"A"</span>
+        }
+      ],
+      <span class="hljs-attr">"metadata"</span>: {
+        <span class="hljs-attr">"workflow_status"</span>: <span class="hljs-string">"working_copy"</span>
+      }
+    }
+    </code></pre>
+    <div class="alert alert-warning"><p>Note that the <code>metadata</code> field is only available since the 2.3 version and as it is an Enterprise Edition feature, you won't have this field on a Community Edition PIM.</p>
+    </div>
+    <div class="alert alert-warning"><p>Note that the <code>family</code> field is only available since the 3.2 version.</p>
+    </div>
+    <div class="alert alert-warning"><p>Note that the <code>quality_scores</code> field is <strong>only available since the 7.0 version</strong> and when the <code>with_quality_scores</code> query parameter is set to <code>true</code>.</p>
+    </div>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Productmodel"><div class="panel-body"><div class="panel-btn-big">Want more details about the product model resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    <a class="anchor" id="published-product-deprecated"></a><h2 title-id="published-product-deprecated"><a class="markdownIt-Anchor" href="#published-product-deprecated">#</a>Published product <em>- Deprecated</em></h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span></p><div class="alert alert-danger"><p><strong>Important update: Published Products discontinuation.</strong> This feature is no longer actively supported and will soon be retired. We recommend exploring alternative solutions. <a href="https://help.fegmo.com/en_US/serenity-take-the-power-over-your-products/important-update-deprecation-of-the-published-products-feature-from-fegmo-pim">Learn more in the help center</a></p>
+    </div>
+    <p>A published product is a product that was published by a user in order to freeze a given version of the product. It can be very useful when you want to work on a new version of your product for the next collection for example, but in the meantime, you still want to export the previous version of your product to your channels.</p>
+    <div class="alert alert-warning"><p>This is an Enterprise Edition feature. So you won't be able to call this endpoint if you are working on a Community Edition PIM. 😉</p>
+    </div>
+    <p>In the Fegmo UI since the 2.0 version, you can find the published products by clicking on the <code>...</code> button in the top right corner, when you are on the products grid. Then select the <code>Published products</code> option. You will then see a grid really similar to the classical product grid.</p>
+    <p>Below is the JSON standard format representing a published product. Notice how totally similar to the classical product format it is!</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"identifier"</span>: <span class="hljs-string">"11118726289"</span>,
+      <span class="hljs-attr">"family"</span>: <span class="hljs-string">"mp3"</span>,
+      <span class="hljs-attr">"parent"</span>: <span class="hljs-literal">null</span>,
+      <span class="hljs-attr">"categories"</span>: [
+        <span class="hljs-string">"audio_video"</span>
+      ],
+      <span class="hljs-attr">"enabled"</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-attr">"values"</span>: {
+        <span class="hljs-attr">"name"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"MP3 player"</span>
+          }
+        ],
+        <span class="hljs-attr">"weight"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: {
+              <span class="hljs-attr">"amount"</span>: <span class="hljs-string">"600.0000"</span>,
+              <span class="hljs-attr">"unit"</span>: <span class="hljs-string">"GRAM"</span>
+            }
+          }
+        ],
+        <span class="hljs-attr">"color"</span>: [
+          {
+            <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>,
+            <span class="hljs-attr">"data"</span>: <span class="hljs-string">"glossy_red"</span>
+          }
+        ]
+      },
+      <span class="hljs-attr">"created"</span>: <span class="hljs-string">"2017-10-05T11:25:48+02:00"</span>,
+      <span class="hljs-attr">"updated"</span>: <span class="hljs-string">"2017-10-05T11:25:48+02:00"</span>,
+      <span class="hljs-attr">"associations"</span>: {}
+    }
+    </code></pre>
+    <div class="alert alert-warning"><p>Endpoints for the published products are only available starting the 2.0 version.</p>
+    </div>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Publishedproduct"><div class="panel-body"><div class="panel-btn-big">Want more details about the published product resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    <a class="anchor" id="product-media-file"></a><h2 title-id="product-media-file"><a class="markdownIt-Anchor" href="#product-media-file">#</a>Product media file</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span></p><p>A product media file can be an image (a photo, an illustration, etc.), a video (demonstration of a product, an animation, etc.), an audio file (music, podcast, etc.), other multimedia (PDF file) or office documents (.xlsx, .docx, .csv, etc.). It can also be any exotic format you could use.</p>
+    <p>It is used as the attribute value of a product, i.e. a product value.</p>
+    <p>In the Fegmo UI, you can find media files in the product form when they are associated to a media attribute.</p>
+    <div><ul class="nav nav-tabs nav-tabs-versions" role="tablist"><li role="presentation" class="active"><a href="#v2_media-files" aria-controls="v2_media-files" role="tab" data-toggle="tab">Since v2</a></li><li role="presentation"><a href="#v17_media-files" aria-controls="v17_media-files" role="tab" data-toggle="tab">v1.7</a></li></ul><div class="panel panel-default"><div class="panel-body"><div class="row tab-content"><div role="tabpanel" class="col-xs-12 tab-pane active" id="v2_media-files"><p><img class="img-responsive in-article" alt="Media files in the Fegmo UI" src="/img/concepts/media_files_ui.png"/></p>
+    </div><div role="tabpanel" class="col-xs-12 tab-pane" id="v17_media-files"><p><img class="img-responsive in-article" alt="Media files in the Fegmo UI" src="/img/concepts/v1.7/media_files_ui.png"/></p>
+    </div></div>
+    </div>
+    </div>
+    </div>
+    <p>Below is the JSON standard format representing a media file.</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"code"</span>: <span class="hljs-string">"1/d/7/f/1d7f0987000cea4d14908fe679af4e36ea3632ef_10806799_1356.jpg"</span>,
+      <span class="hljs-attr">"original_filename"</span>: <span class="hljs-string">"10806799-1356.jpg"</span>,
+      <span class="hljs-attr">"mime_type"</span>: <span class="hljs-string">"image/jpeg"</span>,
+      <span class="hljs-attr">"size"</span>: <span class="hljs-number">16070</span>,
+      <span class="hljs-attr">"extension"</span>: <span class="hljs-string">"jpg"</span>,
+      <span class="hljs-attr">"_links"</span>: {
+        <span class="hljs-attr">"download"</span>: {
+          <span class="hljs-attr">"href"</span>: <span class="hljs-string">"http://test-dev-feature-10.fegmo.com/api/rest/v1/media-files/1/d/7/f/1d7f0987000cea4d14908fe679af4e36ea3632ef_10806799_1356.jpg/download"</span>
+        }
+      }
+    }
+    </code></pre>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/api-reference.html#Mediafile"><div class="panel-body"><div class="panel-btn-big">Want more details about the media file resource? </div><p class="text-center">Check its endpoints here!</p></div></a></div></div></div>
+    </div>
+            </div>
+        </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

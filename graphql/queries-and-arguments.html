@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The GraphQL API | Fegmo APIs</title>
+    <meta name="description" content="The Akeneo GraphQL API">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-9">
+                    <h1><img src="../../img/graphql/logo.png"/>The GraphQL API</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="navbar" class="col-sm-3 hidden-xs sticky"><nav role="tablist" id="navbar-nav"><ul class="nav nav-stacked" style="counter-increment: step-counter;"><p class="pre-nav">Summary</p><li><a href="/graphql/getting-started.html">Getting started</a></li><li><a href="/graphql/browse-graphql-capabilities.html">Browse capabilities</a></li><li><a href="/graphql/common-notions.html">Common notions</a></li><li class="active"> <a href="#">Available queries & arguments</a><p><ul class="nav">
+    <li><a href="#products">products</a></li>
+    <li><a href="#productmodels">productModels</a></li>
+    <li><a href="#families">families</a></li>
+    <li><a href="#categories">categories</a></li>
+    <li><a href="#attributes">attributes</a></li>
+    <li><a href="#attributeoptions">attributeOptions</a></li>
+    <li><a href="#locales">locales</a></li>
+    <li><a href="#currencies">currencies</a></li>
+    <li><a href="#channels">channels</a></li>
+    <li><a href="#measurementfamilies">measurementFamilies</a></li>
+    <li><a href="#assetfamilies">assetFamilies</a></li>
+    <li><a href="#assetsrecords">assetsRecords</a></li>
+    <li><a href="#referenceentities">referenceEntities</a></li>
+    <li><a href="#referenceentitiesrecords">referenceEntitiesRecords</a></li>
+    <li><a href="#token">token</a></li>
+    <li><a href="#systeminformation">systemInformation</a></li>
+    </ul>
+    </p>
+    </li><li><a href="/graphql/use-cases.html">Use cases examples</a></li><li><a href="/graphql/integration.html">Integrate GraphQL into your project</a></li><li><a href="/graphql/best-practices.html">Best practices</a></li><li><a href="/graphql/compatibility.html">Pim compatibility</a></li><li><a href="/graphql/recommendations.html">Usage recommendations</a></li><li><a href="/graphql/limitations.html">Limitations</a></li><li><a href="/graphql/error-codes.html">Status and error codes</a></li><li><a href="/graphql/advanced.html">Advanced</a></li></ul></nav></div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-8"><p>This page presents <strong>all available arguments</strong> for <strong>the different queries</strong>.</p>
+    <a class="anchor" id="products"></a><h2 title-id="products"><a class="markdownIt-Anchor" href="#products">#</a>products</h2>
+    <p>Get a list of products (simple/variants).</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html#get_products_uuid">https://api.fegmo.com/api-reference.html#get_products_uuid</a></p>
+    <p>The following arguments are available:</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>limit</code></td>
+    <td><strong>Int</strong></td>
+    <td>Limit the number of results<br/>example <code>limit: 5</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>String</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter values to keep only the ones related to these locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>channel</code></td>
+    <td><strong>String</strong></td>
+    <td>Filter values to keep only the ones related to this channel<br/>example <code>channel: &quot;b2b&quot;</code></td>
+    </tr>
+    <tr>
+    <td><code>currencies</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter values to keep only the ones related to these currencies<br/>example <code>currencies: [&quot;USD&quot;, &quot;EUR&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>search</code></td>
+    <td><strong>String</strong></td>
+    <td>Filter results based on specific search<br/>more details on <a href="/graphql/common-notions.html#query-with-search">Common notions - query with search</a></td>
+    </tr>
+    <tr>
+    <td><code>categories</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get product associated with these categories based on categories codes<br/>example <code>categories: [&quot;categ-code1&quot;, &quot;categ-code2&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>families</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get product associated with these families based on families codes<br/>example <code>families: [&quot;family-code1&quot;, &quot;family-code2&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>uuid</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get only specific items based on their uuid<br/>example <code>uuid: [&quot;002844f9-a470-42e2-8268-ddfd8f646593&quot;, &quot;002844f9-3648-8268-8268-ddfd8f6411545&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>parent</code></td>
+    <td><strong>String</strong></td>
+    <td>Get <strong>product variants</strong> linked to the product models base on its <strong>code</strong><br/>example <code>code: &quot;code1&quot;</code></td>
+    </tr>
+    <tr>
+    <td><code>noParent</code></td>
+    <td><strong>Enum</strong></td>
+    <td>Only accepted value <code>YES</code>, will return <strong>only simple products</strong>.</td>
+    </tr>
+    <tr>
+    <td><code>attributesToLoad</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Restrict the attribute values loaded on the product, more details on <a href="/graphql/best-practices.html#load-only-required-product-attributes">Best practices</a></td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="alert alert-info"><p>The <code>categories</code>, <code>families</code>, and <code>uuid</code> use the <code>Rest API search capabilities</code> under the hood to ease the data fetching.</p>
+    <p>More arguments to abstract the search will be added over time.</p>
+    </div>
+    <a class="anchor" id="productmodels"></a><h2 title-id="productmodels"><a class="markdownIt-Anchor" href="#productmodels">#</a>productModels</h2>
+    <p>Get a list of product models.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Productmodel">https://api.fegmo.com/api-reference.html?#Productmodel</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>limit</code></td>
+    <td><strong>Int</strong></td>
+    <td>Limit the number of results<br/>example <code>limit: 5</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>String</strong></td>
+    <td>Display a specific page, the value must come from the <strong>links{next/self/first}</strong><br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>channel</code></td>
+    <td><strong>String</strong></td>
+    <td>Filter values to keep only the ones related to this channel<br/>example <code>channel: &quot;b2b&quot;</code></td>
+    </tr>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter values to keep only the ones related to this locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>currencies</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter values to keep only the ones related to these currencies<br/>example <code>currencies: [&quot;USD&quot;, &quot;EUR&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>search</code></td>
+    <td><strong>String</strong></td>
+    <td>Filter results based on specific search<br/>more details on <a href="/graphql/common-notions.html#query-with-search">Common notions - query with search</a></td>
+    </tr>
+    <tr>
+    <td><code>codes</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get only specific items based on their codes<br/>example <code>codes: [&quot;code1&quot;, &quot;code-2&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>categories</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get product associated with these categories based on categories codes<br/>example <code>categories: [&quot;categ-code1&quot;, &quot;categ-code2&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>families</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get product associated with these families based on families codes<br/>example <code>families: [&quot;family-code1&quot;, &quot;family-code2&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>noParent</code></td>
+    <td><strong>Enum</strong></td>
+    <td>Only accepted value <code>YES</code>, will return <strong>only root product models</strong>.</td>
+    </tr>
+    <tr>
+    <td><code>attributesToLoad</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Restrict the attribute values we will load on product, more details on <a href="/graphql/best-practices.html#load-only-required-product-attributes">Best practices</a></td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="alert alert-info"><p>The <code>categories</code>, <code>families</code> and <code>codes</code> use under the hood the <code>Rest API search capabilities</code> to ease the data fetching.</p>
+    <p>More arguments to abstract the search will be added over the time.</p>
+    </div>
+    <a class="anchor" id="families"></a><h2 title-id="families"><a class="markdownIt-Anchor" href="#families">#</a>families</h2>
+    <p>Get a list of families.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Family">https://api.fegmo.com/api-reference.html?#Family</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>limit</code></td>
+    <td><strong>Int</strong></td>
+    <td>Limit the number of results<br/>example <code>limit: 5</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>Int</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>codes</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get only specific items based on their codes<br/>example <code>codes: [&quot;code1&quot;, &quot;code-2&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter values to keep only the one related to these locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>hasProducts</code></td>
+    <td><strong>Boolean</strong></td>
+    <td>If true only returns families with at least one product, if false only families with no products`</td>
+    </tr>
+    <tr>
+    <td><code>updatedAfter</code></td>
+    <td><strong>String</strong></td>
+    <td>Filter families to only returns families that were updated after the given date<br/>Supported format is ISO 8601<br/>example <code>updatedAfter:&quot;2024-07-04T10:00:00Z&quot;</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="categories"></a><h2 title-id="categories"><a class="markdownIt-Anchor" href="#categories">#</a>categories</h2>
+    <p>Get a list of categories.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Category">https://api.fegmo.com/api-reference.html?#Category</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>limit</code></td>
+    <td><strong>Int</strong></td>
+    <td>Limit the number of results<br/>example <code>limit: 5</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>Int</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>search</code></td>
+    <td><strong>String</strong></td>
+    <td>Filter results based on specific search<br/>more details on <a href="/graphql/common-notions.html#query-with-search">Common notions - query with search</a></td>
+    </tr>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter values to keep only the ones related to these locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>root</code></td>
+    <td><strong>Boolean</strong></td>
+    <td>Get only category that is root <code>true</code> or not <code>false</code></td>
+    </tr>
+    <tr>
+    <td><code>parent</code></td>
+    <td><strong>String</strong></td>
+    <td>Get children categories of a <code>parent</code> category<br/>example <code>parent: &quot;code-parent-category&quot;</code></td>
+    </tr>
+    <tr>
+    <td><code>codes</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get only specific items based on their codes<br/>example <code>codes: [&quot;code1&quot;, &quot;code-2&quot;]</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="attributes"></a><h2 title-id="attributes"><a class="markdownIt-Anchor" href="#attributes">#</a>attributes</h2>
+    <p>Get a list of attributes.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Attribute">https://api.fegmo.com/api-reference.html?#Attribute</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>limit</code></td>
+    <td><strong>Int</strong></td>
+    <td>Limit the number of results<br/>example <code>limit: 5</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>Int</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>search</code></td>
+    <td><strong>String</strong></td>
+    <td>Filter results based on specific search<br/>more details on <a href="/graphql/common-notions.html#query-with-search">Common notions - query with search</a></td>
+    </tr>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter labels to keep only the ones related to these locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>codes</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get only specific items based on their codes<br/>example <code>codes: [&quot;code1&quot;, &quot;code-2&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>types</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get only specific items based on their types<br/>example <code>types: [&quot;pim_catalog_simpleselect&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>identifier</code></td>
+    <td><strong>Boolean</strong></td>
+    <td>Get only items that correspond to this filter<br/>example <code>identifier: true</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="attributeoptions"></a><h2 title-id="attributeoptions"><a class="markdownIt-Anchor" href="#attributeoptions">#</a>attributeOptions</h2>
+    <p>Get a list of options for a given attribute.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html#Attributeoption">https://api.fegmo.com/api-reference.html#Attributeoption</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>attributeCode</code></td>
+    <td><strong>String</strong></td>
+    <td><em>required</em> Get attribute options linked to a specific attribute</td>
+    </tr>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter labels to keep only the ones related to these locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>Int</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="locales"></a><h2 title-id="locales"><a class="markdownIt-Anchor" href="#locales">#</a>locales</h2>
+    <p>Get a list of locales.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Locale">https://api.fegmo.com/api-reference.html?#Locale</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>limit</code></td>
+    <td><strong>Int</strong></td>
+    <td>Limit the number of results<br/>example <code>limit: 5</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>Int</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>enabled</code></td>
+    <td><strong>Boolean</strong></td>
+    <td>Get only items that correspond to the value (true/false)<br/>example <code>enabled: true</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="currencies"></a><h2 title-id="currencies"><a class="markdownIt-Anchor" href="#currencies">#</a>currencies</h2>
+    <p>Get the list of all currencies.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Currency">https://api.fegmo.com/api-reference.html?#Currency</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>limit</code></td>
+    <td><strong>Int</strong></td>
+    <td>Limit the number of results<br/>example <code>limit: 5</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>Int</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>enabled</code></td>
+    <td><strong>Boolean</strong></td>
+    <td>Get only items that correspond to the value (true/false)<br/>example <code>enabled: true</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="channels"></a><h2 title-id="channels"><a class="markdownIt-Anchor" href="#channels">#</a>channels</h2>
+    <p>Get a list of channels.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Channel">https://api.fegmo.com/api-reference.html?#Channel</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>limit</code></td>
+    <td><strong>Int</strong></td>
+    <td>Limit the number of results<br/>example <code>limit: 5</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>Int</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter labels to keep only the ones related to this locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="measurementfamilies"></a><h2 title-id="measurementfamilies"><a class="markdownIt-Anchor" href="#measurementfamilies">#</a>measurementFamilies</h2>
+    <p>Get a list of measurement families.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Measurementfamily">https://api.fegmo.com/api-reference.html?#Measurementfamily</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter labels to keep only the ones related to this locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="assetfamilies"></a><h2 title-id="assetfamilies"><a class="markdownIt-Anchor" href="#assetfamilies">#</a>assetFamilies</h2>
+    <p>Get a list of asset families.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Assetfamily">https://api.fegmo.com/api-reference.html?#Assetfamily</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>code</code></td>
+    <td><strong>String</strong></td>
+    <td>Get a specific asset family <br/>example <code>code: &quot;code-of-asset-family&quot;</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>String</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter labels to keep only the ones related to this locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="assetsrecords"></a><h2 title-id="assetsrecords"><a class="markdownIt-Anchor" href="#assetsrecords">#</a>assetsRecords</h2>
+    <p>Get a list of assets for a given asset family.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Asset">https://api.fegmo.com/api-reference.html?#Asset</a></p>
+    <p>Before using the GraphQL outbound API to retrieve assets, please visit this page to understand the <a href="/graphql/limitations.html#about-assets">asset limitations</a>.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>assetFamily</code></td>
+    <td><strong>String</strong></td>
+    <td><strong>required</strong> Get assets linked to an assetFamily<br/>example <code>assetFamily: &quot;code-parent-asset-family&quot;</code></td>
+    </tr>
+    <tr>
+    <td><code>channel</code></td>
+    <td><strong>String</strong></td>
+    <td>Filter values to keep only the ones related to this channel<br/>example <code>channel: &quot;b2b&quot;</code></td>
+    </tr>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter labels to keep only the ones related to these locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>String</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>search</code></td>
+    <td><strong>String</strong></td>
+    <td>Filter results based on specific search<br/>more details on <a href="/graphql/common-notions.html#query-with-search">Common notions - query with search</a></td>
+    </tr>
+    <tr>
+    <td><code>codes</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get only specific items based on their codes<br/>example <code>codes: [&quot;code1&quot;, &quot;code-2&quot;]</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="referenceentities"></a><h2 title-id="referenceentities"><a class="markdownIt-Anchor" href="#referenceentities">#</a>referenceEntities</h2>
+    <p>Get a list of reference entities.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Referenceentities">https://api.fegmo.com/api-reference.html?#Referenceentities</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>code</code></td>
+    <td><strong>String</strong></td>
+    <td>Get a specific reference entity <br/>example <code>code: &quot;code-of-ref-entity&quot;</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>String</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter labels to keep only the ones related to these locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="referenceentitiesrecords"></a><h2 title-id="referenceentitiesrecords"><a class="markdownIt-Anchor" href="#referenceentitiesrecords">#</a>referenceEntitiesRecords</h2>
+    <p>Get a list of records for a given reference entity.</p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html?#Referenceentityrecord">https://api.fegmo.com/api-reference.html?#Referenceentityrecord</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>referenceEntity</code></td>
+    <td><strong>String</strong></td>
+    <td><strong>required</strong> Get reference entity records linked to a referenceEntity<br/>example <code>referenceEntity: &quot;code-parent-ref-entity&quot;</code></td>
+    </tr>
+    <tr>
+    <td><code>channel</code></td>
+    <td><strong>String</strong></td>
+    <td>Filter values to keep only the ones related to this channel<br/>example <code>channel: &quot;b2b&quot;</code></td>
+    </tr>
+    <tr>
+    <td><code>locales</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Filter values to keep only the ones related to these locales<br/>example <code>locales: [&quot;fr_FR&quot;, &quot;en_US&quot;]</code></td>
+    </tr>
+    <tr>
+    <td><code>page</code></td>
+    <td><strong>String</strong></td>
+    <td>Display a specific page, the value must come from the links{next/self/first}<br/>more details on <a href="/graphql/common-notions.html#working-with-pagination">Common notions - paginations</a></td>
+    </tr>
+    <tr>
+    <td><code>search</code></td>
+    <td><strong>String</strong></td>
+    <td>Filter results based on specific search<br/>more details on <a href="/graphql/common-notions.html#query-with-search">Common notions - query with search</a></td>
+    </tr>
+    <tr>
+    <td><code>codes</code></td>
+    <td><strong>String[]</strong></td>
+    <td>Get only specific items based on their codes<br/>example <code>codes: [&quot;code1&quot;, &quot;code-2&quot;]</code></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="token"></a><h2 title-id="token"><a class="markdownIt-Anchor" href="#token">#</a>token</h2>
+    <p>Get an authentication token.</p>
+    <p>More details on the authentication process are available on the <a href="/graphql/getting-started.html#step-1-get-your-token">Getting started</a></p>
+    <p>Based on the REST API endpoint <a href="https://api.fegmo.com/api-reference.html#Authentication">https://api.fegmo.com/api-reference.html#Authentication</a></p>
+    <table class="table"><thead>
+    <tr>
+    <th>Argument</th>
+    <th>Type</th>
+    <th>Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>username</code></td>
+    <td><strong>String</strong></td>
+    <td><strong>required</strong></td>
+    </tr>
+    <tr>
+    <td><code>password</code></td>
+    <td><strong>String</strong></td>
+    <td><strong>required</strong></td>
+    </tr>
+    <tr>
+    <td><code>clientId</code></td>
+    <td><strong>String</strong></td>
+    <td><strong>required</strong></td>
+    </tr>
+    <tr>
+    <td><code>clientSecret</code></td>
+    <td><strong>String</strong></td>
+    <td><strong>required</strong></td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="systeminformation"></a><h2 title-id="systeminformation"><a class="markdownIt-Anchor" href="#systeminformation">#</a>systemInformation</h2>
+    <p>Get the version and the edition of the PIM.</p>
+    <p>Based on the REST API endpoint https://api.fegmo.com/api-reference.html?#System</p>
+    <p>No arguments are needed.</p>
+    <div class="row" style="margin-top: 80px;"><div class="col-sm-offset-3 col-sm-6"><div class="panel panel-default panel-btn"><a href="/graphql/use-cases.html"><div class="panel-body"><div class="panel-btn-big">And now, let's discover how to resolve some use cases with GraphQL </div><p class="text-center">Next</p></div></a></div></div></div>
+    </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $( document ).ready(function() {
+                $('.code-tabs li:first-child').addClass('active');
+            });
+            function copySnippetContent(event){
+                const copyToClipboard = $(this);
+                copyToClipboard.text("Copied!");
+                copyToClipboard.addClass("copied");
+                setTimeout(function() {
+                    copyToClipboard.removeClass('copied');
+                    copyToClipboard.text("Copy");
+                }, 3000);
+    
+                const parentTextContent = event.target.parentElement.firstChild.innerText;
+                navigator.clipboard.writeText(parentTextContent);
+            }
+            $( "pre" ).append( `<span class="copy-to-clipboard-button">Copy</span>`);
+            $('.copy-to-clipboard-button').click(copySnippetContent);
+            $('.code-tabs li').click(function(){
+                $(this).parent().children().removeClass('active');
+                $(this).addClass('active');
+            });
+        </script>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>

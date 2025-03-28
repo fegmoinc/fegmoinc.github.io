@@ -1,0 +1,2577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The REST API basics | Fegmo APIs</title>
+    <meta name="description" content="Description">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <script src="/js/jquery.min.js"></script>
+    <script src='/js/bootstrap.min.js'></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <link rel="icon" type="image/png" href="/img/faviconV2.png">
+    <link rel="stylesheet" href="/css/prism-okaidia.css">
+    <link rel="stylesheet" href="/css/variables-5652dfbb9a.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">
+    <link rel="preload" href="/fonts/Roobert-Light.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-LightItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-RegularItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-MediumItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-SemiBoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-BoldItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-Heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="/fonts/Roobert-HeavyItalic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+
+    <!-- Hotjar Tracking Code for https://api.akeneo.com/ -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:2599654,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TP6QE431E"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5TP6QE431E');
+    </script>
+
+</head>
+<body data-spy="scroll" data-target="#navbar">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=G-5TP6QE431E"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-white">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img height="40" src="/img/Fegmo_APIs.svg"></img>
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+               <!-- <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Apps <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/apps/homepage.html">Apps</a></li>
+                        <li><a href="/apps/homepage.html">Start building your App</a></li>
+                        <li><a href="/apps/overview.html">Overview</a></li>
+                        <li><a href="/apps/authentication-and-authorization.html">Authentication and authorization</a></li>
+                        <li><a href="/apps/create-the-ux-of-your-app.html">Design an App (UX)</a></li>
+                        <li><a href="/apps/secure-your-app.html">Secure your App</a></li>
+                        <li><a href="/apps/catalogs.html">Catalogs for Apps</a></li>
+                        <li><a href="/apps/app-developer-tools.html">Developer tools</a></li>
+                        <li><a href="/apps/app-concepts-and-use-cases.html">App concepts and use cases</a></li>
+                        <li><a href="/apps/create-custom-app.html">Custom Apps</a></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">App portal <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/app-portal/get-started.html">App portal</a></li>
+                        <li><a href="/app-portal/get-started.html">Get started</a></li>
+                        <li><a href="/app-portal/manage-your-team.html">Manage your team</a></li>
+                        <li><a href="/app-portal/create-app-record.html">Create an app record</a></li>
+                        <li><a href="/app-portal/publish-your-app.html">App Publication Requirements</a></li>
+                        <li><a href="/app-portal/manage-app-availability.html">Manage your app's availability</a></li>
+                        <li><a href="/app-portal/manage-app-notifications.html">Manage app notifications</a></li>
+                        <li><a href="/app-portal/measure-app-performance.html">Measure app performance</a></li>
+                    </ul>
+                </li> -->
+
+                <li class="dropdown active">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PIM APIs<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">PIM API resources</li>
+                        <li><a href="/documentation/introduction.html">REST API</a></li>
+                        <li>
+                            <ul>
+                              <li><a href="/api-reference-index.html">REST API reference</a></li>
+                            </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/documentation/why-the-api.html">REST API basics</a></li>
+                                <li><a href="/api-reference-index.html">REST API reference</a></li>
+                                <li><a href="/getting-started/your-first-tutorial-4x/welcome.html">Your very first tutorial</a></li>
+                                <li><a href="/getting-started/connect-the-pim-4x/welcome.html">The "Connect the PIM" tutorial</a></li>
+                            </ul>
+                        </li>
+                      -->
+                        <li>
+                            <a href="/graphql/getting-started.html">
+                            GraphQL API
+                            </a>
+                        </li>
+                        <li>
+                          <ul>
+                              <li><a href="/graphql/queries-and-arguments.html">Available queries & arguments</a></li>
+                          </ul>
+                        </li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/graphql/getting-started.html">Getting started</a></li>
+                                <li><a href="/graphql/compatibility.html">PIM Compatibility</a></li>
+                                <li><a href="/graphql/recommendations.html">Usage recommendations</a></li>
+                            </ul>
+                        </li>
+                      -->
+                       <!-- <li>
+                            <a href="/event-platform/overview.html">
+                              Event Platform <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/event-platform/available-events.html">Available events</a></li>
+                            </ul>
+                        </li>
+                      <!--
+                      <li>
+                          <ul>
+                              <li><a href="/event-platform/overview.html">Overview</a></li>
+                              <li><a href="/event-platform/getting-started.html">Getting started</a></li>
+                              <li><a href="/event-platform/concepts.html">Concepts</a></li>
+                              <li><a href="/event-platform/api-reference.html">API Reference</a></li>
+                          </ul>
+                      </li>
+                    -->
+                       <!-- <li>
+                            <a href="/extensions/overview.html">
+                                Extensions <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/extensions/ui-extensions.html">UI Extensions</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/events-documentation/overview.html">
+                                Events API <span class="label label-alert">Deprecated</span>
+                            </a>
+                        </li>
+                        <li><a href="/php-client/introduction.html">PHP API Client</a></li> -->
+                        <li><a href="/concepts/introduction.html">PIM data concepts</a></li>
+                        <!--
+                        <li>
+                            <ul>
+                                <li><a href="/concepts/products.html">Product</a></li>
+                                <li><a href="/getting-started/from-identifiers-to-uuid-7x/welcome.html">From product identifier to product UUID</a></li>
+                                <li><a href="/concepts/catalog-structure.html">Catalog structure</a></li>
+                                <li><a href="/concepts/target-market-settings.html">Target market settings</a></li>
+                                <li><a href="/concepts/reference-entities.html">Reference entities</a></li>
+                                <li><a href="/concepts/asset-manager.html">Asset manager</a></li>
+                            </ul>
+                        </li>
+                      -->
+                    </ul>
+                </li>
+              <!--  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SDM API<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title">SDM API resources</li>
+                        <li>
+                            <a href="/supplier-data-manager/getting-started.html">
+                            Supplier Data Manager API <span class="label label-beta">New</span>
+                            </a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li><a href="/supplier-data-manager/getting-started.html">Getting started</a></li>
+                                <li><a href="/supplier-data-manager/common-usage.html">Common usage</a></li>
+                                <li><a href="/supplier-data-manager/api-reference.html">API reference</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guided tutorials <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-title"><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/homepage.html">Guided tutorials</a></li>
+                        <li><a href="/tutorials/how-to-get-your-app-token.html">How to get your App token</a></li>
+                        <li><a href="/tutorials/how-to-retrieve-pim-structure.html">How to retrieve PIM structure</a></li>
+                        <li><a href="/tutorials/how-to-get-families-and-attributes.html">How to get families, family variants, and attributes</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-product-information.html">How to get PIM product information</a></li>
+                        <li><a href="/tutorials/how-to-collect-product-variations.html">How to collect product variations</a></li>
+                        <li><a href="/tutorials/how-to-get-pim-category-tree.html">How get PIM category tree</a></li>
+                    </ul>
+                </li>
+
+                <li class="">
+                    <a href="/news/2024.html">What's new?</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+   <!-- aojha <div class="search-bar-container">
+        <form class="navbar-form navbar-right search-bar-form">
+            <div class="form-group form-search">
+                <input id="algolia-search" class="form-control search-bar" placeholder="Search whole doc">
+            </div>
+        </form>
+    </div> -->
+</nav>
+<div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-xs-9">
+                    <h1>The REST API basics</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div id="navbar" class="col-sm-3 hidden-xs sticky"><nav role="tablist" id="navbar-nav"><ul class="nav nav-stacked" style="counter-increment: step-counter;"><p class="pre-nav">Summary</p><li><a href="/documentation/why-the-api.html">Why the REST API?</a></li><li><a href="/documentation/overview.html">Overview</a></li><li><a href="/documentation/authentication.html">Authentication</a></li><li><a href="/documentation/permissions.html">Permissions</a></li><li><a href="/documentation/responses.html">Response codes</a></li><li><a href="/documentation/pagination.html">Pagination</a></li><li><a href="/documentation/update.html">Update behavior</a></li><li class="active"> <a href="#">Filters</a><p><ul class="nav">
+    <li><a href="#filter-on-product-properties">Filter on product properties</a>
+    <ul>
+    <li><a href="#on-their-uuid">On their uuid</a></li>
+    <li><a href="#on-their-categories">On their categories</a></li>
+    <li><a href="#on-their-status">On their status</a></li>
+    <li><a href="#on-their-completeness">On their completeness</a></li>
+    <li><a href="#on-their-group-or-family">On their group or family</a></li>
+    <li><a href="#on-their-creation-or-update-date">On their creation or update date</a></li>
+    <li><a href="#on-their-parent">On their parent</a></li>
+    <li><a href="#on-their-quality-score">On their quality score</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-on-product-model-properties">Filter on product model properties</a>
+    <ul>
+    <li><a href="#on-categories">On categories</a></li>
+    <li><a href="#on-completeness">On completeness</a></li>
+    <li><a href="#on-family">On family</a></li>
+    <li><a href="#on-creation-or-update-date">On creation or update date</a></li>
+    <li><a href="#on-their-parent-2">On their parent</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-on-product-values">Filter on product values</a>
+    <ul>
+    <li><a href="#search_locale-query-parameter"><code>search_locale</code> query parameter</a></li>
+    <li><a href="#search_scope-query-parameter"><code>search_scope</code> query parameter</a></li>
+    <li><a href="#available-operators">Available operators</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-product-values">Filter product values</a>
+    <ul>
+    <li><a href="#via-attributes">Via attributes</a></li>
+    <li><a href="#via-locale">Via locale</a></li>
+    <li><a href="#via-channel">Via channel</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-on-published-product-properties">Filter on published product properties</a>
+    <ul>
+    <li><a href="#on-their-categories-2">On their categories</a></li>
+    <li><a href="#on-their-status-2">On their status</a></li>
+    <li><a href="#on-their-completeness-2">On their completeness</a></li>
+    <li><a href="#on-their-group-or-family-2">On their group or family</a></li>
+    <li><a href="#on-their-creation-or-update-date-2">On their creation or update date</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-on-published-product-values">Filter on published product values</a>
+    <ul>
+    <li><a href="#search_locale-query-parameter-2"><code>search_locale</code> query parameter</a></li>
+    <li><a href="#search_scope-query-parameter-2"><code>search_scope</code> query parameter</a></li>
+    <li><a href="#available-operators-2">Available operators</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-published-product-values">Filter published product values</a>
+    <ul>
+    <li><a href="#via-attributes-2">Via attributes</a></li>
+    <li><a href="#via-locale-2">Via locale</a></li>
+    <li><a href="#via-channel-2">Via channel</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-locales">Filter locales</a></li>
+    <li><a href="#filter-currencies">Filter currencies</a></li>
+    <li><a href="#filter-reference-entity-records">Filter reference entity records</a>
+    <ul>
+    <li><a href="#by-record-codes">By record codes</a></li>
+    <li><a href="#by-completeness">By completeness</a></li>
+    <li><a href="#by-update-date">By update date</a></li>
+    <li><a href="#record-values-by-locale">Record values by locale</a></li>
+    <li><a href="#record-values-by-channel">Record values by channel</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-assets">Filter assets</a>
+    <ul>
+    <li><a href="#by-asset-codes">By asset codes</a></li>
+    <li><a href="#by-update-date-2">By update date</a></li>
+    <li><a href="#asset-values-by-locale">Asset values by locale</a></li>
+    <li><a href="#asset-values-by-channel">Asset values by channel</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-attributes">Filter attributes</a>
+    <ul>
+    <li><a href="#by-attribute-codes">By attribute codes</a></li>
+    <li><a href="#by-update-date-3">By update date</a></li>
+    <li><a href="#by-attribute-types">By attribute types</a></li>
+    <li><a href="#by-the-main-identifier">By the main identifier</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-attribute-groups">Filter attribute groups</a>
+    <ul>
+    <li><a href="#by-attribute-group-codes">By attribute group codes</a></li>
+    <li><a href="#by-update-date-4">By update date</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-families">Filter families</a>
+    <ul>
+    <li><a href="#by-family-codes">By family codes</a></li>
+    <li><a href="#by-update-date-5">By update date</a></li>
+    <li><a href="#by-families-with-at-least-one-product">By families with at least one product</a></li>
+    </ul>
+    </li>
+    <li><a href="#filter-categories">Filter categories</a>
+    <ul>
+    <li><a href="#by-category-level-root">By category level: root</a></li>
+    <li><a href="#by-parent-category">By parent category</a></li>
+    <li><a href="#by-category-codes">By category codes</a></li>
+    <li><a href="#by-update-date-6">By update date</a></li>
+    </ul>
+    </li>
+    </ul>
+    </p>
+    </li><li><a href="/documentation/troubleshooting.html">Troubleshooting guide</a></li></ul></nav></div>
+    <div class="col-xs-12 col-sm-offset-1 col-sm-8"><a class="anchor" id="filters"></a><h1 title-id="filters"><a class="markdownIt-Anchor" href="#filters">#</a>Filters</h1>
+    <p>When requesting a list of resources via the REST API, you can apply filters to get only the ones you want.</p>
+    <a class="anchor" id="filter-on-product-properties"></a><h2 title-id="filter-on-product-properties"><a class="markdownIt-Anchor" href="#filter-on-product-properties">#</a>Filter on product properties</h2>
+    <p>To filter products by one of its properties, you can use the <code>search</code> query parameter. The value given to this query parameter should be a valid JSON as shown below.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={PRODUCT_PROPERTY:[{"operator":OPERATOR,"value":VALUE}]}
+    </code></pre>
+    <p>In the above url :</p>
+    <ul>
+    <li><code>PRODUCT_PROPERTY</code> can be any property detailed in the sections below,</li>
+    <li><code>OPERATOR</code> is an allowed operator for this <code>PRODUCT_PROPERTY</code>,</li>
+    <li><code>VALUE</code> is a value whose type corresponds to the allowed type detailed below.</li>
+    </ul>
+    <a class="anchor" id="examples"></a><h4 title-id="examples"><a class="markdownIt-Anchor" href="#examples">#</a>Examples</h4>
+    <p>To only retrieve enabled products, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"enabled":[{"operator":"=","value":true}]}
+    </code></pre>
+    <p>Of course, you can combine as many filters as you want. The example below will get you the enabled products being 70% complete.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"enabled":[{"operator":"=","value":true}],"completeness":[{"operator":">","value":70,"scope":"ecommerce"}]}
+    </code></pre>
+    <p>You can even combine several filters on the same product properties. The example below will get you the products categorized on the Winter Collection category and that are not categorized on the Accessories category.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"categories":[{"operator":"IN","value":["winter_collection"]},{"operator":"NOT IN","value":["accessories"]}]}
+    </code></pre>
+    <a class="anchor" id="on-their-uuid"></a><h3 title-id="on-their-uuid"><a class="markdownIt-Anchor" href="#on-their-uuid">#</a>On their uuid</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter products on their uuid, use the <code>uuid</code> property.
+    Here are the allowed operators you can use to filter on the uuid as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>IN, NOT IN</td>
+    <td>list of strings (product uuids)</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example"></a><h4 title-id="example"><a class="markdownIt-Anchor" href="#example">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"uuid":[{"operator":"IN","value":["8945388d-cf5b-49af-8799-05d1ed6e296f", "941fe892-99dd-440f-b2a9-8eccb94248f0"]}]}
+    </code></pre>
+    <a class="anchor" id="on-their-categories"></a><h3 title-id="on-their-categories"><a class="markdownIt-Anchor" href="#on-their-categories">#</a>On their categories</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter products on their categories, use the property <code>categories</code>.
+    Here are the allowed operators you can use to filter on the category code as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the products that are in the given categories</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the products that are not in the given categories</td>
+    </tr>
+    <tr>
+    <td><code>IN OR UNCLASSIFIED</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the products that are in the given categories or that are not classified in any categories</td>
+    </tr>
+    <tr>
+    <td><code>IN CHILDREN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the products that are in the children of the given categories</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN CHILDREN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the products that are not in the children of the given categories</td>
+    </tr>
+    <tr>
+    <td><code>UNCLASSIFIED</code></td>
+    <td>no value</td>
+    <td>Only returns the products that are not classified into any category</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-2"></a><h4 title-id="example-2"><a class="markdownIt-Anchor" href="#example-2">#</a>Example</h4>
+    <p>To get the products of the <code>winter_collection</code> category, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"categories":[{"operator":"IN","value":["winter_collection"]}]}
+    </code></pre>
+    <a class="anchor" id="on-their-status"></a><h3 title-id="on-their-status"><a class="markdownIt-Anchor" href="#on-their-status">#</a>On their status</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter products on their status, use the <code>enabled</code> property.
+    Here are the allowed operators you can use to filter on the status as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>=</code></td>
+    <td>boolean</td>
+    <td>Only returns products that are enabled (<code>true</code>) or disabled (<code>false</code>)</td>
+    </tr>
+    <tr>
+    <td><code>!=</code></td>
+    <td>boolean</td>
+    <td>Only returns products that are enabled (<code>false</code>) or disabled (<code>true</code>)</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-3"></a><h4 title-id="example-3"><a class="markdownIt-Anchor" href="#example-3">#</a>Example</h4>
+    <p>To get the disabled products, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"enabled":[{"operator":"=","value":false}]}
+    </code></pre>
+    <a class="anchor" id="on-their-completeness"></a><h3 title-id="on-their-completeness"><a class="markdownIt-Anchor" href="#on-their-completeness">#</a>On their completeness</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter products on their completeness, use the <code>completeness</code> product property. You will also need to provide a <code>scope</code> value to specify on which channel you want to filter with the completeness.
+    Here are the allowed operators you can use to filter by completeness as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>&lt;</code> or <code>&lt;=</code></td>
+    <td>integer</td>
+    <td>Only returns products that have a completeness lower than (or equal to) the given value on the given channel independently of locales.</td>
+    </tr>
+    <tr>
+    <td><code>&gt;</code> or <code>&gt;=</code></td>
+    <td>integer</td>
+    <td>Only returns products that have a completeness greater than (or equal to) the given value on the given channel independently of locales.</td>
+    </tr>
+    <tr>
+    <td><code>=</code></td>
+    <td>integer</td>
+    <td>Only returns products that have completeness equal to the given value on the given channel independently of locales.</td>
+    </tr>
+    <tr>
+    <td><code>!=</code></td>
+    <td>integer</td>
+    <td>Only returns products that have a completeness different from the given value on the given channel independently of locales.</td>
+    </tr>
+    <tr>
+    <td><code>GREATER THAN ON ALL LOCALES</code> or <code>GREATER OR EQUALS THAN ON ALL LOCALES</code></td>
+    <td>integer</td>
+    <td>Only returns products that have a completeness on all locales that is greater than (or equal to) the given value on the given channel for the given set of locales</td>
+    </tr>
+    <tr>
+    <td><code>LOWER THAN ON ALL LOCALES</code> or <code>LOWER OR EQUALS THAN ON ALL LOCALES</code></td>
+    <td>integer</td>
+    <td>Only returns products that have a completeness on all locales that is lower than (or equal to) the given value on the given channel for the given set of locales</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="examples-2"></a><h4 title-id="examples-2"><a class="markdownIt-Anchor" href="#examples-2">#</a>Examples</h4>
+    <p>To get the products that are 100% complete for the <code>ecommerce</code> channel, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"completeness":[{"operator":"=","value":100,"scope":"ecommerce"}]}
+    </code></pre>
+    <p>To get the products that are 100% complete on both the <code>en_US</code> and <code>fr_FR</code> locales for the <code>ecommerce</code> channel, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"completeness":[{"operator":"GREATER OR EQUALS THAN ON ALL LOCALES","value":100,"locales":["en_US","fr_FR"],"scope":"ecommerce"}]}
+    </code></pre>
+    <a class="anchor" id="on-their-group-or-family"></a><h3 title-id="on-their-group-or-family"><a class="markdownIt-Anchor" href="#on-their-group-or-family">#</a>On their group or family</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter products on groups or families, use respectively the product property <code>groups</code> and <code>family</code>.
+    Here are the allowed operators you can use to filter on these properties as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>array of existing group or family</td>
+    <td>Only returns products that are respectively in the given families or groups</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN</code></td>
+    <td>array of existing group or family</td>
+    <td>Only returns products that are respectively not in the given families or groups</td>
+    </tr>
+    <tr>
+    <td><code>EMPTY</code></td>
+    <td>no value</td>
+    <td>Only returns products that have respectively no groups or no family</td>
+    </tr>
+    <tr>
+    <td><code>NOT EMPTY</code></td>
+    <td>no value</td>
+    <td>Only returns products that have respectively a group or a family</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="examples-3"></a><h4 title-id="examples-3"><a class="markdownIt-Anchor" href="#examples-3">#</a>Examples</h4>
+    <p>To get the products that are in the <code>promotion</code> group, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"groups":[{"operator":"IN","value":["promotion"]}]}
+    </code></pre>
+    <p>To get the products that are not in the <code>camcorders</code> and <code>digital_cameras</code> family, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"family":[{"operator":"NOT IN","value":["camcorders","digital_cameras"]}]}
+    </code></pre>
+    <a class="anchor" id="on-their-creation-or-update-date"></a><h3 title-id="on-their-creation-or-update-date"><a class="markdownIt-Anchor" href="#on-their-creation-or-update-date">#</a>On their creation or update date</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter products on creation or update date, use respectively the product property <code>created</code> and <code>updated</code>.
+    Here are the allowed operators to filter on these properties as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <div class="alert alert-info"><p>Please note that dates are interpreted in the time zone of the server that runs Fegmo (e.g. date.timezone setting in php.ini). For SaaS clients, please note that the time zone of the server is in UTC as this is the most precise and commonly referred to time standard.<br />
+    Please also note that product variants, with an older updated date than the filter applied, will be part of the API answer if at least one of their parent product model has an updated date that matches the filter applied.</p>
+    </div>
+    </p></p></p></p></p></p><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>=</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns products that were respectively<br> updated or created during the given day</td>
+    </tr>
+    <tr>
+    <td><code>!=</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns products that were respectively<br> not updated or not created during the given day</td>
+    </tr>
+    <tr>
+    <td><code>&lt;</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns products that were respectively<br> updated or created before the given day</td>
+    </tr>
+    <tr>
+    <td><code>&gt;</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns products that were respectively<br> updated or created after the given day</td>
+    </tr>
+    <tr>
+    <td><code>BETWEEN</code></td>
+    <td>array of datetimes <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns products that were respectively<br> updated or created between the two given dates</td>
+    </tr>
+    <tr>
+    <td><code>NOT BETWEEN</code></td>
+    <td>array of datetimes <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns products that were respectively<br> not updated or not created between the two given dates</td>
+    </tr>
+    <tr>
+    <td><code>SINCE LAST N DAYS</code></td>
+    <td>integer</td>
+    <td>Only returns products that were respectively updated<br> or created during the last n days, n being the given value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p>|</p>
+    <a class="anchor" id="examples-4"></a><h4 title-id="examples-4"><a class="markdownIt-Anchor" href="#examples-4">#</a>Examples</h4>
+    <p>To get the products that were created on the 4th of July 2016 at 10am, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"created":[{"operator":"=","value":"2016-07-04 10:00:00"}]}
+    </code></pre>
+    <p>To get the products that were updated during the last 4 days, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"updated":[{"operator":"SINCE LAST N DAYS","value":4}]}
+    </code></pre>
+    <a class="anchor" id="on-their-parent"></a><h3 title-id="on-their-parent"><a class="markdownIt-Anchor" href="#on-their-parent">#</a>On their parent</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter products on their parent, use the <code>parent</code> product property.
+    Here are the allowed operators you can use to filter by parent as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>=</code></td>
+    <td>valid product model code</td>
+    <td>Returns products that are descendants of the provided product model. The product model can be either a root product model or a sub product model.</td>
+    </tr>
+    <tr>
+    <td><code>IN</code></td>
+    <td>array of valid product model codes</td>
+    <td>Only returns products that are <strong>direct</strong> children of the provided product models</td>
+    </tr>
+    <tr>
+    <td><code>EMPTY</code></td>
+    <td>no value</td>
+    <td>Only returns simple products</td>
+    </tr>
+    <tr>
+    <td><code>NOT EMPTY</code></td>
+    <td>no value</td>
+    <td>Only returns variant products</td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="alert alert-warning"><p>The <code>IN</code>, <code>EMPTY</code> and <code>NOT EMPTY</code> operators are only available since the 7.0 version</p>
+    </div>
+    </p><a class="anchor" id="examples-5"></a><h4 title-id="examples-5"><a class="markdownIt-Anchor" href="#examples-5">#</a>Examples</h4>
+    <p>To get all the variant products of the <code>apollon</code> root product model without having to filter on all its sub-product models, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"parent":[{"operator":"=","value":"apollon"}]}
+    </code></pre>
+    <p>To get all the variant products of the sub product models with the codes <code>tshirt_armor_blue</code> and <code>tshirt_armor_red</code>, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"parent":[{"operator":"IN","value":["tshirt_armor_blue","tshirt_armor_red"]}]}
+    </code></pre>
+    <p>To get all the variant products, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"parent":[{"operator":"NOT EMPTY"}]}
+    </code></pre>
+    <p>To get all the simple products, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"parent":[{"operator":"EMPTY"}]}
+    </code></pre>
+    <a class="anchor" id="on-their-quality-score"></a><h3 title-id="on-their-quality-score"><a class="markdownIt-Anchor" href="#on-their-quality-score">#</a>On their quality score</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter products on their quality score, use the <code>quality_score</code> product property. You will also need to provide a <code>scope</code> and <code>locale</code> value to specify on which channel and locale you want to filter the quality score on.
+    This filter accepts one operator: IN. It expects one or several scores, given as a list of letters. The possible values for the quality score are &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot; and &quot;E&quot;.</p>
+    <a class="anchor" id="examples-6"></a><h4 title-id="examples-6"><a class="markdownIt-Anchor" href="#examples-6">#</a>Examples</h4>
+    <p>To get the products with a &quot;D&quot; for the <code>ecommerce</code> channel and <code>en_US</code> locale, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"quality_score":[{"operator":"IN","value":["D"],"scope":"ecommerce","locale":"en_US"}]}
+    </code></pre>
+    <p>To get the products with an &quot;A&quot; or &quot;B&quot; for the <code>mobile</code> channel and <code>en_GB</code> locale, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"quality_score":[{"operator":"IN","value":["A","B"],"scope":"mobile","locale":"en_GB"}]}
+    </code></pre>
+    <a class="anchor" id="filter-on-product-model-properties"></a><h2 title-id="filter-on-product-model-properties"><a class="markdownIt-Anchor" href="#filter-on-product-model-properties">#</a>Filter on product model properties</h2>
+    <p>To filter product models by one of their properties, you can use the <code>search</code> query parameter. The value given to this query parameter should be a valid JSON as shown below.</p>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={PRODUCT_MODEL_PROPERTY:[{"operator":OPERATOR,"value":VALUE}]}
+    </code></pre>
+    <p>In the above url :</p>
+    <ul>
+    <li><code>PRODUCT_MODEL_PROPERTY</code> can be any property detailed in the sections below,</li>
+    <li><code>OPERATOR</code> is an allowed operator for this <code>PRODUCT_MODEL_PROPERTY</code>,</li>
+    <li><code>VALUE</code> is a value whose type corresponds to the allowed type detailed below.</li>
+    </ul>
+    <a class="anchor" id="examples-7"></a><h4 title-id="examples-7"><a class="markdownIt-Anchor" href="#examples-7">#</a>Examples</h4>
+    <p>To filter product models on their code, use the <code>identifier</code> property.
+    Here are the allowed operators you can use to filter on the identifier as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>IN, NOT IN</td>
+    <td>list of strings (identifier)</td>
+    </tr>
+    </tbody>
+    </table>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={"identifier":[{"operator":"IN","value":["amor","apollon"]}]}
+    </code></pre>
+    <a class="anchor" id="on-categories"></a><h3 title-id="on-categories"><a class="markdownIt-Anchor" href="#on-categories">#</a>On categories</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">2.3</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter product models on their categories, use the property <code>categories</code>.
+    Here are the allowed operators you can use to filter on the category code as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the product models that are in the given categories</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the product models that are not in the given categories</td>
+    </tr>
+    <tr>
+    <td><code>IN OR UNCLASSIFIED</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the product models that are in the given categories or that are not classified in any categories</td>
+    </tr>
+    <tr>
+    <td><code>IN CHILDREN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the product models that are in the children of the given categories</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN CHILDREN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the product models that are not in the children of the given categories</td>
+    </tr>
+    <tr>
+    <td><code>UNCLASSIFIED</code></td>
+    <td>no value</td>
+    <td>Only returns the product models that are not classified into any category</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-4"></a><h4 title-id="example-4"><a class="markdownIt-Anchor" href="#example-4">#</a>Example</h4>
+    <p>To get the product models of the <code>winter_collection</code> category, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={"categories":[{"operator":"IN","value":["winter_collection"]}]}
+    </code></pre>
+    <a class="anchor" id="on-completeness"></a><h3 title-id="on-completeness"><a class="markdownIt-Anchor" href="#on-completeness">#</a>On completeness</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">2.3</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter product models on their completeness, use the <code>completeness</code> product property. You will also need to provide a <code>scope</code> value to specify on which channel you want to filter with the completeness.
+    Here are the allowed operators you can use to filter by completeness as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>AT LEAST COMPLETE</code></td>
+    <td>no value</td>
+    <td>Only returns product models that have <code>at least one variant product</code> fully complete on the given channel for the given set of locales</td>
+    </tr>
+    <tr>
+    <td><code>AT LEAST INCOMPLETE</code></td>
+    <td>no value</td>
+    <td>Only returns product models that have <code>at least one variant product</code> incomplete on the given channel for the given set of locales</td>
+    </tr>
+    <tr>
+    <td><code>ALL COMPLETE</code></td>
+    <td>no value</td>
+    <td>Only returns product models that have all his variant products fully complete on the given channel for the given set of locales</td>
+    </tr>
+    <tr>
+    <td><code>ALL INCOMPLETE</code></td>
+    <td>no value</td>
+    <td>Only returns product models that have all his variant products incomplete on the given channel for the given set of locales</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="examples-8"></a><h4 title-id="examples-8"><a class="markdownIt-Anchor" href="#examples-8">#</a>Examples</h4>
+    <p>To get the product models that are 100% complete for the <code>ecommerce</code> channel on <code>fr_FR</code> locale, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={"completeness":[{"operator":"ALL COMPLETE","locale":"fr_FR","scope":"ecommerce"}]}
+    </code></pre>
+    <p>To get the product models that have at least one variant product 100% complete on both the <code>en_US</code> and <code>fr_FR</code> locales for the <code>ecommerce</code> channel, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={"completeness":[{"operator":"AT LEAST COMPLETE","locales":["en_US","fr_FR"],"scope":"ecommerce"}]}
+    </code></pre>
+    <a class="anchor" id="on-family"></a><h3 title-id="on-family"><a class="markdownIt-Anchor" href="#on-family">#</a>On family</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">2.3</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter product models on families, use the product model property <code>family</code>.
+    Here are the allowed operators you can use to filter on this property as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>array of existing family</td>
+    <td>Only returns product models that are in the given family</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN</code></td>
+    <td>array of existing family</td>
+    <td>Only returns product models that are not in the given family</td>
+    </tr>
+    <tr>
+    <td><code>EMPTY</code></td>
+    <td>no value</td>
+    <td>Only returns product models that have no family</td>
+    </tr>
+    <tr>
+    <td><code>NOT EMPTY</code></td>
+    <td>no value</td>
+    <td>Only returns product models that have a family</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="examples-9"></a><h4 title-id="examples-9"><a class="markdownIt-Anchor" href="#examples-9">#</a>Examples</h4>
+    <p>To get the product models that are in the <code>camcorders</code> family, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={"family":[{"operator":"IN","value":["camcorders"]}]}
+    </code></pre>
+    <p>To get the product models that are not in the <code>camcorders</code> and <code>digital_cameras</code> family, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={"family":[{"operator":"NOT IN","value":["camcorders","digital_cameras"]}]}
+    </code></pre>
+    <a class="anchor" id="on-creation-or-update-date"></a><h3 title-id="on-creation-or-update-date"><a class="markdownIt-Anchor" href="#on-creation-or-update-date">#</a>On creation or update date</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">2.3</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter product models on creation or update date, use the product property <code>created</code> and <code>updated</code>, respectively.
+    Here are the allowed operators to filter on these properties as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <div class="alert alert-info"><p>Please note that dates are interpreted in the time zone of the server that runs Fegmo (e.g. date.timezone setting in php.ini). For SaaS clients, please note that the time zone of the server is in UTC as this is the most precise and commonly referred to time standard.</p>
+    </div>
+    </p></p></p></p></p><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>=</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns product models that were respectively<br> updated or created during the given day</td>
+    </tr>
+    <tr>
+    <td><code>!=</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns product models that were respectively<br> not updated or not created during the given day</td>
+    </tr>
+    <tr>
+    <td><code>&lt;</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns product models that were respectively<br> updated or created before the given day</td>
+    </tr>
+    <tr>
+    <td><code>&gt;</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns product models that were respectively<br> updated or created after the given day</td>
+    </tr>
+    <tr>
+    <td><code>BETWEEN</code></td>
+    <td>array of datetimes <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns product models that were respectively<br> updated or created between the two given dates</td>
+    </tr>
+    <tr>
+    <td><code>NOT BETWEEN</code></td>
+    <td>array of datetimes <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns product models that were respectively<br> not updated or not created between the two given dates</td>
+    </tr>
+    <tr>
+    <td><code>SINCE LAST N DAYS</code></td>
+    <td>integer</td>
+    <td>Only returns product models that were respectively updated<br> or created during the last n days, n being the given value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p>|</p>
+    <a class="anchor" id="examples-10"></a><h4 title-id="examples-10"><a class="markdownIt-Anchor" href="#examples-10">#</a>Examples</h4>
+    <p>To get the product models that were created on the 4th of July 2016 at 10am, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={"created":[{"operator":"=","value":"2016-07-04 10:00:00"}]}
+    </code></pre>
+    <p>To get the product models that were updated during the last 4 days, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={"updated":[{"operator":"SINCE LAST N DAYS","value":4}]}
+    </code></pre>
+    <a class="anchor" id="on-their-parent-2"></a><h3 title-id="on-their-parent-2"><a class="markdownIt-Anchor" href="#on-their-parent-2">#</a>On their parent</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter product models on their parent, use the <code>parent</code> product model property.
+    Here are the allowed operators you can use to filter by parent as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>array of valid product model codes</td>
+    <td>Returns sub product model children of the provided root product models</td>
+    </tr>
+    <tr>
+    <td><code>EMPTY</code></td>
+    <td>no value</td>
+    <td>Only returns root product models</td>
+    </tr>
+    <tr>
+    <td><code>NOT EMPTY</code></td>
+    <td>no value</td>
+    <td>Only returns sub product models</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="examples-11"></a><h4 title-id="examples-11"><a class="markdownIt-Anchor" href="#examples-11">#</a>Examples</h4>
+    <p>To get all the sub-product models of the root product model with the code <code>tshirt_armor</code>, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={"parent":[{"operator":"IN","value":["tshirt_armor"]}]}
+    </code></pre>
+    <p>To get all the root product models, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={"parent":[{"operator":"EMPTY"}]}
+    </code></pre>
+    <p>To get all the sub-product models, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/product-models?search={"parent":[{"operator":"NOT EMPTY"}]}
+    </code></pre>
+    <a class="anchor" id="filter-on-product-values"></a><h2 title-id="filter-on-product-values"><a class="markdownIt-Anchor" href="#filter-on-product-values">#</a>Filter on product values</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter products, and product models <strong>since the v2.3</strong>, on its <a href="/concepts/products.html#focus-on-the-product-values">product values</a>, you can use the <code>search</code> query parameter when requesting products. The value given to this query parameter should be a valid JSON as shown below.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={ATTRIBUTE_CODE:[{"operator":OPERATOR,"value":VALUE,"locale":LOCALE_CODE,"scope":CHANNEL_CODE}]}
+    </code></pre>
+    <p>In the above url :</p>
+    <ul>
+    <li><code>ATTRIBUTE_CODE</code> can be any existing attribute code,</li>
+    <li><code>OPERATOR</code> is an allowed operator for the attribute type of the <code>ATTRIBUTE_CODE</code> attribute,</li>
+    <li><code>VALUE</code> is a value whose type corresponds to the attribute type of the <code>ATTRIBUTE_CODE</code> attribute,</li>
+    <li><code>LOCALE_CODE</code> is an existing locale code that should be only given when the <code>ATTRIBUTE_CODE</code> attribute is localizable</li>
+    <li><code>CHANNEL_CODE</code> is an existing channel code that should be only given when the <code>ATTRIBUTE_CODE</code> attribute is scopable.</li>
+    </ul>
+    <a class="anchor" id="examples-12"></a><h4 title-id="examples-12"><a class="markdownIt-Anchor" href="#examples-12">#</a>Examples</h4>
+    <p>To get products that are purple, purple being an option of the simple select <code>main_color</code> attribute and this attribute being neither localizable nor scopable, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"main_color":[{"operator":"IN","value":["purple"]}]}
+    </code></pre>
+    <p>To get products having a description begining with <code>Amazing</code> on the <code>en_US</code> locale, the <code>short_description</code> attribute being localizable but not scopable, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"short_description":[{"operator":"STARTS WITH","value":"Amazing","locale":"en_US"}]}
+    </code></pre>
+    <p>To get products that have a release date due after the 4th of July 2016 for the <code>ecommerce</code> channel, the <code>release_date</code> attribute being scopable but not localizable, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"release_date":[{"operator":">","value":"2016-07-04","scope":"ecommerce"}]}
+    </code></pre>
+    <p>To get products that have a name that contains with <code>shirt</code> on the <code>en_US</code> locale for the <code>mobile</code> channel, the <code>name</code> attribute being both localizable and scopable, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"name":[{"operator":"CONTAINS","value":"shirt","locale":"en_US","scope":"mobile"}]}
+    </code></pre>
+    <p>Of course, you can combine as many filters as you want. The example below will get you the products with description starting with <code>Amazing</code> on the <code>en_US</code> locale for the <code>ecommerce</code> channel, and of purple color.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"description":[{"operator":"STARTS WITH","value":"Amazing","locale":"en_US","scope":"ecommerce"}],"main_color":[{"operator":"IN","value":["purple"]}]}
+    </code></pre>
+    <p>You can even combine several filters on the same attribute. The example below will get you the products with not empty description on the <code>en_US</code> locale and empty description on the <code>fr_FR</code> locale for the <code>ecommerce</code> channel.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"description":[{"operator":"NOT EMPTY","locale":"en_US","scope":"ecommerce"},{"operator":"EMPTY","locale":"fr_FR","scope":"ecommerce"}]}
+    </code></pre>
+    <div class="alert alert-info"><p>Filtering on product values is also available for published products.</p>
+    </div>
+    </p></p><a class="anchor" id="search_locale-query-parameter"></a><h3 title-id="search_locale-query-parameter"><a class="markdownIt-Anchor" href="#search_locale-query-parameter">#</a><code>search_locale</code> query parameter</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>If you need to filter on several attributes on the same locale, you can use the <code>search_locale</code> query parameter, to avoid repeating yourself for each attribute. This parameter expect an existing locale code.</p>
+    <a class="anchor" id="example-5"></a><h4 title-id="example-5"><a class="markdownIt-Anchor" href="#example-5">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"description":[{"operator":"STARTS WITH","value":"Amazing","locale":"en_US","scope":"ecommerce"}],"short_description":[{"operator":"CONTAINS","value":"shoes","locale":"en_US","scope":"ecommerce"}]}
+    
+    is equivalent to
+    
+    /api/rest/v1/products-uuid?search={"description":[{"operator":"STARTS WITH","value":"Amazing","scope":"ecommerce"}],"short_description":[{"operator":"CONTAINS","value":"shoes","scope":"ecommerce"}]}&search_locale=en_US
+    </code></pre>
+    <div class="alert alert-info"><p>This query parameter is also available for the published products.</p>
+    </div>
+    </p><a class="anchor" id="search_scope-query-parameter"></a><h3 title-id="search_scope-query-parameter"><a class="markdownIt-Anchor" href="#search_scope-query-parameter">#</a><code>search_scope</code> query parameter</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>If you need to filter on several attributes on the same channel, you can use the <code>search_scope</code> query parameter, to avoid repeating yourself for each attribute. This parameter expect an existing channel code.</p>
+    <a class="anchor" id="example-6"></a><h4 title-id="example-6"><a class="markdownIt-Anchor" href="#example-6">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?search={"release_date":[{"operator":">","value":"2016-07-04","scope":"ecommerce"}],"short_description":[{"operator":"CONTAINS","value":"shoes","locale":"en_US","scope":"ecommerce"}]}
+    
+    is equivalent to
+    
+    /api/rest/v1/products-uuid?search={"release_date":[{"operator":">","value":"2016-07-04"}],"short_description":[{"operator":"CONTAINS","value":"shoes","locale":"en_US"}]}&search_scope=ecommerce
+    </code></pre>
+    <div class="alert alert-info"><p>This query parameter is also available for the published products.</p>
+    </div>
+    </p><a class="anchor" id="available-operators"></a><h3 title-id="available-operators"><a class="markdownIt-Anchor" href="#available-operators">#</a>Available operators</h3>
+    <p>As seen previously, the attribute type determines which set of operators is available to use these filters.</p>
+    <p><strong>The <code>pim_catalog_identifier</code> attribute type</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>STARTS WITH, CONTAINS, DOES NOT CONTAIN</td>
+    <td>string</td>
+    </tr>
+    <tr>
+    <td>=, !=</td>
+    <td>string</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>IN, NOT IN</td>
+    <td>list of strings (product identifiers)</td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="alert alert-warning"><p>With the IN operator, the list of product identifiers can contain up to <strong>100</strong> strings.</p>
+    </div>
+    </p></p><p><strong>The <code>pim_catalog_text</code> and <code>pim_catalog_textarea</code> attribute types</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>STARTS WITH, CONTAINS, DOES NOT CONTAIN</td>
+    <td>string</td>
+    </tr>
+    <tr>
+    <td>=, !=</td>
+    <td>string</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>The <code>pim_catalog_number</code>, <code>pim_catalog_metric</code> and <code>pim_catalog_price_collection</code> attribute types</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>&lt;, &lt;=, =, !=, &gt;=, &gt;</td>
+    <td>integer</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>The <code>pim_catalog_simpleselect</code> and <code>pim_catalog_multiselect</code> attribute types</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>IN, NOT IN</td>
+    <td>an existing attribute option code of the attribute</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>The <code>pim_catalog_boolean</code> attribute type</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>=, !=</td>
+    <td>boolean</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value (only available since 5.0 and on SaaS versions)</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>The <code>pim_catalog_date</code> attribute type</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>&lt;, =, !=, &gt;</td>
+    <td>dateTime (ISO-8601)</td>
+    </tr>
+    <tr>
+    <td>BETWEEN, NOT BETWEEN</td>
+    <td>[dateTime (ISO-8601), dateTime (ISO-8601)]</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>The <code>pim_catalog_file</code> and <code>pim_catalog_image</code> attribute types</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>STARTS WITH, CONTAINS, DOES NOT CONTAIN, =, !=</td>
+    <td>string</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="filter-product-values"></a><h2 title-id="filter-product-values"><a class="markdownIt-Anchor" href="#filter-product-values">#</a>Filter product values</h2>
+    <p>Thanks to the above sections, you are able to filter your products to only get those you want. In this section, you will see that you also can filter the product values to only receive those you want.</p>
+    <div class="alert alert-info"><p>Filtering product values via attributes, channel or locale is also available for published products.</p>
+    </div>
+    </p></p></p></p></p></p><a class="anchor" id="via-attributes"></a><h3 title-id="via-attributes"><a class="markdownIt-Anchor" href="#via-attributes">#</a>Via attributes</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>If you want to receive for each product only product values about specific attributes, you can specify it thanks to the <code>attributes</code> query parameter.</p>
+    <a class="anchor" id="example-7"></a><h4 title-id="example-7"><a class="markdownIt-Anchor" href="#example-7">#</a>Example</h4>
+    <p>To get products with only product values regarding the <code>description</code> attribute, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?attributes=description
+    </code></pre>
+    <p>You can filter product values on several attributes at the same time.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?attributes=name,description
+    </code></pre>
+    <a class="anchor" id="via-locale"></a><h3 title-id="via-locale"><a class="markdownIt-Anchor" href="#via-locale">#</a>Via locale</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>If you want to receive for each product only product values on specific locales, as well as the product values of the non localizable attributes, you can specify it thanks to the <code>locales</code> query parameter.</p>
+    <a class="anchor" id="example-1"></a><h4 title-id="example-1"><a class="markdownIt-Anchor" href="#example-1">#</a>Example 1</h4>
+    <p>Imagine that without this filter you get these product values:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"color"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"carmine_red"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>
+        }
+      ],
+      <span class="hljs-attr">"name"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>
+        },
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Débardeur"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>
+        }
+      ],
+      <span class="hljs-attr">"description"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Summer top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"ecommerce"</span>
+        },
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"tablet"</span>
+        },
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Débardeur pour l'été"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"ecommerce"</span>
+        },
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Débardeur"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"tablet"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <p>To get only product values regarding the <code>en_US</code> locale (+ the product values of the non localizable attributes), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?locales=en_US
+    </code></pre>
+    <p>As a result you will receive the following answer:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"color"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"carmine_red"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>
+        }
+      ],
+      <span class="hljs-attr">"name"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>
+        }
+      ],
+      <span class="hljs-attr">"description"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Summer top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"ecommerce"</span>
+        },
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"tablet"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-warning"><p>As you can see, for the simple select attribute named <code>color</code>, as the attribute is not localizable (the <code>locale</code> field is set to <code>null</code>), the product value of this attribute is not filtered and you still get the code of the attribute option, <code>carmine_red</code>.
+    If you want to get the localized label of this attribute option, you will have to request the <a href="/api-reference.html#get_attributes__attribute_code__options__code_">attribute option endpoint</a>.</p>
+    </div>
+    </p></p><a class="anchor" id="example-2"></a><h4 title-id="example-2"><a class="markdownIt-Anchor" href="#example-2">#</a>Example 2</h4>
+    <p>You can also filter product values on several locales at the same time.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?locales=en_US,fr_FR
+    </code></pre>
+    <a class="anchor" id="via-channel"></a><h3 title-id="via-channel"><a class="markdownIt-Anchor" href="#via-channel">#</a>Via channel</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>There is also a <code>scope</code> query parameter that will allow you to:</p>
+    <ul>
+    <li>get only the selection of products that are in the tree linked to the channel you specified,</li>
+    <li>get only the product values for this specific channel, as well as the product values of the non scopable attributes.</li>
+    </ul>
+    <a class="anchor" id="example-8"></a><h4 title-id="example-8"><a class="markdownIt-Anchor" href="#example-8">#</a>Example</h4>
+    <p>To get products from the tree linked to the <code>ecommerce</code> channel with only product values regarding the <code>ecommerce</code> channel (+ the product values of the non scopable attributes), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/products-uuid?scope=ecommerce
+    </code></pre>
+    <div class="alert alert-warning"><p>Note that you cannot use this filter on several channels.</p>
+    </div>
+    </p><div class="alert alert-info"><p>When using this query parameter, you will never be able to retrieve products that are not categorized. This is due to the fact that we only return the selection of products that are in the tree linked to the given channel. In other words, if a given product is not categorized in this tree, you won't receive it.</p>
+    </div>
+    <a class="anchor" id="filter-on-published-product-properties"></a><h2 title-id="filter-on-published-product-properties"><a class="markdownIt-Anchor" href="#filter-on-published-product-properties">#</a>Filter on published product properties</h2>
+    <p>To filter published products by one of their properties, you can use the <code>search</code> query parameter. The value given to this query parameter should be a valid JSON as shown below.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={PUBLISHED_PRODUCT_PROPERTY:[{"operator":OPERATOR,"value":VALUE}]}
+    </code></pre>
+    <p>In the above url :</p>
+    <ul>
+    <li><code>PUBLISHED_PRODUCT_PROPERTY</code> can be any property detailed in the sections below,</li>
+    <li><code>OPERATOR</code> is an allowed operator for this <code>PUBLISHED_PRODUCT_PROPERTY</code>,</li>
+    <li><code>VALUE</code> is a value whose type corresponds to the allowed type detailed below.</li>
+    </ul>
+    <a class="anchor" id="examples-13"></a><h4 title-id="examples-13"><a class="markdownIt-Anchor" href="#examples-13">#</a>Examples</h4>
+    <p>To only retrieve enabled published products, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"enabled":[{"operator":"=","value":true}]}
+    </code></pre>
+    <p>Of course, you can combine as many filters as you want. The example below will get you the enabled published products being 70% complete.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"enabled":[{"operator":"=","value":true}],"completeness":[{"operator":">","value":70,"scope":"ecommerce"}]}
+    </code></pre>
+    <p>You can even combine several filters on the same published product properties. The example below will get you the published products created both the 4th and the 5th of July 2016.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"created":[{"operator":"=","value":"2016-07-04 10:00:00"},{"operator":"=","value":"2016-07-05 10:00:00"}]}
+    </code></pre>
+    <a class="anchor" id="on-their-categories-2"></a><h3 title-id="on-their-categories-2"><a class="markdownIt-Anchor" href="#on-their-categories-2">#</a>On their categories</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter published products on their categories, use the property <code>categories</code>.
+    Here are the allowed operators you can use to filter on the category code as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the published products that are in the given categories</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the published products that are not in the given categories</td>
+    </tr>
+    <tr>
+    <td><code>IN OR UNCLASSIFIED</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the published products that are in the given categories or that are not classified in any categories</td>
+    </tr>
+    <tr>
+    <td><code>IN CHILDREN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the published products that are in the children of the given categories</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN CHILDREN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns the published products that are not in the children of the given categories</td>
+    </tr>
+    <tr>
+    <td><code>UNCLASSIFIED</code></td>
+    <td>no value</td>
+    <td>Only returns the published products that are not classified into any category</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-9"></a><h4 title-id="example-9"><a class="markdownIt-Anchor" href="#example-9">#</a>Example</h4>
+    <p>To get the published products of the <code>winter_collection</code> category, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"categories":[{"operator":"IN","value":["winter_collection"]}]}
+    </code></pre>
+    <a class="anchor" id="on-their-status-2"></a><h3 title-id="on-their-status-2"><a class="markdownIt-Anchor" href="#on-their-status-2">#</a>On their status</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter published products on their status, use the <code>enabled</code> property.
+    Here are the allowed operators you can use to filter on the status as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>=</code></td>
+    <td>boolean</td>
+    <td>Only returns published products that are enabled (<code>true</code>) or disabled (<code>false</code>)</td>
+    </tr>
+    <tr>
+    <td><code>!=</code></td>
+    <td>boolean</td>
+    <td>Only returns published products that are enabled (<code>false</code>) or disabled (<code>true</code>)</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-10"></a><h4 title-id="example-10"><a class="markdownIt-Anchor" href="#example-10">#</a>Example</h4>
+    <p>To get the disabled published products, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"enabled":[{"operator":"=","value":false}]}
+    </code></pre>
+    <a class="anchor" id="on-their-completeness-2"></a><h3 title-id="on-their-completeness-2"><a class="markdownIt-Anchor" href="#on-their-completeness-2">#</a>On their completeness</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter published products on their completeness, use the <code>completeness</code> published product property. You will also need to provide a <code>scope</code> value to specify on which channel you want to filter with the completeness.
+    Here are the allowed operators you can use to filter by completeness as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>&lt;</code> or <code>&lt;=</code></td>
+    <td>integer</td>
+    <td>Only returns published products that have a completeness lower than (or equal to) the given value on the given channel independently of locales.</td>
+    </tr>
+    <tr>
+    <td><code>&gt;</code> or <code>&gt;=</code></td>
+    <td>integer</td>
+    <td>Only returns published products that have a completeness greater than (or equal to) the given value on the given channel independently of locales.</td>
+    </tr>
+    <tr>
+    <td><code>=</code></td>
+    <td>integer</td>
+    <td>Only returns published products that have completeness equal to the given value on the given channel independently of locales.</td>
+    </tr>
+    <tr>
+    <td><code>!=</code></td>
+    <td>integer</td>
+    <td>Only returns published products that have a completeness different from the given value on the given channel independently of locales.</td>
+    </tr>
+    <tr>
+    <td><code>GREATER THAN ON ALL LOCALES</code> or <code>GREATER OR EQUALS THAN ON ALL LOCALES</code></td>
+    <td>integer</td>
+    <td>Only returns published products that have a completeness on all locales that is greater than (or equal to) the given value on the given channel for the given set of locales</td>
+    </tr>
+    <tr>
+    <td><code>LOWER THAN ON ALL LOCALES</code> or <code>LOWER OR EQUALS THAN ON ALL LOCALES</code></td>
+    <td>integer</td>
+    <td>Only returns published products that have a completeness on all locales that is lower than (or equal to) the given value on the given channel for the given set of locales</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="examples-14"></a><h4 title-id="examples-14"><a class="markdownIt-Anchor" href="#examples-14">#</a>Examples</h4>
+    <p>To get the published products that are 100% complete for the <code>ecommerce</code> channel, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"completeness":[{"operator":"=","value":100,"scope":"ecommerce"}]}
+    </code></pre>
+    <p>To get the published products that are 100% complete on both the <code>en_US</code> and <code>fr_FR</code> locales for the <code>ecommerce</code> channel, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"completeness":[{"operator":"GREATER OR EQUALS THAN ON ALL LOCALES","value":100,"locales":["en_US","fr_FR"],"scope":"ecommerce"}]}
+    </code></pre>
+    <a class="anchor" id="on-their-group-or-family-2"></a><h3 title-id="on-their-group-or-family-2"><a class="markdownIt-Anchor" href="#on-their-group-or-family-2">#</a>On their group or family</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter published products on groups or families, use respectively the published product property <code>groups</code> and <code>family</code>.
+    Here are the allowed operators you can use to filter on these properties as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>array of existing group or family</td>
+    <td>Only returns published products that are respectively in the given families or groups</td>
+    </tr>
+    <tr>
+    <td><code>NOT IN</code></td>
+    <td>array of existing group or family</td>
+    <td>Only returns published products that are respectively not in the given families or groups</td>
+    </tr>
+    <tr>
+    <td><code>EMPTY</code></td>
+    <td>no value</td>
+    <td>Only returns published products that have respectively no groups or no family</td>
+    </tr>
+    <tr>
+    <td><code>NOT EMPTY</code></td>
+    <td>no value</td>
+    <td>Only returns published products that have respectively a group or a family</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="examples-15"></a><h4 title-id="examples-15"><a class="markdownIt-Anchor" href="#examples-15">#</a>Examples</h4>
+    <p>To get the published products that are in the <code>promotion</code> group, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"groups":[{"operator":"IN","value":["promotion"]}]}
+    </code></pre>
+    <p>To get the published products that are not in the <code>camcorders</code> and <code>digital_cameras</code> family, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"family":[{"operator":"NOT IN","value":["camcorders","digital_cameras"]}]}
+    </code></pre>
+    <a class="anchor" id="on-their-creation-or-update-date-2"></a><h3 title-id="on-their-creation-or-update-date-2"><a class="markdownIt-Anchor" href="#on-their-creation-or-update-date-2">#</a>On their creation or update date</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter published products on creation or update date, use respectively the published product property <code>created</code> and <code>updated</code>.
+    Here are the allowed operators to filter on these properties as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <div class="alert alert-info"><p>Please note that dates are interpreted in the time zone of the server that runs Fegmo (e.g. date.timezone setting in php.ini). For SaaS clients, please note that the time zone of the server is in UTC as this is the most precise and commonly referred to time standard.</p>
+    </div>
+    </p></p></p></p></p><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>=</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns published products that were respectively<br> updated or created during the given day</td>
+    </tr>
+    <tr>
+    <td><code>!=</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns published products that were respectively<br> not updated or not created during the given day</td>
+    </tr>
+    <tr>
+    <td><code>&lt;</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns published products that were respectively<br> updated or created before the given day</td>
+    </tr>
+    <tr>
+    <td><code>&gt;</code></td>
+    <td>datetime <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns published products that were respectively<br> updated or created after the given day</td>
+    </tr>
+    <tr>
+    <td><code>BETWEEN</code></td>
+    <td>array of datetimes <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns published products that were respectively<br> updated or created between the two given dates</td>
+    </tr>
+    <tr>
+    <td><code>NOT BETWEEN</code></td>
+    <td>array of datetimes <br> <em>Format: YYYY-MM-DD hh:mm:ss</em></td>
+    <td>Only returns published products that were respectively<br> not updated or not created between the two given dates</td>
+    </tr>
+    <tr>
+    <td><code>SINCE LAST N DAYS</code></td>
+    <td>integer</td>
+    <td>Only returns published products that were respectively updated<br> or created during the last n days, n being the given value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p>|</p>
+    <a class="anchor" id="examples-16"></a><h4 title-id="examples-16"><a class="markdownIt-Anchor" href="#examples-16">#</a>Examples</h4>
+    <p>To get the published products that were created on the 4th of July 2016 at 10am, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"created":[{"operator":"=","value":"2016-07-04 10:00:00"}]}
+    </code></pre>
+    <p>To get the published products that were updated during the last 4 days, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"updated":[{"operator":"SINCE LAST N DAYS","value":4}]}
+    </code></pre>
+    <a class="anchor" id="filter-on-published-product-values"></a><h2 title-id="filter-on-published-product-values"><a class="markdownIt-Anchor" href="#filter-on-published-product-values">#</a>Filter on published product values</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>To filter published products, and product models <strong>since the v2.3</strong>, on its <a href="/concepts/products.html#focus-on-the-product-values">product values</a>, you can use the <code>search</code> query parameter when requesting products. The value given to this query parameter should be a valid JSON as shown below.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={ATTRIBUTE_CODE:[{"operator":OPERATOR,"value":VALUE,"locale":LOCALE_CODE,"scope":CHANNEL_CODE}]}
+    </code></pre>
+    <p>In the above url :</p>
+    <ul>
+    <li><code>ATTRIBUTE_CODE</code> can be any existing attribute code,</li>
+    <li><code>OPERATOR</code> is an allowed operator for the attribute type of the <code>ATTRIBUTE_CODE</code> attribute,</li>
+    <li><code>VALUE</code> is a value whose type corresponds to the attribute type of the <code>ATTRIBUTE_CODE</code> attribute,</li>
+    <li><code>LOCALE_CODE</code> is an existing locale code that should be only given when the <code>ATTRIBUTE_CODE</code> attribute is localizable</li>
+    <li><code>CHANNEL_CODE</code> is an existing channel code that should be only given when the <code>ATTRIBUTE_CODE</code> attribute is scopable.</li>
+    </ul>
+    <a class="anchor" id="examples-17"></a><h4 title-id="examples-17"><a class="markdownIt-Anchor" href="#examples-17">#</a>Examples</h4>
+    <p>To get published products that are purple, purple being an option of the simple select <code>main_color</code> attribute and this attribute being neither localizable nor scopable, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"main_color":[{"operator":"IN","value":["purple"]}]}
+    </code></pre>
+    <p>To get published products having a description begining with <code>Amazing</code> on the <code>en_US</code> locale, the <code>short_description</code> attribute being localizable but not scopable, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"short_description":[{"operator":"STARTS WITH","value":"Amazing","locale":"en_US"}]}
+    </code></pre>
+    <p>To get published products that have a release date due after the 4th of July 2016 for the <code>ecommerce</code> channel, the <code>release_date</code> attribute being scopable but not localizable, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"release_date":[{"operator":">","value":"2016-07-04","scope":"ecommerce"}]}
+    </code></pre>
+    <p>To get published products that have a name that contains with <code>shirt</code> on the <code>en_US</code> locale for the <code>mobile</code> channel, the <code>name</code> attribute being both localizable and scopable, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"name":[{"operator":"CONTAINS","value":"shirt","locale":"en_US","scope":"mobile"}]}
+    </code></pre>
+    <p>Of course, you can combine as many filters as you want. The example below will get you the published products with description starting with <code>Amazing</code> on the <code>en_US</code> locale for the <code>ecommerce</code> channel, and of purple color.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"description":[{"operator":"STARTS WITH","value":"Amazing","locale":"en_US","scope":"ecommerce"}],"main_color":[{"operator":"IN","value":["purple"]}]}
+    </code></pre>
+    <p>You can even combine several filters on the same attribute. The example below will get you the published products with not empty description on the <code>en_US</code> locale and empty description on the <code>fr_FR</code> locale for the <code>ecommerce</code> channel.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"description":[{"operator":"NOT EMPTY","locale":"en_US","scope":"ecommerce"},{"operator":"EMPTY","locale":"fr_FR","scope":"ecommerce"}]}
+    </code></pre>
+    <a class="anchor" id="search_locale-query-parameter-2"></a><h3 title-id="search_locale-query-parameter-2"><a class="markdownIt-Anchor" href="#search_locale-query-parameter-2">#</a><code>search_locale</code> query parameter</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>If you need to filter on several attributes on the same locale, you can use the <code>search_locale</code> query parameter, to avoid repeating yourself for each attribute. This parameter expect an existing locale code.</p>
+    <a class="anchor" id="example-11"></a><h4 title-id="example-11"><a class="markdownIt-Anchor" href="#example-11">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"description":[{"operator":"STARTS WITH","value":"Amazing","locale":"en_US","scope":"ecommerce"}],"short_description":[{"operator":"CONTAINS","value":"shoes","locale":"en_US","scope":"ecommerce"}]}
+    
+    is equivalent to
+    
+    /api/rest/v1/published-products?search={"description":[{"operator":"STARTS WITH","value":"Amazing","scope":"ecommerce"}],"short_description":[{"operator":"CONTAINS","value":"shoes","scope":"ecommerce"}]}&search_locale=en_US
+    </code></pre>
+    <a class="anchor" id="search_scope-query-parameter-2"></a><h3 title-id="search_scope-query-parameter-2"><a class="markdownIt-Anchor" href="#search_scope-query-parameter-2">#</a><code>search_scope</code> query parameter</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>If you need to filter on several attributes on the same channel, you can use the <code>search_scope</code> query parameter, to avoid repeating yourself for each attribute. This parameter expect an existing channel code.</p>
+    <a class="anchor" id="example-12"></a><h4 title-id="example-12"><a class="markdownIt-Anchor" href="#example-12">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/published-products?search={"release_date":[{"operator":">","value":"2016-07-04","scope":"ecommerce"}],"short_description":[{"operator":"CONTAINS","value":"shoes","locale":"en_US","scope":"ecommerce"}]}
+    
+    is equivalent to
+    
+    /api/rest/v1/published-products?search={"release_date":[{"operator":">","value":"2016-07-04"}],"short_description":[{"operator":"CONTAINS","value":"shoes","locale":"en_US"}]}&search_scope=ecommerce
+    </code></pre>
+    <a class="anchor" id="available-operators-2"></a><h3 title-id="available-operators-2"><a class="markdownIt-Anchor" href="#available-operators-2">#</a>Available operators</h3>
+    <p>As seen previously, the attribute type determines which set of operators is available to use these filters.</p>
+    <p><strong>The <code>pim_catalog_identifier</code>, <code>pim_catalog_text</code> and <code>pim_catalog_textarea</code> attribute types</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>STARTS WITH, CONTAINS, DOES NOT CONTAIN</td>
+    <td>string</td>
+    </tr>
+    <tr>
+    <td>=, !=</td>
+    <td>string</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>The <code>pim_catalog_number</code>, <code>pim_catalog_metric</code> and <code>pim_catalog_price_collection</code> attribute types</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>&lt;, &lt;=, =, !=, &gt;=, &gt;</td>
+    <td>integer</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>The <code>pim_catalog_simpleselect</code> and <code>pim_catalog_multiselect</code> attribute types</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>IN, NOT IN</td>
+    <td>an existing attribute option code of the attribute</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>The <code>pim_catalog_boolean</code> attribute type</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>=, !=</td>
+    <td>boolean</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value (only available since the 5.0 version)</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>The <code>pim_catalog_date</code> attribute type</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>&lt;, =, !=, &gt;</td>
+    <td>dateTime (ISO-8601)</td>
+    </tr>
+    <tr>
+    <td>BETWEEN, NOT BETWEEN</td>
+    <td>[dateTime (ISO-8601), dateTime (ISO-8601)]</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><strong>The <code>pim_catalog_file</code> and <code>pim_catalog_image</code> attribute types</strong></p>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Allowed operators</th>
+    <th>Allowed value type</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td>STARTS WITH, CONTAINS, DOES NOT CONTAIN, =, !=</td>
+    <td>string</td>
+    </tr>
+    <tr>
+    <td>EMPTY, NOT EMPTY</td>
+    <td>no value</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="filter-published-product-values"></a><h2 title-id="filter-published-product-values"><a class="markdownIt-Anchor" href="#filter-published-product-values">#</a>Filter published product values</h2>
+    <p>Thanks to the above sections, you are able to filter your published products to only get those you want. In this section, you will see that you also can filter the published product values to only receive those you want.</p>
+    <a class="anchor" id="via-attributes-2"></a><h3 title-id="via-attributes-2"><a class="markdownIt-Anchor" href="#via-attributes-2">#</a>Via attributes</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>If you want to receive for each published product only published product values about specific attributes, you can specify it thanks to the <code>attributes</code> query parameter.</p>
+    <a class="anchor" id="example-13"></a><h4 title-id="example-13"><a class="markdownIt-Anchor" href="#example-13">#</a>Example</h4>
+    <p>To get published products with only published product values regarding the <code>description</code> attribute, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?attributes=description
+    </code></pre>
+    <p>You can filter published product values on several attributes at the same time.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?attributes=name,description
+    </code></pre>
+    <a class="anchor" id="via-locale-2"></a><h3 title-id="via-locale-2"><a class="markdownIt-Anchor" href="#via-locale-2">#</a>Via locale</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>If you want to receive for each product only product values on specific locales, as well as the product values of the non localizable attributes, you can specify it thanks to the <code>locales</code> query parameter.</p>
+    <a class="anchor" id="example-1-2"></a><h4 title-id="example-1-2"><a class="markdownIt-Anchor" href="#example-1-2">#</a>Example 1</h4>
+    <p>Imagine that without this filter you get these product values:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"color"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"carmine_red"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>
+        }
+      ],
+      <span class="hljs-attr">"name"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>
+        },
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Débardeur"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>
+        }
+      ],
+      <span class="hljs-attr">"description"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Summer top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"ecommerce"</span>
+        },
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"tablet"</span>
+        },
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Débardeur pour l'été"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"ecommerce"</span>
+        },
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Débardeur"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"tablet"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <p>To get only product values regarding the <code>en_US</code> locale (+ the product values of the non localizable attributes), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?locales=en_US
+    </code></pre>
+    <p>As a result you will receive the following answer:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"color"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"carmine_red"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>
+        }
+      ],
+      <span class="hljs-attr">"name"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-literal">null</span>
+        }
+      ],
+      <span class="hljs-attr">"description"</span>: [
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Summer top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"ecommerce"</span>
+        },
+        {
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Top"</span>,
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"scope"</span>: <span class="hljs-string">"tablet"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <div class="alert alert-warning"><p>As you can see, for the simple select attribute named <code>color</code>, as the attribute is not localizable (the <code>locale</code> field is set to <code>null</code>), the product value of this attribute is not filtered and you still get the code of the attribute option, <code>carmine_red</code>.
+    If you want to get the localized label of this attribute option, you will have to request the <a href="/api-reference.html#get_attributes__attribute_code__options__code_">attribute option endpoint</a>.</p>
+    </div>
+    </p></p></p></p></p></p></p></p></p></p></p><a class="anchor" id="example-2-2"></a><h4 title-id="example-2-2"><a class="markdownIt-Anchor" href="#example-2-2">#</a>Example 2</h4>
+    <p>You can also filter product values on several locales at the same time.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?locales=en_US,fr_FR
+    </code></pre>
+    <a class="anchor" id="via-channel-2"></a><h3 title-id="via-channel-2"><a class="markdownIt-Anchor" href="#via-channel-2">#</a>Via channel</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>There is also a <code>scope</code> query parameter that will allow you to:</p>
+    <ul>
+    <li>get only the selection of products that are in the tree linked to the channel you specified,</li>
+    <li>get only the product values for this specific channel, as well as the product values of the non scopable attributes.</li>
+    </ul>
+    <a class="anchor" id="example-14"></a><h4 title-id="example-14"><a class="markdownIt-Anchor" href="#example-14">#</a>Example</h4>
+    <p>To get published products from the tree linked to the <code>ecommerce</code> channel with only product values regarding the <code>ecommerce</code> channel (+ the product values of the non-scopable attributes), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/published-products?scope=ecommerce
+    </code></pre>
+    <div class="alert alert-warning"><p>Note that you cannot use this filter on several channels.</p>
+    </div>
+    </p><div class="alert alert-info"><p>When using this query parameter, you will never be able to retrieve published products that are not categorized. This is due to the fact that we only return the selection of products that are in the tree linked to the given channel. In other words, if a given product is not categorized in this tree, you won't receive it.</p>
+    </div>
+    <a class="anchor" id="filter-locales"></a><h2 title-id="filter-locales"><a class="markdownIt-Anchor" href="#filter-locales">#</a>Filter locales</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">1.7</span> <span class="label label-version">2.x</span> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>When requesting locales, you can use a filter to get the enabled ones.</p>
+    <a class="anchor" id="example-15"></a><h4 title-id="example-15"><a class="markdownIt-Anchor" href="#example-15">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/locales?search={"enabled":[{"operator":"=","value":true}]}
+    </code></pre>
+    <a class="anchor" id="filter-currencies"></a><h2 title-id="filter-currencies"><a class="markdownIt-Anchor" href="#filter-currencies">#</a>Filter currencies</h2>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>When requesting currencies, you can use a filter to get the enabled ones.</p>
+    <a class="anchor" id="example-16"></a><h4 title-id="example-16"><a class="markdownIt-Anchor" href="#example-16">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/currencies?search={"enabled":[{"operator":"=","value":true}]}
+    </code></pre>
+    <a class="anchor" id="filter-reference-entity-records"></a><h2 title-id="filter-reference-entity-records"><a class="markdownIt-Anchor" href="#filter-reference-entity-records">#</a>Filter reference entity records</h2>
+    <a class="anchor" id="by-record-codes"></a><h3 title-id="by-record-codes"><a class="markdownIt-Anchor" href="#by-record-codes">#</a>By record codes</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>You can filter the reference entity records by their code.</p>
+    <p>Below is the operator to filter on this property, as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>an array of existing record codes</td>
+    <td>Only returns records that are in the list</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-17"></a><h4 title-id="example-17"><a class="markdownIt-Anchor" href="#example-17">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/reference-entities/brands/records?search={"code":[{"operator":"IN","value":["code1","code2"]}]}
+    </code></pre>
+    <a class="anchor" id="by-completeness"></a><h3 title-id="by-completeness"><a class="markdownIt-Anchor" href="#by-completeness">#</a>By completeness</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>You can filter the reference entity records to get only the completed ones on a given channel for given locales.</p>
+    <a class="anchor" id="example-18"></a><h4 title-id="example-18"><a class="markdownIt-Anchor" href="#example-18">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/reference-entities/brands/records?search={"complete":{"operator":"=","value":true,"channel":"ecommerce","locales":["en_US"]}}
+    </code></pre>
+    <a class="anchor" id="by-update-date"></a><h3 title-id="by-update-date"><a class="markdownIt-Anchor" href="#by-update-date">#</a>By update date</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>You can filter the reference entity records by their update date.</p>
+    <p>Below are the allowed operators to filter on this property, as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <div class="alert alert-info"><p>Please note that you have to write dates in either of these format <em>2021-05-17T15:19:32Z</em>, or <em>2021-05-17T15:19:32+00:00</em> according to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 standard</a>.</p>
+    <p>Moreover dates are interpreted in the time zone of the server that runs Fegmo (e.g. date.timezone setting in php.ini). For SaaS clients, please note that the time zone of the server is in UTC as this is the most precise and commonly referred to time standard.</p>
+    </div>
+    </p></p></p></p></p><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>&gt;</code></td>
+    <td>datetime <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns records that were respectively<br> updated after the given day and hour</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>&lt;</code></td>
+    <td>datetime <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns records that were <br> updated before the given day and hour</td>
+    </tr>
+    <tr>
+    <td><code>BETWEEN</code></td>
+    <td>array of datetimes <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns records that were <br> updated between the two given dates</td>
+    </tr>
+    <tr>
+    <td><code>NOT BETWEEN</code></td>
+    <td>array of datetimes <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns records that were <br> not updated between the two given dates</td>
+    </tr>
+    <tr>
+    <td><code>SINCE LAST N DAYS</code></td>
+    <td>integer</td>
+    <td>Only returns records that were <br> updated during the last n days, n being the given value</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-19"></a><h4 title-id="example-19"><a class="markdownIt-Anchor" href="#example-19">#</a>Example</h4>
+    <p>To get the reference entity records that were updated since the 4th of July 2016 at 10am (UTC), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/reference-entities/brands/records?search={"updated":[{"operator":">","value":"2018-07-04T10:00:00+00:00"}]}
+    </code></pre>
+    <a class="anchor" id="record-values-by-locale"></a><h3 title-id="record-values-by-locale"><a class="markdownIt-Anchor" href="#record-values-by-locale">#</a>Record values by locale</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>If you want to receive reference entity records of one given reference entity with only the attribute values of specific locales, as well as the attribute values of the non localizable attributes, you can specify it thanks to the <code>locales</code> query parameter.</p>
+    <a class="anchor" id="example-1-3"></a><h4 title-id="example-1-3"><a class="markdownIt-Anchor" href="#example-1-3">#</a>Example 1</h4>
+    <p>Imagine that without this filter you get these attribute values:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"description"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"He's a well-known manufacturer of high-end furniture that was founded in Italy."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"He's an Italian manufacturer of high-end furniture. It was founded in Italy."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Il est un fabricant de meuble renommée qui fut fondé en Italie."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Il est un fabricant italien de meubles de luxe. L'entreprise a été fondé en Italie."</span>
+        }
+      ],
+      <span class="hljs-attr">"creation_year"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"1923"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <p>To get only the attribute values regarding the <code>en_US</code> locale (+ the attribute values of the non localizable attributes), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/reference-entities/brands/records?locales=en_US
+    </code></pre>
+    <p>As a result you will receive the following answer:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"description"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"He's a well-known manufacturer of high-end furniture that was founded in Italy."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"He's an Italian manufacturer of high-end furniture. It was founded in Italy."</span>
+        }
+      ],
+      <span class="hljs-attr">"creation_year"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"1923"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="example-2-3"></a><h4 title-id="example-2-3"><a class="markdownIt-Anchor" href="#example-2-3">#</a>Example 2</h4>
+    <p>You can also filter attribute values on several locales at the same time.</p>
+    <pre class="hljs"><code>/api/rest/v1/reference-entities/brands/records?locales=en_US,fr_FR
+    </code></pre>
+    <a class="anchor" id="record-values-by-channel"></a><h3 title-id="record-values-by-channel"><a class="markdownIt-Anchor" href="#record-values-by-channel">#</a>Record values by channel</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.x</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>There is also a <code>channel</code> query parameter that will allow you to get only the attribute values for a specific channel, as well as the attribute values of the non scopable attributes.</p>
+    <div class="alert alert-warning"><p>Note that you cannot use this filter on several channels.</p>
+    </div>
+    </p></p></p><a class="anchor" id="example-20"></a><h4 title-id="example-20"><a class="markdownIt-Anchor" href="#example-20">#</a>Example</h4>
+    <p>Imagine that without this filter you get these attribute values:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"description"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"He's a well-known manufacturer of high-end furniture that was founded in Italy."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"He's an Italian manufacturer of high-end furniture. It was founded in Italy."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Il est un fabricant de meuble renommée qui fut fondé en Italie."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Il est un fabricant italien de meubles de luxe. L'entreprise a été fondé en Italie."</span>
+        }
+      ],
+      <span class="hljs-attr">"creation_year"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"1923"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <p>To get only the attribute values regarding the <code>ecommerce</code> channel (+ the attribute values of the non scopable attributes), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/reference-entities/brands/records?channel=ecommerce
+    </code></pre>
+    <p>As a result you will receive the following answer:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"description"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"He's an Italian manufacturer of high-end furniture. It was founded in Italy."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Il est un fabricant italien de meubles de luxe. L'entreprise a été fondé en Italie."</span>
+        }
+      ],
+      <span class="hljs-attr">"creation_year"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"1923"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="filter-assets"></a><h2 title-id="filter-assets"><a class="markdownIt-Anchor" href="#filter-assets">#</a>Filter assets</h2>
+    <p>When requesting a <a href="/api-reference.html#get_assets">list of assets via the REST API</a>, you can apply filters to get only the ones you want and also the kind of information you want in them.</p>
+    <a class="anchor" id="by-asset-codes"></a><h3 title-id="by-asset-codes"><a class="markdownIt-Anchor" href="#by-asset-codes">#</a>By asset codes</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>You can filter the assets by their code.</p>
+    <p>Below is the operator to filter on this property, as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>an array of existing asset codes</td>
+    <td>Only returns assets that are in the list</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-21"></a><h4 title-id="example-21"><a class="markdownIt-Anchor" href="#example-21">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/asset-families/model_pictures/assets?search={"code":[{"operator":"IN","value":["code1","code2"]}]}
+    </code></pre>
+    <a class="anchor" id="by-update-date-2"></a><h3 title-id="by-update-date-2"><a class="markdownIt-Anchor" href="#by-update-date-2">#</a>By update date</h3>
+    <p>You can filter the assets by their update date.</p>
+    <p>Below is the operator to filter on this property, as well as the corresponding type of value expected in the <code>search</code> query parameter.</p>
+    <div class="alert alert-info"><p>Please note that you have to write dates in either of these format <em>2021-05-17T15:19:32Z</em>, or <em>2021-05-17T15:19:32+00:00</em> according to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 standard</a>.</p>
+    <p>Moreover dates are interpreted in the time zone of the server that runs Fegmo (e.g. date.timezone setting in php.ini). For SaaS clients, please note that the time zone of the server is in UTC as this is the most precise and commonly referred to time standard.</p>
+    </div>
+    </p><p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>&gt;</code></td>
+    <td>datetime <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns assets that were <br> updated after the given day and hour</td>
+    </tr>
+    </tbody>
+    </table>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>&lt;</code></td>
+    <td>datetime <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns assets that were <br> updated before the given day and hour</td>
+    </tr>
+    <tr>
+    <td><code>BETWEEN</code></td>
+    <td>array of datetimes <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns assets that were <br> updated between the two given dates</td>
+    </tr>
+    <tr>
+    <td><code>NOT BETWEEN</code></td>
+    <td>array of datetimes <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns assets that were <br> not updated between the two given dates</td>
+    </tr>
+    <tr>
+    <td><code>SINCE LAST N DAYS</code></td>
+    <td>integer</td>
+    <td>Only returns assets that were <br> updated during the last n days, n being the given value</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-22"></a><h4 title-id="example-22"><a class="markdownIt-Anchor" href="#example-22">#</a>Example</h4>
+    <p>To get the assets that were updated since the 4th of July 2018 at 10am (UTC), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/asset-families/model_pictures/assets?search={"updated":[{"operator":">","value":"2018-07-04T10:00:00Z"}]}
+    </code></pre>
+    <p>You can also combine operators.</p>
+    <pre class="hljs"><code>/api/rest/v1/asset-families/model_pictures/assets?search={"updated":[{"operator":">","value":"2018-07-04T10:00:00Z"},{"operator":"<","value":"2018-08-04T10:00:00Z"}]}
+    </code></pre>
+    <p>To get the assets that were updated over a period of time, you can use the <code>BETWEEN</code> and <code>NOT BETWEEN</code> operators.</p>
+    <pre class="hljs"><code>/api/rest/v1/asset-families/model_pictures/assets?search={"updated":[{"operator":"NOT BETWEEN","value":["2018-07-04T10:00:00Z","2018-08-04T10:00:00Z"]}]}
+    </code></pre>
+    <p>Finally, if you want to get the assets updated in the last 4 days, you can use the <code>SINCE LAST N DAYS</code> operator.</p>
+    <pre class="hljs"><code>/api/rest/v1/asset-families/model_pictures/assets?search={"updated":[{"operator":"SINCE LAST N DAYS","value":4}]}
+    </code></pre>
+    <a class="anchor" id="asset-values-by-locale"></a><h3 title-id="asset-values-by-locale"><a class="markdownIt-Anchor" href="#asset-values-by-locale">#</a>Asset values by locale</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>If you want to receive assets with only the asset values of specific locales, as well as the attribute values of the non localizable attributes, you can specify it thanks to the <code>locales</code> query parameter.</p>
+    <a class="anchor" id="example-1-4"></a><h4 title-id="example-1-4"><a class="markdownIt-Anchor" href="#example-1-4">#</a>Example 1</h4>
+    <p>Imagine that without this filter you get these asset values:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"warning_mention"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouched."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouched. This does not necessarily reflect the reality."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouchée."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouchée, ne représentant pas forcément la réalité."</span>
+        }
+      ],
+      <span class="hljs-attr">"model_is_wearing_size"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"small"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <p>To get only the asset values regarding the <code>en_US</code> locale (+ the attribute values of the non localizable attributes), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/asset-families/model_pictures/assets?locales=en_US
+    </code></pre>
+    <p>As a result you will receive the following answer:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"warning_mention"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouched."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouched. This does not necessarily reflect the reality."</span>
+        }
+      ],
+      <span class="hljs-attr">"model_is_wearing_size"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"small"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="example-2-4"></a><h4 title-id="example-2-4"><a class="markdownIt-Anchor" href="#example-2-4">#</a>Example 2</h4>
+    <p>You can also filter asset values on several locales at the same time.</p>
+    <pre class="hljs"><code>/api/rest/v1/asset-families/model_pictures/assets?locales=en_US,fr_FR
+    </code></pre>
+    <a class="anchor" id="asset-values-by-channel"></a><h3 title-id="asset-values-by-channel"><a class="markdownIt-Anchor" href="#asset-values-by-channel">#</a>Asset values by channel</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">3.2</span> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">EE</span><p>There is also a <code>channel</code> query parameter that will allow you to get only the asset values for a specific channel, as well as the asset values of the non scopable attributes.</p>
+    <div class="alert alert-warning"><p>Note that you cannot use this filter on several channels.</p>
+    </div>
+    </p></p></p></p><a class="anchor" id="example-23"></a><h4 title-id="example-23"><a class="markdownIt-Anchor" href="#example-23">#</a>Example</h4>
+    <p>Imagine that without this filter you get these asset values:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"warning_mention"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouched."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouched. This does not necessarily reflect the reality."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"mobile"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouchée."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouchée, ne représentant pas forcément la réalité."</span>
+        }
+      ],
+      <span class="hljs-attr">"model_is_wearing_size"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"small"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <p>To get only the attribute values regarding the <code>ecommerce</code> channel (+ the attribute values of the non scopable attributes), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/asset-families/model_pictures/assets?channel=ecommerce
+    </code></pre>
+    <p>As a result you will receive the following answer:</p>
+    <pre class="hljs"><code>{
+      <span class="hljs-attr">"warning_mention"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"en_US"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouched. This does not necessarily reflect the reality."</span>
+        },
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-string">"fr_FR"</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-string">"ecommerce"</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"Photo retouchée, ne représentant pas forcément la réalité."</span>
+        }
+      ],
+      <span class="hljs-attr">"model_is_wearing_size"</span>: [
+        {
+          <span class="hljs-attr">"locale"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"channel"</span>: <span class="hljs-literal">null</span>,
+          <span class="hljs-attr">"data"</span>: <span class="hljs-string">"small"</span>
+        }
+      ]
+    }
+    </code></pre>
+    <a class="anchor" id="filter-attributes"></a><h2 title-id="filter-attributes"><a class="markdownIt-Anchor" href="#filter-attributes">#</a>Filter attributes</h2>
+    <p>When you request specific attributes, you can use filters to select only the ones you want.</p>
+    <a class="anchor" id="by-attribute-codes"></a><h3 title-id="by-attribute-codes"><a class="markdownIt-Anchor" href="#by-attribute-codes">#</a>By attribute codes</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the attributes by their code.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>an array of existing attribute codes</td>
+    <td>Only returns attributes that are in the list</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-24"></a><h4 title-id="example-24"><a class="markdownIt-Anchor" href="#example-24">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/attributes?search={"code":[{"operator":"IN","value":["code1","code2"]}]}
+    </code></pre>
+    <a class="anchor" id="by-update-date-3"></a><h3 title-id="by-update-date-3"><a class="markdownIt-Anchor" href="#by-update-date-3">#</a>By update date</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the attributes by their update date.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <div class="alert alert-info"><p>Please note that you have to write dates in either of these format <em>2021-05-17T15:19:32Z</em>, or <em>2021-05-17T15:19:32+00:00</em> according to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 standard</a>.</p>
+    <p>Moreover dates are interpreted in the time zone of the server that runs Fegmo (e.g. date.timezone setting in php.ini). For SaaS clients, please note that the time zone of the server is in UTC as this is the most precise and commonly referred to time standard.</p>
+    </div>
+    </p></p><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>&gt;</code></td>
+    <td>datetime <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns attributes that were <br> updated after the given day and hour</td>
+    </tr>
+    </tbody>
+    </table>
+    <div class="alert alert-warning"><p>For Simple select and Multiple select attribute, an option update isn't considered as an attribute update.</p>
+    </div>
+    <a class="anchor" id="example-25"></a><h4 title-id="example-25"><a class="markdownIt-Anchor" href="#example-25">#</a>Example</h4>
+    <p>To get the attributes that have been updated since July 4th, 2020 at 10 am (UTC), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/attributes?search={"updated":[{"operator":">","value":"2020-07-04T10:00:00Z"}]}
+    </code></pre>
+    <a class="anchor" id="by-attribute-types"></a><h3 title-id="by-attribute-types"><a class="markdownIt-Anchor" href="#by-attribute-types">#</a>By attribute types</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the attributes by their types.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>an array of <a href="/concepts/catalog-structure.html#attribute">existing attribute types</a></td>
+    <td>Only returns the attributes of the given types</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-26"></a><h4 title-id="example-26"><a class="markdownIt-Anchor" href="#example-26">#</a>Example</h4>
+    <p>To get the attributes of types <code>pim_catalog_simpleselect</code> and <code>pim_catalog_multiselect</code>, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/attributes?search={"type":[{"operator":"IN","value":["pim_catalog_simpleselect","pim_catalog_multiselect"]}]}
+    </code></pre>
+    <a class="anchor" id="by-the-main-identifier"></a><h3 title-id="by-the-main-identifier"><a class="markdownIt-Anchor" href="#by-the-main-identifier">#</a>By the main identifier</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the attributes that are the main identifier or not.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>=</code></td>
+    <td>boolean</td>
+    <td>When true, only returns the main identifier attribute (true) or attributes that are not the main identifier (false).</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-27"></a><h4 title-id="example-27"><a class="markdownIt-Anchor" href="#example-27">#</a>Example</h4>
+    <p>To get the main identifier attribute, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/attributes?search={"is_main_identifier":[{"operator":"=","value":true}]}
+    </code></pre>
+    <a class="anchor" id="filter-attribute-groups"></a><h2 title-id="filter-attribute-groups"><a class="markdownIt-Anchor" href="#filter-attribute-groups">#</a>Filter attribute groups</h2>
+    <p>When you request specific attribute groups, you can use filters to select only the ones you want.</p>
+    <a class="anchor" id="by-attribute-group-codes"></a><h3 title-id="by-attribute-group-codes"><a class="markdownIt-Anchor" href="#by-attribute-group-codes">#</a>By attribute group codes</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the attribute groups by their code.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>an array of existing attribute group codes</td>
+    <td>Only returns attribute groups that are in the list</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-28"></a><h4 title-id="example-28"><a class="markdownIt-Anchor" href="#example-28">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/attribute-groups?search={"code":[{"operator":"IN","value":["marketing","technical"]}]}
+    </code></pre>
+    <a class="anchor" id="by-update-date-4"></a><h3 title-id="by-update-date-4"><a class="markdownIt-Anchor" href="#by-update-date-4">#</a>By update date</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the attribute groups by their update date.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <div class="alert alert-info"><p>Please note that you have to write dates in either of these format <em>2021-05-17T15:19:32Z</em>, or <em>2021-05-17T15:19:32+00:00</em> according to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 standard</a>.</p>
+    <p>Moreover dates are interpreted in the time zone of the server that runs Fegmo (e.g. date.timezone setting in php.ini). For SaaS clients, please note that the time zone of the server is in UTC as this is the most precise and commonly referred to time standard.</p>
+    </div>
+    </p></p></p></p><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>&gt;</code></td>
+    <td>datetime <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns attribute groups that were <br> updated after the given day and hour</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-29"></a><h4 title-id="example-29"><a class="markdownIt-Anchor" href="#example-29">#</a>Example</h4>
+    <p>To get the attribute groups that have been updated since July 4th, 2020 at 10 AM (UTC), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/attribute-groups?search={"updated":[{"operator":">","value":"2020-07-04T10:00:00Z"}]}
+    </code></pre>
+    <a class="anchor" id="filter-families"></a><h2 title-id="filter-families"><a class="markdownIt-Anchor" href="#filter-families">#</a>Filter families</h2>
+    <p>When you request specific families, you can use filters to select only the ones you want.</p>
+    <a class="anchor" id="by-family-codes"></a><h3 title-id="by-family-codes"><a class="markdownIt-Anchor" href="#by-family-codes">#</a>By family codes</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the families by their code.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>an array of existing family codes</td>
+    <td>Only returns families that are in the list</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-30"></a><h4 title-id="example-30"><a class="markdownIt-Anchor" href="#example-30">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/families?search={"code":[{"operator":"IN","value":["family_code1","family_code2"]}]}
+    </code></pre>
+    <a class="anchor" id="by-update-date-5"></a><h3 title-id="by-update-date-5"><a class="markdownIt-Anchor" href="#by-update-date-5">#</a>By update date</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the families by their update date.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <div class="alert alert-info"><p>Please note that you have to write dates in either of these format <em>2021-05-17T15:19:32Z</em>, or <em>2021-05-17T15:19:32+00:00</em> according to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 standard</a>.</p>
+    <p>Moreover dates are interpreted in the time zone of the server that runs Fegmo (e.g. date.timezone setting in php.ini). For SaaS clients, please note that the time zone of the server is in UTC as this is the most precise and commonly referred to time standard.</p>
+    </div>
+    </p></p><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>&gt;</code></td>
+    <td>datetime <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns families that were <br> updated after the given day and hour</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-31"></a><h4 title-id="example-31"><a class="markdownIt-Anchor" href="#example-31">#</a>Example</h4>
+    <p>To get the families that have been updated since July 4th, 2020 at 10 am (UTC), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/families?search={"updated":[{"operator":">","value":"2020-07-04T10:00:00Z"}]}
+    </code></pre>
+    <a class="anchor" id="by-families-with-at-least-one-product"></a><h3 title-id="by-families-with-at-least-one-product"><a class="markdownIt-Anchor" href="#by-families-with-at-least-one-product">#</a>By families with at least one product</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the families that have at least one attached product.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <div class="alert alert-info"><p>You can combine the <code>has_products</code> filter with any other filter available on families.</p>
+    </div>
+    </p><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>=</code></td>
+    <td>boolean</td>
+    <td>When true, only returns families with at least one product (true) or families with no products (false).</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-32"></a><h4 title-id="example-32"><a class="markdownIt-Anchor" href="#example-32">#</a>Example</h4>
+    <p>To retrieve only families with products, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/families?search={"has_products":[{"operator":"=","value":true}]}
+    </code></pre>
+    <a class="anchor" id="filter-categories"></a><h2 title-id="filter-categories"><a class="markdownIt-Anchor" href="#filter-categories">#</a>Filter categories</h2>
+    <p>When you request specific categories, you can use filters to select only the ones you want.</p>
+    <a class="anchor" id="by-category-level-root"></a><h3 title-id="by-category-level-root"><a class="markdownIt-Anchor" href="#by-category-level-root">#</a>By category level: root</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the categories to get only root categories.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <div class="alert alert-tips"><p>You can combine the <code>is_root</code> filter with any other filter available on categories.</p>
+    </div>
+    </p><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>=</code></td>
+    <td>boolean</td>
+    <td>When <code>true</code>, only returns categories that are root. When <code>false</code>, returns any other categories.</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-33"></a><h4 title-id="example-33"><a class="markdownIt-Anchor" href="#example-33">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/categories?search={"is_root":[{"operator":"=","value":true}]}
+    </code></pre>
+    <a class="anchor" id="by-parent-category"></a><h3 title-id="by-parent-category"><a class="markdownIt-Anchor" href="#by-parent-category">#</a>By parent category</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the categories by parent.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>=</code></td>
+    <td>a string containing an <a href="/concepts/catalog-structure.html#category">existing parent category</a></td>
+    <td>Only returns the sub-categories of the given parent</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-34"></a><h4 title-id="example-34"><a class="markdownIt-Anchor" href="#example-34">#</a>Example</h4>
+    <p>To get the child categories of the parent category <code>categoryA</code>, you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/categories?search={"parent":[{"operator":"=","value":"categoryA"}]}
+    </code></pre>
+    <a class="anchor" id="by-category-codes"></a><h3 title-id="by-category-codes"><a class="markdownIt-Anchor" href="#by-category-codes">#</a>By category codes</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">4.0</span> <span class="label label-version">5.0</span> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the categories by their code.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>IN</code></td>
+    <td>an array of existing category codes</td>
+    <td>Only returns categories that are in the list</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-35"></a><h4 title-id="example-35"><a class="markdownIt-Anchor" href="#example-35">#</a>Example</h4>
+    <pre class="hljs"><code>/api/rest/v1/categories?search={"code":[{"operator":"IN","value":["category_code1","category_code2"]}]}
+    </code></pre>
+    <a class="anchor" id="by-update-date-6"></a><h3 title-id="by-update-date-6"><a class="markdownIt-Anchor" href="#by-update-date-6">#</a>By update date</h3>
+    <p><em class="small text-primary">Available in the PIM versions:</em> <span class="label label-version">6.0</span> <span class="label label-version">7.0</span> <span class="label label-version">SaaS</span><em class="small text-primary">&nbsp;&nbsp;|&nbsp;&nbsp;Available in the PIM editions:</em> <span class="label label-info">CE</span> <span class="label label-info">EE</span><p>You can filter the categories by their update date.</p>
+    <p>Below you will find the operator to filter on this property, as well as the corresponding type of value required in the <code>search</code> query parameter.</p>
+    <div class="alert alert-info"><p>Please note that you have to write dates in either of these format <em>2021-05-17T15:19:32Z</em>, or <em>2021-05-17T15:19:32+00:00</em> according to the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 standard</a>.</p>
+    <p>Moreover dates are interpreted in the time zone of the server that runs Fegmo (e.g. date.timezone setting in php.ini). For SaaS clients, please note that the time zone of the server is in UTC as this is the most precise and commonly referred to time standard.</p>
+    </div>
+    </p></p></p><table class="table"><thead>
+    <tr>
+    <th>Operator</th>
+    <th>Allowed value type</th>
+    <th>Filter description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td><code>&gt;</code></td>
+    <td>datetime <br> <em>Format: ISO 8601</em></td>
+    <td>Only returns categories that were <br> updated after the given day and hour</td>
+    </tr>
+    </tbody>
+    </table>
+    <a class="anchor" id="example-36"></a><h4 title-id="example-36"><a class="markdownIt-Anchor" href="#example-36">#</a>Example</h4>
+    <p>To get the categories that have been updated since May 17th, 2021 at 10 am (UTC), you can use the following URL.</p>
+    <pre class="hljs"><code>/api/rest/v1/categories?search={"updated":[{"operator":">","value":"2021-05-17T10:00:00Z"}]}
+    </code></pre>
+    </div>
+            </div>
+        </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p class="text-right">
+                    <em>Found a typo or a hole in the documentation and feel like contributing?</em><br>
+                    <a href="https://fegmo.com/contact" target="_blank">Contact Us here!</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container social-icon">
+        <a href="https://fegmo.com" target="_blank">
+            <img src="/img/icons/TransparentLogo.svg" />
+        </a>
+        <!--<a href="https://www.facebook.com/akeneopim/" target="_blank">
+            <img src="/img/icons/icon--facebook.svg" />
+        </a>
+        <a href="https://fr.linkedin.com/company/akeneo" target="_blank">
+            <img src="/img/icons/icon--linkedin.svg" />
+        </a>
+        <a href="https://www.youtube.com/channel/UCFFKXJdZLX5igCbitT-b6lA" target="_blank">
+            <img src="/img/icons/icon--youtube.svg" />
+        </a> -->
+    </div>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>
+<script type="text/javascript">
+    docsearch({
+        appId: 'USYFJKQ2TZ',
+        apiKey: '0432ae035ca73de97c72534104efc0c5',
+        indexName: 'akeneo_api_akeneo_com_main',
+        inputSelector: '#algolia-search',
+        debug: false // Set debug to true if you want to inspect the dropdown
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-35417741-5', 'auto');
+    ga('send', 'pageview');
+</script>
+</body>
+</html>
